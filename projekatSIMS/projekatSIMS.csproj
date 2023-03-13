@@ -58,7 +58,19 @@
     <Compile Include="Model\SIMSContext.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\App.g.cs" />
+    <Compile Include="obj\Debug\App.g.i.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
+    <Compile Include="obj\Debug\projekatSIMS_Content.g.i.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\App.g.cs" />
+    <Compile Include="obj\Release\MainWindow.g.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,10 +100,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="obj\Debug\projekatSIMS.g.resources" />
+    <EmbeddedResource Include="obj\Debug\projekatSIMS.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\projekatSIMS.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\projekatSIMS.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\projekatSIMS.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\projekatSIMS.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\projekatSIMS.csproj.SuggestedBindingRedirects.cache" />
+    <None Include="obj\Debug\projekatSIMS_MarkupCompile.cache" />
+    <None Include="obj\Debug\projekatSIMS_MarkupCompile.i.cache" />
+    <None Include="obj\Debug\projekatSIMS_MarkupCompile.lref" />
+    <None Include="obj\Release\projekatSIMS.csproj.AssemblyReference.cache" />
+    <None Include="obj\Release\projekatSIMS_MarkupCompile.cache" />
+    <None Include="obj\Release\projekatSIMS_MarkupCompile.lref" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,7 +127,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\" />
     <Folder Include="Resources\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\projekatSIMS.exe" />
+    <Content Include="bin\Debug\projekatSIMS.pdb" />
+    <Resource Include="obj\Debug\projekatSIMS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\projekatSIMS.exe" />
+    <Content Include="obj\Debug\projekatSIMS.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
