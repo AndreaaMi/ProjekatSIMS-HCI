@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-     public enum AccommondationType
+     public enum AccommodationType
         {
             APARTMENT, HOUSE, COTTAGE
         }
