@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Accommondation.cs" />
+    <Compile Include="Model\AccommondationType.cs" />
+    <Compile Include="Model\Location.cs" />
     <Compile Include="Model\SIMSContext.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Model\User.cs" />
