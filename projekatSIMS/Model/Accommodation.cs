@@ -17,7 +17,7 @@ namespace projekatSIMS.Model
         private int cancelationLimit;
     
 
-            public Accommodation() { }
+        public Accommodation() { }
 
         public Accommodation(string name, Location location, AccommodationType accommodationType, int guestLimit, int minimalStay, int cancelationLimit)
         {
@@ -27,10 +27,8 @@ namespace projekatSIMS.Model
             this.guestLimit = guestLimit;
             this.minimalStay = minimalStay;
             this.cancelationLimit = cancelationLimit;
+
         }
-
-
-
 
         public string Name
         {
@@ -115,10 +113,24 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + type.ToString() + "|" + guestLimit + "|" + minimalStay + "|" + cancelationLimit;
+            return id + "|" + name + "|" + type.ToString() + "|" + location.City + "|" + location.Country + "|"+ guestLimit + "|" + minimalStay + "|" + cancelationLimit;
         }
 
-       
+        public override void ImportFromString(string[] parts)
+        {
+            base.ImportFromString(parts);
+            
+            Name = parts[0];
+            Location.City = parts[1];
+            Location.Country = parts[2];
+            SetAccommodationType(parts[3]);
+            GuestLimit = int.Parse(parts[4]);
+            MinimalStay = int.Parse(parts[5]);
+            CancelationLimit = int.Parse(parts[6]);
+
+        }
+
+
     }
 }
   
