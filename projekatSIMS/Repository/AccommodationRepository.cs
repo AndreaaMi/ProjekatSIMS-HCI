@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Repository
 {
-    internal class AccommodationRepository : Repository<Accommodation>
+    public class AccommodationRepository : Repository<Accommodation>
     {
 
     }

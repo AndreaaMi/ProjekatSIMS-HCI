@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-    internal class Location
+    public class Location
     {
         public string city;
         public string country;

@@ -24,5 +24,10 @@ namespace projekatSIMS
         {
             InitializeComponent();
         }
+
+        public void Button()
+        {
+           
+        }
     }
 }
