@@ -55,13 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
     <Compile Include="Model\Accommodation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
-=======
     <Compile Include="Model\KeyPoints.cs" />
     <Compile Include="Model\Language.cs" />
->>>>>>> classTour
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\SIMSContext.cs" />
     <Compile Include="Model\Tour.cs" />
@@ -113,8 +110,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\Data\" />
+    <Resource Include="Resources\Data\users.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
