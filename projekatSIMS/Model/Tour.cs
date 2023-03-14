@@ -104,16 +104,38 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + name; // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingTime.ToString("dd.MM.yyyy") + "|" + maxNumberOfGuests + "|" + duration; // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
         {
             base.ImportFromString(parts);
             Name = parts[1];
-            //Location = parts[2]; // what else is needed
+            Location.Country = parts[2];
+            Location.City = parts[3];
+            SetLanguage(parts[4]);
+            StartingTime = DateTime.ParseExact(parts[5], "dd.MM.yyyy", null);
+            MaxNumberOfGuests = int.Parse(parts[6]);
+            Duration = int.Parse(parts[7]);
 
 
+
+        }
+
+        public void SetLanguage(string part)
+        {
+            switch (part)
+            {
+                case "ENGLISH":
+                    Language = Language.ENGLISH;
+                    break;
+
+                case "SERBIAN":
+                    Language = Language.SERBIAN;
+                    break;
+
+                
+            }
         }
     }
 }
