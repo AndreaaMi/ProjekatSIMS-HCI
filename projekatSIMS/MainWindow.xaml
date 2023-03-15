@@ -6,29 +6,14 @@
         xmlns:local="clr-namespace:projekatSIMS"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="0,0,73,0">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="104*"/>
             <RowDefinition Height="113*"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" Grid.RowSpan="2" Width="82">
-            <Button Click="Button_Click">Izlistaj sve ture</Button>
-            <Button>Button 2</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-            <Button>Button 3</Button>
-        </StackPanel>
-        <Button x:Name="DisplayAccommodations" Content="Display Accommodations" Margin="403,83,173,94" Click="DisplayAccommodations_Click"/>
-        <ComboBox x:Name="TypesComboBox" HorizontalAlignment="Left" Margin="403,119,0,0" VerticalAlignment="Top" Width="151" Height="29" SelectionChanged="TypesComboBox_SelectionChanged" IsEditable="True" SelectedIndex="0"/>
-        <ListBox x:Name="MyListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="559,2,-72,1" Grid.RowSpan="2"/>
-        <Label Content="Search By Accommodation Type" HorizontalAlignment="Left" Margin="218,121,0,0" VerticalAlignment="Top"/>
-        <Label Content="Search By Accommodation City" HorizontalAlignment="Left" Margin="218,153,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="CityComboBox" HorizontalAlignment="Left" Margin="403,153,0,0" VerticalAlignment="Top" Width="151" Height="26" SelectionChanged="CityComboBox_SelectionChanged_1" IsEditable="True" SelectedIndex="1"/>
-        <TextBox x:Name="txtCountry" HorizontalAlignment="Left" Height="30" Margin="403,203,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="151" Grid.RowSpan="2"/>
+        <Button x:Name="AccommodationSearchWindow" Content="AccommodationSearchWindow" HorizontalAlignment="Left" Margin="37,34,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Guest2" HorizontalAlignment="Left" Margin="37,59,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Guest2" HorizontalAlignment="Left" Margin="37,84,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Guest2" HorizontalAlignment="Left" Margin="37,109,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
     </Grid>
 </Window>
