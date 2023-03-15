@@ -1,4 +1,8 @@
 ﻿using projekatSIMS.Model;
+<<<<<<< HEAD
+=======
+using projekatSIMS.Service;
+>>>>>>> findAllTours
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,5 +30,17 @@ namespace projekatSIMS.Repository
         }
 
 
+=======
+            Tours = new TourRepository();
+        }
+
+        public UserRepository Users { get; private set; }
+        public TourRepository Tours { get; private set; }
+
+        public void Save() 
+        {
+            SIMSContext.Instance.Save(); //Save da bi se mogli sacuvati podaci nakon metoda iz servisa
+        }
+>>>>>>> findAllTours
     }
 }

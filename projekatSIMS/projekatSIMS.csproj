@@ -68,8 +68,10 @@
     <Compile Include="Repository\AccommodationRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
@@ -77,6 +79,9 @@
     <Compile Include="UI\Dialogs\View\AccommodationSearchView.xaml.cs">
       <DependentUpon>AccommodationSearchView.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Service\TourService.cs" />
+
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,7 +127,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Data\tours.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\users.txt" />
   </ItemGroup>

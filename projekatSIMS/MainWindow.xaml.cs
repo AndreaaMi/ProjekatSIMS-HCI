@@ -1,5 +1,8 @@
-﻿using System;
+﻿using projekatSIMS.Model;
+using projekatSIMS.Service;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +28,13 @@ namespace projekatSIMS
             InitializeComponent();
         }
 
-        public void Button()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+            TourService tourService = new TourService();
+            foreach(Tour t in tourService.GetAll())
+            {
+                Debug.WriteLine(t.Id + " " + t.Name + " " + t.Location.Country + " " + t.Location.City + " " + t.Language.ToString() + " " + t.StartingDate.ToString("dd/MM/yyyy") + " " + t.StartingTime + " " + t.Duration + " " + t.MaxNumberOfGuests );
+            }
         }
     }
 }
