@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-    internal class Tour : Entity
+    public class Tour : Entity
     {
         private string name;
         private Location location;
         private Language language;
-        private DateTime startingTime;
+        private DateTime startingDate;
+        private string startingTime;
         private int maxNumberOfGuests;
-        private double duration;
+        private int duration;
         private List<KeyPoints> keyPoints;
         private List<string> picturesUrl;
 
-        public Tour() { }
+        public Tour() {
+            this.location = new Location();
+        }
 
         public Tour(Tour tour,int id)
         {
@@ -26,6 +30,7 @@ namespace projekatSIMS.Model
             this.name = tour.name;
             this.location = tour.location;
             this.language = tour.language;
+            this.startingDate = tour.startingDate;
             this.startingTime = tour.startingTime;
             this.maxNumberOfGuests = tour.maxNumberOfGuests; 
             this.duration = tour.duration;
@@ -62,7 +67,17 @@ namespace projekatSIMS.Model
             }
         }
 
-        public DateTime StartingTime
+        public DateTime StartingDate
+        {
+            get { return startingDate;}
+            set
+            {
+                startingDate = value;
+                OnPropertyChanged(nameof(StartingDate));
+            }
+        }
+
+        public string StartingTime
         {
             get { return startingTime; }
             set
@@ -82,7 +97,7 @@ namespace projekatSIMS.Model
             } 
         }
 
-        public double Duration
+        public int Duration
         {
             get { return duration; }
             set
@@ -104,21 +119,20 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingTime.ToString("dd.MM.yyyy") + "|" + maxNumberOfGuests + "|" + duration; // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration; // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
         {
             base.ImportFromString(parts);
             Name = parts[1];
-            Location.Country = parts[2];
-            Location.City = parts[3];
+            location.Country = parts[2];
+            location.City = parts[3];
             SetLanguage(parts[4]);
-            StartingTime = DateTime.ParseExact(parts[5], "dd.MM.yyyy", null);
-            MaxNumberOfGuests = int.Parse(parts[6]);
-            Duration = int.Parse(parts[7]);
-
-
+            StartingDate = DateTime.Parse(parts[5], new CultureInfo("de-DE"));
+            StartingTime = parts[6];
+            MaxNumberOfGuests = int.Parse(parts[7]);
+            Duration = int.Parse(parts[8]);
 
         }
 

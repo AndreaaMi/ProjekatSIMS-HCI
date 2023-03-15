@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-    internal class KeyPoints : Entity
+    public class KeyPoints : Entity
     {
         private string name;
         private bool isActive = false;
