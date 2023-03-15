@@ -19,6 +19,8 @@ namespace projekatSIMS.Repository
 
         IEnumerable<Entity> GetAll();
 
+        IEnumerable<Entity> Search(string term = "");
+
         int GenerateId();
 
         void Save();

@@ -4,17 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\
+=======
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\
+>>>>>>> AccommodationRegistration
 projekatSIMS
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\App.xaml
 1219584333
 
 22-1035141288
+=======
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
+21259725092
+
+24-760888225
+>>>>>>> AccommodationRegistration
 13-1310406943
-MainWindow.xaml;
+MainWindow.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;
 
 False
 

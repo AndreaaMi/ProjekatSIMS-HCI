@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-    internal class Accommodation : Entity
+    public class Accommodation : Entity
     {
 
         private string name;
