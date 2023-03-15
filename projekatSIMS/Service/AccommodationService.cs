@@ -13,46 +13,60 @@ namespace projekatSIMS.Service
         public void Add(Accommodation accommodation)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Accommodation.Add(accommodation);
+            unitOfWork.Accommodations.Add(accommodation);
             unitOfWork.Save();
         }
 
         public void Edit(Accommodation accommodation)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Accommodation.Edit(accommodation);
+            unitOfWork.Accommodations.Edit(accommodation);
             unitOfWork.Save();
         }
 
         public void Remove(Accommodation accommodation)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Accommodation.Remove(accommodation);
+            unitOfWork.Accommodations.Remove(accommodation);
             unitOfWork.Save();
         }
 
         public Entity Get(int id)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Accommodation.Get(id);
+            return unitOfWork.Accommodations.Get(id);
         }
 
         public IEnumerable<Entity> GetAll()
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Accommodation.GetAll();
+            return unitOfWork.Accommodations.GetAll();
         }
 
-       // public IEnumerable<Entity> Search(string term = "")
-       // {
-         //   UnitOfWork unitOfWork = new UnitOfWork();
-        //    return unitOfWork.Accommodation.Search(term);
-      //  }
+       public IEnumerable<Entity> Search(string term = "")
+        {
+          UnitOfWork unitOfWork = new UnitOfWork();
+           return unitOfWork.Accommodations.Search(term);
+        }
 
         public int GenerateId()
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Accommodation.GenerateId();
+            return unitOfWork.Accommodations.GenerateId();
+        }
+
+        public Accommodation GetAccommodationByName(string name)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            Accommodation result = null;
+            foreach (Accommodation it in unitOfWork.Accommodations.GetAll())
+            {
+                if (it.Name == name)
+                {
+                    result = it;
+                }
+            }
+            return result;
         }
     }
 }

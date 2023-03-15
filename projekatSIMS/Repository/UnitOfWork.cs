@@ -13,12 +13,12 @@ namespace projekatSIMS.Repository
         public UnitOfWork() //Klasa koja ce sluziti za komunikaciju sa servisima - POSEDUJE SVAKI REPOSITORY 
         {
             Users = new UserRepository();
-            Accommodation = new AccommodationRepository();
+            Accommodations = new AccommodationRepository();
         }
 
         public UserRepository Users { get; private set; }
 
-        public AccommodationRepository Accommodation { get; private set; }
+        public AccommodationRepository Accommodations { get; private set; }
 
         public void Save()
         {
