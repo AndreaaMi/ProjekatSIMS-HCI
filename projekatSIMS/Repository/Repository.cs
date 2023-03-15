@@ -30,7 +30,10 @@ namespace projekatSIMS.Repository
         {
             return SIMSContext.Instance.Get(typeof(TEntity));
         }
-
+        public virtual IEnumerable<Entity> Search(string term = "")
+        {
+            throw new NotImplementedException();  //Da nema ovoga ne bi moglo bacao bi gresku jer nema return vrednosti
+        }
         public void Remove(Entity entity)
         {
             SIMSContext.Instance.Get(typeof(TEntity)).Remove(entity);

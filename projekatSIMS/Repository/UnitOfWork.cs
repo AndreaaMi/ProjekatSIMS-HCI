@@ -1,5 +1,4 @@
 ﻿using projekatSIMS.Model;
-using projekatSIMS.Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,14 +14,22 @@ namespace projekatSIMS.Repository
         {
             Users = new UserRepository();
             Tours = new TourRepository();
+            Accommodations = new AccommodationRepository();
         }
 
         public UserRepository Users { get; private set; }
         public TourRepository Tours { get; private set; }
+        public AccommodationRepository Accommodations { get; private set; }
 
         public void Save() 
         {
             SIMSContext.Instance.Save(); //Save da bi se mogli sacuvati podaci nakon metoda iz servisa
         }
+
+        
+
+       
+
+
     }
 }

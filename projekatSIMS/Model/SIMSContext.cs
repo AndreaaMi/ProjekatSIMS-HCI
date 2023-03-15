@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-    
+
     //OVO JE KLASA KOJA PREDSTAVLJA "BAZU PODATAKA"
     public class SIMSContext
     {
@@ -20,25 +20,28 @@ namespace projekatSIMS.Model
         //Cuvamo listu svih ENTITETA - da bi ih citali i pisali
         private List<Entity> users = new List<Entity>();
         private List<Entity> tours = new List<Entity>();
+        private List<Entity> accommodations = new List<Entity>();
 
         private User loginUser;
 
         public static SIMSContext Instance
-        { get
-          {
-           if (instance == null)
+        {
+            get
             {
-              instance = new SIMSContext();
-              instance.Load();
-            }
+                if (instance == null)
+                {
+                    instance = new SIMSContext();
+                    instance.Load();
+                }
 
-           return instance;
-          }        
+                return instance;
+            }
         }
 
         public void Save()
         {
             GenericSave(users, "users.txt");
+            GenericSave(accommodations, "accommodations.txt");
             GenericSave(tours, "tours.txt");
         }
 
@@ -59,89 +62,119 @@ namespace projekatSIMS.Model
 
         public void Load()
         {
-            GenericLoad(users,"users.txt",typeof(User));
-            GenericLoad(tours,"tours.txt",typeof(Tour));
+            GenericLoad(users, "users.txt", typeof(User));
+            GenericLoad(accommodations, "accommodations.txt", typeof(Accommodation));
+            GenericLoad(tours, "tours.txt", typeof(Tour));
         }
 
-        public void GenericLoad(List<Entity> entities, string fileName, Type type) 
-        { 
-            foreach(string line in File.ReadLines(_projectPath + fileName)) 
+        public void GenericLoad(List<Entity> entities, string fileName, Type type)
+        {
+            foreach (string line in File.ReadLines(_projectPath + fileName))
             {
                 string[] parts = line.Split(delimiter);
 
-                if(type == typeof(User))
+                if (type == typeof(User))
                 {
                     User newEntity = new User();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-
-                if(type == typeof(Tour))
+                if (type == typeof(Accommodation))
+                {
+                    Accommodation newAccommodation = new Accommodation();
+                    newAccommodation.ImportFromString(parts);
+                    entities.Add(newAccommodation);
+                }
+                if (type == typeof(Tour))
                 {
                     Tour newEntity = new Tour();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
             }
-        
+
+            
         }
-
-        public int GenerateId(List<Entity> entities)
+public int GenerateId(List<Entity> entities)
+    {
+        int max = -1;
+        foreach (Entity it in entities)
         {
-            int max = -1;
-            foreach(Entity it in entities) 
-            { 
-                if(it.Id > max)
-                {
-                    max = it.Id;
-                }
-            }
-
-            return max + 1;
-        }
-
-        public void Set(Type type, List<Entity> entities)
-        {
-            if(type == typeof(User))
+            if (it.Id > max)
             {
-                users = entities;
-                return;
-            }
-            if(type == typeof(Tour))
-            {
-                tours = entities;
-                return;
+                max = it.Id;
             }
         }
 
-        public List<Entity> Get(Type type) //Vraca celu listu entiteta 
-        {
-            if(type == typeof(User))
-            {
-                return users;
-            }
-
-            return tours; //Mora jedan biti default return
-        }
-
-        public List<Entity> Users
-        { get { return users; }
-          set { users = value; }
-        }
-        public User LoginUser
-        {
-            get { return loginUser; }
-            set { loginUser = value; }
-        }
-
-        public List<Entity> Tours
-        { get { return tours; }
-          set {  tours = value; } 
-        }
-
-
-
-
-
+        return max + 1;
     }
+
+    public void Set(Type type, List<Entity> entities)
+    {
+        if (type == typeof(User))
+        {
+            users = entities;
+            return;
+        }
+
+        if (type == typeof(Accommodation))
+        {
+            accommodations = entities;
+            return;
+        }
+        if (type == typeof(Tour))
+        {
+            tours = entities;
+            return;
+        }
+    }
+
+    public List<Entity> Get(Type type) //Vraca celu listu entiteta 
+    {
+        if (type == typeof(User))
+        {
+            return users;
+        }
+        if (type == typeof(Accommodation))
+        {
+            return accommodations;
+        }
+
+        return tours; //Mora jedan biti default return
+    }
+
+    public List<Entity> Users
+    {
+        get { return users; }
+        set { users = value; }
+    }
+
+    public List<Entity> Accommodations
+    {
+        get { return accommodations; }
+        set { accommodations = value; }
+    }
+
+    public User LoginUser
+    {
+        get { return loginUser; }
+        set { loginUser = value; }
+    }
+
+    public List<Entity> Tours
+    {
+        get { return tours; }
+        set { tours = value; }
+    }
+    }
+
+    
+
+
 }
+
+
+
+       
+
+

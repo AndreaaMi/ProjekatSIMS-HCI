@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CompositeComon\RelayCommand.cs" />
     <Compile Include="Model\Accommodation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
     <Compile Include="Model\KeyPoints.cs" />
@@ -70,6 +71,13 @@
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Service\AccommodationService.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\LoginViewModel.cs" />
+    <Compile Include="UI\Dialogs\View\AccommodationSearchView.xaml.cs">
+      <DependentUpon>AccommodationSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service\TourService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Dialogs\View\AccommodationSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Entity.cs" />
@@ -117,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\users.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\accommodations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
