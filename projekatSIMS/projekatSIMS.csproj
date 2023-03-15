@@ -71,10 +71,8 @@
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-<<<<<<< HEAD
 
-=======
->>>>>>> findAllTours
+
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
@@ -82,13 +80,13 @@
     <Compile Include="UI\Dialogs\View\AccommodationSearchView.xaml.cs">
       <DependentUpon>AccommodationSearchView.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
 
     <Compile Include="Service\TourService.cs" />
 
-=======
-    <Compile Include="Service\TourService.cs" />
->>>>>>> findAllTours
+
+    
+
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,11 +1,5 @@
 ﻿using projekatSIMS.Model;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 using projekatSIMS.Service;
->>>>>>> findAllTours
-=======
->>>>>>> findAllTours
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,47 +14,31 @@ namespace projekatSIMS.Repository
         public UnitOfWork() //Klasa koja ce sluziti za komunikaciju sa servisima - POSEDUJE SVAKI REPOSITORY 
         {
             Users = new UserRepository();
-<<<<<<< HEAD
-=======
             Tours = new TourRepository();
->>>>>>> findAllTours
             Accommodations = new AccommodationRepository();
         }
 
         public UserRepository Users { get; private set; }
-<<<<<<< HEAD
-
         public AccommodationRepository Accommodations { get; private set; }
+        public TourRepository Tours { get; private set; }
+        
 
         public void Save()
         {
             SIMSContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa
         }
+        
 
+           
+    }
 
-=======
-            Tours = new TourRepository();
-        }
+        
 
-        public UserRepository Users { get; private set; }
-=======
->>>>>>> findAllTours
-        public TourRepository Tours { get; private set; }
-        public AccommodationRepository Accommodations { get; private set; }
-
-        public void Save() 
-        {
-            SIMSContext.Instance.Save(); //Save da bi se mogli sacuvati podaci nakon metoda iz servisa
-        }
-<<<<<<< HEAD
->>>>>>> findAllTours
-=======
-
+        
         
 
        
 
 
->>>>>>> findAllTours
     }
-}
+
