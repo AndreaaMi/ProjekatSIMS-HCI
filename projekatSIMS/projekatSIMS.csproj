@@ -125,12 +125,9 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Data\users.txt" />
-<<<<<<< HEAD
-=======
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\accommodation.txt" />
->>>>>>> AccommodationRegistration
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

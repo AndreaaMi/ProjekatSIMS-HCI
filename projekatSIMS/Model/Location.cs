@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace projekatSIMS.Model
 {
-    internal class Location : Entity
+    public class Location : Entity
     {
 
         public string city;

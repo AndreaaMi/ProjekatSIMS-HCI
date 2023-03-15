@@ -63,7 +63,6 @@ C:\Users\Korisnik\Desktop\SIMS\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSI
 C:\Users\Korisnik\Desktop\SIMS\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.Properties.Resources.resources
 C:\Users\Korisnik\Desktop\SIMS\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.csproj.GenerateResource.cache
 C:\Users\Korisnik\Desktop\SIMS\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.csproj.CoreCompileInputs.cache
-<<<<<<< HEAD
 =======
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\projekatSIMS.exe.config
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\projekatSIMS.exe
@@ -83,7 +82,6 @@ C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSI
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.pdb
 >>>>>>> classTour
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS_Content.g.cs
-=======
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\projekatSIMS.exe.config
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\projekatSIMS.exe
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\projekatSIMS.pdb
