@@ -1,1 +1,21 @@
-﻿1|apartmani Beograd|Beograd|Srbija|apartment|5|3|10
+﻿1|Hotel Belgrade1|Belgrade|Serbia|APARTMENT|100|3|10
+2|Grand Hotel Sofia|Sofia|Bulgaria|HOUSE|150|3|10
+22|Grand Hotel Sofia2|Sofia|Bulgaria|HOUSE|150|3|10
+3|Hotel Berlin|Berlin|Germany|COTTAGE|200|3|10
+4|Hotel Paris|Paris|France|COTTAGE|120|3|10
+5|Hotel Amsterdam|Amsterdam|Netherlands|HOUSE|80|3|10
+6|Hotel London|London|United Kingdom|HOUSE|250|3|10
+7|Hotel Madrid|Madrid|Spain|APARTMENT|180|3|10
+8|Hotel Roma|Rome|Italy|APARTMENT|90|3|10
+9|Hotel Athens|Athens|Greece|HOUSE|130|3|10
+10|Hotel Vienna|Vienna|Austria|APARTMENT|100|3|10
+11|Hotel Moscow|Moscow|Russia|COTTAGE|220|3|10
+12|Hotel Copenhagen|Copenhagen|Denmark|HOUSE|70|3|10
+13|Hotel Dublin|Dublin|Ireland|APARTMENT|110|3|10
+14|Hotel Oslo|Oslo|Norway|APARTMENT|90|3|10
+15|Hotel Stockholm|Stockholm|Sweden|APARTMENT|80|3|10
+16|Hotel Helsinki|Helsinki|Finland|APARTMENT|70|3|10
+17|Hotel Lisbon|Lisbon|Portugal|HOUSE|120|3|10
+18|Hotel Warsaw|Warsaw|Poland|COTTAGE|110|3|10
+19|Hotel Prague|Prague|Czech Republic|APARTMENT|150|3|10
+20|Hotel Budapest|Budapest|Hungary|COTTAGE|130|3|10
