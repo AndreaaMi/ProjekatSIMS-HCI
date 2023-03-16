@@ -32,31 +32,31 @@ namespace projekatSIMS.UI.Dialogs.View
             
             TourService tourService = new TourService();
             Tour newTour = new Tour();
-            newTour.Id = 1;
+            newTour.Id = int.Parse(IdBox.Text);
             newTour.Name = NameBox.Text;
-            newTour.Location.Country = CountryBox.Text;
-            newTour.Location.City = CityBox.Text;
-            //if (Enum.TryParse(LanguageBox.Text.ToString(), out Language type))
-            //{
-            //    newTour.Language = type;
-            //
-            //}
+            newTour.Location = new Location {Country = CountryBox.Text ,City = CityBox.Text  };
+            if (Enum.TryParse(LanguageBox.Text.ToString(), out Language type))
+            {
+                newTour.Language = type;
+            
+            }
             
             newTour.StartingDate = DateTime.Parse(DateBox.Text);
             newTour.StartingTime = TimeBox.Text;
             newTour.MaxNumberOfGuests = int.Parse(GuestNumBox.Text);
             newTour.Duration = int.Parse(DurationBox.Text);
-            //newTour.Description = DescriptionBox.Text;
+            newTour.Description = DescriptionBox.Text;
 
             tourService.Add(newTour);
             foreach(Tour entity in tourService.GetAll())
             {
-                List1.Items.Add(entity.Id + "|" + entity.Name + "|" + entity.Location.Country + "|" + entity.Location.City + "|" + entity.Language + "|" + entity.StartingDate + "|" + entity.StartingTime + "|" + entity.MaxNumberOfGuests + "|" + entity.Duration);// + "|" + entity.Description);
+                List1.Items.Add(entity.Id + "|" + entity.Name + "|" + entity.Location.Country + "|" + entity.Location.City + "|" + entity.Language + "|" + entity.StartingDate + "|" + entity.StartingTime + "|" + entity.MaxNumberOfGuests + "|" + entity.Duration + "|" + entity.Description);
             }
             // Dodajte novi element u ListBox
             
 
             // Očistite TextBox-e za sljedeći unos
+            IdBox.Clear();
             NameBox.Clear();
             CountryBox.Clear();
             CityBox.Clear();
@@ -67,7 +67,7 @@ namespace projekatSIMS.UI.Dialogs.View
             DurationBox.Clear();
             DescriptionBox.Clear();
             KeyPointsBox.Clear();
-           // DescriptionBox.Clear();
+            DescriptionBox.Clear();
 
         }
     }

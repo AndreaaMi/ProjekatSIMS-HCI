@@ -131,7 +131,7 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration;// + "|" + description; // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description; // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
@@ -145,7 +145,7 @@ namespace projekatSIMS.Model
             StartingTime = parts[6];
             MaxNumberOfGuests = int.Parse(parts[7]);
             Duration = int.Parse(parts[8]);
-            //Description = parts[9]; 
+            Description = parts[9]; 
 
         }
 

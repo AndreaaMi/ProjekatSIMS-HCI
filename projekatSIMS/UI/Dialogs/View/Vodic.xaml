@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Vodic" Height="450" Width="800">
     <Grid>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="20,59,0,0" VerticalAlignment="Top"/>
         <Label Content="Country:" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
         <Label Content="City:" HorizontalAlignment="Left" Margin="20,111,0,0" VerticalAlignment="Top"/>
@@ -17,7 +18,8 @@
         <Label Content="Duration:" HorizontalAlignment="Left" Margin="20,241,0,0" VerticalAlignment="Top"/>
         <Label Content="Description:" HorizontalAlignment="Left" Margin="20,267,0,0" VerticalAlignment="Top"/>
         <Label Content="KeyPoints" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top"/>
-        
+
+        <TextBox x:Name="IdBox"  HorizontalAlignment="Left" Margin="89,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="NameBox"  HorizontalAlignment="Left" Margin="89,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="CountryBox" HorizontalAlignment="Left" Margin="89,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="CityBox" HorizontalAlignment="Left" Margin="89,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

@@ -146,13 +146,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Data\tours.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Data\users.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\accommodations.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\tours.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
