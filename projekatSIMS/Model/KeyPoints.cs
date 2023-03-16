@@ -50,7 +50,7 @@ namespace projekatSIMS.Model
         {
             base.ImportFromString(parts);
             Name = parts[1];
-            //isActive = parts[2]; string to bool error
+            isActive = bool.Parse(parts[2]); 
         }
     }
 }

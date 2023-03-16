@@ -18,6 +18,7 @@ namespace projekatSIMS.Model
         private int duration;
         private List<KeyPoints> keyPoints;
         private List<string> picturesUrl;
+        private string description;
 
         public Tour() {
             this.location = new Location();
@@ -35,6 +36,7 @@ namespace projekatSIMS.Model
             this.maxNumberOfGuests = tour.maxNumberOfGuests; 
             this.duration = tour.duration;
             this.keyPoints = new List<KeyPoints>();
+            this.description = tour.description;
         }
 
         public string Name 
@@ -117,9 +119,19 @@ namespace projekatSIMS.Model
             }
         }
 
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged(nameof(Description));
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration; // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration;// + "|" + description; // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
@@ -133,6 +145,7 @@ namespace projekatSIMS.Model
             StartingTime = parts[6];
             MaxNumberOfGuests = int.Parse(parts[7]);
             Duration = int.Parse(parts[8]);
+            //Description = parts[9]; 
 
         }
 
