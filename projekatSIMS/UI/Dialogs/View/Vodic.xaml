@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="Vodic" Height="450" Width="800">
     <Grid>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="20,59,0,0" VerticalAlignment="Top"/>
+        <Label Content="Country:" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="City:" HorizontalAlignment="Left" Margin="20,111,0,0" VerticalAlignment="Top"/>
+        <Label Content="Language:" HorizontalAlignment="Left" Margin="20,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Margin="20,163,0,0" VerticalAlignment="Top"/>
+        <Label Content="Time:" HorizontalAlignment="Left" Margin="20,189,0,0" VerticalAlignment="Top"/>
+        <Label Content="Guest_Number:" HorizontalAlignment="Left" Margin="20,215,0,0" VerticalAlignment="Top"/>
+        <Label Content="Duration:" HorizontalAlignment="Left" Margin="20,241,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="20,267,0,0" VerticalAlignment="Top"/>
+        <Label Content="KeyPoints" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top"/>
         
+        <TextBox x:Name="NameBox"  HorizontalAlignment="Left" Margin="89,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="CountryBox" HorizontalAlignment="Left" Margin="89,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="CityBox" HorizontalAlignment="Left" Margin="89,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="LanguageBox" HorizontalAlignment="Left" Margin="89,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DateBox" HorizontalAlignment="Left" Margin="89,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TimeBox" HorizontalAlignment="Left" Margin="89,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="GuestNumBox" HorizontalAlignment="Left" Margin="89,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DurationBox" HorizontalAlignment="Left" Margin="89,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Margin="89,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="KeyPointsBox" HorizontalAlignment="Left" Margin="89,297,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        
+        <ListBox x:Name="List1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="233,64,473,33"/>
+
+        <Button x:Name="EnterParamsButton" Content="Enter Params"  Margin="36,344,651,62" Click="EnterParamsButton_Click" />
     </Grid>
 </Window>

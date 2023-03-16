@@ -1,1 +1,1 @@
-﻿1|Aleksa|Vuckovic|vuckovic@gmail.com|sifra
+1|Aleksa|Vuckovic|vuckovic@gmail.com|sifra|OWNER
