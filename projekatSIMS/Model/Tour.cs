@@ -22,6 +22,7 @@ namespace projekatSIMS.Model
 
         public Tour() {
             this.location = new Location();
+            this.keyPoints = new List<KeyPoints>();
         }
 
         public Tour(Tour tour,int id)
@@ -131,7 +132,7 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description; // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description + "|" + ExportKeyPoints(keyPoints); // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
@@ -146,6 +147,7 @@ namespace projekatSIMS.Model
             MaxNumberOfGuests = int.Parse(parts[7]);
             Duration = int.Parse(parts[8]);
             Description = parts[9]; 
+            //KeyPoints = parts[10];
 
         }
 
@@ -163,6 +165,26 @@ namespace projekatSIMS.Model
 
                 
             }
+        }
+
+        public string ExportKeyPoints(List<KeyPoints> kp)
+        {
+            if (kp.Count == 0)
+            {
+                return "0";
+            }
+
+            string retString = (kp.First()).Id.ToString();
+
+            foreach (KeyPoints it in kp)
+            {
+                if (!(it.Id.ToString().Equals(retString)))
+                {
+                    retString = retString + "_" + it.Id.ToString();
+                }
+            }
+
+            return retString;
         }
     }
 }

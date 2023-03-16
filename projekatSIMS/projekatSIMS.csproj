@@ -154,5 +154,8 @@
   <ItemGroup>
     <Resource Include="Resources\Data\tours.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\keypoints.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
