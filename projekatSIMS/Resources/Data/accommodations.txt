@@ -1,4 +1,5 @@
 ﻿1|Hotel Belgrade1|Belgrade|Serbia|APARTMENT|100|3|10
+23|Hotel Belgrade3|Belgrade|Serbia|APARTMENT|100|3|10
 2|Grand Hotel Sofia|Sofia|Bulgaria|HOUSE|150|3|10
 22|Grand Hotel Sofia2|Sofia|Bulgaria|HOUSE|150|3|10
 3|Hotel Berlin|Berlin|Germany|COTTAGE|200|3|10

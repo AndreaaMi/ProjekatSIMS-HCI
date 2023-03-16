@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AccommodationSearchView" Height="450" Width="800">
     <Grid>
-        <Button x:Name="DisplayAccommodations" Content="Display Accommodations" Margin="400,227,249,175" Click="DisplayAccommodations_Click" Width="151" Height="32.04"/>
+        <Button x:Name="DisplayAccommodations" Content="Display Accommodations" Margin="218,234,431,168" Click="DisplayAccommodations_Click" Width="151" Height="32.04"/>
         <ComboBox x:Name="TypesComboBox" HorizontalAlignment="Left" Margin="403,119,0,0" VerticalAlignment="Top" Width="151" Height="29" SelectionChanged="TypesComboBox_SelectionChanged" IsEditable="True" SelectedIndex="0"/>
         <ListBox x:Name="MyListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="559,2,1,1"/>
         <Label Content="Search By Accommodation Type" HorizontalAlignment="Left" Margin="218,121,0,0" VerticalAlignment="Top"/>

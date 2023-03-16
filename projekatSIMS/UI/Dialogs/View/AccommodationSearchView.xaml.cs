@@ -24,34 +24,15 @@ namespace projekatSIMS.UI.Dialogs.View
     {
         public AccommodationSearchView()
         {
-            DataContext = new AccommodationSearchViewModel();
-            InitializeComponent();
-            AccommodationService accommodationService = new AccommodationService();
-            foreach (Accommodation entity in accommodationService.GetAll())
-            {
-                TypesComboBox.Items.Add(entity.Type);
-                CityComboBox.Items.Add(entity.Location.City);
+                InitializeComponent();
+                //UBACIVANJE PARAMETARA U COMBOX
+                AccommodationService accommodationService = new AccommodationService();
+                var accommodations = accommodationService.GetAll();
+                TypesComboBox.ItemsSource = accommodations.Where(a => a is Accommodation).Select(a => ((Accommodation)a).Type).Distinct();
+                CityComboBox.ItemsSource = accommodations.Where(a => a is Accommodation && ((Accommodation)a).Location != null).Select(a => ((Accommodation)a).Location.City).Distinct();
 
-            }
-
-            RemoveDuplicateItemsFromComboBox(TypesComboBox);
-            RemoveDuplicateItemsFromComboBox(CityComboBox);
         }
 
-        private void RemoveDuplicateItemsFromComboBox(ComboBox comboBox)
-        {
-            for (int i = 0; i < comboBox.Items.Count; i++)
-            {
-                for (int j = i + 1; j < comboBox.Items.Count; j++)
-                {
-                    if (comboBox.Items[i].Equals(comboBox.Items[j]))
-                    {
-                        comboBox.Items.RemoveAt(j);
-                        j--;
-                    }
-                }
-            }
-        }
 
         private void DisplayAccommodations_Click(object sender, RoutedEventArgs e)
         {

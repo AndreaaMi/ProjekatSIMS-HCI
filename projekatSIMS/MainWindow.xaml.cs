@@ -32,8 +32,26 @@ namespace projekatSIMS
   
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AccommodationSearchView win2 = new AccommodationSearchView();
-            win2.Show();
+            AccommodationSearchView win = new AccommodationSearchView();
+            win.Show();
+        }
+
+        private void Gost2_Click(object sender, RoutedEventArgs e)
+        {
+            Gost2 win = new Gost2();
+            win.Show();
+        }
+
+        private void Vlasnik_Click(object sender, RoutedEventArgs e)
+        {
+            Vlasnik win = new Vlasnik();
+            win.Show();
+        }
+
+        private void Vodic_Click(object sender, RoutedEventArgs e)
+        {
+            Vodic win = new Vodic();
+            win.Show();
         }
     }
 }

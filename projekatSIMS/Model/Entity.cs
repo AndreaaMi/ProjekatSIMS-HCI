@@ -21,6 +21,7 @@ namespace projekatSIMS.Model
             }
         }
 
+
         public virtual string ExportToString()
         {
             return string.Empty;

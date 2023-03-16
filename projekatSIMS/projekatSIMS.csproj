@@ -71,8 +71,6 @@
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-
-
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
@@ -80,13 +78,16 @@
     <Compile Include="UI\Dialogs\View\AccommodationSearchView.xaml.cs">
       <DependentUpon>AccommodationSearchView.xaml</DependentUpon>
     </Compile>
-
-
     <Compile Include="Service\TourService.cs" />
-
-
-    
-
+    <Compile Include="UI\Dialogs\View\Gost2.xaml.cs">
+      <DependentUpon>Gost2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\Vlasnik.xaml.cs">
+      <DependentUpon>Vlasnik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\Vodic.xaml.cs">
+      <DependentUpon>Vodic.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,6 +102,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Dialogs\View\AccommodationSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\Gost2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\Vlasnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\Vodic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
