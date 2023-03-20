@@ -67,11 +67,13 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Repository\AccommodationRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\KeyPointsRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Service\AccommodationService.cs" />
+    <Compile Include="Service\KeyPointsService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\LoginViewModel.cs" />
@@ -146,13 +148,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Data\tours.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Data\users.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\accommodations.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\tours.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\keypoints.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
