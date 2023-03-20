@@ -186,5 +186,11 @@ namespace projekatSIMS.Model
 
             return retString;
         }
+
+            // public KeyPoints AddKeypoint(int id, string name)
+            // {
+            //     KeyPoints kp = new KeyPoints();
+            //
+            // }
     }
 }

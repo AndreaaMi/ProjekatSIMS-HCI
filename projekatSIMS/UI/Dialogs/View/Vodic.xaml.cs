@@ -46,7 +46,36 @@ namespace projekatSIMS.UI.Dialogs.View
             newTour.MaxNumberOfGuests = int.Parse(GuestNumBox.Text);
             newTour.Duration = int.Parse(DurationBox.Text);
             newTour.Description = DescriptionBox.Text;
+            
+           //////
+                string i = KeyPointsIdBox.Text;
+                string j = KeyPointsNameBox.Text;
+                string[] keyId = i.Split(' '); 
+                string[] keyName = j.Split(' ');
 
+
+
+
+            foreach (var word in keyId)
+                    {
+                        
+                        
+                            if(word == "x")
+                            { 
+                                break; 
+                            }
+                         KeyPoints key = new KeyPoints();
+                         key.Id = int.Parse(word);
+                         key.Name = "e";
+                         key.IsActive = false;
+                         newTour.KeyPoints.Add(key);
+                         
+                    }
+
+                    
+                
+           //////
+           ///
             tourService.Add(newTour);
             foreach(Tour entity in tourService.GetAll())
             {
@@ -66,7 +95,7 @@ namespace projekatSIMS.UI.Dialogs.View
             GuestNumBox.Clear();
             DurationBox.Clear();
             DescriptionBox.Clear();
-            KeyPointsBox.Clear();
+            KeyPointsIdBox.Clear();
             DescriptionBox.Clear();
 
         }
