@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace projekatSIMS.Model
         private List<KeyPoints> keyPoints;
         private List<string> picturesUrl;
         private string description;
+        private int guestNumber;
 
         public Tour() {
             this.location = new Location();
@@ -130,9 +132,19 @@ namespace projekatSIMS.Model
             }
         }
 
+        public int GuestNumber
+        {
+            get { return guestNumber; }
+            set
+            {
+                guestNumber = value;
+                OnPropertyChanged(nameof(GuestNumber));
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description + "|" + ExportKeyPoints(keyPoints); // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description + "|" + guestNumber + "|" + ExportKeyPoints(keyPoints); // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
@@ -146,8 +158,9 @@ namespace projekatSIMS.Model
             StartingTime = parts[6];
             MaxNumberOfGuests = int.Parse(parts[7]);
             Duration = int.Parse(parts[8]);
-            Description = parts[9]; 
-            //KeyPoints = parts[10];
+            Description = parts[9];
+            GuestNumber = int.Parse(parts[10]);
+            //KeyPoints = parts[11];
 
         }
 

@@ -22,6 +22,7 @@ namespace projekatSIMS.Model
         private List<Entity> tours = new List<Entity>();
         private List<Entity> accommodations = new List<Entity>();
         private List<Entity> keypoints = new List<Entity>();
+        private List<Entity> tourReservations = new List<Entity>();
 
         private User loginUser;
 
@@ -45,6 +46,7 @@ namespace projekatSIMS.Model
             GenericSave(accommodations, "accommodations.txt");
             GenericSave(tours, "tours.txt");
             GenericSave(keypoints, "keypoints.txt");
+            GenericSave(tourReservations, "tourReservations.txt");
         }
 
         public void GenericSave(List<Entity> entitites, string fileName) //Prosledis sta sejvujes i gde sejvujes
@@ -68,6 +70,7 @@ namespace projekatSIMS.Model
             GenericLoad(accommodations, "accommodations.txt", typeof(Accommodation));
             GenericLoad(tours, "tours.txt", typeof(Tour));
             GenericLoad(keypoints, "keypoints.txt", typeof(KeyPoints));
+            GenericLoad(tourReservations, "tourReservations.txt", typeof(TourReservation));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -97,6 +100,12 @@ namespace projekatSIMS.Model
                 if (type == typeof(KeyPoints))
                 {
                     KeyPoints newEntity = new KeyPoints();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+                if(type == typeof(TourReservation))
+                {
+                    TourReservation newEntity = new TourReservation();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
@@ -141,6 +150,11 @@ public int GenerateId(List<Entity> entities)
             keypoints = entities;
                 return;
         }
+        if(type == typeof(TourReservation))
+            {
+                tourReservations = entities;
+                return;
+            }
     }
 
     public List<Entity> Get(Type type) //Vraca celu listu entiteta 
@@ -157,6 +171,10 @@ public int GenerateId(List<Entity> entities)
         {
             return keypoints;
         }
+        if (type == typeof(TourReservation))
+            {
+                return tourReservations;
+            }
 
             return tours; //Mora jedan biti default return
     }
@@ -189,10 +207,15 @@ public int GenerateId(List<Entity> entities)
     { get { return keypoints; }
       set {  keypoints = value; }
     }
+
+        public List<Entity> TourReservations
+        {
+            get { return tourReservations; }
+            set { tourReservations = value; }
+        }
+
+
     }
-
-    
-
 
 }
 

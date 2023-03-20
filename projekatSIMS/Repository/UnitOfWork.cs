@@ -17,12 +17,14 @@ namespace projekatSIMS.Repository
             Tours = new TourRepository();
             Accommodations = new AccommodationRepository();
             KeyPoint = new KeyPointsRepository();
+            TourReservations = new TourReservationRepository();
         }
 
         public UserRepository Users { get; private set; }
         public AccommodationRepository Accommodations { get; private set; }
         public TourRepository Tours { get; private set; }
         public KeyPointsRepository KeyPoint { get; private set; }
+        public TourReservationRepository TourReservations { get; private set; }
         
 
         public void Save()
