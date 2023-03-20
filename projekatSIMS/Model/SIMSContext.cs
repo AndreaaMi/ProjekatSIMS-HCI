@@ -22,6 +22,7 @@ namespace projekatSIMS.Model
         private List<Entity> tours = new List<Entity>();
         private List<Entity> accommodations = new List<Entity>();
         private List<Entity> keypoints = new List<Entity>();
+        private List<Entity> accommodationReservations = new List<Entity>();
 
         private User loginUser;
 
@@ -45,6 +46,8 @@ namespace projekatSIMS.Model
             GenericSave(accommodations, "accommodations.txt");
             GenericSave(tours, "tours.txt");
             GenericSave(keypoints, "keypoints.txt");
+            GenericSave(accommodationReservations, "accommodation_reservations.txt");
+
         }
 
         public void GenericSave(List<Entity> entitites, string fileName) //Prosledis sta sejvujes i gde sejvujes
@@ -68,6 +71,7 @@ namespace projekatSIMS.Model
             GenericLoad(accommodations, "accommodations.txt", typeof(Accommodation));
             GenericLoad(tours, "tours.txt", typeof(Tour));
             GenericLoad(keypoints, "keypoints.txt", typeof(KeyPoints));
+            GenericLoad(accommodationReservations, "accommodation_reservations.txt", typeof(AccommodationReservation));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -141,6 +145,11 @@ public int GenerateId(List<Entity> entities)
             keypoints = entities;
                 return;
         }
+        if(type == typeof(AccommodationReservation))
+        {
+            accommodationReservations = entities;
+                return;
+        }
     }
 
     public List<Entity> Get(Type type) //Vraca celu listu entiteta 
@@ -157,8 +166,13 @@ public int GenerateId(List<Entity> entities)
         {
             return keypoints;
         }
+        if (type == typeof(AccommodationReservation))
+        {
+            return accommodationReservations;
+        }
 
-            return tours; //Mora jedan biti default return
+
+            return accommodationReservations; //Mora jedan biti default return
     }
 
     public List<Entity> Users
@@ -188,6 +202,11 @@ public int GenerateId(List<Entity> entities)
     public List<Entity> Keypoints
     { get { return keypoints; }
       set {  keypoints = value; }
+    }
+
+    public List<Entity> AccommodationReservations
+        { get { return accommodationReservations; }
+      set {  accommodationReservations = value; }
     }
     }
 

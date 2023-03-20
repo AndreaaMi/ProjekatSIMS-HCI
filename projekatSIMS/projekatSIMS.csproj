@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="CompositeComon\RelayCommand.cs" />
     <Compile Include="Model\Accommodation.cs" />
+    <Compile Include="Model\AccommodationReservation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
     <Compile Include="Model\KeyPoints.cs" />
     <Compile Include="Model\Language.cs" />
@@ -66,17 +67,22 @@
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Repository\AccommodationRepository.cs" />
+    <Compile Include="Repository\AccommodationReservationRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\KeyPointsRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Service\AccommodationReservationService.cs" />
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\KeyPointsService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\ViewModel\AccommodationSearchViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\LoginViewModel.cs" />
+    <Compile Include="UI\Dialogs\View\AccommodationReservationView.xaml.cs">
+      <DependentUpon>AccommodationReservationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\AccommodationSearchView.xaml.cs">
       <DependentUpon>AccommodationSearchView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Dialogs\View\AccommodationReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\AccommodationSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\keypoints.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\accommodation_reservations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
