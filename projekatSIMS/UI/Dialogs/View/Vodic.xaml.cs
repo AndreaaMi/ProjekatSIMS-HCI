@@ -101,6 +101,15 @@ namespace projekatSIMS.UI.Dialogs.View
             KeyPointsIdBox.Clear();
             DescriptionBox.Clear();
 
+            foreach (Tour entity in tourService.GetAll())
+            {
+                if (entity.StartingDate == DateTime.Parse("11.11.2011"))
+                {
+                    List2.Items.Add(entity.Id + "|" + entity.Name);
+                }
+            }
         }
+
+
     }
 }

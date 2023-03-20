@@ -32,8 +32,10 @@
         <TextBox x:Name="KeyPointsIdBox" HorizontalAlignment="Left" Margin="89,297,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="KeyPointsNameBox" HorizontalAlignment="Left" Margin="89,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <ListBox x:Name="List1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="233,64,473,33"/>
-
+        <ListBox x:Name="List1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="230,37,476,259"/>
+        <ListBox x:Name="List2" HorizontalAlignment="Left" Height="139" Margin="230,193,0,0" VerticalAlignment="Top" Width="94" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        
         <Button x:Name="EnterParamsButton" Content="Enter Params"  Margin="36,344,651,62" Click="EnterParamsButton_Click" />
+        
     </Grid>
 </Window>
