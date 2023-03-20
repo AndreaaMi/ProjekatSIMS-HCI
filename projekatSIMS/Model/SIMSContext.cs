@@ -104,6 +104,12 @@ namespace projekatSIMS.Model
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
+                if (type == typeof(AccommodationReservation))
+                {
+                    AccommodationReservation newEntity = new AccommodationReservation();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
             }
 
             
@@ -143,12 +149,12 @@ public int GenerateId(List<Entity> entities)
         if(type == typeof(KeyPoints))
         {
             keypoints = entities;
-                return;
+            return;
         }
         if(type == typeof(AccommodationReservation))
         {
             accommodationReservations = entities;
-                return;
+            return;
         }
     }
 
@@ -205,7 +211,8 @@ public int GenerateId(List<Entity> entities)
     }
 
     public List<Entity> AccommodationReservations
-        { get { return accommodationReservations; }
+    { 
+      get { return accommodationReservations; }
       set {  accommodationReservations = value; }
     }
     }
