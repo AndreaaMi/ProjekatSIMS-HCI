@@ -31,6 +31,7 @@ namespace projekatSIMS.UI.Dialogs.View
             
             
             TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
             Tour newTour = new Tour();
             newTour.Id = int.Parse(IdBox.Text);
             newTour.Name = NameBox.Text;
@@ -69,6 +70,7 @@ namespace projekatSIMS.UI.Dialogs.View
                          key.Name = "e";
                          key.IsActive = false;
                          newTour.KeyPoints.Add(key);
+                         keyPointsService.Add(key);
                          
                     }
 
