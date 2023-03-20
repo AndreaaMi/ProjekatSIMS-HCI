@@ -3,4 +3,5 @@
 3|tura3|Srbija|Novi Sad|SERBIAN|11.11.2022|12:34|20|2|finatura|0
 4|tura4|Srbija|Zrenjanin|SERBIAN|11.11.2011|12.12|20|3|ok|0
 5|tura5|England|Brighton|ENGLISH|11.11.2011|11:11|25|2|toura|0
-6|tura6|England|Brighton|ENGLISH|11.12.2011|12:12|22|2|finaetu|1_2_3
+6|tura6|England|Brighton|ENGLISH|11.12.2011|12:12|22|2|finaetu|0
+7|tura7|Srbija|Sid|SERBIAN|12.12.2012|12:00|22|2|tura|1_2_3
