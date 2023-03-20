@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\
+=======
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\
+>>>>>>> Development
 projekatSIMS
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\App.xaml
+=======
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
+>>>>>>> Development
 5687368134
 
 341907012216
