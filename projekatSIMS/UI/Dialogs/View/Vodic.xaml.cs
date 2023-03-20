@@ -53,6 +53,7 @@ namespace projekatSIMS.UI.Dialogs.View
                 string j = KeyPointsNameBox.Text;
                 string[] keyId = i.Split(' '); 
                 string[] keyName = j.Split(' ');
+                int k = 0;
 
 
 
@@ -67,11 +68,11 @@ namespace projekatSIMS.UI.Dialogs.View
                             }
                          KeyPoints key = new KeyPoints();
                          key.Id = int.Parse(word);
-                         key.Name = "e";
+                         key.Name = keyName[k];
                          key.IsActive = false;
                          newTour.KeyPoints.Add(key);
                          keyPointsService.Add(key);
-                         
+                         k++;
                     }
 
                     
