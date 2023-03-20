@@ -70,6 +70,7 @@ namespace projekatSIMS.UI.Dialogs.View
                          key.Id = int.Parse(word);
                          key.Name = keyName[k];
                          key.IsActive = false;
+                         key.Belongs = int.Parse(IdBox.Text);
                          newTour.KeyPoints.Add(key);
                          keyPointsService.Add(key);
                          k++;
@@ -100,16 +101,66 @@ namespace projekatSIMS.UI.Dialogs.View
             DescriptionBox.Clear();
             KeyPointsIdBox.Clear();
             DescriptionBox.Clear();
+            List1.Items.Clear();
+            
+        }
+
+        private void listToursToday_Click(object sender, RoutedEventArgs e)
+        {
+            TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
 
             foreach (Tour entity in tourService.GetAll())
             {
                 if (entity.StartingDate == DateTime.Parse("11.11.2011"))
                 {
-                    List2.Items.Add(entity.Id + "|" + entity.Name);
+                    List1.Items.Add(entity.Id + "|" + entity.Name);
                 }
             }
+
+
+
         }
 
+        private void listPoints_Click(object sender, RoutedEventArgs e)
+        {
+            TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
+            
+                    foreach(KeyPoints kp in keyPointsService.GetAll()) 
+                    {
+                        if(kp.Belongs ==  3)
+                        {
+                            List2.Items.Add(kp.Id + "|" + kp.Name);
+                             if (kp.Id == 1 && kp.Belongs == 3)
+                             {
+                                 kp.IsActive = true;
+                                 keyPointsService.Edit(kp);
+                             }
+                        }
+                    }
+                
+            
+        }
 
+        private void EndTour_Click(object sender, RoutedEventArgs e)
+        {
+            TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
+
+            foreach (KeyPoints kp in keyPointsService.GetAll())
+            {
+                if (kp.Belongs == 3)
+                {
+                    
+                    if (kp.Id == 1 && kp.Belongs == 3)
+                    {
+                        kp.IsActive = true;
+                        keyPointsService.Edit(kp);
+                    }
+                }
+            }
+
+        }
     }
 }

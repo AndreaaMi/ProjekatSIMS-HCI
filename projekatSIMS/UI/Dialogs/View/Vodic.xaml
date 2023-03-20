@@ -37,5 +37,9 @@
         
         <Button x:Name="EnterParamsButton" Content="Enter Params"  Margin="36,344,651,62" Click="EnterParamsButton_Click" />
         
+        <Button x:Name="listToursToday" Content="tours" HorizontalAlignment="Left" Height="16" Margin="362,199,0,0" VerticalAlignment="Top" Width="38" Click="listToursToday_Click"/>
+        <Button x:Name="listPoints" Content="listPoints" HorizontalAlignment="Left" Height="17" Margin="362,237,0,0" VerticalAlignment="Top" Width="38" Click="listPoints_Click"/>
+        <Button x:Name="EndTour" Content="EndTour" HorizontalAlignment="Left" Height="19" Margin="702,36,0,0" VerticalAlignment="Top" Width="47" Click="EndTour_Click"/>
+
     </Grid>
 </Window>

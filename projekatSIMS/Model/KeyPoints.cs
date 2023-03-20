@@ -10,6 +10,7 @@ namespace projekatSIMS.Model
     {
         private string name;
         private bool isActive = false;
+        private int belongs;
         public KeyPoints() { }
 
         public KeyPoints(string name, bool isActive)
@@ -41,9 +42,19 @@ namespace projekatSIMS.Model
 
         }
 
+        public int Belongs
+        {
+            get { return belongs; }
+            set  
+            { 
+            belongs = value;
+            OnPropertyChanged(nameof(Belongs));
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + isActive;
+            return id + "|" + name + "|" + isActive + "|" + belongs;
         }
 
         public override void ImportFromString(string[] parts)
@@ -51,6 +62,7 @@ namespace projekatSIMS.Model
             base.ImportFromString(parts);
             Name = parts[1];
             isActive = bool.Parse(parts[2]); 
+            Belongs = int.Parse(parts[3]);
         }
     }
 }
