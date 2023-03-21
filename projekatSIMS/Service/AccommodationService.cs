@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projekatSIMS.Service
 {
@@ -67,6 +68,26 @@ namespace projekatSIMS.Service
                 }
             }
             return result;
+        }
+
+        public void RegisterAccommodation(Accommodation accommodation)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            if (unitOfWork.Accommodations.GetAccommodationByNameCityAndCountry(accommodation) != null)
+            {
+                MessageBox.Show("Smestaj sa unetim podacima vec postoji.");
+                return;
+
+            }
+            else
+            {
+
+                // registrovanje novog smeštaja
+                int id = GenerateId();
+                accommodation.Id = id;
+                unitOfWork.Accommodations.Add(accommodation);
+                unitOfWork.Save();
+            }
         }
     }
 }

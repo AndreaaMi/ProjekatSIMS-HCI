@@ -48,5 +48,58 @@ namespace projekatSIMS.Repository
 
             return null;
         }
+
+        public Accommodation GetAccommodationById(int id)
+        {
+            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            {
+                if (it.Id == id)
+                {
+                    return it;
+                }
+            }
+
+            return null;
+        }
+
+        public Accommodation GetAccommodationByName(string name)
+        {
+            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            {
+                if (it.Name == name)
+                {
+                    return it;
+                }
+            }
+
+            return null;
+        }
+
+        public Accommodation GetAccommodationByLocation(Location location)
+        {
+            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            {
+                if (it.Location == location)
+                {
+                    return it;
+                }
+            }
+
+            return null;
+        }
+
+
+        public Accommodation GetAccommodationByNameCityAndCountry(Accommodation accommodation)
+        {
+            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            {
+                if (it.Name == accommodation.Name & it.Location.City == accommodation.Location.City & it.Location.Country == accommodation.Location.country)
+                {
+                    return it;
+                }
+            }
+
+            return null;
+        }
     }
 }

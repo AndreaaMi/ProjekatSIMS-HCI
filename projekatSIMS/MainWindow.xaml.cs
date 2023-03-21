@@ -44,7 +44,7 @@ namespace projekatSIMS
 
         private void Vlasnik_Click(object sender, RoutedEventArgs e)
         {
-            Vlasnik win = new Vlasnik();
+            AccommodationRegistrationView win = new AccommodationRegistrationView();
             win.Show();
         }
 
