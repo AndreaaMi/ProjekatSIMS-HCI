@@ -71,6 +71,8 @@ namespace projekatSIMS.UI.Dialogs.View
 
             if (!IsDateRangeAvailable(startDate, endDate, selectedAccommodation, guestCount))
             {
+                var newAvailableDateRanges = GetAllAvailableDateRanges(DateTime.Now, DateTime.Now.AddDays(10), selectedAccommodation, guestCount);
+                AvailableDatesDataGrid.ItemsSource = newAvailableDateRanges;
                 return;
             }
 
@@ -88,6 +90,10 @@ namespace projekatSIMS.UI.Dialogs.View
 
             ReservationsListView.Items.Add(newReservation);
             ClearInput();
+
+            var availableDateRanges = GetAllAvailableDateRanges(DateTime.Now, DateTime.Now.AddDays(10), selectedAccommodation, guestCount);
+            AvailableDatesDataGrid.ItemsSource = availableDateRanges;
+            ClearInput();
         }
 
         private bool ValidateGuestCount()
@@ -102,38 +108,95 @@ namespace projekatSIMS.UI.Dialogs.View
             return true;
         }
 
+        private List<(DateTime, DateTime)> GetAllAvailableDateRanges(DateTime startDate, DateTime endDate, Accommodation selectedAccommodation, int guestCount)
+        {
+            startDate = startDate.Date;
+            endDate = endDate.Date;
+
+            var reservations = GetAccommodationReservations(selectedAccommodation);
+
+            var allDateRanges = new List<(DateTime, DateTime)>();
+            var currentStartDate = startDate;
+
+            while (currentStartDate <= endDate)
+            {
+                var currentEndDate = GetCurrentEndDate(currentStartDate, selectedAccommodation, guestCount);
+
+                if (currentEndDate > endDate)
+                {
+                    break;
+                }
+
+                if (IsAvailable(currentStartDate, currentEndDate, reservations))
+                {
+                    allDateRanges.Add((currentStartDate, currentEndDate));
+                }
+
+                currentStartDate = currentEndDate.AddDays(1);
+            }
+
+            return allDateRanges;
+        }
+
+        private IEnumerable<AccommodationReservation> GetAccommodationReservations(Accommodation selectedAccommodation)
+        {
+            return accommodationReservationService.GetAll()
+                .OfType<AccommodationReservation>()
+                .Where(r => r.AccommodationName == selectedAccommodation.Name);
+        }
+
+        private DateTime GetCurrentEndDate(DateTime currentStartDate, Accommodation selectedAccommodation, int guestCount)
+        {
+            return currentStartDate.AddDays((guestCount - 1) / selectedAccommodation.GuestLimit + 1);
+        }
+
+        private bool IsAvailable(DateTime currentStartDate, DateTime currentEndDate, IEnumerable<AccommodationReservation> reservations)
+        {
+            return !reservations.Any(r => IsOverlapping(currentStartDate, currentEndDate, r));
+        }
+
+        private bool IsOverlapping(DateTime currentStartDate, DateTime currentEndDate, AccommodationReservation reservation)
+        {
+            return currentStartDate <= reservation.EndDate && currentEndDate >= reservation.StartDate;
+        }
+
         private bool IsDateRangeAvailable(DateTime startDate, DateTime endDate, Accommodation selectedAccommodation, int guestCount)
         {
-            startDate = DateTime.ParseExact(StartDatePicker.SelectedDate.Value.ToString("dd-MM-yyyy"), "dd-MM-yyyy", CultureInfo.InvariantCulture);
-            endDate = DateTime.ParseExact(EndDatePicker.SelectedDate.Value.ToString("dd-MM-yyyy"), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            startDate = startDate.Date;
+            endDate = endDate.Date;
 
-            foreach (AccommodationReservation reservation in accommodationReservationService.GetAll().OfType<AccommodationReservation>())
+            var reservations = GetAccommodationReservations(selectedAccommodation);
+
+            foreach (var reservation in reservations)
             {
-                if (selectedAccommodation.Name == reservation.AccommodationName)
+                if (IsOverlapping(startDate, endDate, reservation))
                 {
-                    if ((startDate >= reservation.StartDate && startDate < reservation.EndDate) ||
-                             (endDate > reservation.StartDate && endDate <= reservation.EndDate) ||
-                             (startDate <= reservation.StartDate && endDate >= reservation.EndDate))
+                    var totalGuests = reservations.Sum(r => r.GuestCount);
+                    if (guestCount > selectedAccommodation.GuestLimit - totalGuests)
                     {
-                        foreach (AccommodationReservation reservations in accommodationReservationService.GetAll().OfType<AccommodationReservation>())
-                        {
-                            if (selectedAccommodation.Name == reservations.AccommodationName)
-                            {
+                        var nextReservation = reservations
+                            .Where(r => r.StartDate > endDate)
+                            .OrderBy(r => r.StartDate)
+                            .FirstOrDefault();
 
-                                if ((guestCount > selectedAccommodation.GuestLimit - reservations.GuestCount))
-                                {
-                                    MessageBox.Show("Reservation unsuccessful. Guest limit achieved.");
-                                    return false;
-                                }
-                            }
+                        if (nextReservation != null)
+                        {
+                            var availableStartDate = nextReservation.StartDate;
+                            var availableEndDate = availableStartDate.AddDays((endDate - startDate).TotalDays);
+                            var message = $"Reservation unsuccessful. Guest limit achieved. Next available date range: {availableStartDate.ToShortDateString()} - {availableEndDate.ToShortDateString()}";
+                            MessageBox.Show(message);
                         }
+                        else
+                        {
+                            MessageBox.Show("Reservation unsuccessful. Guest limit achieved. No available date range found.");
+                        }
+                        return false;
                     }
                 }
             }
 
             return true;
         }
-
 
         private void ClearInput()
         {
