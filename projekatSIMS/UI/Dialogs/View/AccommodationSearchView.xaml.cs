@@ -39,7 +39,7 @@ namespace projekatSIMS.UI.Dialogs.View
               PopulateListBox();
           }
 
-          // Handles text input in the name combo box and filters accommodations by name
+      
           private void NameComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
           {
               var comboBox = sender as ComboBox;
@@ -52,7 +52,7 @@ namespace projekatSIMS.UI.Dialogs.View
                   PopulateListBoxByName(comboBox.SelectedItem.ToString());
               }
           }
-          // Handles selection changes in the name combo box and filters accommodations by name
+
           private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
           {
               if (NameComboBox.SelectedItem != null)
@@ -65,7 +65,7 @@ namespace projekatSIMS.UI.Dialogs.View
               }
           }
 
-          // Handles selection changes in the combo boxes and filters accommodations by selectedtypes
+
           private void TypesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
           {
               var selectedType = TypesComboBox.SelectedItem.ToString();

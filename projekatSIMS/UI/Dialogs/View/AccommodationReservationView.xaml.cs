@@ -2,8 +2,10 @@
 using projekatSIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -67,6 +69,11 @@ namespace projekatSIMS.UI.Dialogs.View
         {
             if (!ValidateInput()) return;
 
+            if (!IsDateRangeAvailable(startDate, endDate, selectedAccommodation, guestCount))
+            {
+                return;
+            }
+
             var newReservation = new AccommodationReservation
             {
                 Id = accommodationReservationService.GenerateId(),
@@ -91,8 +98,42 @@ namespace projekatSIMS.UI.Dialogs.View
                 return false;
             }
 
+
             return true;
         }
+
+        private bool IsDateRangeAvailable(DateTime startDate, DateTime endDate, Accommodation selectedAccommodation, int guestCount)
+        {
+            startDate = DateTime.ParseExact(StartDatePicker.SelectedDate.Value.ToString("dd-MM-yyyy"), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            endDate = DateTime.ParseExact(EndDatePicker.SelectedDate.Value.ToString("dd-MM-yyyy"), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            foreach (AccommodationReservation reservation in accommodationReservationService.GetAll().OfType<AccommodationReservation>())
+            {
+                if (selectedAccommodation.Name == reservation.AccommodationName)
+                {
+                    if ((startDate >= reservation.StartDate && startDate < reservation.EndDate) ||
+                             (endDate > reservation.StartDate && endDate <= reservation.EndDate) ||
+                             (startDate <= reservation.StartDate && endDate >= reservation.EndDate))
+                    {
+                        foreach (AccommodationReservation reservations in accommodationReservationService.GetAll().OfType<AccommodationReservation>())
+                        {
+                            if (selectedAccommodation.Name == reservations.AccommodationName)
+                            {
+
+                                if ((guestCount > selectedAccommodation.GuestLimit - reservations.GuestCount))
+                                {
+                                    MessageBox.Show("Reservation unsuccessful. Guest limit achieved.");
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
 
         private void ClearInput()
         {
@@ -129,7 +170,7 @@ namespace projekatSIMS.UI.Dialogs.View
             startDate = (DateTime)StartDatePicker.SelectedDate;
             endDate = (DateTime)EndDatePicker.SelectedDate;
 
-            if (startDate == DateTime.MinValue || endDate == DateTime.MaxValue || startDate >= endDate)
+            if (startDate == DateTime.MinValue || endDate == DateTime.MaxValue || startDate >= endDate || startDate < DateTime.Today.AddDays(1))
             {
                 MessageBox.Show("Please select a valid date range.");
                 return false;
