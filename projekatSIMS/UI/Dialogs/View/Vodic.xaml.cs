@@ -101,10 +101,10 @@ namespace projekatSIMS.UI.Dialogs.View
             DescriptionBox.Clear();
             KeyPointsIdBox.Clear();
             DescriptionBox.Clear();
-            List1.Items.Clear();
+            
             
         }
-
+        
         private void listToursToday_Click(object sender, RoutedEventArgs e)
         {
             TourService tourService = new TourService();
