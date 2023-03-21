@@ -7,3 +7,4 @@
 7|tura7|Srbija|Sid|SERBIAN|12.12.2012|12:00|22|2|tura|0
 9|tura9|aaa|aaa|ENGLISH|11.11.2011|1234|22|2|eee|0
 10|aaa|aaa|aaa|ENGLISH|11.11.2011|12:34|22|2|asd|0
+12|tura12|Srbija|Novi Sad|ENGLISH|11.12.2012|12:34|22|2|DADFJV|0

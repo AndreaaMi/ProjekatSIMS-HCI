@@ -176,9 +176,12 @@ public int GenerateId(List<Entity> entities)
         {
             return accommodationReservations;
         }
+        if (type == typeof(Tour))
+        {
+            return tours;
+        }
 
-
-            return accommodationReservations; //Mora jedan biti default return
+            return null; //Mora jedan biti default return
     }
 
     public List<Entity> Users
