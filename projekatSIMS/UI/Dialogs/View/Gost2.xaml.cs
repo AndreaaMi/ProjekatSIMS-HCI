@@ -121,5 +121,10 @@ namespace projekatSIMS.UI.Dialogs.View
             }
         }
 
+        private void Reservations_Click(object sender, RoutedEventArgs e)
+        {
+            TourReservationView win = new TourReservationView();
+            win.Show();
+        }
     }
 }

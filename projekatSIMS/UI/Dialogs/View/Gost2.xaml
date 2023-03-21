@@ -20,6 +20,7 @@
         <Label Content="Search By Number of guests" HorizontalAlignment="Left" Margin="218,284,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="NumberOfGuests"  Height="25" Margin="400,285,357,0" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="151"/>
         <Button x:Name="Search" Content="Search" Margin="476,279,258,118" Click="Search_Click" HorizontalContentAlignment="Center"/>
+        <Button x:Name="Reservations" Content="Proceed to reservations" Margin="38,298,616,62" Click="Reservations_Click" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>

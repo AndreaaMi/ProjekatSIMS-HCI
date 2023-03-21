@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Repository
 {
-    public class TourReservationRepository : Repository<TourRepository>
+    public class TourReservationRepository : Repository<TourReservation>
     {
         public override void Edit(Entity entity)
         {

@@ -37,7 +37,7 @@ namespace projekatSIMS.UI.Dialogs.View
             tourReservationService = new TourReservationService();
 
             LoadTours();
-            //   LoadReservations();
+            LoadReservations();
         }
 
         private void LoadTours()
@@ -48,24 +48,23 @@ namespace projekatSIMS.UI.Dialogs.View
             }
         }
 
-        //private void LoadReservations()
-        //{
-        //    foreach (TourReservation item in tourReservationService.GetAll())
-        //    {
-        //        ReservationsListView.Items.Add(new
-        //        {
-        //            item.Id,
-        //            item.TourId,
-        //            item.NumberOfGuests,
-        //        }); ; ;
-        //    }
-        //}
+        private void LoadReservations()
+        {
+            foreach (TourReservation item in tourReservationService.GetAll())
+            {
+                ReservationsListView.Items.Add(new
+                {
+                    item.Id,
+                    item.TourId,
+                    item.NumberOfGuests,
+                }); 
+            }
+        }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private void ReserveButton_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateInput()) return;
 
-            Debug.WriteLine(tourId);
             var newReservation = new TourReservation
             {
                 Id = tourReservationService.GenerateId(),
@@ -111,12 +110,41 @@ namespace projekatSIMS.UI.Dialogs.View
                 return false;
             }
 
+            if (selectedTour.MaxNumberOfGuests == selectedTour.GuestNumber)
+            {
+                string selectedCity = selectedTour.Location.City;
+                TourDataGrid.Items.Clear();
+                foreach (Tour item in tourService.GetAll())
+                {
+                    if (item.Location.City.Equals(selectedTour.Location.City) && item.Id != selectedTour.Id)
+                    {
+                        TourDataGrid.Items.Add(item);
+                    }
+                }
+                MessageBox.Show("Unfortunately there are no more places left on that tour.\n You can check out tours similar to that one!");
+                return false;
+            }
+
+            if (guestCount > (selectedTour.MaxNumberOfGuests - selectedTour.GuestNumber))
+            {
+                MessageBox.Show("There are not that many places left on this tour!\n Please lower the amount of people.");
+                return false;
+            }
             return true;
         }
 
         private void ClearInput()
         {
             GuestCountTextBox.Text = string.Empty;
+        }
+
+        private void ReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            TourDataGrid.Items.Clear();
+            foreach (Tour item in tourService.GetAll())
+            {
+                TourDataGrid.Items.Add(item);
+            }
         }
     }
 }
