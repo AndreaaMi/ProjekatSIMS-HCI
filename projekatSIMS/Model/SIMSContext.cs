@@ -107,141 +107,144 @@ namespace projekatSIMS.Model
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-                if(type == typeof(TourReservation))
+                if (type == typeof(TourReservation))
                 {
                     TourReservation newEntity = new TourReservation();
+                    newEntity.ImportFromString (parts);
+                    entities.Add(newEntity);
+                }
                 if (type == typeof(AccommodationReservation))
                 {
                     AccommodationReservation newEntity = new AccommodationReservation();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-            }
-
-            
+            }    
         }
-public int GenerateId(List<Entity> entities)
-    {
-        int max = -1;
-        foreach (Entity it in entities)
+        public int GenerateId(List<Entity> entities)
         {
-            if (it.Id > max)
+            int max = -1;
+            foreach (Entity it in entities)
             {
-                max = it.Id;
+                if (it.Id > max)
+                {
+                    max = it.Id;
+                }
             }
+
+            return max + 1;
         }
 
-        return max + 1;
-    }
+        public void Set(Type type, List<Entity> entities)
+        {
+            if (type == typeof(User))
+            {
+                users = entities;
+                return;
+            }
 
-    public void Set(Type type, List<Entity> entities)
-    {
-        if (type == typeof(User))
-        {
-            users = entities;
-            return;
-        }
-
-        if (type == typeof(Accommodation))
-        {
-            accommodations = entities;
-            return;
-        }
-        if (type == typeof(Tour))
-        {
-            tours = entities;
-            return;
-        }
-        if(type == typeof(KeyPoints))
-        {
-            keypoints = entities;
-            return;
-        }
-        if(type == typeof(AccommodationReservation))
-        {
-            accommodationReservations = entities;
-            return;
-        }
-        if(type == typeof(TourReservation))
+            if (type == typeof(Accommodation))
+            {
+                accommodations = entities;
+                return;
+            }
+            if (type == typeof(Tour))
+            {
+                tours = entities;
+                return;
+            }
+            if(type == typeof(KeyPoints))
+            {
+                keypoints = entities;
+                return;
+            }
+            if(type == typeof(AccommodationReservation))
+            {
+                accommodationReservations = entities;
+                return;
+            }
+            if(type == typeof(TourReservation))
             {
                 tourReservations = entities;
                 return;
             }
-    }
+        }
 
-    public List<Entity> Get(Type type) //Vraca celu listu entiteta 
-    {
-        if (type == typeof(User))
+        public List<Entity> Get(Type type) //Vraca celu listu entiteta 
         {
-            return users;
-        }
-        if (type == typeof(Accommodation))
-        {
-            return accommodations;
-        }
-        if (type == typeof(KeyPoints))
-        {
-            return keypoints;
-        }
-        if (type == typeof(TourReservation))
+            if (type == typeof(User))
+            {
+                return users;
+            }
+            if (type == typeof(Accommodation))
+            {
+                return accommodations;
+            }
+            if (type == typeof(KeyPoints))
+            {
+                return keypoints;
+            }
+            if (type == typeof(TourReservation))
             {
                 return tourReservations;
             }
-        if (type == typeof(AccommodationReservation))
-        {
-            return accommodationReservations;
-        }
-        if (type == typeof(Tour))
-        {
-            return tours;
-        }
+            if (type == typeof(AccommodationReservation))
+            {
+                return accommodationReservations;
+            }
+            if (type == typeof(Tour))
+            {
+                return tours;
+            }
 
             return null; //Mora jedan biti default return
-    }
+        }
 
-    public List<Entity> Users
-    {
-        get { return users; }
-        set { users = value; }
-    }
+        public List<Entity> Users
+        {
+            get { return users; }
+            set { users = value; }
+        }
 
-    public List<Entity> Accommodations
-    {
-        get { return accommodations; }
-        set { accommodations = value; }
-    }
+        public List<Entity> Accommodations
+        {
+            get { return accommodations; }
+            set { accommodations = value; }
+        }
 
-    public User LoginUser
-    {
-        get { return loginUser; }
-        set { loginUser = value; }
-    }
+        public User LoginUser
+        {
+            get { return loginUser; }
+            set { loginUser = value; }
+        }
 
-    public List<Entity> Tours
-    {
-        get { return tours; }
-        set { tours = value; }
-    }
+        public List<Entity> Tours
+        {
+            get { return tours; }
+            set { tours = value; }
+        }
 
-    public List<Entity> Keypoints
-    { get { return keypoints; }
-      set {  keypoints = value; }
-    }
+        public List<Entity> Keypoints
+        { 
+            get { return keypoints; }
+            set {  keypoints = value; }
+        }
 
         public List<Entity> TourReservations
         {
-            get { return tourReservations; }
-            set { tourReservations = value; }
+          get { return tourReservations; }
+          set { tourReservations = value; }
         }
 
-
-    public List<Entity> AccommodationReservations
-    { 
-      get { return accommodationReservations; }
-      set {  accommodationReservations = value; }
+        public List<Entity> AccommodationReservations
+        { 
+          get { return accommodationReservations; }
+          set {  accommodationReservations = value; }
+        }
+    
+    
+    
     }
-    }
-
 }
 
 
