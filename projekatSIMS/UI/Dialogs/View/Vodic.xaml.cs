@@ -47,6 +47,7 @@ namespace projekatSIMS.UI.Dialogs.View
             newTour.MaxNumberOfGuests = int.Parse(GuestNumBox.Text);
             newTour.Duration = int.Parse(DurationBox.Text);
             newTour.Description = DescriptionBox.Text;
+            newTour.GuestNumber = 22;
             
            //////
                 string i = KeyPointsIdBox.Text;
@@ -129,10 +130,10 @@ namespace projekatSIMS.UI.Dialogs.View
             
                     foreach(KeyPoints kp in keyPointsService.GetAll()) 
                     {
-                        if(kp.Belongs ==  3)
+                        if(kp.Belongs ==  1)
                         {
                             List2.Items.Add(kp.Id + "|" + kp.Name);
-                             if (kp.Id == 1 && kp.Belongs == 3)
+                             if (kp.Id == 1 && kp.Belongs == 1)
                              {
                                  kp.IsActive = true;
                                  keyPointsService.Edit(kp);
@@ -150,10 +151,10 @@ namespace projekatSIMS.UI.Dialogs.View
 
             foreach (KeyPoints kp in keyPointsService.GetAll())
             {
-                if (kp.Belongs == 3)
+                if (kp.Belongs == 1)
                 {
                     
-                    if (kp.Id == 1 && kp.Belongs == 3)
+                    if (kp.Id == 1 && kp.Belongs == 1)
                     {
                         kp.IsActive = true;
                         keyPointsService.Edit(kp);
@@ -161,6 +162,24 @@ namespace projekatSIMS.UI.Dialogs.View
                 }
             }
 
+        }
+
+        private void KpSelect_Click(object sender, RoutedEventArgs e)
+        {
+            TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
+
+            foreach (KeyPoints kp in keyPointsService.GetAll())
+            {
+                
+                    
+                    if (kp.Id == 6 && kp.Belongs == 11)
+                    {
+                        kp.IsActive = true;
+                        keyPointsService.Edit(kp);
+                    }
+                
+            }
         }
     }
 }
