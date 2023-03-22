@@ -13,9 +13,11 @@
         <TextBox x:Name="CleanlinessTextBox" HorizontalAlignment="Left" Height="30" Margin="29,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" TextChanged="CleanlinessTextBox_TextChanged" Text="Ocena"/>
         <TextBox x:Name="RespectingRulesTextBox" HorizontalAlignment="Left" Height="30" Margin="102,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="RespectingRulesTextBox_TextChanged" Text="Ocena"/>
         <TextBox x:Name="CommentTextBox" HorizontalAlignment="Left" Height="30" Margin="180,87,0,0" TextWrapping="Wrap" Text="Upisite vas komenatar..." VerticalAlignment="Top" Width="152" TextChanged="CommentTextBox_TextChanged"/>
-        <ListBox x:Name="ReservationsListBox" HorizontalAlignment="Left" Height="178" Margin="400,85,0,0" VerticalAlignment="Top" Width="306" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ReservationsListBox_SelectionChanged"/>
-        <Button x:Name="ReservationsDisplayButton" Content="Prikazi rezervacije" HorizontalAlignment="Left" Height="48" Margin="400,287,0,0" VerticalAlignment="Top" Width="118" Click="ReservationsDisplayButton_Click"/>
-        <Label Content="Rezervacije : " HorizontalAlignment="Left" Height="41" Margin="400,44,0,0" VerticalAlignment="Top" Width="118"/>
+        <ListBox x:Name="ReservationsListBox" HorizontalAlignment="Left" Height="111" Margin="29,200,0,0" VerticalAlignment="Top" Width="306" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ReservationsListBox_SelectionChanged"/>
+        <Button x:Name="ReservationsDisplayButton" Content="Prikazi rezervacije" HorizontalAlignment="Left" Height="48" Margin="102,316,0,0" VerticalAlignment="Top" Width="118" Click="ReservationsDisplayButton_Click"/>
+        <Label Content="Rezervacije : " HorizontalAlignment="Left" Height="41" Margin="23,176,0,0" VerticalAlignment="Top" Width="118"/>
+        <ListBox x:Name="NotRatedGuestListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="412,23,172,280"/>
+        <Button x:Name="NotRatedGuestButton" Content="Neocenjene rezervacije" HorizontalAlignment="Left" Margin="436,160,0,0" VerticalAlignment="Top" Height="36" Width="168" Click="NotRatedGuestButton_Click"/>
 
     </Grid>
 </Window>

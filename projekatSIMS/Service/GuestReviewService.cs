@@ -3,6 +3,7 @@ using projekatSIMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -50,18 +51,18 @@ namespace projekatSIMS.Service
             return unitOfWork.GuestReviews.GenerateId();
         }
 
-        public bool CheckDate(DateTime endTimeofRegistration)
+        public bool CheckDate(DateTime date)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
             DateTime currentDate = DateTime.Now;
 
-            if (endTimeofRegistration < currentDate)
+            if (currentDate > date)
             {
                 return false;
             }
 
             return true;
         }
+
 
         /* public void SetTimer(DateTime endDate)
          {
@@ -89,6 +90,8 @@ namespace projekatSIMS.Service
             return true;
         }
 
+       
+
 
 
         public void PlaceGuestReview(GuestReview guestReview)
@@ -101,6 +104,12 @@ namespace projekatSIMS.Service
             if (CheckDate(endDate) == false)
             {
                 MessageBox.Show("Vaš rok za ocenjivanje gosta je istekao.");
+                return;
+            }
+
+            if (CheckDate(guestReview.AccommodationReservation.EndDate) != false)
+            {
+                MessageBox.Show("Nemate pravo da ocenite gosta dok se rezervacija ne zavrsi.");
                 return;
             }
 

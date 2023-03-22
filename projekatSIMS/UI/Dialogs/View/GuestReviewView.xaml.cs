@@ -83,8 +83,21 @@ namespace projekatSIMS.UI.Dialogs.View
             foreach (AccommodationReservation entity in accommodationReservationService.GetAll())
             {
                 ReservationsListBox.Items.Add(entity.Id + " " + entity.AccommodationName + " " + entity.StartDate + " " + entity.EndDate + " " + entity.GuestCount);
-                if (DateTime.Now > (entity.EndDate.AddDays(5)) && guestReviewRepository.GetGuestReviewByAccommodation(entity.Id) == null)
+               
+            }
+
+        }
+
+        private void NotRatedGuestButton_Click(object sender, RoutedEventArgs e)
+        {
+            NotRatedGuestListBox.Items.Clear();
+
+            foreach (AccommodationReservation entity in accommodationReservationService.GetAll())
+            {
+                DateTime currentTime = DateTime.Now;
+                if (currentTime <=  (entity.EndDate.AddDays(5)) && currentTime >= (entity.EndDate) && guestReviewRepository.GetGuestReviewByAccommodation(entity.Id) == null)
                 {
+                    NotRatedGuestListBox.Items.Add(entity.Id + " " + entity.AccommodationName + " " + entity.StartDate + " " + entity.EndDate + " " + entity.GuestCount);
                     MessageBox.Show("Niste ocenili gosta sa ID rezervacijom : " + entity.Id);
                 }
             }
