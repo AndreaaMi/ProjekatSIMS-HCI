@@ -34,7 +34,7 @@ namespace projekatSIMS.Repository
 
         public void Save()
         {
-            SIMSContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa
+            DataContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa
         }
         
 

@@ -9,13 +9,13 @@ namespace projekatSIMS.Model
 {
 
     //OVO JE KLASA KOJA PREDSTAVLJA "BAZU PODATAKA"
-    public class SIMSContext
+    public class DataContext
     {
         private char delimiter = '|'; //ono po cemu se splituje string u txt fajlu
         private static string _projectPath = System.Reflection.Assembly.GetExecutingAssembly().Location
             .Split(new string[] { "bin" }, StringSplitOptions.None)[0] + "\\Resources\\Data\\"; //Lokacija do txt foldera
 
-        private static SIMSContext instance;
+        private static DataContext instance;
 
         //Cuvamo listu svih ENTITETA - da bi ih citali i pisali
         private List<Entity> users = new List<Entity>();
@@ -28,13 +28,13 @@ namespace projekatSIMS.Model
 
         private User loginUser;
 
-        public static SIMSContext Instance
+        public static DataContext Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new SIMSContext();
+                    instance = new DataContext();
                     instance.Load();
                 }
 

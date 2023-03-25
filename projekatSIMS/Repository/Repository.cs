@@ -11,24 +11,24 @@ namespace projekatSIMS.Repository
     {
         public void Add(Entity entity)
         {
-            SIMSContext.Instance.Get(typeof(TEntity)).Add(entity);
+            DataContext.Instance.Get(typeof(TEntity)).Add(entity);
         }
 
         public virtual void Edit(Entity entity) {}
 
         public int GenerateId()
         {
-            return SIMSContext.Instance.GenerateId(SIMSContext.Instance.Get(typeof(TEntity)));
+            return DataContext.Instance.GenerateId(DataContext.Instance.Get(typeof(TEntity)));
         }
 
         public Entity Get(int id)
         {
-            return SIMSContext.Instance.Get(typeof(TEntity)).Where(x => x.Id == id).FirstOrDefault(); //OVO u zagradi se cita daj mi x tako da je njegov id = prosledjenom
+            return DataContext.Instance.Get(typeof(TEntity)).Where(x => x.Id == id).FirstOrDefault(); //OVO u zagradi se cita daj mi x tako da je njegov id = prosledjenom
         }
 
         public IEnumerable<Entity> GetAll()
         {
-            return SIMSContext.Instance.Get(typeof(TEntity));
+            return DataContext.Instance.Get(typeof(TEntity));
         }
         public virtual IEnumerable<Entity> Search(string term = "")
         {
@@ -36,12 +36,12 @@ namespace projekatSIMS.Repository
         }
         public void Remove(Entity entity)
         {
-            SIMSContext.Instance.Get(typeof(TEntity)).Remove(entity);
+            DataContext.Instance.Get(typeof(TEntity)).Remove(entity);
         }
 
         public void Save()
         {
-            SIMSContext.Instance.Save(); //Ode u bazu , pozove save i dalje se izvrsi svaka generic save funkcija
+            DataContext.Instance.Save(); //Ode u bazu , pozove save i dalje se izvrsi svaka generic save funkcija
         }
     }
 }

@@ -25,7 +25,7 @@ namespace projekatSIMS.Repository
         public override IEnumerable<Entity> Search(string term = "")
         {
             List<Entity> result = new List<Entity>();
-            foreach (Entity it in SIMSContext.Instance.Accommodations)
+            foreach (Entity it in DataContext.Instance.Accommodations)
             {
                 if (((Accommodation)it).Name.Contains(term))
                 {
@@ -38,7 +38,7 @@ namespace projekatSIMS.Repository
 
         public Accommodation GetAccommodationByType(AccommodationType type)
         {
-            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            foreach (Accommodation it in DataContext.Instance.Accommodations)
             {
                 if (it.Type == type)
                 {
@@ -51,7 +51,7 @@ namespace projekatSIMS.Repository
 
         public Accommodation GetAccommodationById(int id)
         {
-            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            foreach (Accommodation it in DataContext.Instance.Accommodations)
             {
                 if (it.Id == id)
                 {
@@ -64,7 +64,7 @@ namespace projekatSIMS.Repository
 
         public Accommodation GetAccommodationByName(string name)
         {
-            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            foreach (Accommodation it in DataContext.Instance.Accommodations)
             {
                 if (it.Name == name)
                 {
@@ -77,7 +77,7 @@ namespace projekatSIMS.Repository
 
         public Accommodation GetAccommodationByLocation(Location location)
         {
-            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            foreach (Accommodation it in DataContext.Instance.Accommodations)
             {
                 if (it.Location == location)
                 {
@@ -91,7 +91,7 @@ namespace projekatSIMS.Repository
 
         public Accommodation GetAccommodationByNameCityAndCountry(Accommodation accommodation)
         {
-            foreach (Accommodation it in SIMSContext.Instance.Accommodations)
+            foreach (Accommodation it in DataContext.Instance.Accommodations)
             {
                 if (it.Name == accommodation.Name & it.Location.City == accommodation.Location.City & it.Location.Country == accommodation.Location.country)
                 {

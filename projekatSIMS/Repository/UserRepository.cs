@@ -23,12 +23,12 @@ namespace projekatSIMS.Repository
 
         public void SetLoginUser(User user)
         {
-            SIMSContext.Instance.LoginUser = user;
+            DataContext.Instance.LoginUser = user;
         }
 
         public User GetLoginUser()
         {
-            return SIMSContext.Instance.LoginUser;
+            return DataContext.Instance.LoginUser;
         }
     }
 }

@@ -71,7 +71,7 @@ namespace projekatSIMS.UI.Dialogs.View
                          key.Id = int.Parse(word);
                          key.Name = keyName[k];
                          key.IsActive = false;
-                         key.Belongs = int.Parse(IdBox.Text);
+                         key.AssociatedTour = int.Parse(IdBox.Text);
                          newTour.KeyPoints.Add(key);
                          keyPointsService.Add(key);
                          k++;
@@ -130,10 +130,10 @@ namespace projekatSIMS.UI.Dialogs.View
             
                     foreach(KeyPoints kp in keyPointsService.GetAll()) 
                     {
-                        if(kp.Belongs ==  1)
+                        if(kp.AssociatedTour ==  1)
                         {
                             List2.Items.Add(kp.Id + "|" + kp.Name);
-                             if (kp.Id == 1 && kp.Belongs == 1)
+                             if (kp.Id == 1 && kp.AssociatedTour == 1)
                              {
                                  kp.IsActive = true;
                                  keyPointsService.Edit(kp);
@@ -151,10 +151,10 @@ namespace projekatSIMS.UI.Dialogs.View
 
             foreach (KeyPoints kp in keyPointsService.GetAll())
             {
-                if (kp.Belongs == 1)
+                if (kp.AssociatedTour == 1)
                 {
                     
-                    if (kp.Id == 1 && kp.Belongs == 1)
+                    if (kp.Id == 1 && kp.AssociatedTour == 1)
                     {
                         kp.IsActive = true;
                         keyPointsService.Edit(kp);
@@ -173,7 +173,7 @@ namespace projekatSIMS.UI.Dialogs.View
             {
                 
                     
-                    if (kp.Id == 6 && kp.Belongs == 11)
+                    if (kp.Id == 6 && kp.AssociatedTour == 11)
                     {
                         kp.IsActive = true;
                         keyPointsService.Edit(kp);

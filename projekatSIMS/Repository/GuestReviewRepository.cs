@@ -22,7 +22,7 @@ namespace projekatSIMS.Repository
         public GuestReview GetGuestReviewByAccommodation(int id)
         {
             GuestReview result = null;
-            foreach (GuestReview it in SIMSContext.Instance.GuestReviews)
+            foreach (GuestReview it in DataContext.Instance.GuestReviews)
             {
                 if (it.AccommodationReservation.Id == id)
                 {

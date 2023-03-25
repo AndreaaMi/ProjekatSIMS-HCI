@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace projekatSIMS.Model
 {
@@ -160,7 +161,10 @@ namespace projekatSIMS.Model
             Duration = int.Parse(parts[8]);
             Description = parts[9];
             GuestNumber = int.Parse(parts[10]);
-            //KeyPoints = parts[11];
+            // KeyPoints = parts[11];
+            string[] keyPointIds = parts[11].Split('_');
+            ImportKeyPoints(keyPointIds);
+            
 
         }
 
@@ -187,23 +191,38 @@ namespace projekatSIMS.Model
                 return "0";
             }
 
-            string retString = (kp.First()).Id.ToString();
+            string keyPointId = (kp.First()).Id.ToString();
 
             foreach (KeyPoints it in kp)
             {
-                if (!(it.Id.ToString().Equals(retString)))
+                if (!(it.Id.ToString().Equals(keyPointId)))
                 {
-                    retString = retString + "_" + it.Id.ToString();
+                    keyPointId = keyPointId + "_" + it.Id.ToString();
                 }
             }
 
-            return retString;
+            return keyPointId;
         }
 
-            // public KeyPoints AddKeypoint(int id, string name)
-            // {
-            //     KeyPoints kp = new KeyPoints();
-            //
-            // }
+        public void ImportKeyPoints(string[] keyPointIds)
+        {
+            foreach (string keyPointId in keyPointIds)
+            {
+                KeyPoints keyPoints = new KeyPoints
+                {
+                    Id = int.Parse(keyPointId)
+                };
+
+                KeyPoints.Add(keyPoints);
+            }
+
+
+        }
+
+        // public KeyPoints AddKeypoint(int id, string name)
+        // {
+        //     KeyPoints kp = new KeyPoints();
+        //
+        // }
     }
 }

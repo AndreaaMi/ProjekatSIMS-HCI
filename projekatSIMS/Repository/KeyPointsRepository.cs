@@ -16,7 +16,7 @@ namespace projekatSIMS.Repository
             ((KeyPoints)kp).Id = ((KeyPoints)entity).Id;
             ((KeyPoints)kp).Name = ((KeyPoints)entity).Name;
             ((KeyPoints)kp).IsActive = ((KeyPoints)entity).IsActive;
-            ((KeyPoints)kp).Belongs = ((KeyPoints)entity).Belongs;
+            ((KeyPoints)kp).AssociatedTour = ((KeyPoints)entity).AssociatedTour;
         }
     }
 }

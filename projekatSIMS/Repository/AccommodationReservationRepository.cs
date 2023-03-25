@@ -24,7 +24,7 @@ namespace projekatSIMS.Repository
         public override IEnumerable<Entity> Search(string term = "")
         {
             List<Entity> result = new List<Entity>();
-            foreach (Entity it in SIMSContext.Instance.AccommodationReservations)
+            foreach (Entity it in DataContext.Instance.AccommodationReservations)
             {
                 if (((AccommodationReservation)it).AccommodationName.Contains(term))
                 {
@@ -36,7 +36,7 @@ namespace projekatSIMS.Repository
         }
         public AccommodationReservation GetAccommodationReservationById(int id)
         {
-            foreach (AccommodationReservation it in SIMSContext.Instance.AccommodationReservations)
+            foreach (AccommodationReservation it in DataContext.Instance.AccommodationReservations)
             {
                 if (it.Id == id)
                 {
