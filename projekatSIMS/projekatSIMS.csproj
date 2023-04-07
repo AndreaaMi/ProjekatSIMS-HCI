@@ -59,11 +59,14 @@
     <Compile Include="Model\Accommodation.cs" />
     <Compile Include="Model\AccommodationReservation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
+    <Compile Include="Model\AvailableDate.cs" />
     <Compile Include="Model\GuestReview.cs" />
     <Compile Include="Model\KeyPoints.cs" />
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\DataContext.cs" />
+    <Compile Include="Model\RequestStatusType.cs" />
+    <Compile Include="Model\ReservationRescheduleRequest.cs" />
     <Compile Include="Model\Tour.cs" />
     <Compile Include="Model\TourReservation.cs" />
     <Compile Include="Model\UserType.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\KeyPointsRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\ReservationRescheduleRequestRepository.cs" />
     <Compile Include="Repository\TourRepository.cs" />
     <Compile Include="Repository\TourReservationRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
@@ -82,6 +86,7 @@
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\GuestReviewService.cs" />
     <Compile Include="Service\KeyPointsService.cs" />
+    <Compile Include="Service\ReservationRescheduleRequestService.cs" />
     <Compile Include="Service\TourReservationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
@@ -223,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\reservation_reschedule_request.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
