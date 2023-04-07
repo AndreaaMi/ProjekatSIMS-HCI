@@ -30,5 +30,10 @@ namespace projekatSIMS.Repository
         {
             return DataContext.Instance.LoginUser;
         }
+
+        public string GetLoginUserType()
+        {
+            return DataContext.Instance.LoginUser.UserType.ToString();
+        }
     }
 }

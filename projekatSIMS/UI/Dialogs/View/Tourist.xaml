@@ -1,11 +1,11 @@
-﻿<Window x:Class="projekatSIMS.UI.Dialogs.View.Gost2"
+﻿<Window x:Class="projekatSIMS.UI.Dialogs.View.Tourist"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View"
         mc:Ignorable="d"
-        Title="Gost2" Height="450" Width="800">
+        Title="Tourist" Height="450" Width="800">
     <Grid>
         <Button x:Name="DisplayTours" Content="Display Tours" Margin="38,37,616,323" Click="DisplayTours_Click" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="CountryComboBox" HorizontalAlignment="Left" Margin="400,121,0,0" VerticalAlignment="Top" Width="151" Height="29" SelectionChanged="CountryComboBox_SelectionChanged" IsEditable="True" SelectedIndex="0"/>

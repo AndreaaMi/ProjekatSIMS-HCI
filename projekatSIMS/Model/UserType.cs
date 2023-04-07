@@ -8,6 +8,6 @@ namespace projekatSIMS.Model
 {
    public enum UserType
     {
-        OWNER, GUEST1, TOURGUIDE, GUEST2
+        OWNER, GUEST, TOURGUIDE, TOURIST
     }
 }

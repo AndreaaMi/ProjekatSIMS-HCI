@@ -81,6 +81,7 @@ namespace projekatSIMS.Model
             LastName = parts[2];
             Email = parts[3];
             Password = parts[4];
+            UserType = (UserType)Enum.Parse(typeof(UserType), parts[5]);
         }
     }
 }

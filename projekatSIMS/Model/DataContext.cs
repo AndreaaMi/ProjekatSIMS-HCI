@@ -26,7 +26,7 @@ namespace projekatSIMS.Model
         private List<Entity> accommodationReservations = new List<Entity>();
         private List<Entity> guestReviews = new List<Entity>();
 
-        private User loginUser;
+        private User loginUser = null;
 
         public static DataContext Instance
         {
@@ -35,7 +35,7 @@ namespace projekatSIMS.Model
                 if (instance == null)
                 {
                     instance = new DataContext();
-                    instance.Load();
+                    instance.LoadAllData();
                 }
 
                 return instance;
@@ -70,7 +70,7 @@ namespace projekatSIMS.Model
             }
         }
 
-        public void Load()
+        public void LoadAllData()
         {
             GenericLoad(users, "users.txt", typeof(User));
             GenericLoad(accommodations, "accommodations.txt", typeof(Accommodation));
@@ -186,7 +186,7 @@ namespace projekatSIMS.Model
             }
         }
 
-        public List<Entity> Get(Type type) //Vraca celu listu entiteta 
+        public List<Entity> GetAllEntitiesOfType(Type type) //Vraca celu listu entiteta 
         {
             if (type == typeof(User))
             {

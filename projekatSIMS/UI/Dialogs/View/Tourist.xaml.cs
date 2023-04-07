@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View
 {
     /// <summary>
-    /// Interaction logic for Gost2.xaml
+    /// Interaction logic for Tourist.xaml
     /// </summary>
-    public partial class Gost2 : Window
+    public partial class Tourist : Window
     {
-        public Gost2()
+        public Tourist()
         {
             InitializeComponent();
             TourService tourService = new TourService();

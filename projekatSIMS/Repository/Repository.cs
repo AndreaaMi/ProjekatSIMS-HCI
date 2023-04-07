@@ -11,24 +11,24 @@ namespace projekatSIMS.Repository
     {
         public void Add(Entity entity)
         {
-            DataContext.Instance.Get(typeof(TEntity)).Add(entity);
+            DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity)).Add(entity);
         }
 
         public virtual void Edit(Entity entity) {}
 
         public int GenerateId()
         {
-            return DataContext.Instance.GenerateId(DataContext.Instance.Get(typeof(TEntity)));
+            return DataContext.Instance.GenerateId(DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity)));
         }
 
         public Entity Get(int id)
         {
-            return DataContext.Instance.Get(typeof(TEntity)).Where(x => x.Id == id).FirstOrDefault(); //OVO u zagradi se cita daj mi x tako da je njegov id = prosledjenom
+            return DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity)).Where(x => x.Id == id).FirstOrDefault(); //OVO u zagradi se cita daj mi x tako da je njegov id = prosledjenom
         }
 
         public IEnumerable<Entity> GetAll()
         {
-            return DataContext.Instance.Get(typeof(TEntity));
+            return DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity));
         }
         public virtual IEnumerable<Entity> Search(string term = "")
         {
@@ -36,7 +36,7 @@ namespace projekatSIMS.Repository
         }
         public void Remove(Entity entity)
         {
-            DataContext.Instance.Get(typeof(TEntity)).Remove(entity);
+            DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity)).Remove(entity);
         }
 
         public void Save()

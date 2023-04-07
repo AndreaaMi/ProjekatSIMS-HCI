@@ -56,18 +56,16 @@ namespace projekatSIMS.Service
             return unitOfWork.Users.Search(term);
         }
 
-        public bool CheckLogin(string user, string pass)
+        public void CheckCredentials(string email, string pass)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            foreach (User it in unitOfWork.Users.GetAll())
+            foreach (User user in unitOfWork.Users.GetAll())
             {
-                if (it.FirstName.Equals(user) && it.Password.Equals(pass))
+                if (user.Email.Equals(email) && user.Password.Equals(pass))
                 {
-                    unitOfWork.Users.SetLoginUser(it);
-                    return true;
+                    SetLoginUser(user);
                 }
             }
-            return false;
         }
 
         public User GetLoginUser()
@@ -76,10 +74,16 @@ namespace projekatSIMS.Service
             return unitOfWork.Users.GetLoginUser();
         }
 
-        public void GetLoginUser(User user)
+        public void SetLoginUser(User user)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             unitOfWork.Users.SetLoginUser(user);
+        }
+
+        public string GetLoginUserType()
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            return unitOfWork.Users.GetLoginUserType();
         }
 
 

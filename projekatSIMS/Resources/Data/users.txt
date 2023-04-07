@@ -1,1 +1,4 @@
-1|Aleksa|Vuckovic|vuckovic@gmail.com|sifra|OWNER
+1|Aleksa|Vuckovic|aleksa@gmail.com|vuckovic|TOURIST
+2|Andrea|Mitic|andrea@gmail.com|mitic|GUEST
+3|Dunja|Trikic|dunja@gmail.com|trikic|OWNER
+4|Uros|Lohinski|uros@gmail.com|lohinski|TOURGUIDE
