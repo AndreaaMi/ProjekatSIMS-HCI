@@ -82,16 +82,22 @@ namespace projekatSIMS.UI.Dialogs.View
                 GuestCount = guestCount
             };
 
-            accommodationReservationService.CreateAccommodationReservation(newReservation);
-            MessageBox.Show("Reservation successful");
-        ReservationsListView.Items.Add(newReservation);
-
-    ClearInput();
+            if(IsReservationOverlapping(startDate,endDate))
+            {
+                GetAvailableDates(selectedAccommodation);
+            }
+            else
+            {
+                accommodationReservationService.CreateAccommodationReservation(newReservation);
+                MessageBox.Show("Reservation successful");
+                ReservationsListView.Items.Add(newReservation);
+            }
+            
 
             ClearInput();
         }
 
-        private List<AvailableDate> GetAvailableDates(Accommodation accommodation)
+        private void GetAvailableDates(Accommodation accommodation)
         {
             List<AvailableDate> availableDates = new List<AvailableDate>();
             DateTime currentStartDate = startDate;
@@ -124,23 +130,15 @@ namespace projekatSIMS.UI.Dialogs.View
             if (availableDates.Count == 0)
             {
                 MessageBox.Show("No available dates found");
-            }
-            else if (availableDates[0].AvailableStartDate != startDate || availableDates[0].AvailableEndDate != endDate)
-            {
-                MessageBox.Show("The selected dates are not available. Here are some alternative dates:");
-                availableDates = GetAvailableDates(selectedAccommodation);
-                if (availableDates.Count == 0)
-                {
-                    MessageBox.Show("No available dates found");
-                    
-                }
-            }
-            else
-            {
-                MessageBox.Show("Reservation successful");
+                return;
             }
 
-            return availableDates;
+            if (IsReservationOverlapping(startDate, endDate))
+            {
+                MessageBox.Show("The selected dates are not available. Here are some alternative dates:");
+            }
+
+            AvailableDatesDataGrid.ItemsSource = availableDates;
         }
 
         private bool ValidateGuestCount()
@@ -184,17 +182,20 @@ namespace projekatSIMS.UI.Dialogs.View
             if (!ValidateAccommodationSelection()) return false;
             if (!ValidateDateRange()) return false;
             if (!ValidateGuestCount()) return false;
+            return true;
+        }
 
-            // Check for available dates
-            List<AvailableDate> availableDates = GetAvailableDates(selectedAccommodation);
+        /*private bool ValidateAvailableDates()
+        {
+           // List<AvailableDate> availableDates = GetAvailableDates(selectedAccommodation);
+           // AvailableDatesDataGrid.Items.Add(availableDates);
             if (availableDates.Count == 0)
             {
                 MessageBox.Show("No available dates found");
                 return false;
             }
-
             return true;
-        }
+        }*/
 
 
         private bool ValidateAccommodationSelection()
@@ -242,13 +243,6 @@ namespace projekatSIMS.UI.Dialogs.View
             if (startDate == DateTime.MinValue || endDate == DateTime.MaxValue || startDate >= endDate || startDate < DateTime.Today.AddDays(1))
             {
                 MessageBox.Show("Please select a valid date range.");
-                return false;
-            }
-
-            // Check for overlapping reservations
-            if (IsReservationOverlapping(startDate, endDate))
-            {
-                MessageBox.Show("This date range overlaps with an existing reservation.");
                 return false;
             }
 

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
-11-2122041173
+12-1238269626
 
-56752886152
+611513746622
 13-1310406943
-MainWindow.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
+MainWindow.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
 
-False
+True
 

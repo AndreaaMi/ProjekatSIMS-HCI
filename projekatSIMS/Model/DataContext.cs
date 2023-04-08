@@ -26,6 +26,7 @@ namespace projekatSIMS.Model
         private List<Entity> accommodationReservations = new List<Entity>();
         private List<Entity> guestReviews = new List<Entity>();
         private List<Entity> reservationRescheduleRequests = new List<Entity>();
+        private List<Entity> accommodationOwnerRatings = new List<Entity>();
 
         private User loginUser = null;
 
@@ -53,6 +54,7 @@ namespace projekatSIMS.Model
             GenericSave(accommodationReservations, "accommodation_reservations.txt");
             GenericSave(guestReviews, "guest_reviews.txt");
             GenericSave(reservationRescheduleRequests, "reservation_reschedule_request.txt");
+            GenericSave(accommodationOwnerRatings, "accommodation_owner_rating.txt");
 
 
         }
@@ -82,7 +84,7 @@ namespace projekatSIMS.Model
             GenericLoad(accommodationReservations, "accommodation_reservations.txt", typeof(AccommodationReservation));
             GenericLoad(guestReviews, "guest_reviews.txt", typeof(GuestReview));
             GenericLoad(reservationRescheduleRequests, "reservation_reschedule_request.txt", typeof(ReservationRescheduleRequest));
-
+            GenericLoad(accommodationOwnerRatings, "accommodation_owner_rating.txt", typeof(AccommodationOwnerRating));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -136,6 +138,12 @@ namespace projekatSIMS.Model
                 if(type == typeof(ReservationRescheduleRequest))
                 {
                     ReservationRescheduleRequest newEntity = new ReservationRescheduleRequest();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+                if (type == typeof(AccommodationOwnerRating))
+                {
+                    AccommodationOwnerRating newEntity = new AccommodationOwnerRating();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
@@ -198,6 +206,11 @@ namespace projekatSIMS.Model
                 reservationRescheduleRequests = entities;
                 return;
             }
+            if (type == typeof(AccommodationOwnerRating))
+            {
+                accommodationOwnerRatings = entities;
+                return;
+            }
         }
 
         public List<Entity> GetAllEntitiesOfType(Type type) //Vraca celu listu entiteta 
@@ -233,6 +246,10 @@ namespace projekatSIMS.Model
             if (type == typeof(ReservationRescheduleRequest))
             {
                 return reservationRescheduleRequests;
+            }
+            if (type == typeof(AccommodationOwnerRating))
+            {
+                return accommodationOwnerRatings;
             }
 
             return null; //Mora jedan biti default return
@@ -292,6 +309,11 @@ namespace projekatSIMS.Model
             set { reservationRescheduleRequests = value; }
         }
 
+        public List<Entity> AccommodationOwnerRatings
+        {
+            get { return accommodationOwnerRatings; }
+            set { accommodationOwnerRatings = value; }
+        }
 
 
     }
