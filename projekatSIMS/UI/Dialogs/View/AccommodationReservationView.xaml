@@ -56,7 +56,8 @@
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="GuestCountTextBox" Margin="10,10,1500,10"/>
 
         <Button Grid.Row="4" Grid.Column="1" x:Name="ReserveButton" Content="Reserve" Margin="10,10,1500,10" Click="ReserveButton_Click"/>
-        <Button Grid.Row="4" Grid.Column="1" x:Name="RequestRescheduleButton" Content="Request Reschedule" Margin="1000,10,500,10" IsEnabled="False"/>
+        <Button Grid.Row="4" Grid.Column="1" x:Name="CancelButton" Content="Cancel" Margin="350,10,1150,10" Click="CancelButton_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" x:Name="RequestRescheduleButton" Content="Request Reschedule" Margin="1000,10,500,10" IsEnabled="False" Click="RequestRescheduleButton_Click"/>
         <Button Grid.Row="4" Grid.Column="1" x:Name="ShowAllRequestRescheduleButton" Content="Show All Requests" Margin="1400,10,100,10" Click="ShowAllRequestRescheduleButton_Click"/>
 
 
@@ -64,6 +65,7 @@
         <ListView Grid.Row="5" Grid.Column="1" x:Name="ReservationsListView" Margin="10,10,356,10" SelectionChanged="ReservationsListView_SelectionChanged">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Accommodation Name" DisplayMemberBinding="{Binding AccommodationName}"/>
                     <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate, StringFormat=d}"/>
                     <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate, StringFormat=d}"/>
