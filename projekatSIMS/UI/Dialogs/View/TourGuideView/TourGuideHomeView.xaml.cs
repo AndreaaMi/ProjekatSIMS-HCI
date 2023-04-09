@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace projekatSIMS.UI.Dialogs.View.TourGuideView
         public TourGuideHomeView()
         {
             InitializeComponent();
+            DataContext = new TourGuideHomeModel();
         }
     }
 }
