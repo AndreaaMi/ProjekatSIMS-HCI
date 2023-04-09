@@ -18,6 +18,8 @@ namespace projekatSIMS.Repository
             ((AccommodationReservation)accommodationReservation).StartDate = ((AccommodationReservation)entity).StartDate;
             ((AccommodationReservation)accommodationReservation).EndDate = ((AccommodationReservation)entity).EndDate;
             ((AccommodationReservation)accommodationReservation).GuestCount = ((AccommodationReservation)entity).GuestCount;
+            ((AccommodationReservation)accommodationReservation).GuestsRate = ((AccommodationReservation)entity).GuestsRate;
+            ((AccommodationReservation)accommodationReservation).OwnersRate = ((AccommodationReservation)entity ).OwnersRate;
 
         }
 

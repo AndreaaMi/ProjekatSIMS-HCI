@@ -14,7 +14,8 @@ namespace projekatSIMS.Repository
             DataContext.Instance.GetAllEntitiesOfType(typeof(TEntity)).Add(entity);
         }
 
-        public virtual void Edit(Entity entity) {}
+        public virtual void Edit(Entity entity) {
+        }
 
         public int GenerateId()
         {

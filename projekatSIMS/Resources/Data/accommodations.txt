@@ -1,22 +1,22 @@
-1|3|Hotel Belgrade1|APARTMENT|Belgrade|Serbia|100|2|10|https://www.rs/uploads/ck_editor/images/clanci/KU%C4%86A/Moderna%20porodi%C4%8Dna%20ku%C4%87a%20koja%20maksimalno%20koristi%20prostor%20DETALJAN%20PLAN/Moderna%20ku%C4%87a%20s%20potkrovljem%20DETALJAN%20PLAN%20(8).jpg
-23|3|Hotel Belgrade3|APARTMENT|Belgrade|Serbia|100|3|10|null
-2|3|Grand Hotel Sofia|HOUSE|Sofia|Bulgaria|150|3|10|null
-22|3|Grand Hotel Sofia2|HOUSE|Sofia|Bulgaria|150|3|10|null
-3|3|Hotel Berlin|COTTAGE|Berlin|Germany|200|3|10|null
-4|3|Resort Paris|COTTAGE|Paris|France|120|3|10|null
-5|3|Hotel Amsterdam|HOUSE|Amsterdam|Netherlands|80|3|10|null
-6|3|Hotel London|HOUSE|London|United Kingdom|250|3|10|null
-7|3|Hotel Madrid|APARTMENT|Madrid|Spain|180|3|10|null
-8|3|Resort Roma|APARTMENT|Rome|Italy|90|3|10|null
-9|3|Hotel Athens|HOUSE|Athens|Greece|130|2|10|null
-10|3|Hotel Vienna|APARTMENT|Vienna|Austria|100|1|10|null
-11|3|Hotel Moscow|COTTAGE|Moscow|Russia|220|3|10|null
-12|3|Hotel Copenhagen|HOUSE|Copenhagen|Denmark|70|3|10|null
-13|3|Hotel Dublin|APARTMENT|Dublin|Ireland|110|3|10|null
-14|3|Hotel Oslo|APARTMENT|Oslo|Norway|90|3|10|null
-15|3|Hotel Stockholm|APARTMENT|Stockholm|Sweden|80|3|10|null
-16|3|Resort Helsinki|APARTMENT|Helsinki|Finland|70|3|10|null
-17|3|Hotel Lisbon|HOUSE|Lisbon|Portugal|120|3|10|null
-18|3|Hotel Warsaw|COTTAGE|Warsaw|Poland|110|3|10|null
-19|3|Resort Prague|APARTMENT|Prague|Czech Republic|150|3|10|null
-20|3|Hotel Budapest|COTTAGE|Budapest|Hungary|130|3|10|null
+1|3|Hotel Belgrade1|APARTMENT|Belgrade|Serbia|100|2|10|System.Collections.Generic.List`1[System.String]
+23|3|Hotel Belgrade3|APARTMENT|Belgrade|Serbia|100|3|10|System.Collections.Generic.List`1[System.String]
+2|3|Grand Hotel Sofia|HOUSE|Sofia|Bulgaria|150|3|10|System.Collections.Generic.List`1[System.String]
+22|3|Grand Hotel Sofia2|HOUSE|Sofia|Bulgaria|150|3|10|System.Collections.Generic.List`1[System.String]
+3|3|Hotel Berlin|COTTAGE|Berlin|Germany|200|3|10|System.Collections.Generic.List`1[System.String]
+4|3|Resort Paris|COTTAGE|Paris|France|120|3|10|System.Collections.Generic.List`1[System.String]
+5|3|Hotel Amsterdam|HOUSE|Amsterdam|Netherlands|80|3|10|System.Collections.Generic.List`1[System.String]
+6|3|Hotel London|HOUSE|London|United Kingdom|250|3|10|System.Collections.Generic.List`1[System.String]
+7|3|Hotel Madrid|APARTMENT|Madrid|Spain|180|3|10|System.Collections.Generic.List`1[System.String]
+8|3|Resort Roma|APARTMENT|Rome|Italy|90|3|10|System.Collections.Generic.List`1[System.String]
+9|3|Hotel Athens|HOUSE|Athens|Greece|130|2|10|System.Collections.Generic.List`1[System.String]
+10|3|Hotel Vienna|APARTMENT|Vienna|Austria|100|1|10|System.Collections.Generic.List`1[System.String]
+11|3|Hotel Moscow|COTTAGE|Moscow|Russia|220|3|10|System.Collections.Generic.List`1[System.String]
+12|3|Hotel Copenhagen|HOUSE|Copenhagen|Denmark|70|3|10|System.Collections.Generic.List`1[System.String]
+13|3|Hotel Dublin|APARTMENT|Dublin|Ireland|110|3|10|System.Collections.Generic.List`1[System.String]
+14|3|Hotel Oslo|APARTMENT|Oslo|Norway|90|3|10|System.Collections.Generic.List`1[System.String]
+15|3|Hotel Stockholm|APARTMENT|Stockholm|Sweden|80|3|10|System.Collections.Generic.List`1[System.String]
+16|3|Resort Helsinki|APARTMENT|Helsinki|Finland|70|3|10|System.Collections.Generic.List`1[System.String]
+17|3|Hotel Lisbon|HOUSE|Lisbon|Portugal|120|3|10|System.Collections.Generic.List`1[System.String]
+18|3|Hotel Warsaw|COTTAGE|Warsaw|Poland|110|3|10|System.Collections.Generic.List`1[System.String]
+19|3|Resort Prague|APARTMENT|Prague|Czech Republic|150|3|10|System.Collections.Generic.List`1[System.String]
+20|3|Hotel Budapest|COTTAGE|Budapest|Hungary|130|3|10|System.Collections.Generic.List`1[System.String]
