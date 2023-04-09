@@ -1,1 +1,1 @@
-﻿0|1|4|5|commnt1|https://example.com/image.jpg
+0|1|4|5|commnt1|https://example.com/image.jpg

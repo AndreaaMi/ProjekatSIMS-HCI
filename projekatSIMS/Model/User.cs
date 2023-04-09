@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projekatSIMS.UI.Dialogs.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Model
 {
-   public class User : Entity
+    public class User : Entity
     {
         private string firstName;
         private string lastName;
@@ -14,12 +15,24 @@ namespace projekatSIMS.Model
         private string password;
 
         private UserType userType;
+        private int reviewCount;
+        private double averageRating;
+        private bool superStatus;
 
         public User() { }
 
         public User(User user, int id)
         {
-          
+
+        }
+
+        public User(string firstName, string lastName, string email, string password)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+
         }
 
         public string FirstName
@@ -31,12 +44,12 @@ namespace projekatSIMS.Model
                 OnPropertyChanged(nameof(FirstName));
             }
         }
-        public string  LastName
+        public string LastName
         {
             get { return lastName; }
-            set 
+            set
             {
-                lastName = value; 
+                lastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
         }
@@ -52,8 +65,8 @@ namespace projekatSIMS.Model
         public string Password
         {
             get { return password; }
-            set 
-            { 
+            set
+            {
                 password = value;
                 OnPropertyChanged(nameof(Password));
             }
@@ -62,16 +75,69 @@ namespace projekatSIMS.Model
         public UserType UserType
         {
             get { return userType; }
-            set 
+            set
             {
                 userType = value;
                 OnPropertyChanged(nameof(UserType));
             }
         }
 
+        public int ReviewCount
+        {
+            get { return reviewCount; }
+            set
+            {
+                reviewCount = value;
+                OnPropertyChanged(nameof(ReviewCount));
+            }
+        }
+
+        public double AverageRating
+        {
+            get { return averageRating; }
+            set
+            {
+                averageRating = value;
+                OnPropertyChanged(nameof(AverageRating));
+            }
+        }
+
+        public bool SuperStatus
+        {
+            get { return superStatus; }
+            set
+            {
+                superStatus = value;
+                OnPropertyChanged(nameof(SuperStatus));
+            }
+        }
+
+        public void SetUserType(string part)
+        {
+            switch (part)
+            {
+                case "OWNER":
+                    UserType = UserType.OWNER;
+                    break;
+
+                case "GUEST":
+                    UserType = UserType.GUEST;
+                    break;
+
+                case "TOURGUIDE":
+                    UserType = UserType.TOURGUIDE;
+                    break;
+
+                case "TOURIST":
+                    UserType = UserType.TOURIST;
+                    break;
+
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString();
+            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString() + "|" + reviewCount + "|" + averageRating + "|" + superStatus;
         }
 
         public override void ImportFromString(string[] parts)
@@ -81,7 +147,10 @@ namespace projekatSIMS.Model
             LastName = parts[2];
             Email = parts[3];
             Password = parts[4];
-            UserType = (UserType)Enum.Parse(typeof(UserType), parts[5]);
+            SetUserType(parts[5]);
+            ReviewCount = int.Parse(parts[6]);
+            AverageRating = double.Parse(parts[7]);
+            SuperStatus = bool.Parse(parts[8]);
         }
     }
 }

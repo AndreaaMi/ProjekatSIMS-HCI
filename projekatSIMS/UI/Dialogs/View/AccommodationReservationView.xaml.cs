@@ -82,7 +82,7 @@ namespace projekatSIMS.UI.Dialogs.View
                 GuestCount = guestCount
             };
 
-            if(IsReservationOverlapping(startDate,endDate))
+            if (IsReservationOverlapping(startDate, endDate))
             {
                 GetAvailableDates(selectedAccommodation);
             }
@@ -92,7 +92,7 @@ namespace projekatSIMS.UI.Dialogs.View
                 MessageBox.Show("Reservation successful");
                 ReservationsListView.Items.Add(newReservation);
             }
-            
+
 
             ClearInput();
         }
@@ -119,7 +119,7 @@ namespace projekatSIMS.UI.Dialogs.View
                     break;
                 }
                 currentStartDate = currentEndDate.AddDays(1);
-                if (currentStartDate > DateTime.MaxValue.AddDays(-selectedAccommodation.MinimalStay))
+                if (currentStartDate > DateTime.MaxValue.AddDays(-selectedAccommodation.MinimumStayDays))
                 {
                     break;
                 }
@@ -207,7 +207,7 @@ namespace projekatSIMS.UI.Dialogs.View
             }
 
             selectedAccommodation = (Accommodation)AccommodationDataGrid.SelectedItem;
-            MinimalStayLabel.Content = $"Minimal stay: {selectedAccommodation.MinimalStay} days";
+            MinimalStayLabel.Content = $"Minimal stay: {selectedAccommodation.MinimumStayDays} days";
 
             return true;
         }
@@ -246,9 +246,9 @@ namespace projekatSIMS.UI.Dialogs.View
                 return false;
             }
 
-            if ((endDate - startDate).TotalDays < selectedAccommodation.MinimalStay)
+            if ((endDate - startDate).TotalDays < selectedAccommodation.MinimumStayDays)
             {
-                MessageBox.Show($"Minimum stay is {selectedAccommodation.MinimalStay} days.");
+                MessageBox.Show($"Minimum stay is {selectedAccommodation.MinimumStayDays} days.");
                 return false;
             }
 
@@ -306,15 +306,15 @@ namespace projekatSIMS.UI.Dialogs.View
 
         public int GetCancelationDays(Accommodation accommodation)
         {
-            return accommodation.CancelationLimit;
+            return accommodation.CancellationDays;
         }
         private bool ValidateReservation()
         {
-            var selectedAccommodation = accommodationService.GetAccommodationByName(selectedReservation.AccommodationName);
-            var cancelationLimit = selectedAccommodation.CancelationLimit;
+            if (!ValidateReservationSelection()) return false;
 
-            if (!ValidateReservationSelection()) return false; 
-            
+            var selectedAccommodation = accommodationService.GetAccommodationByName(selectedReservation.AccommodationName);
+            var cancelationLimit = selectedAccommodation.CancellationDays;
+
             if (selectedReservation == null){
                 MessageBox.Show("Invalid reservation selected");
                 return false;

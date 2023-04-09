@@ -13,13 +13,15 @@ namespace projekatSIMS.Repository
         {
             Entity accommodation = base.Get(entity.Id);
 
+            ((Accommodation)accommodation).OwnerId = ((Accommodation)entity).OwnerId;
             ((Accommodation)accommodation).Id = ((Accommodation)entity).Id;
             ((Accommodation)accommodation).Name = ((Accommodation)entity).Name;
             ((Accommodation)accommodation).Location = ((Accommodation)entity).Location;
             ((Accommodation)accommodation).Type = ((Accommodation)entity).Type;
             ((Accommodation)accommodation).GuestLimit = ((Accommodation)entity).GuestLimit;
-            ((Accommodation)accommodation).MinimalStay = ((Accommodation)entity).MinimalStay;
-            ((Accommodation)accommodation).CancelationLimit = ((Accommodation)entity).CancelationLimit;
+            ((Accommodation)accommodation).MinimumStayDays = ((Accommodation)entity).MinimumStayDays;
+            ((Accommodation)accommodation).CancellationDays = ((Accommodation)entity).CancellationDays;
+            ((Accommodation)accommodation).ImageUrls = ((Accommodation)entity).ImageUrls;
         }
 
         public override IEnumerable<Entity> Search(string term = "")
@@ -35,6 +37,7 @@ namespace projekatSIMS.Repository
 
             return result;
         }
+
 
         public Accommodation GetAccommodationByType(AccommodationType type)
         {
@@ -101,5 +104,6 @@ namespace projekatSIMS.Repository
 
             return null;
         }
+
     }
 }
