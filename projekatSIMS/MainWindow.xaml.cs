@@ -1,6 +1,7 @@
 ﻿using projekatSIMS.Model;
 using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View;
+using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using projekatSIMS.UI.Dialogs.View.TouristView;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace projekatSIMS
                     windowToDisplay = new AccommodationSearchView();
                     break;
                 case "TOURGUIDE":
-                    windowToDisplay = new Vodic();
+                    windowToDisplay = new TourGuideMainWindow(); //1 promeniti na vodicMainWindow
                     break;
                 case "TOURIST":
                     windowToDisplay = new TouristMainWindow();
