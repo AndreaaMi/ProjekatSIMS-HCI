@@ -5,3 +5,5 @@
 4|Hotel Lisbon|2023-04-12|2023-04-16|3|True|False
 5|Hotel Oslo|2023-04-16|2023-04-18|3|False|False
 6|Resort Helsinki|2023-04-14|2023-04-17|3|False|False
+7|Resort Helsinki|2023-04-18|2023-04-23|3|False|False
+8|Hotel Stockholm|2023-04-10|2023-04-14|3|True|False
