@@ -26,5 +26,6 @@ namespace projekatSIMS.UI.Dialogs.View.TouristView
             InitializeComponent();
             DataContext = new TouristSearchTourModel();
         }
+
     }
 }
