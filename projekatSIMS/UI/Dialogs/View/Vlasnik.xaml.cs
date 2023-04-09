@@ -90,8 +90,8 @@ namespace projekatSIMS.UI.Dialogs.View
             }
             newAccommodation.GuestLimit = int.Parse(GuestLimitTextBox.Text);
             
-            newAccommodation.MinimalStay = int.Parse(MinimalStayTextBox.Text);
-            newAccommodation.CancelationLimit = int.Parse(CancelationLimitTextBox.Text);
+            newAccommodation.MinimumStayDays = int.Parse(MinimalStayTextBox.Text);
+            newAccommodation.CancellationDays = int.Parse(CancelationLimitTextBox.Text);
 
             // Save the new Accommodation object to the database using the AccommodationService
             accommodationService.RegisterAccommodation(newAccommodation);
@@ -99,7 +99,7 @@ namespace projekatSIMS.UI.Dialogs.View
             
             foreach (Accommodation entity in accommodationService.GetAll())
             {
-                AllAccommodationsListBox.Items.Add(entity.Id + " " + entity.Name + " " + entity.Location.City + " " + entity.Location.Country + " " + entity.Type + " " + entity.GuestLimit + " " + entity.MinimalStay + " " + entity.CancelationLimit);
+                AllAccommodationsListBox.Items.Add(entity.Id + " " + entity.Name + " " + entity.Location.City + " " + entity.Location.Country + " " + entity.Type + " " + entity.GuestLimit + " " + entity.MinimumStayDays + " " + entity.CancellationDays);
             }
         }
 
@@ -128,7 +128,7 @@ namespace projekatSIMS.UI.Dialogs.View
 
             foreach (Accommodation entity in accommodationService.GetAll())
             {
-                AllAccommodationsListBox.Items.Add(entity.Id + " " + entity.Name + " " + entity.Location.City  + " " + entity.Location.Country + " " + entity.Type + " " + entity.GuestLimit + " " + entity.MinimalStay + " " + entity.CancelationLimit);
+                AllAccommodationsListBox.Items.Add(entity.Id + " " + entity.Name + " " + entity.Location.City  + " " + entity.Location.Country + " " + entity.Type + " " + entity.GuestLimit + " " + entity.MinimumStayDays + " " + entity.CancellationDays);
             }
 
 

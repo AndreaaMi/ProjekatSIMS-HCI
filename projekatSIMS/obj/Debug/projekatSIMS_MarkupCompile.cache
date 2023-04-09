@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\
 projekatSIMS
 none
 false
 DEBUG;TRACE
-C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
-11-2122041173
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
+12-1238269626
 
-511469757848
+60-699132056
 13-1310406943
-MainWindow.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
+MainWindow.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
 
 False
 

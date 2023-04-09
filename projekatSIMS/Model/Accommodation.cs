@@ -10,11 +10,13 @@ namespace projekatSIMS.Model
     {
 
         private string name;
+        private int ownerId;
         private Location location;
         private AccommodationType type;
         private int guestLimit;
-        private int minimalStay;
-        private int cancelationLimit;
+        private int minimumStayDays;
+        private int cancellationDays;
+        private List<string> imageUrls;
 
 
         public Accommodation()
@@ -22,17 +24,28 @@ namespace projekatSIMS.Model
             this.location = new Location();
         }
 
-        public Accommodation(string name, Location location, AccommodationType accommodationType, int guestLimit, int minimalStay, int cancelationLimit)
+        public Accommodation(int ownerId, string name, Location location, AccommodationType accommodationType, int guestLimit, int minimumStayDays, int cancellationDays, List<string> imageUrls)
         {
+            this.ownerId = ownerId;
             this.name = name;
             this.location = location;
             this.type = accommodationType;
             this.guestLimit = guestLimit;
-            this.minimalStay = minimalStay;
-            this.cancelationLimit = cancelationLimit;
-
+            this.minimumStayDays = minimumStayDays;
+            this.cancellationDays = cancellationDays;
+            this.imageUrls = imageUrls;
         }
 
+
+        public int OwnerId
+        {
+            get { return ownerId; }
+            set
+            {
+                ownerId = value;
+                OnPropertyChanged(nameof(OwnerId));
+            }
+        }
         public string Name
         {
             get { return name; }
@@ -92,44 +105,75 @@ namespace projekatSIMS.Model
             }
         }
 
-        public int MinimalStay
+        public int MinimumStayDays
         {
-            get { return minimalStay; }
+            get { return minimumStayDays; }
             set
             {
-                minimalStay = value;
-                OnPropertyChanged(nameof(MinimalStay));
+                minimumStayDays = value;
+                OnPropertyChanged(nameof(MinimumStayDays));
             }
         }
 
-        public int CancelationLimit
+        public int CancellationDays
         {
-            get { return cancelationLimit; }
+            get { return cancellationDays; }
             set
             {
-                cancelationLimit = value;
-                OnPropertyChanged(nameof(CancelationLimit));
+                cancellationDays = value;
+                OnPropertyChanged(nameof(CancellationDays));
             }
         }
+
+        public List<string> ImageUrls
+        {
+            get { return imageUrls; }
+            set
+            {
+                if (imageUrls != value)
+                {
+                    imageUrls = value;
+                    OnPropertyChanged(nameof(ImageUrls));
+                }
+            }
+        }
+
+        public void AddImage(string imageUrl)
+        {
+            imageUrls.Add(imageUrl);
+        }
+
+        // Uklanjanje slike smeštaja
+        public void RemoveImage(string imageUrl)
+        {
+            imageUrls.Remove(imageUrl);
+        }
+
+        // Svojstvo za prikazivanje svih slika smeštaja
 
 
 
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + type.ToString() + "|" + location.City + "|" + location.Country + "|" + guestLimit + "|" + minimalStay + "|" + cancelationLimit;
+            return id + "|" + ownerId + "|" + name + "|" + type.ToString() + "|" + location.City + "|" + location.Country + "|" + guestLimit + "|" + minimumStayDays + "|" + cancellationDays + "|" + imageUrls;
         }
 
         public override void ImportFromString(string[] parts)
         {
             base.ImportFromString(parts);
 
-            Name = parts[1];
-            SetAccommodationType(parts[2]);
-            Location.City = parts[3];
-            Location.Country = parts[4];
-            GuestLimit = int.Parse(parts[5]);
-            MinimalStay = int.Parse(parts[6]);
-            CancelationLimit = int.Parse(parts[7]);
+
+            OwnerId = int.Parse(parts[1]);
+            Name = parts[2];
+            SetAccommodationType(parts[3]);
+            Location.City = parts[4];
+            Location.Country = parts[5];
+            GuestLimit = int.Parse(parts[6]);
+            MinimumStayDays = int.Parse(parts[7]);
+            CancellationDays = int.Parse(parts[8]);
+            string[] imageUrls = parts[9].Split(',');
+
+            ImageUrls = new List<string>(imageUrls);
 
         }
 
@@ -137,4 +181,3 @@ namespace projekatSIMS.Model
 
     }
 }
-

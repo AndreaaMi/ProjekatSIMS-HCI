@@ -20,6 +20,8 @@ namespace projekatSIMS.Repository
             TourReservations = new TourReservationRepository();
             AccommodationReservations = new AccommodationReservationRepository();
             GuestReviews = new GuestReviewRepository();
+            ReservationRescheduleRequests = new ReservationRescheduleRequestRepository();
+            AccommodationOwnerRatings = new AccommodationOwnerRatingRepository();
         }
 
         public UserRepository Users { get; private set; }
@@ -32,6 +34,9 @@ namespace projekatSIMS.Repository
         
         public GuestReviewRepository GuestReviews { get; private set; }
 
+        public ReservationRescheduleRequestRepository ReservationRescheduleRequests { get; private set; } 
+
+        public AccommodationOwnerRatingRepository AccommodationOwnerRatings { get; private set; }
         public void Save()
         {
             DataContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa

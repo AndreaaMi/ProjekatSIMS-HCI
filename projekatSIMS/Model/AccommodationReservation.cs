@@ -14,6 +14,8 @@ namespace projekatSIMS.Model
         private DateTime startDate;
         private DateTime endDate;
         private int guestCount;
+        private bool guestsRate;
+        private bool ownersRate;
 
         public AccommodationReservation()
         {
@@ -26,6 +28,8 @@ namespace projekatSIMS.Model
             this.startDate = startDate;
             this.endDate = endDate;
             this.guestCount = guestCount;
+            this.guestsRate = false;
+            this.ownersRate = false;
         }
 
         public string AccommodationName
@@ -67,9 +71,29 @@ namespace projekatSIMS.Model
             }
         }
 
+        public bool GuestsRate
+        {
+            get { return guestsRate; }
+            set
+            {
+                guestsRate = value;
+                OnPropertyChanged(nameof(GuestsRate));
+            }
+        }
+
+        public bool OwnersRate
+        {
+            get { return ownersRate; }
+            set
+            {
+                ownersRate = value;
+                OnPropertyChanged(nameof(OwnersRate));
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + accommodationName + "|" + startDate.ToString("yyyy-MM-dd") + "|" + endDate.ToString("yyyy-MM-dd") + "|" + guestCount;
+            return id + "|" + accommodationName + "|" + startDate.ToString("yyyy-MM-dd") + "|" + endDate.ToString("yyyy-MM-dd") + "|" + guestCount + "|" + guestsRate + "|" + ownersRate;
         }
 
         public override void ImportFromString(string[] parts)
@@ -79,7 +103,8 @@ namespace projekatSIMS.Model
             startDate = DateTime.ParseExact(parts[2], "yyyy-MM-dd", CultureInfo.InvariantCulture);
             endDate = DateTime.ParseExact(parts[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
             guestCount = int.Parse(parts[4]);
-
+            guestsRate = bool.Parse(parts[5]);
+            ownersRate = bool.Parse(parts[6]);
         }
 
 

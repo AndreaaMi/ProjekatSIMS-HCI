@@ -100,7 +100,7 @@ namespace projekatSIMS.UI.Dialogs.View
 
               foreach (Accommodation entity in accommodationService.GetAll().Cast<Accommodation>())
               {
-                  if (entity.MinimalStay.ToString() == resDays || entity.MinimalStay < resDaysInt){
+                  if (entity.MinimumStayDays.ToString() == resDays || entity.MinimumStayDays < resDaysInt){
                       AddItemToListBox(entity);
                   }
               }
@@ -139,7 +139,7 @@ namespace projekatSIMS.UI.Dialogs.View
 
         private void AddItemToListBox(Accommodation entity)
         {
-            MyListBox.Items.Add($"{entity.Id} {entity.Name} {entity.Location.City} {entity.Location.Country} {entity.GuestLimit} {entity.MinimalStay} {entity.CancelationLimit}");
+            MyListBox.Items.Add($"{entity.Id} {entity.Name} {entity.Location.City} {entity.Location.Country} {entity.GuestLimit} {entity.MinimumStayDays} {entity.CancellationDays}");
         }
         // Populates the list box with all accommodations
         private void PopulateListBox()
