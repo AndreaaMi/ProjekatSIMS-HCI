@@ -31,12 +31,33 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointId;
         private string keyPointName;
 
+        private TourService tourService;
+
         public TourGuideHomeModel()
         {
+            SetService();
+        }
 
+        public void SetService()
+        {
+            tourService = new TourService();
         }
 
         private void CreateCommandExecute()
+        {
+            var tours = tourService.GetAll();
+            foreach (Tour tour in tours)
+            {
+                Items.Add(tour);
+            }
+            
+            CreateTour();
+
+            
+            
+        }
+
+        private void CreateTour()
         {
             TourService tourService = new TourService();
             KeyPointsService keyPointsService = new KeyPointsService();
@@ -87,14 +108,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             ///
             tourService.Add(newTour);
             //dodavanje u datagrid
-            Items.Add(newTour);
             
         }
 
         private void NextCommandExecute()
         {
             TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TouristView/TouristSearchTourView.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
         }
 
 
