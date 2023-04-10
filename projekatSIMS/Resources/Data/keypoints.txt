@@ -1,5 +1,5 @@
-1|jen|True|1
-2|dva|False|1
+1|a|True|2
+2|v|False|2
 3|tri|False|1
 5|j|False|11
 6|a|True|11
@@ -9,17 +9,5 @@
 10|pozoriste|False|12
 11|pekara|False|13
 12|centar|False|13
-1|a|False|1
-1|a|False|1
-1|b|False|22
-2|b|False|22
-1|a|False|1
-1|a|False|2
-1|a|False|2
-1|a|False|1
-1|s|False|2
-1|a|False|1
-1|a|False|2
-2|v|False|2
-1|a|False|2
-2|v|False|2
+13|prvi|True|14
+14|drugi|False|14
