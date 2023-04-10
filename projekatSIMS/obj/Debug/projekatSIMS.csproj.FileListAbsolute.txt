@@ -193,3 +193,10 @@ C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\App.baml
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.baml
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\GuestMainView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\GuestMainView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristReservationView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristReservationView.baml
+>>>>>>> 4b32f7c57516beb87493ee721bf00b036245e8b0
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristReservationView.g.cs
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristReservationView.baml
