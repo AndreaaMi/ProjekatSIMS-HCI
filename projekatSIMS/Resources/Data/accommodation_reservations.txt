@@ -7,3 +7,7 @@
 6|Resort Helsinki|2023-04-14|2023-04-17|3|False|False
 7|Resort Helsinki|2023-04-18|2023-04-23|3|False|False
 8|Hotel Stockholm|2023-04-10|2023-04-14|3|True|False
+9|Hotel Stockholm|2023-04-14|2023-04-18|3|False|False
+10|Hotel Stockholm|2023-04-19|2023-04-22|3|False|False
+11|Hotel Vienna|2023-04-12|2023-04-15|4|False|False
+12|Hotel Moscow|2023-04-16|2023-04-25|2|False|False

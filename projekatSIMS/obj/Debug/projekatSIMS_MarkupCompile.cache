@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
-12-1238269626
+152098236222
 
-60-699132056
+63-1610363110
 13-1310406943
-MainWindow.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
+MainWindow.xaml;Styles\UIColors.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\GuestView\GuestPageView.xaml;UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.xaml;UI\Dialogs\View\Tourist.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TourReservationView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
 
 False
 

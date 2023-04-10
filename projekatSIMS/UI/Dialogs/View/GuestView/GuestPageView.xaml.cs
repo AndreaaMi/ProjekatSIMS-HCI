@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace projekatSIMS.UI.Dialogs.View.GuestView
 {
     /// <summary>
-    /// Interaction logic for GuestMainView.xaml
+    /// Interaction logic for GuestPageView.xaml
     /// </summary>
-    public partial class GuestMainView : Window
+    public partial class GuestPageView : UserControl
     {
-        public GuestMainView()
+        public GuestPageView()
         {
             InitializeComponent();
-        }
-
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

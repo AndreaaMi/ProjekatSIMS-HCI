@@ -93,6 +93,7 @@
     <Compile Include="Service\TourReservationService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestMainViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristSearchTourModel.cs" />
@@ -105,6 +106,12 @@
     <Compile Include="Service\TourService.cs" />
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\GuestPageView.xaml.cs">
+      <DependentUpon>GuestPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.xaml.cs">
+      <DependentUpon>RescheduleReservationNotificationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\Tourist.xaml.cs">
       <DependentUpon>Tourist.xaml</DependentUpon>
@@ -143,6 +150,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\UIColors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\AccommodationReservationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestView\GuestMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\GuestPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +263,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\accommodation_owner_rating.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UI\Dialogs\View\GuestView\GuestImages\report-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UI\Dialogs\View\GuestView\GuestImages\bonus-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UI\Dialogs\View\GuestView\GuestImages\user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UI\Dialogs\View\GuestView\GuestImages\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
