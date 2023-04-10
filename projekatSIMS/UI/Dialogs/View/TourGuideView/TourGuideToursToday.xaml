@@ -45,8 +45,9 @@
 
 
 
-                    
-                    <Button Content="Next" HorizontalAlignment="Left" Margin="600,5,0,0" Grid.Row="13" VerticalAlignment="Top" Command="{Binding NextCommand}"/>
+
+                    <Button Content="Next" HorizontalAlignment="Left" Margin="271,2,0,0" Grid.Row="12" VerticalAlignment="Top" Command="{Binding NextCommand}"/>
+                    <Button Content="End Tour" HorizontalAlignment="Left" Margin="348,0,0,0" Grid.Row="12" VerticalAlignment="Center" Command="{Binding EndTourCommand}"/>
 
                     <DataGrid Grid.Row="1" Grid.RowSpan="11" x:Name="AvailableDatesDataGrid" Margin="186,10,20,10" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" IsReadOnly="True" SelectedItem="{Binding Path=SelectedItem}">
                         <DataGrid.Columns>

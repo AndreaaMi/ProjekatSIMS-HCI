@@ -17,6 +17,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
     internal class TourGuideToursTodayModel : ViewModelBase
     {
         private RelayCommand nextCommand;
+        private RelayCommand endTourCommand;
 
         private TourService tourService;
         private KeyPointsService keyPointsService;
@@ -70,6 +71,28 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             //  new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
         }
 
+        private void EndTourCommandExecute()
+        {
+            if (selectedItem != null)
+            {
+                foreach (KeyPoints kp in keyPointsService.GetAll())
+                {
+                    if (kp.AssociatedTour == selectedItem.Id)
+                    {
+                        kp.IsActive = true;
+                        keyPointsService.Edit(kp);
+                        //resiti ne radi
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a tour before proceeding to reservation.");
+            }
+            // TourGuideMainWindow.navigationService.Navigate(
+            //  new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+        }
+
         public RelayCommand NextCommand
         {
             get
@@ -77,6 +100,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 if (nextCommand == null)
                 {
                     nextCommand = new RelayCommand(param => NextCommandExecute());
+                }
+
+                return nextCommand;
+            }
+        }
+
+        public RelayCommand EndTourCommand
+        {
+            get
+            {
+                if (nextCommand == null)
+                {
+                    nextCommand = new RelayCommand(param => EndTourCommandExecute());
                 }
 
                 return nextCommand;
