@@ -4,12 +4,107 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.TourGuideView"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TourGuideHomeView">
 
-    <Grid>
-        <Button Content="Button" Command="{Binding ReserveCommand}" HorizontalAlignment="Left" Margin="390,127,0,0" VerticalAlignment="Top"/>
+    <Border CornerRadius="12">
+        <Border CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#000428" Offset="0"/>
+                    <GradientStop Color="#004e92" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#000428" Offset="1"/>
+                    <GradientStop Color="#004e92" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
-    </Grid>
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label FontSize="17" FontWeight="Bold" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" Grid.ColumnSpan="3" Content="Welcome to the Home Page"></Label>
+
+                    <Label FontSize="17" Grid.Row="2" Content="Id:" ></Label>
+                    <TextBox FontSize="17" Grid.Row="2" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Id}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="3" Content="Name:" ></Label>
+                    <TextBox FontSize="17" Grid.Row="3" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Name}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="4" Content="Country:" ></Label>
+                    <TextBox FontSize="17" Grid.Row="4" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Country}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="5" Content="City:"></Label>
+                    <TextBox FontSize="17" Grid.Row="5" Grid.Column="1" Margin="150,10,450,5" Text="{Binding City}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="6" Content="Language:" />
+                    <ComboBox FontSize="17" Grid.Row="6" Grid.Column="1" Margin="150,10,450,5" SelectedItem="{Binding SelectedLanguage}">
+                        <ComboBox.Items>
+                            <system:String>SERBIAN</system:String>
+                            <system:String>ENGLISH</system:String>
+                        </ComboBox.Items>
+                    </ComboBox>
+
+                    <Label FontSize="17" Grid.Row="7" Content="Date:"></Label>
+                    <DatePicker FontSize="17" Grid.Row="7" Grid.Column="1" Margin="150,10,450,5" SelectedDate="{Binding Date, StringFormat='mm/dd/yyyy'}"></DatePicker>
+
+                    <Label FontSize="17" Grid.Row="8" Content="Time:"></Label>
+                    <TextBox FontSize="17" Grid.Row="8" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Time}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="9" Content="Guest Number:"></Label>
+                    <TextBox FontSize="17" Grid.Row="9" Grid.Column="1" Margin="150,10,450,5" Text="{Binding MaximumNumberOfGuests}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="10" Content="Duration:"></Label>
+                    <TextBox FontSize="17" Grid.Row="10" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Duration}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="11" Content="Description:"></Label>
+                    <TextBox FontSize="17" Grid.Row="11" Grid.Column="1" Margin="150,10,450,5" Text="{Binding Description}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="12" Content="Keypoints ID:"></Label>
+                    <TextBox FontSize="17" Grid.Row="12" Grid.Column="1" Margin="150,10,450,5" Text="{Binding KeyPointId}"></TextBox>
+
+                    <Label FontSize="17" Grid.Row="13" Content="Keypoints Name:"></Label>
+                    <TextBox FontSize="17" Grid.Row="13" Grid.Column="1" Margin="150,10,450,5" Text="{Binding KeyPointName}"></TextBox>
+
+                    <Button Content="Create Tour" HorizontalAlignment="Left" Margin="400,5,0,0" Grid.Row="13" VerticalAlignment="Top" Command="{Binding CreateCommand}"/>
+                    <Button Content="Next" HorizontalAlignment="Left" Margin="600,5,0,0" Grid.Row="13" VerticalAlignment="Top" Command="{Binding NextCommand}"/>
+
+                    <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="8" x:Name="AvailableDatesDataGrid" Margin="400,10,20,10" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tour Name" Width="*" Binding="{Binding Path=Name}"/>
+                            <DataGridTextColumn Header="Country" Width="*" Binding="{Binding Path=Location.Country}"/>
+                            <DataGridTextColumn Header="City" Width="*" Binding="{Binding Path=Location.City}"/>
+                            <DataGridTextColumn Header="Language" Width="*" Binding="{Binding Path=Language}"/>
+                            <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding Path=StartingDate}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Border>
 </Page>

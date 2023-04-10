@@ -1,4 +1,4 @@
-0|Hotel Dublin|2023-04-09|2023-04-13|3|false|false
-1|Hotel Dublin|2023-04-14|2023-04-19|3|false|false
-2|Hotel Oslo|2023-04-15|2023-04-18|3|false|false
-3|Hotel Stockholm|2023-04-15|2023-04-20|3|false|false
+0|Hotel Dublin|2023-04-09|2023-04-13|3|False|False
+1|Hotel Dublin|2023-04-14|2023-04-19|3|False|False
+2|Hotel Oslo|2023-04-15|2023-04-18|3|False|False
+3|Hotel Stockholm|2023-04-15|2023-04-20|3|False|False
