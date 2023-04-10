@@ -17,8 +17,9 @@ namespace projekatSIMS.Model
 
         }
 
-        public TourReservation(int guestId, int tourId,int numberOfGuests)
+        public TourReservation(int id,int guestId, int tourId,int numberOfGuests)
         {
+            this.id = id;
             this.guestId = guestId;
             this.tourId = tourId;
             this.numberOfGuests = numberOfGuests;
