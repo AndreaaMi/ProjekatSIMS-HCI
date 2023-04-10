@@ -1,4 +1,5 @@
-﻿using projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel;
+﻿using projekatSIMS.Model;
+using projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.TouristView
 {
     /// <summary>
-    /// Interaction logic for TouristSearchTourView.xaml
+    /// Interaction logic for TouristReservationView.xaml
     /// </summary>
-    public partial class TouristSearchTourView : Page
+    public partial class TouristReservationView : Page
     {
-        public TouristSearchTourView()
+        public TouristReservationView(Tour selectedTour)
         {
             InitializeComponent();
-            DataContext = new TouristSearchTourModel();
+            DataContext = new TouristReservationModel(selectedTour);
         }
-
     }
 }

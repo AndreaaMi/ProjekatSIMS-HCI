@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,7 @@ namespace projekatSIMS.Model
         {
             base.ImportFromString(parts);
             Name = parts[1];
-            isActive = bool.Parse(parts[2]); 
+            isActive = bool.Parse(parts[2]);
             associatedTour = int.Parse(parts[3]);
         }
     }

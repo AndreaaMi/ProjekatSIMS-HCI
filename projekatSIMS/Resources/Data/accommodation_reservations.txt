@@ -1,13 +1,1 @@
-0|Hotel Dublin|2023-04-09|2023-04-13|3|False|False
-1|Hotel Dublin|2023-04-14|2023-04-19|3|False|False
-2|Hotel Oslo|2023-04-15|2023-04-18|3|False|False
-3|Hotel Stockholm|2023-04-01|2023-04-03|3|False|False
-4|Hotel Lisbon|2023-04-12|2023-04-16|3|True|False
-5|Hotel Oslo|2023-04-16|2023-04-18|3|False|False
-6|Resort Helsinki|2023-04-14|2023-04-17|3|False|False
-7|Resort Helsinki|2023-04-18|2023-04-23|3|False|False
-8|Hotel Stockholm|2023-04-10|2023-04-14|3|True|False
-9|Hotel Stockholm|2023-04-14|2023-04-18|3|False|False
-10|Hotel Stockholm|2023-04-19|2023-04-22|3|False|False
-11|Hotel Vienna|2023-04-12|2023-04-15|4|False|False
-12|Hotel Moscow|2023-04-16|2023-04-25|2|False|False
+
