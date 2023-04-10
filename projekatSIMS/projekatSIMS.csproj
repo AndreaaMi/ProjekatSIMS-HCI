@@ -110,9 +110,6 @@
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Dialogs\View\Tourist.xaml.cs">
-      <DependentUpon>Tourist.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Dialogs\View\GuestReviewView.xaml.cs">
       <DependentUpon>GuestReviewView.xaml</DependentUpon>
     </Compile>
@@ -127,9 +124,6 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristSearchTourView.xaml.cs">
       <DependentUpon>TouristSearchTourView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\View\TourReservationView.xaml.cs">
-      <DependentUpon>TourReservationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\Vlasnik.xaml.cs">
       <DependentUpon>Vlasnik.xaml</DependentUpon>
@@ -162,10 +156,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Dialogs\View\Tourist.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Dialogs\View\GuestReviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,10 +173,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristSearchTourView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\View\TourReservationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
