@@ -21,6 +21,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private RelayCommand backCommand;
         private RelayCommand searchCommand;
 
+
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
         private Tour selectedItem;
 

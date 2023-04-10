@@ -16,7 +16,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
     {
         private RelayCommand createCommand;
         private RelayCommand nextCommand;
+        private RelayCommand cancelCommand;
 
+        private Tour selectedItem;
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
 
         private string id;
@@ -32,24 +34,30 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
 
         private TourService tourService;
+        private KeyPointsService keyPointsService;
 
         public TourGuideHomeModel()
         {
             SetService();
-        }
-
-        public void SetService()
-        {
-            tourService = new TourService();
-        }
-
-        private void CreateCommandExecute()
-        {
             var tours = tourService.GetAll();
             foreach (Tour tour in tours)
             {
                 Items.Add(tour);
             }
+
+            
+        }
+
+        public void SetService()
+        {
+            tourService = new TourService();
+            keyPointsService = new KeyPointsService(); 
+        }
+
+        private void CreateCommandExecute()
+        {
+            var tours = tourService.GetAll();
+            
             
             CreateTour();
 
@@ -107,6 +115,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             //////
             ///
             tourService.Add(newTour);
+            Items.Add(newTour);
             //dodavanje u datagrid
             
         }
@@ -115,6 +124,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
             TourGuideMainWindow.navigationService.Navigate(
                 new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+        }
+
+        private void CancelCommandExecute()
+        {
+            tourService.Remove(SelectedItem);
+            var keyPointsCopy = keyPointsService.GetAll().ToList();
+            foreach (KeyPoints kp in keyPointsCopy)
+            {
+                if (kp.AssociatedTour == SelectedItem.Id)
+                {
+                    keyPointsService.Remove(kp);
+                }
+            }
         }
 
 
@@ -143,6 +165,29 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 }
 
                 return nextCommand;
+            }
+        }
+
+        public RelayCommand CancelCommand
+        {
+            get
+            {
+                if (cancelCommand == null)
+                {
+                    cancelCommand = new RelayCommand(param => CancelCommandExecute());
+                }
+
+                return cancelCommand;
+            }
+        }
+
+        public Tour SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
             }
         }
 
