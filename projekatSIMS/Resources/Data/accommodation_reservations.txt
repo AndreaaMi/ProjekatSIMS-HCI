@@ -1,6 +1,6 @@
 0|Hotel Dublin|2023-04-11|2023-04-15|3|False|False
-1|Hotel Dublin|2023-03-22|2023-03-26|10|False|True
-2|Hotel London|2023-04-20|2023-04-26|1|True|False
+1|Hotel Dublin|2023-03-22|2023-03-26|10|False|False
+2|Hotel London|2023-04-20|2023-04-26|1|False|False
 3|Hotel Dublin|2023-04-11|2023-04-15|3|True|False
 4|Hotel Vienna|2023-03-23|2023-03-25|4|False|False
 4|Hotel Vienna|2023-03-15|2023-03-19|4|False|False

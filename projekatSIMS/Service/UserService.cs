@@ -86,7 +86,7 @@ namespace projekatSIMS.Service
             return unitOfWork.Users.GetLoginUserType();
         }
 
-        public void UpdateOwnerRating(int ownerId, double newRating)
+        public void UpdateOwnerRating(int ownerId, double ownerPolitness,double cleanliness)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             User owner = (User)unitOfWork.Users.Get(ownerId);
@@ -100,13 +100,12 @@ namespace projekatSIMS.Service
             double currentRating = owner.AverageRating;
             int reviewCount = owner.ReviewCount;
 
-            double newAverageRating = ((currentRating * reviewCount) + newRating) / (reviewCount + 1);
+            double newAverageRating = ((currentRating * reviewCount) + ownerPolitness + cleanliness) / (reviewCount + 1);
             owner.AverageRating = newAverageRating;
             owner.ReviewCount = reviewCount + 1;
 
             // Save changes to the repository
             unitOfWork.Users.Edit(owner);
-            SetSuperOwner(ownerId);
             unitOfWork.Save();
         }
 
@@ -114,7 +113,7 @@ namespace projekatSIMS.Service
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             User owner = (User)unitOfWork.Users.Get(ownerId);
-            return unitOfWork.Users.GetOwnerReviewCount() >= 50 && unitOfWork.Users.GetOwnerAverageRating() > 9.5;
+            return (owner.ReviewCount >= 50) && (owner.AverageRating >= 9.5);
         }
 
         public void SetSuperOwner(int ownerId)
@@ -128,6 +127,8 @@ namespace projekatSIMS.Service
             }
 
             owner.SuperStatus = false;
+            unitOfWork.Users.Edit(owner);
+            unitOfWork.Save();
 
         }
 
