@@ -1,10 +1,6 @@
 1|jen|True|1
 2|dva|False|1
 3|tri|False|1
-5|j|False|11
-6|a|True|11
-7|s|False|11
-8|d|False|11
 9|bioskop|False|12
 10|pozoriste|False|12
 11|pekara|False|13
