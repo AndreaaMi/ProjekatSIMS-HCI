@@ -13,6 +13,7 @@ namespace projekatSIMS.Model
         private string lastName;
         private string email;
         private string password;
+        private int age;
 
         private UserType userType;
         private int reviewCount;
@@ -69,6 +70,16 @@ namespace projekatSIMS.Model
             {
                 password = value;
                 OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                age = value;
+                OnPropertyChanged(nameof(Age));
             }
         }
 
@@ -137,7 +148,7 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString() + "|" + reviewCount + "|" + averageRating + "|" + superStatus;
+            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString() + "|" + reviewCount + "|" + averageRating + "|" + superStatus + "|" + age;
         }
 
         public override void ImportFromString(string[] parts)
@@ -151,6 +162,7 @@ namespace projekatSIMS.Model
             ReviewCount = int.Parse(parts[6]);
             AverageRating = double.Parse(parts[7]);
             SuperStatus = bool.Parse(parts[8]);
+            Age = int.Parse(parts[9]);
         }
     }
 }

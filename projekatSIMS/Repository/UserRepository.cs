@@ -22,6 +22,7 @@ namespace projekatSIMS.Repository
             ((User)user).AverageRating = ((User)entity).AverageRating;
             ((User)user).ReviewCount = ((User)entity).ReviewCount;
             ((User)user).SuperStatus = ((User)entity).SuperStatus;
+            ((User)user).Age = ((User)entity).Age;
         }
 
         public void SetLoginUser(User user)
@@ -40,16 +41,6 @@ namespace projekatSIMS.Repository
             return DataContext.Instance.LoginUser.UserType.ToString();
         }
 
-        public int GetOwnerReviewCount()
-        {
-            return DataContext.Instance.LoginUser.ReviewCount;
-        }
-
-
-        public double GetOwnerAverageRating()
-        {
-            return DataContext.Instance.LoginUser.AverageRating;
-        }
-
+       
     }
 }
