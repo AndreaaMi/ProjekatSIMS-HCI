@@ -18,6 +18,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
     {
         private RelayCommand nextCommand;
         private RelayCommand endTourCommand;
+        private RelayCommand backCommand;
 
         private TourService tourService;
         private KeyPointsService keyPointsService;
@@ -93,6 +94,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             //  new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
         }
 
+        private void BackCommandExecute()
+        {
+            
+                
+            
+             TourGuideMainWindow.navigationService.Navigate(
+              new Uri("UI/Dialogs/View/TourGuideView/TourGuideHomeView.xaml", UriKind.Relative));
+        }
         public RelayCommand NextCommand
         {
             get
@@ -116,6 +125,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 }
 
                 return nextCommand;
+            }
+        }
+
+        public RelayCommand BackCommand
+        {
+            get
+            {
+                if (backCommand == null)
+                {
+                    backCommand = new RelayCommand(param => BackCommandExecute());
+                }
+
+                return backCommand;
             }
         }
 

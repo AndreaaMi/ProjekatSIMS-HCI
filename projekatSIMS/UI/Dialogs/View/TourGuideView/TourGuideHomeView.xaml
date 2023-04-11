@@ -104,6 +104,19 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
+                    <DataGrid Grid.Row="9" Grid.Column="2" Grid.RowSpan="4" x:Name="Available" Margin="400,10,20,10" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items2}" IsReadOnly="True" SelectedItem="{Binding Path=SelectedItem2}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Below 18" Width="*" Binding="{Binding Path=Minor}"/>
+                            <DataGridTextColumn Header="18-50" Width="*" Binding="{Binding Path=Adult}"/>
+                            <DataGridTextColumn Header="Over 50" Width="*" Binding="{Binding Path=Elder}"/>
+                            <DataGridTextColumn Header="% with " Width="*" Binding="{Binding Path=With}"/>
+                            <DataGridTextColumn Header="% without" Width="*" Binding="{Binding Path=Without}"/>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+
                 </Grid>
             </Grid>
 

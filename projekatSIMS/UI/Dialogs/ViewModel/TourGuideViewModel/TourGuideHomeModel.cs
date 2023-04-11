@@ -12,7 +12,19 @@ using System.Threading.Tasks;
 
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
-{
+{   
+    public class guestStats
+    {
+        public int below;
+        public int exact;
+        public int over;
+        public int perWith;
+        public int perWithout;
+        public guestStats() { }
+
+
+        
+    }
     internal class TourGuideHomeModel : ViewModelBase
     {
         private RelayCommand createCommand;
@@ -22,6 +34,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private Tour selectedItem;
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
+
+        private Tour selectedItem2;
+        private ObservableCollection<Tour> items2 = new ObservableCollection<Tour>();
 
         private string id;
         private string name;
@@ -34,6 +49,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string description;
         private string keyPointId;
         private string keyPointName;
+
+        private string minor;
+        private string adult;
+        private string elder;
+        private string with;
+        private string without;
 
         private TourService tourService;
         private KeyPointsService keyPointsService;
@@ -75,6 +96,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
             if(selectedItem != null)
             {
+                
+                
+                guestStats gs = new guestStats();
+               // gs.below = 
+               //gs.exact = 
+                //gs.over = 
+                //gs.perWith =
+                //gs.perWithout =
 
             }
             else
@@ -246,6 +275,16 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
+        public Tour SelectedItem2
+        {
+            get { return selectedItem2; }
+            set
+            {
+                selectedItem2 = value;
+                OnPropertyChanged(nameof(SelectedItem2));
+            }
+        }
+
         public string Id
         {
             get { return id; }
@@ -368,6 +407,56 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
+        public string Adult
+        {
+            get { return adult; }
+            set
+            {
+                adult = value;
+                OnPropertyChanged(nameof(Adult));
+            }
+        }
+
+        public string Minor
+        {
+            get { return minor; }
+            set
+            {
+                minor = value;
+                OnPropertyChanged(nameof(Minor));
+            }
+        }
+
+        public string Elder
+        {
+            get { return elder; }
+            set
+            {
+                elder = value;
+                OnPropertyChanged(nameof(Elder));
+            }
+        }
+
+        public string With
+        {
+            get { return with; }
+            set
+            {
+                with = value;
+                OnPropertyChanged(nameof(With));
+            }
+        }
+
+        public string Without
+        {
+            get { return without; }
+            set
+            {
+                without = value;
+                OnPropertyChanged(nameof(Without));
+            }
+        }
+
         public ObservableCollection<Tour> Items
         {
             get { return items; }
@@ -375,6 +464,16 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 items = value;
                 OnPropertyChanged(nameof(Items));
+            }
+        }
+
+        public ObservableCollection<Tour> Items2
+        {
+            get { return items2; }
+            set
+            {
+                items2 = value;
+                OnPropertyChanged(nameof(Items2));
             }
         }
 
