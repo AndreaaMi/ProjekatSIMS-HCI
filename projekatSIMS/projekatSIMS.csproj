@@ -96,6 +96,8 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\VoucherService.cs" />
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerHomeModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayModel.cs" />
@@ -113,6 +115,18 @@
     <Compile Include="Service\TourService.cs" />
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\OwnerView\kt2.xaml.cs">
+      <DependentUpon>kt2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\OwnerView\OwnerHomeView.xaml.cs">
+      <DependentUpon>OwnerHomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\OwnerView\OwnerMainWindowView.xaml.cs">
+      <DependentUpon>OwnerMainWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\OwnerView\SuperOwnerView.xaml.cs">
+      <DependentUpon>SuperOwnerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideHomeView.xaml.cs">
       <DependentUpon>TourGuideHomeView.xaml</DependentUpon>
@@ -176,6 +190,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestView\GuestMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\OwnerView\kt2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\OwnerView\OwnerHomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\OwnerView\OwnerMainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\OwnerView\SuperOwnerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

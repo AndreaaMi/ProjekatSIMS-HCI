@@ -48,5 +48,18 @@ namespace projekatSIMS.Repository
             return null;
         }
 
+        public IEnumerable<Entity> GetAccommodationReservationByAccommodation(string accommodationName)
+        {
+            List<Entity> result = new List<Entity>();
+            foreach (AccommodationReservation it in DataContext.Instance.AccommodationReservations)
+            {
+                if (it.AccommodationName == accommodationName)
+                {
+                    result.Add(it);
+                }
+            }
+            return null;
+        }
+
     }
 }

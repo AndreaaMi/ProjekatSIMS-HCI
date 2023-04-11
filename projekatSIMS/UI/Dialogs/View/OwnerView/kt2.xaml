@@ -1,0 +1,48 @@
+﻿<Window x:Class="projekatSIMS.UI.Dialogs.View.OwnerView.kt2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.OwnerView"
+        mc:Ignorable="d"
+        Title="kt2" Height="500" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="1" Background="#F1D7B8" >
+            <Button x:Name="SuperOwnerButton" Content="Super-Owner" Background="#9ba955" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="26" Width="80" Margin="0,434,0,0" Click="SuperOwnerButton_Click"/>
+        </Border>
+        <Grid>
+            <Button x:Name="AcceptButton" Content="Accept" Background="#9ba955" FontWeight="Bold" HorizontalAlignment="Left" Margin="378,218,0,0" VerticalAlignment="Top" Height="24" Width="130" Click="AcceptButton_Click" />
+            <Button x:Name="RejectButton" Content="Reject" Background="#9ba955" FontWeight="Bold" HorizontalAlignment="Left" Margin="528,218,0,0" VerticalAlignment="Top" Height="24" Width="130" Click="RejectButton_Click"/>
+            <TextBox x:Name="ReschedulePosibillityTextBox" IsReadOnly="True" BorderThickness="2" BorderBrush ="#ff6961" HorizontalAlignment="Left" Margin="172,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="24" TextChanged="ReschedulePosibillityTextBox_TextChanged"/>
+            <Label Content="Zahtevi za pomeranje rezervacija :" HorizontalAlignment="Left" Margin="42,39,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold"/>
+            <Label Content="Mogucnost pomeranja&#xD;&#xA;          rezervacije:" HorizontalAlignment="Left" Margin="23,209,0,0" VerticalAlignment="Top"/>
+            <Label Content="Ocene gostiju  :" HorizontalAlignment="Left" Margin="42,286,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold"/>
+            <ListBox x:Name="ReviewsListBox" Margin="42,323,42,10" BorderThickness="5" BorderBrush="#F1D7B8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="616" Height="100" SelectionChanged="ReviewsListBox_SelectionChanged"/>
+            <Button x:Name="ShowReviewsButton" Content="Show Reviews" Background="#f1d7b8" FontWeight="Bold" HorizontalAlignment="Left" Margin="528,428,0,0" VerticalAlignment="Top" Height="24" Width="130" Click="ShowReviewsButton_Click" />
+            <Button x:Name="ShowRequestsButton" Content="Show Requests" Background="#f1d7b8" FontWeight="Bold" HorizontalAlignment="Left" Margin="528,180,0,0" VerticalAlignment="Top" Height="24" Width="130" Click="ShowRequestsButton_Click" />
+            <ListBox x:Name="RequestsListBox"  Margin="0,75,0,0" SelectedItem="{Binding selectedRequest}" BorderThickness="5" BorderBrush="#F1D7B8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="616" Height="100" SelectionChanged="RequestListBox_SelectionChanged"/>
+            <TextBox x:Name="IdRequestTextBox"  BorderThickness="2" BorderBrush ="#ff6961" HorizontalAlignment="Left" Margin="172,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Height="24" TextChanged="IdRequestTextBox_TextChanged"/>
+            <Label Content="Unesite Id zahteva :" HorizontalAlignment="Left" Margin="23,183,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="ShowButton" Content="Show" Background="#9ba955" FontWeight="Bold" HorizontalAlignment="Left" Margin="230,189,0,0" VerticalAlignment="Top" Height="24" Width="116" Click="ShowButton_Click" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.182"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <TextBox x:Name="CommentTextBox"  BorderThickness="2" BorderBrush ="Black" HorizontalAlignment="Left" Margin="528,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="30" TextChanged="CommentTextBox_TextChanged"  Visibility="Collapsed"/>
+            <Button x:Name="FinishButton" Content="Finish" Background="#9ba955" FontWeight="Bold" HorizontalAlignment="Left" Margin="550,282,0,0" VerticalAlignment="Top" Height="24" Width="86" Click="FinishButton_Click" Visibility="Collapsed"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

@@ -1,6 +1,7 @@
 ﻿using projekatSIMS.Model;
 using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View;
+using projekatSIMS.UI.Dialogs.View.OwnerView;
 using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using projekatSIMS.UI.Dialogs.View.TouristView;
 using System;
@@ -37,7 +38,7 @@ namespace projekatSIMS
             switch (type)
             {
                 case "OWNER":
-                    windowToDisplay = new AccommodationRegistrationView();
+                    windowToDisplay = new kt2();
                     break;
                 case "GUEST":
                     windowToDisplay = new AccommodationSearchView();

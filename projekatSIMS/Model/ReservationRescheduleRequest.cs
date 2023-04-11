@@ -1,6 +1,8 @@
-﻿using System;
+﻿using System.Globalization;
+using projekatSIMS.Service;
+using System.Windows.Documents;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,36 +10,42 @@ using System.Xml.Linq;
 
 namespace projekatSIMS.Model
 {
-    public class ReservationRescheduleRequest:Entity
+    public class ReservationRescheduleRequest : Entity
     {
         private int reservationId;
         private DateTime newStartDate;
         private DateTime newEndDate;
         private string guestName;
         private RequestStatusType status;
+        private string comment;
+
+
 
         public ReservationRescheduleRequest()
         {
         }
 
-        public ReservationRescheduleRequest(int reservationId, DateTime newStartDate, DateTime newEndDate, string guestName, RequestStatusType status)
+        public ReservationRescheduleRequest(int reservationId, DateTime newStartDate, DateTime newEndDate, string guestName, RequestStatusType status, string comment = null)
         {
             this.reservationId = reservationId;
             this.newStartDate = newStartDate;
             this.newEndDate = newEndDate;
             this.guestName = guestName;
             this.status = status;
+            this.comment = comment;
+
         }
 
-        public int ReservationId 
+        public int ReservationId
         {
-            get {  return reservationId; }
+            get { return reservationId; }
             set
-            { 
-                reservationId = value; 
+            {
+                reservationId = value;
                 OnPropertyChanged(nameof(ReservationId));
             }
         }
+
 
         public DateTime NewStartDate
         {
@@ -63,7 +71,7 @@ namespace projekatSIMS.Model
             get { return guestName; }
             set
             {
-                guestName = value; 
+                guestName = value;
                 OnPropertyChanged(nameof(GuestName));
 
             }
@@ -71,10 +79,10 @@ namespace projekatSIMS.Model
 
         public RequestStatusType Status
         {
-            get { return status; }  
+            get { return status; }
             set
             {
-                status = value; 
+                status = value;
                 OnPropertyChanged(nameof(Status));
             }
         }
@@ -96,22 +104,33 @@ namespace projekatSIMS.Model
                     break;
             }
         }
-        
+
+        public string Comment
+        {
+            get { return comment; }
+            set
+            {
+                comment = value;
+                OnPropertyChanged(nameof(Comment));
+            }
+        }
+
 
         public override string ExportToString()
         {
-            return id + "|" + reservationId + "|" + newStartDate.ToString("yyyy-MM-dd") + "|" + newEndDate.ToString("yyyy-MM-dd") + "|" + guestName + "|" + status.ToString();
+            return id + "|" + reservationId + "|" + newStartDate.ToString("yyyy-MM-dd") + "|" + newEndDate.ToString("yyyy-MM-dd") + "|" + guestName + "|" + status.ToString() + "|" + comment;
         }
 
         public override void ImportFromString(string[] parts)
         {
             base.ImportFromString(parts);
 
-            reservationId = int.Parse(parts[1]);
+            ReservationId = int.Parse(parts[1]);
             newStartDate = DateTime.ParseExact(parts[2], "yyyy-MM-dd", CultureInfo.InvariantCulture);
             newEndDate = DateTime.ParseExact(parts[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
             guestName = parts[4];
             SetRequestStatusType(parts[5]);
+            Comment = parts[6];
 
         }
     }

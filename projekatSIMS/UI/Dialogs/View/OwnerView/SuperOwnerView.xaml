@@ -1,0 +1,36 @@
+﻿<Window x:Class="projekatSIMS.UI.Dialogs.View.OwnerView.SuperOwnerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.OwnerView"
+        mc:Ignorable="d"
+        Title="SuperOwnerView" Height="800" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Height="NaN" Margin="692,123,-216,-254" Width="NaN">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="31*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="NameTextBox" TextWrapping="Wrap" Width="110" Margin="97,8,330,155" TextChanged="NameTextBox_TextChanged" Grid.Column="1"  Background="#9ba955"/>
+            <TextBox x:Name="CityTextBox" TextWrapping="Wrap" Width="110" Margin="97,31,330,132" Grid.Column="1"  Background="#9ba955"/>
+            <TextBox x:Name="CountryTextBox" TextWrapping="Wrap" Width="110" Margin="97,54,330,110" Grid.Column="1"  Background="#9ba955"/>
+            <TextBox x:Name="TypeTextBox" TextWrapping="Wrap" Width="110" Margin="97,78,330,83" Grid.Column="1" TextChanged="TypeTextBox_TextChanged"  Background="#9ba955"/>
+            <TextBox x:Name="ImageUrlTextBox" TextWrapping="Wrap" Margin="97,103,330,20" Grid.Column="1" Background="#9ba955"/>
+            <Label Content="Name &#xA;&#xA;Owner &#xA;&#xA;City &#xA;&#xA;Country&#xA;&#xA;Image " FontSize="9" FontWeight="DemiBold"  HorizontalAlignment="Left" Height="177" Width="110" VerticalAlignment="Top" Grid.Column="1" Margin="42,4,0,0"/>
+        </Grid>
+        <Border Grid.Row="1" Background ="#F1D7B8"/>
+        <Grid>
+            <ListBox x:Name="AccommodationImageListBox" BorderThickness="5" BorderBrush="#F1D7B8" Margin="494,116,311,-399" SelectionChanged="AccommodationImageListBox_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
+            <ListBox x:Name="AccommodationListBox" BorderThickness="5" BorderBrush="#F1D7B8" Margin="30,116,498,-402" Width="280" Height="330"/>
+
+
+        </Grid>
+        <Label Content="Accommodations:"  FontSize="20" FontWeight="DemiBold" Margin="36,74,518,-70" Height="50" Width="250"/>
+        <Button x:Name="AccommodationShowButton" Content="Show" Background="#9ba955" Height="26" Width="80" FontWeight="Bold" Margin="223,82,500,-58" Click="AccommodationShowButton_Click"/>
+        <Label Content="Choose accommodation:"  FontSize="20" FontWeight="DemiBold" Margin="358,73,192,-73" Height="50" Width="250"/>
+    </Grid>
+</Window>

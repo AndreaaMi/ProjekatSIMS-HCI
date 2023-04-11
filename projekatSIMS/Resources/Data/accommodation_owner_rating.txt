@@ -1,5 +1,5 @@
 0|1|4|5|commnt1|https://example.com/image.jpg
-1|4|3|4|vmnxc m|url1
-2|4|3|4|fdwvgfsv|dscdsfvd
+1|5|3|4|vmnxc m|url1
+2|1|3|4|fdwvgfsv|dscdsfvd
 3|4|4|5|dlscdklscm|odcdlscm
-4|8|4|5|comment1|url1
+4|3|4|5|comment1|url1
