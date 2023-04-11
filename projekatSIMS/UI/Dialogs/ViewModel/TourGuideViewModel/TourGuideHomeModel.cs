@@ -15,11 +15,11 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {   
     public class guestStats
     {
-        public int below;
-        public int exact;
-        public int over;
-        public double perWith;
-        public double perWithout;
+        public int minor { get; set; }
+        public int adult { get; set; }
+        public int elder { get; set; }
+        public double With { get; set; }
+        public double Without { get; set; }
         public guestStats() { }
 
 
@@ -61,7 +61,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
         private UserService userService;
-        
+
 
         public TourGuideHomeModel()
         {
@@ -70,9 +70,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             foreach (Tour tour in tours)
             {
                 Items.Add(tour);
+
             }
 
             
+            
+
+
         }
 
         public void SetService()
@@ -98,7 +102,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private void StatsCommandExecute()
         {
            guestStats gs = new guestStats();
-            gs.below = 0;
+            gs.minor = 0;
+            gs.adult = 0;
+            gs.elder = 0;
             double temp = 0;
             double temp2 = 0;
             if(selectedItem != null)
@@ -114,15 +120,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                             {
                                 if(user.Age < 18)
                                 {
-                                    gs.below += tr.NumberOfGuests;
+                                    gs.minor += tr.NumberOfGuests;
                                 }
                                 if(user.Age > 18 && user.Age <50)
                                 {
-                                    gs.exact += tr.NumberOfGuests;
+                                    gs.adult += tr.NumberOfGuests;
                                 }
                                 if (user.Age > 50)
                                 {
-                                    gs.over += tr.NumberOfGuests;
+                                    gs.elder += tr.NumberOfGuests;
                                 }
                             }
                         }
@@ -143,15 +149,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                         }
                     }
                 }
-                gs.perWith = temp / temp2;
-                gs.perWithout = 1 - gs.perWith;
+                gs.With = temp / temp2;
+                gs.Without = 1 - gs.With;
                 Items2.Add(gs);
                 
                  
-               //gs.exact = 
-                //gs.over = 
-                //gs.perWith =
-                //gs.perWithout =
+               
 
             }
             else
