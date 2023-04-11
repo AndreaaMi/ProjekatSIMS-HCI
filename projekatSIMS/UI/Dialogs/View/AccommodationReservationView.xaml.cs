@@ -27,8 +27,9 @@ namespace projekatSIMS.UI.Dialogs.View
         private readonly AccommodationService accommodationService;
         private readonly AccommodationReservationService accommodationReservationService;
         private readonly ReservationRescheduleRequestService reservationRescheduleRequestService;
-        private Accommodation selectedAccommodation;
+        private readonly AccommodationOwnerRatingService accommodationOwnerRatingService;
         private AccommodationReservation selectedReservation;
+        private Accommodation selectedAccommodation;
         private DateTime startDate;
         private DateTime endDate;
         private int guestCount;
@@ -40,6 +41,7 @@ namespace projekatSIMS.UI.Dialogs.View
             accommodationService = new AccommodationService();
             accommodationReservationService = new AccommodationReservationService();
             reservationRescheduleRequestService = new ReservationRescheduleRequestService();
+            accommodationOwnerRatingService = new AccommodationOwnerRatingService();
 
             LoadAccommodations();
             LoadReservations();
@@ -70,43 +72,66 @@ namespace projekatSIMS.UI.Dialogs.View
         }
 
         private void ReserveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!ValidateInput()) return;
+           {
+               if (!ValidateInput()) return;
 
-            var newReservation = new AccommodationReservation
+               var newReservation = new AccommodationReservation
+               {
+                   Id = accommodationReservationService.GenerateId(),
+                   AccommodationName = selectedAccommodation.Name,
+                   StartDate = startDate,
+                   EndDate = endDate,
+                   GuestCount = guestCount
+               };
+
+               if (IsReservationOverlapping(startDate, endDate))
+               {
+                   GetAvailableDates(selectedAccommodation);
+                    ReserveAvailableDateButton.IsEnabled = true;
+               }
+               else
+               {
+                   accommodationReservationService.CreateAccommodationReservation(newReservation);
+                   MessageBox.Show("Reservation successful");
+                   ReservationsListView.Items.Add(newReservation);
+               }
+
+               ClearInput();
+           }
+
+        private void ReserveAvailableDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (AvailableDatesDataGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a date range to reserve.");
+                return;
+            }
+
+            AvailableDate selectedDate = (AvailableDate)AvailableDatesDataGrid.SelectedItem;
+            AccommodationReservation newReservation = new AccommodationReservation
             {
                 Id = accommodationReservationService.GenerateId(),
-                AccommodationName = selectedAccommodation.Name,
-                StartDate = startDate,
-                EndDate = endDate,
+                AccommodationName = selectedDate.AccommodationName,
+                StartDate = selectedDate.AvailableStartDate,
+                EndDate = selectedDate.AvailableEndDate,
                 GuestCount = guestCount
             };
-
-            if (IsReservationOverlapping(startDate, endDate))
-            {
-                GetAvailableDates(selectedAccommodation);
-            }
-            else
-            {
                 accommodationReservationService.CreateAccommodationReservation(newReservation);
                 MessageBox.Show("Reservation successful");
                 ReservationsListView.Items.Add(newReservation);
-            }
-
-
-            ClearInput();
         }
 
         private void GetAvailableDates(Accommodation accommodation)
         {
             List<AvailableDate> availableDates = new List<AvailableDate>();
-            DateTime currentStartDate = startDate;
-            DateTime currentEndDate = endDate;
+            DateTime currentStartDate = DateTime.Today.AddDays(1);
+            DateTime maxEndDate = currentStartDate.AddMonths(1).AddDays(-1);
             TimeSpan diff = endDate - startDate;
             int dateDifference = (int)diff.TotalDays;
+            DateTime currentEndDate = DateTime.Today.AddDays(dateDifference + 1);
             IEnumerable<AccommodationReservation> reservations = GetAccommodationReservations(accommodation, currentStartDate, currentEndDate);
 
-            while (currentStartDate <= currentEndDate)
+            while (currentStartDate <= maxEndDate)
             {
                 if (IsAvailable(currentStartDate, currentEndDate, reservations))
                 {
@@ -116,13 +141,9 @@ namespace projekatSIMS.UI.Dialogs.View
                         AvailableEndDate = currentEndDate,
                         AccommodationName = selectedAccommodation.Name
                     });
-                    break;
                 }
+
                 currentStartDate = currentEndDate.AddDays(1);
-                if (currentStartDate > DateTime.MaxValue.AddDays(-selectedAccommodation.MinimumStayDays))
-                {
-                    break;
-                }
                 currentEndDate = currentStartDate.AddDays(dateDifference);
                 reservations = GetAccommodationReservations(accommodation, currentStartDate, currentEndDate);
             }
@@ -138,7 +159,51 @@ namespace projekatSIMS.UI.Dialogs.View
                 MessageBox.Show("The selected dates are not available. Here are some alternative dates:");
             }
 
-            AvailableDatesDataGrid.ItemsSource = availableDates;
+            var overlappingReservations = GetAccommodationReservations(accommodation, startDate, endDate);
+
+            var filteredDates = availableDates.Where(d => !overlappingReservations.Any(r => r.StartDate <= d.AvailableEndDate && r.EndDate >= d.AvailableStartDate));
+
+            AvailableDatesDataGrid.ItemsSource = filteredDates;
+        }
+
+        private IEnumerable<AccommodationReservation> GetAccommodationReservations(Accommodation accommodation, DateTime startDate, DateTime endDate)
+           {
+               return accommodationReservationService.GetAll()
+                   .OfType<AccommodationReservation>()
+                   .Where(r => r.AccommodationName == accommodation.Name &&
+                               r.StartDate <= endDate && r.EndDate >= startDate);
+           }
+
+        private bool IsAvailable(DateTime currentStartDate, DateTime currentEndDate, IEnumerable<AccommodationReservation> reservations)
+           {
+               foreach (AccommodationReservation reservation in reservations)
+               {
+                   if (currentStartDate >= reservation.StartDate && currentEndDate <= reservation.EndDate)
+                   {
+                       return false;
+                   }
+               }
+               return true;
+           }
+
+        private bool IsReservationOverlapping(DateTime startDate, DateTime endDate)
+           {
+               foreach (AccommodationReservation entity in accommodationReservationService.GetAll().Cast<AccommodationReservation>())
+               {
+                   if (entity.AccommodationName == selectedAccommodation.Name && startDate < entity.EndDate && endDate > entity.StartDate)
+                   {
+                       return true;
+                   }
+               }
+               return false;
+           }
+       
+        private void ClearInput()
+        {
+            StartDatePicker.SelectedDate = null;
+            EndDatePicker.SelectedDate = null;
+            GuestCountTextBox.Text = string.Empty;
+            MinimalStayLabel.Content = string.Empty;
         }
 
         private bool ValidateGuestCount()
@@ -150,32 +215,6 @@ namespace projekatSIMS.UI.Dialogs.View
             }
             return true;
         }
-        private IEnumerable<AccommodationReservation> GetAccommodationReservations(Accommodation accommodation, DateTime startDate, DateTime endDate)
-        {
-            return accommodationReservationService.GetAll()
-                .OfType<AccommodationReservation>()
-                .Where(r => r.AccommodationName == accommodation.Name &&
-                            r.StartDate <= endDate && r.EndDate >= startDate);
-        }
-
-        private bool IsAvailable(DateTime currentStartDate, DateTime currentEndDate, IEnumerable<AccommodationReservation> reservations)
-        {
-            foreach (var reservation in reservations)
-            {
-                if (currentStartDate >= reservation.StartDate && currentEndDate <= reservation.EndDate)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private void ClearInput()
-        {
-            StartDatePicker.SelectedDate = null;
-            EndDatePicker.SelectedDate = null;
-            GuestCountTextBox.Text = string.Empty;
-            MinimalStayLabel.Content = string.Empty;
-        }
 
         private bool ValidateInput()
         {
@@ -184,19 +223,6 @@ namespace projekatSIMS.UI.Dialogs.View
             if (!ValidateGuestCount()) return false;
             return true;
         }
-
-        /*private bool ValidateAvailableDates()
-        {
-           // List<AvailableDate> availableDates = GetAvailableDates(selectedAccommodation);
-           // AvailableDatesDataGrid.Items.Add(availableDates);
-            if (availableDates.Count == 0)
-            {
-                MessageBox.Show("No available dates found");
-                return false;
-            }
-            return true;
-        }*/
-
 
         private bool ValidateAccommodationSelection()
         {
@@ -254,18 +280,7 @@ namespace projekatSIMS.UI.Dialogs.View
 
             return true;
         }
-        private bool IsReservationOverlapping(DateTime startDate, DateTime endDate)
-        {
-            foreach (AccommodationReservation entity in accommodationReservationService.GetAll().Cast<AccommodationReservation>())
-            {
-                if (entity.AccommodationName == selectedAccommodation.Name && startDate < entity.EndDate && endDate > entity.StartDate)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+       
         private void ShowAllRequestRescheduleButton_Click(object sender, RoutedEventArgs e)
         {
             ReservationRescheduleRequestService reservationRescheduleRequestService = new ReservationRescheduleRequestService();
@@ -357,7 +372,76 @@ namespace projekatSIMS.UI.Dialogs.View
             RemoveReservation();
 
             MessageBox.Show("Reservation canceled successfully");
+
             LoadReservations();
         }
+
+        private bool IsRatingPeriodValid(AccommodationReservation reservation)
+        {
+            DateTime currentDate = DateTime.Now.Date;
+            DateTime endDate = reservation.EndDate.Date;
+            return (currentDate - endDate).Days <= 5;
+        }
+
+        private bool AreRatingInputsValid(int cleanliness, int ownerPoliteness, string comment)
+        {
+            return cleanliness >= 1 && cleanliness <= 5 &&
+                   ownerPoliteness >= 1 && ownerPoliteness <= 5 &&
+                   !string.IsNullOrEmpty(comment);
+        }
+
+        private void RateButton_Click(object sender, RoutedEventArgs e)
+        {
+            // get the selected reservation
+            if(!ValidateReservationSelection()) return; 
+
+            // check if the guest has already rated this reservation
+            if (selectedReservation.GuestsRate)
+            {
+                MessageBox.Show("You have already rated this reservation.");
+                return;
+            }
+
+            if (!IsRatingPeriodValid(selectedReservation))
+            {
+                MessageBox.Show("Rating period has expired.");
+                return;
+            }
+
+            // get the rating inputs
+            int cleanliness = int.Parse(CleanlinessTextBox.Text);
+            int ownerPoliteness = int.Parse(OwnerPolitenessTextBox.Text);
+            string comment = CommentText.Text.Trim();
+            string imageUrl = imageUrlTextBox.Text.Trim();
+
+            // validate inputs
+            if (!AreRatingInputsValid(cleanliness, ownerPoliteness, comment))
+            {
+                MessageBox.Show("Please fill in all the rating fields.");
+                return;
+            }
+
+            // create the rating object
+            AccommodationOwnerRating rating = new AccommodationOwnerRating
+            {
+                Id = accommodationOwnerRatingService.GenerateId(),
+                ReservationId = selectedReservation.Id,
+                Cleanliness = cleanliness,
+                OwnerPoliteness = ownerPoliteness,
+                Comment = comment,
+                ImageUrl = imageUrl
+            };
+
+            // save the rating
+            accommodationOwnerRatingService.Add(rating);
+
+            // mark the reservation as rated by the guest
+            selectedReservation.GuestsRate = true;
+            AccommodationReservationService reservationService = new AccommodationReservationService();
+            reservationService.Edit(selectedReservation);
+
+            MessageBox.Show("Rating submitted successfully.");
+        }
     }
+
 }

@@ -20,10 +20,11 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
     {
         private RelayCommand backCommand;
         private RelayCommand searchCommand;
+        private RelayCommand proceedCommand;
 
 
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
-        private Tour selectedItem;
+        private Tour selectedTour;
 
         private List<ComboBoxData<string>> states = new List<ComboBoxData<string>>();
         private List<ComboBoxData<string>> cities = new List<ComboBoxData<string>>();
@@ -48,6 +49,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                     Items.Add(entity);
             }
         }
+        #region COMMANDS
 
         private void BackCommandExecute()
         {
@@ -67,6 +69,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 }
             }
         }
+
+        private void ProceedCommandExecute()
+        {
+            if (selectedTour != null)
+            {
+                TouristMainWindow.navigationService.Navigate(
+                    new TouristReservationView(selectedTour));
+            }
+            else
+            {
+                MessageBox.Show("Please select a tour before proceeding to reservation.");
+            }
+        }
         public void SetService()
         {
             tourService = new TourService();
@@ -79,8 +94,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             LoadComboDurations();
             LoadComboLanguages();
         }
+        #endregion
 
-        //LOADING IN THE DATA 
+        #region LOADING THE DATA
 
         public void LoadComboStates()
         {
@@ -122,7 +138,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             languages = languages.GroupBy(x => x.Name).Select(x => x.First()).ToList();
         }
 
-        //SELECTION CHANGED LOGIC
+        #endregion
+
+        #region SELECTION
         private void StateCombo_SelectionChanged()
         {
            Items.Clear();
@@ -170,9 +188,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 }
             }
         }
+        #endregion
 
-
-        // PROPERTIES
+        #region PROPERTIES
 
         public ObservableCollection<Tour> Items
         {
@@ -184,13 +202,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             }
         }
 
-        public Tour SelectedItem
+        public Tour SelectedTour
         {
-            get { return selectedItem; }
+            get { return selectedTour; }
             set
             {
-                selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem));
+                selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
             }
         }
 
@@ -300,6 +318,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 return searchCommand ?? (searchCommand = new RelayCommand(param => SearchCommandExecute()));
             }
         }
+
+        public RelayCommand ProceedCommand
+        {
+            get
+            {
+                return proceedCommand ?? (proceedCommand = new RelayCommand(param => ProceedCommandExecute()));
+            }
+        }
+        #endregion
 
     }
 }

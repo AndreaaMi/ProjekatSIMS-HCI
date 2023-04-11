@@ -1,4 +1,6 @@
-﻿using System;
+﻿using projekatSIMS.Model;
+using projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,23 +12,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace projekatSIMS.UI.Dialogs.View.GuestView
+namespace projekatSIMS.UI.Dialogs.View.TouristView
 {
     /// <summary>
-    /// Interaction logic for GuestMainView.xaml
+    /// Interaction logic for TouristReservationView.xaml
     /// </summary>
-    public partial class GuestMainView : Window
+    public partial class TouristReservationView : Page
     {
-        public GuestMainView()
+        public TouristReservationView(Tour selectedTour)
         {
             InitializeComponent();
-        }
-
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            DataContext = new TouristReservationModel(selectedTour);
         }
     }
 }

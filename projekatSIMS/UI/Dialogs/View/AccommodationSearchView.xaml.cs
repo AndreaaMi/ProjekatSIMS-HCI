@@ -1,5 +1,6 @@
 ﻿using projekatSIMS.Model;
 using projekatSIMS.Service;
+using projekatSIMS.UI.Dialogs.View.GuestView;
 using projekatSIMS.UI.Dialogs.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -223,6 +224,12 @@ namespace projekatSIMS.UI.Dialogs.View
           }
         private void GoToToReservationButton_Click(object sender, RoutedEventArgs e){
             AccommodationReservationView win = new AccommodationReservationView();
+            win.Show();
+        }
+
+        private void GoToMainWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            GuestMainView win = new GuestMainView();
             win.Show();
         }
     }
