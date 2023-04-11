@@ -35,6 +35,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private TourService tourService;
         private KeyPointsService keyPointsService;
+        private TourReservationService tourReservationService;
+        private VoucherService voucherService;
 
         public TourGuideHomeModel()
         {
@@ -51,7 +53,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         public void SetService()
         {
             tourService = new TourService();
-            keyPointsService = new KeyPointsService(); 
+            keyPointsService = new KeyPointsService();
+            tourReservationService = new TourReservationService();
+            voucherService = new VoucherService();
         }
 
         private void CreateCommandExecute()
@@ -128,6 +132,18 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void CancelCommandExecute()
         {
+            foreach(TourReservation tourReservation in tourReservationService.GetAll())
+            {
+                if(tourReservation.TourId == SelectedItem.Id)
+                {
+                    Voucher voucher = new Voucher();
+                    voucher.Id = voucherService.GenerateId();
+                    voucher.GuestId = tourReservation.GuestId;
+                    voucher.ExpirationDate = DateTime.Now.AddMonths(2);
+                    voucherService.Add(voucher);
+                    tourReservationService.Remove(tourReservation);
+                }
+            }
             tourService.Remove(SelectedItem);
             var keyPointsCopy = keyPointsService.GetAll().ToList();
             foreach (KeyPoints kp in keyPointsCopy)

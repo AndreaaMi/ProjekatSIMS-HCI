@@ -154,10 +154,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 
         public void CreateReservation()
         {
+            SelectedTour.GuestNumber += int.Parse(GuestNumber);
             //CREATING A NEW TOUR RESERVATION AND SETTING THE VALUES
             TourReservation tourReservation = new TourReservation(tourReservationService.GenerateId(),userService.GetLoginUser().Id, SelectedTour.Id, int.Parse(GuestNumber));
             tourReservationService.Add(tourReservation);
-            SelectedTour.GuestNumber += int.Parse(GuestNumber);
         }
         #endregion
 
