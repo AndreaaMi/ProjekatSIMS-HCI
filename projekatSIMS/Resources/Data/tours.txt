@@ -8,5 +8,5 @@
 9|tura9|aaa|aaa|ENGLISH|11.11.2011|1234|22|2|eee|0|0
 10|aaa|aaa|aaa|ENGLISH|11.11.2011|12:34|22|2|asd|0|0
 11|sad|asd|asd|ENGLISH|11.11.2011|1234|22|22|asd|0|5_6_7_8
-12|tura12|Srbija|Zajecar|SERBIAN|11.11.2011|11:11|23|2|koja|0|9_10
-13|tura13|Srbija|Subotica|SERBIAN|11.11.2011|11:11|22|2|laka|5|11_12
+12|tura12|Srbija|Zajecar|SERBIAN|11.11.2011|11:11|23|2|koja|3|9_10
+13|tura13|Srbija|Subotica|SERBIAN|11.11.2011|11:11|22|2|laka|10|11_12
