@@ -123,8 +123,6 @@
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml.cs">
       <DependentUpon>TourGuideToursToday.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Dialogs\View\Tourist.xaml.cs">
-      <DependentUpon>Tourist.xaml</DependentUpon>
     <Compile Include="UI\Dialogs\View\GuestView\GuestPageView.xaml.cs">
       <DependentUpon>GuestPageView.xaml</DependentUpon>
     </Compile>
@@ -190,10 +188,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\View\Tourist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
