@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
     internal class TourGuideHomeModel : ViewModelBase
@@ -17,6 +18,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private RelayCommand createCommand;
         private RelayCommand nextCommand;
         private RelayCommand cancelCommand;
+        private RelayCommand statsCommand;
 
         private Tour selectedItem;
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
@@ -69,60 +71,29 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             
         }
 
-        private void CreateTour()
+        private void StatsCommandExecute()
         {
-            TourService tourService = new TourService();
-            KeyPointsService keyPointsService = new KeyPointsService();
-            Tour newTour = new Tour();
-            newTour.Id = int.Parse(Id);
-            newTour.Name = Name;
-            newTour.Location.Country = Country;
-            newTour.Location.City = City;
-
-            newTour.StartingDate = DateTime.Parse(Date);
-            newTour.StartingTime = Time;
-            newTour.MaxNumberOfGuests = int.Parse(MaximumNumberOfGuests);
-            newTour.Duration = int.Parse(Duration);
-            newTour.Description = Description;
-            newTour.GuestNumber = 22;
-
-            //////
-            string i = KeyPointId;
-            string j = KeyPointName;
-            string[] keyId = i.Split(' ');
-            string[] keyName = j.Split(' ');
-            int k = 0;
-
-
-
-
-            foreach (var word in keyId)
+            if(selectedItem != null)
             {
 
-
-                if (word == "x")
-                {
-                    break;
-                }
-                KeyPoints key = new KeyPoints();
-                key.Id = int.Parse(word);
-                key.Name = keyName[k];
-                key.IsActive = false;
-                key.AssociatedTour = int.Parse(Id);
-                newTour.KeyPoints.Add(key);
-                keyPointsService.Add(key);
-                k++;
             }
-
-
-
-            //////
-            ///
-            tourService.Add(newTour);
-            Items.Add(newTour);
-            //dodavanje u datagrid
-            
+            else
+            {
+                Tour tours = new Tour();
+                tours.GuestNumber = 0;
+                
+                foreach(Tour tour in tourService.GetAll())
+                {
+                    if(tour.GuestNumber > tours.GuestNumber)
+                    {
+                        tours = tour;
+                    }
+                }
+                Items.Clear();
+                Items.Add(tours);
+            }
         }
+
 
         private void NextCommandExecute()
         {
@@ -145,6 +116,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 }
             }
             tourService.Remove(SelectedItem);
+            //
             var keyPointsCopy = keyPointsService.GetAll().ToList();
             foreach (KeyPoints kp in keyPointsCopy)
             {
@@ -153,9 +125,63 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                     keyPointsService.Remove(kp);
                 }
             }
+            Items.Remove(selectedItem);
         }
 
-
+        private void CreateTour()
+                {
+                    TourService tourService = new TourService();
+                    KeyPointsService keyPointsService = new KeyPointsService();
+                    Tour newTour = new Tour();
+                    newTour.Id = int.Parse(Id);
+                    newTour.Name = Name;
+                    newTour.Location.Country = Country;
+                    newTour.Location.City = City;
+        
+                    newTour.StartingDate = DateTime.Parse(Date);
+                    newTour.StartingTime = Time;
+                    newTour.MaxNumberOfGuests = int.Parse(MaximumNumberOfGuests);
+                    newTour.Duration = int.Parse(Duration);
+                    newTour.Description = Description;
+                    newTour.GuestNumber = 22;
+        
+                    //////
+                    string i = KeyPointId;
+                    string j = KeyPointName;
+                    string[] keyId = i.Split(' ');
+                    string[] keyName = j.Split(' ');
+                    int k = 0;
+        
+        
+        
+        
+                    foreach (var word in keyId)
+                    {
+        
+        
+                        if (word == "x")
+                        {
+                            break;
+                        }
+                        KeyPoints key = new KeyPoints();
+                        key.Id = int.Parse(word);
+                        key.Name = keyName[k];
+                        key.IsActive = false;
+                        key.AssociatedTour = int.Parse(Id);
+                        newTour.KeyPoints.Add(key);
+                        keyPointsService.Add(key);
+                        k++;
+                    }
+        
+        
+        
+                    //////
+                    ///
+                    tourService.Add(newTour);
+                    Items.Add(newTour);
+                    //dodavanje u datagrid
+                    
+                }
 
 
         public RelayCommand CreateCommand
@@ -194,6 +220,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 }
 
                 return cancelCommand;
+            }
+        }
+
+        public RelayCommand StatsCommand
+        {
+            get
+            {
+                if (statsCommand == null)
+                {
+                    statsCommand = new RelayCommand(param => StatsCommandExecute());
+                }
+
+                return statsCommand;
             }
         }
 
