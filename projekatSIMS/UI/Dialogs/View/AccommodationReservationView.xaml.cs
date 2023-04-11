@@ -440,7 +440,8 @@ namespace projekatSIMS.UI.Dialogs.View
 
             accommodationOwnerRatingService.Add(rating);
             int owner = accommodationOwnerRatingService.GetRatingOwnerId(rating);
-            userService.UpdateOwnerRating(owner, ownerPoliteness);
+            userService.UpdateOwnerRating(owner, ownerPoliteness,cleanliness);
+            userService.SetSuperOwner(owner);
 
             // mark the reservation as rated by the guest
             selectedReservation.GuestsRate = true;
