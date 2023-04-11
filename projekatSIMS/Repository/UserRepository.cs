@@ -40,16 +40,6 @@ namespace projekatSIMS.Repository
             return DataContext.Instance.LoginUser.UserType.ToString();
         }
 
-        public int GetOwnerReviewCount()
-        {
-            return DataContext.Instance.LoginUser.ReviewCount;
-        }
-
-
-        public double GetOwnerAverageRating()
-        {
-            return DataContext.Instance.LoginUser.AverageRating;
-        }
-
+       
     }
 }
