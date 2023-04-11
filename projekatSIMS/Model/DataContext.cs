@@ -28,6 +28,7 @@ namespace projekatSIMS.Model
         private List<Entity> reservationRescheduleRequests = new List<Entity>();
         private List<Entity> accommodationOwnerRatings = new List<Entity>();
         private List<Entity> vouchers = new List<Entity>();
+        private List<Entity> tourRatings = new List<Entity>();
 
         private User loginUser = null;
 
@@ -57,7 +58,7 @@ namespace projekatSIMS.Model
             GenericSave(reservationRescheduleRequests, "reservation_reschedule_request.txt");
             GenericSave(accommodationOwnerRatings, "accommodation_owner_rating.txt");
             GenericSave(vouchers, "vouchers.txt");
-
+            GenericSave(tourRatings, "tourRatings.txt");
 
         }
 
@@ -88,6 +89,7 @@ namespace projekatSIMS.Model
             GenericLoad(reservationRescheduleRequests, "reservation_reschedule_request.txt", typeof(ReservationRescheduleRequest));
             GenericLoad(accommodationOwnerRatings, "accommodation_owner_rating.txt", typeof(AccommodationOwnerRating));
             GenericLoad(vouchers, "vouchers.txt", typeof(Voucher));
+            GenericLoad(tourRatings, "tourRatings.txt", typeof(TourRating));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -123,7 +125,7 @@ namespace projekatSIMS.Model
                 if (type == typeof(TourReservation))
                 {
                     TourReservation newEntity = new TourReservation();
-                    newEntity.ImportFromString (parts);
+                    newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
                 if (type == typeof(AccommodationReservation))
@@ -138,7 +140,7 @@ namespace projekatSIMS.Model
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-                if(type == typeof(ReservationRescheduleRequest))
+                if (type == typeof(ReservationRescheduleRequest))
                 {
                     ReservationRescheduleRequest newEntity = new ReservationRescheduleRequest();
                     newEntity.ImportFromString(parts);
@@ -150,13 +152,19 @@ namespace projekatSIMS.Model
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-                if(type == typeof(Voucher))
+                if (type == typeof(Voucher))
                 {
-                    Voucher newEntity= new Voucher();
+                    Voucher newEntity = new Voucher();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
-            }    
+                if (type == typeof(TourRating))
+                {
+                    TourRating newEntity = new TourRating();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+            }
         }
         public int GenerateId(List<Entity> entities)
         {
@@ -190,17 +198,17 @@ namespace projekatSIMS.Model
                 tours = entities;
                 return;
             }
-            if(type == typeof(KeyPoints))
+            if (type == typeof(KeyPoints))
             {
                 keypoints = entities;
                 return;
             }
-            if(type == typeof(AccommodationReservation))
+            if (type == typeof(AccommodationReservation))
             {
                 accommodationReservations = entities;
                 return;
             }
-            if(type == typeof(TourReservation))
+            if (type == typeof(TourReservation))
             {
                 tourReservations = entities;
                 return;
@@ -220,9 +228,14 @@ namespace projekatSIMS.Model
                 accommodationOwnerRatings = entities;
                 return;
             }
-            if(type == typeof(Voucher))
+            if (type == typeof(Voucher))
             {
                 vouchers = entities;
+                return;
+            }
+            if (type == typeof(TourRating))
+            {
+                tourRatings = entities;
                 return;
             }
         }
@@ -265,9 +278,13 @@ namespace projekatSIMS.Model
             {
                 return accommodationOwnerRatings;
             }
-            if(type == typeof(Voucher))
+            if (type == typeof(Voucher))
             {
                 return vouchers;
+            }
+            if (type == typeof(TourRating))
+            {
+                return tourRatings;
             }
 
             return null; //Mora jedan biti default return
@@ -298,21 +315,21 @@ namespace projekatSIMS.Model
         }
 
         public List<Entity> Keypoints
-        { 
+        {
             get { return keypoints; }
-            set {  keypoints = value; }
+            set { keypoints = value; }
         }
 
         public List<Entity> TourReservations
         {
-          get { return tourReservations; }
-          set { tourReservations = value; }
+            get { return tourReservations; }
+            set { tourReservations = value; }
         }
 
         public List<Entity> AccommodationReservations
-        { 
-          get { return accommodationReservations; }
-          set {  accommodationReservations = value; }
+        {
+            get { return accommodationReservations; }
+            set { accommodationReservations = value; }
         }
 
         public List<Entity> GuestReviews
@@ -337,7 +354,12 @@ namespace projekatSIMS.Model
         {
             get { return vouchers; }
             set { vouchers = value; }
+        }
 
+        public List<Entity> TourRatings
+        {
+            get { return tourRatings; }
+            set { tourRatings = value; }
         }
     }
 }

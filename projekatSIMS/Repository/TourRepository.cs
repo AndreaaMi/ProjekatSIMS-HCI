@@ -24,6 +24,23 @@ namespace projekatSIMS.Repository
             ((Tour)tour).KeyPoints = ((Tour)entity).KeyPoints;
         }
 
+        public int[] GetTourKeypoints(int tourId)
+        {
+            foreach(Tour tour in DataContext.Instance.Tours)
+            {
+                if (tour.Id == tourId)
+                {
+                    int[] keypointIds = new int[tour.KeyPoints.Count];
+                    for (int i = 0; i < tour.KeyPoints.Count; i++)
+                    {
+                        keypointIds[i] = tour.KeyPoints[i].Id;
+                    }
+                    return keypointIds;
+                }
+            }
+            return new int[0];
+        }
+
 
 
 

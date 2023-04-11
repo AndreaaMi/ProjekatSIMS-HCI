@@ -18,5 +18,18 @@ namespace projekatSIMS.Repository
             ((TourReservation)tourReservation).GuestId = ((TourReservation)entity).GuestId;
             ((TourReservation)tourReservation).NumberOfGuests = ((TourReservation)entity).NumberOfGuests;
         }
+
+        public List<int> GetReservationByGuestId(int guestId)
+        {
+            List<int> tourReservations = new List<int>();
+            foreach(TourReservation tourReservation in DataContext.Instance.TourReservations)
+            {
+                if(tourReservation.GuestId == guestId)
+                {
+                    tourReservations.Add(tourReservation.TourId);
+                }
+            }
+            return tourReservations;
+        }
     }
 }

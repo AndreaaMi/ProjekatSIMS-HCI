@@ -41,6 +41,7 @@
                 <Label FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"
                VerticalAlignment="Center" Grid.ColumnSpan="3" Content="Welcome to the Home Page"></Label>
                 <Button Content="Reserve available tour" Grid.Row="2" Command="{Binding ReserveCommand}" Grid.Column="1" Height="100" Width="200"></Button>
+                <Button Content="Rate finished tours" Grid.Row="3" Command="{Binding RateCommand}" Grid.Column="1" Height="100" Width="200"></Button>
             </Grid>
 
         </Border>

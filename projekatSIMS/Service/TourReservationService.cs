@@ -60,5 +60,11 @@ namespace projekatSIMS.Service
             unitOfWork.TourReservations.Add(tourReservation);
             unitOfWork.Save();
         }
+
+        public List<int> GetReservationByGuestId(int guestId)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            return unitOfWork.TourReservations.GetReservationByGuestId(guestId);
+        }
     }
 }

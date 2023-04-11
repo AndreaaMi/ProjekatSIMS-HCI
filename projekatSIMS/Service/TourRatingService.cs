@@ -8,47 +8,46 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Service
 {
-    public class KeyPointsService
+    public class TourRatingService
     {
-        public void Add(KeyPoints kp)
+        public void Add(TourRating tourRating)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.KeyPoint.Add(kp);
+            unitOfWork.TourRatings.Add(tourRating);
             unitOfWork.Save();
         }
 
-        public void Edit(KeyPoints kp)
+        public void Edit(TourRating tourRating)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.KeyPoint.Edit(kp);
+            unitOfWork.TourRatings.Edit(tourRating);
             unitOfWork.Save();
         }
 
-        public void Remove(KeyPoints kp)
+        public void Remove(TourRating tourRating)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.KeyPoint.Remove(kp);
+            unitOfWork.TourRatings.Remove(tourRating);
             unitOfWork.Save();
         }
 
         public Entity Get(int id)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.KeyPoint.Get(id);
+            return unitOfWork.TourRatings.Get(id);
         }
 
         public IEnumerable<Entity> GetAll()
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            IEnumerable<Entity> kp = unitOfWork.KeyPoint.GetAll();
-            return kp;
+            IEnumerable<Entity> tourRatings = unitOfWork.TourRatings.GetAll();
+            return tourRatings;
         }
 
-        public bool CheckIfKeyPointsPassed(int[] keyPointIds)
+        public int GenerateId()
         {
-            UnitOfWork unitOfWork= new UnitOfWork();
-            return unitOfWork.KeyPoint.CheckIfKeyPointsPassed(keyPointIds);
+            UnitOfWork unitOfWork = new UnitOfWork();
+            return unitOfWork.TourRatings.GenerateId();
         }
-
     }
 }

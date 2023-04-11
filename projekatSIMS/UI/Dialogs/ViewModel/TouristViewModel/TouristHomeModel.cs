@@ -11,6 +11,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
     internal class TouristHomeModel : ViewModelBase
     {
         private RelayCommand reserveCommand;
+        private RelayCommand rateCommand;
 
         public TouristHomeModel()
         {
@@ -23,6 +24,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 new Uri("UI/Dialogs/View/TouristView/TouristSearchTourView.xaml",UriKind.Relative));
         }
 
+        private void RateCommandExecute()
+        {
+            TouristMainWindow.navigationService.Navigate(
+                new Uri("UI/Dialogs/View/TouristView/TouristRatingToursView.xaml", UriKind.Relative));
+        }
+
         public RelayCommand ReserveCommand
         {
             get
@@ -33,6 +40,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 }
 
                 return reserveCommand;
+            }
+        }
+
+        public RelayCommand RateCommand
+        {
+            get
+            {
+                if(rateCommand == null)
+                {
+                    rateCommand = new RelayCommand(param => RateCommandExecute());
+                }
+
+                return rateCommand;
             }
         }
 

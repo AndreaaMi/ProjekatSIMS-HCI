@@ -1,0 +1,80 @@
+﻿<Page x:Class="projekatSIMS.UI.Dialogs.View.TouristView.TouristRatingToursView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.TouristView"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="TouristRatingToursView">
+
+    <Border CornerRadius="12">
+        <Border CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#000428" Offset="0"/>
+                    <GradientStop Color="#004e92" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#000428" Offset="1"/>
+                    <GradientStop Color="#004e92" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="575*"/>
+                    <ColumnDefinition Width="171*"/>
+                    <ColumnDefinition Width="530*"/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid  Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" x:Name="Tours" Margin="30,10,100,143" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" SelectedItem="{Binding Path=SelectedTour, Mode=TwoWay}" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tour Name" Width="90" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Country" Width="70" Binding="{Binding Path=Location.Country}"/>
+                        <DataGridTextColumn Header="City" Width="70" Binding="{Binding Path=Location.City}"/>
+                        <DataGridTextColumn Header="Language" Width="70" Binding="{Binding Path=Language}"/>
+                        <DataGridTextColumn Header="Start Date and Time" Width="170" Binding="{Binding Path=StartingDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom">
+                    <Label Content="TourGuide knowledge:" HorizontalAlignment="Right" Foreground="#D3D3D3" Margin="0 20"></Label>
+                    <Label Content="TourGuide language:" HorizontalAlignment="Right" Foreground="#D3D3D3"></Label>
+                    <Label Content="Overall interest level:" HorizontalAlignment="Right" Foreground="#D3D3D3" Margin="0 20 0 0"></Label>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Top">
+                    <Label Content="Additional comment:" HorizontalAlignment="Right" Foreground="#D3D3D3" Margin="0 20"></Label>
+                    <Label Content="Picture URL:" HorizontalAlignment="Right" Foreground="#D3D3D3"></Label>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2">
+                    <TextBox Width="20" Height="20" Text="{Binding TourGuideKnowledge, Mode=TwoWay}" Margin="-73 28 400 0"/>
+                    <TextBox Width="20" Height="20" Text="{Binding TourGuideLanguageProficiency, Mode=TwoWay}" Margin="-73 28 400 0"/>
+                    <TextBox Width="20" Height="20" Text="{Binding InterestLevel, Mode=TwoWay}" Margin="-73 25 400 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="2">
+                    <TextBox Width="180" Text="{Binding Comment, Mode=TwoWay}" Margin="19 25 400 0"/>
+                    <TextBox Width="90" Text="{Binding ImageUrl, Mode=TwoWay}" Margin="0 25 400 0"/>
+                </StackPanel>
+
+                <Button Grid.Row="4" Content="Back" Command="{Binding BackCommand}" Margin="176,31,175,32"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="Submit Rating" Command="{Binding SubmitCommand}" Margin="153,31,154,32"/>
+            </Grid>
+
+        </Border>
+    </Border>
+</Page>

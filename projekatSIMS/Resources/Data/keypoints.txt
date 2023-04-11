@@ -7,5 +7,5 @@
 8|d|False|11
 9|bioskop|False|12
 10|pozoriste|False|12
-11|pekara|False|13
-12|centar|False|13
+11|pekara|True|13
+12|centar|True|13
