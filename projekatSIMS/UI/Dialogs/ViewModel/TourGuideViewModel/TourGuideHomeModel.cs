@@ -18,8 +18,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         public int below;
         public int exact;
         public int over;
-        public int perWith;
-        public int perWithout;
+        public double perWith;
+        public double perWithout;
         public guestStats() { }
 
 
@@ -35,8 +35,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private Tour selectedItem;
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
 
-        private Tour selectedItem2;
-        private ObservableCollection<Tour> items2 = new ObservableCollection<Tour>();
+        
+        private ObservableCollection<guestStats> items2 = new ObservableCollection<guestStats>();
 
         private string id;
         private string name;
@@ -60,6 +60,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private KeyPointsService keyPointsService;
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
+        private UserService userService;
+        
 
         public TourGuideHomeModel()
         {
@@ -79,6 +81,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             keyPointsService = new KeyPointsService();
             tourReservationService = new TourReservationService();
             voucherService = new VoucherService();
+            userService = new UserService();
         }
 
         private void CreateCommandExecute()
@@ -94,12 +97,57 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void StatsCommandExecute()
         {
+           guestStats gs = new guestStats();
+            gs.below = 0;
+            double temp = 0;
+            double temp2 = 0;
             if(selectedItem != null)
             {
                 
+                foreach(TourReservation tr in tourReservationService.GetAll())
+                {
+                    if(selectedItem.Id ==  tr.TourId)
+                    {
+                        foreach(User user in userService.GetAll())
+                        {
+                            if(tr.GuestId == user.Id)
+                            {
+                                if(user.Age < 18)
+                                {
+                                    gs.below += tr.NumberOfGuests;
+                                }
+                                if(user.Age > 18 && user.Age <50)
+                                {
+                                    gs.exact += tr.NumberOfGuests;
+                                }
+                                if (user.Age > 50)
+                                {
+                                    gs.over += tr.NumberOfGuests;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                foreach(TourReservation tourReservation in tourReservationService.GetAll())
+                {
+                    if(selectedItem.Id == tourReservation.TourId)
+                    {
+                        temp2 += tourReservation.NumberOfGuests;
+                        foreach(Voucher voucher in voucherService.GetAll())
+                        {
+                            if(voucher.GuestId == tourReservation.GuestId)
+                            {
+                                temp += tourReservation.NumberOfGuests;
+                            }
+                        }
+                    }
+                }
+                gs.perWith = temp / temp2;
+                gs.perWithout = 1 - gs.perWith;
+                Items2.Add(gs);
                 
-                guestStats gs = new guestStats();
-               // gs.below = 
+                 
                //gs.exact = 
                 //gs.over = 
                 //gs.perWith =
@@ -275,15 +323,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        public Tour SelectedItem2
-        {
-            get { return selectedItem2; }
-            set
-            {
-                selectedItem2 = value;
-                OnPropertyChanged(nameof(SelectedItem2));
-            }
-        }
+       
 
         public string Id
         {
@@ -467,7 +507,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        public ObservableCollection<Tour> Items2
+        public ObservableCollection<guestStats> Items2
         {
             get { return items2; }
             set
