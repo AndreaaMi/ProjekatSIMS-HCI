@@ -28,6 +28,7 @@ namespace projekatSIMS.UI.Dialogs.View
         private readonly AccommodationReservationService accommodationReservationService;
         private readonly ReservationRescheduleRequestService reservationRescheduleRequestService;
         private readonly AccommodationOwnerRatingService accommodationOwnerRatingService;
+        private readonly UserService userService;
         private AccommodationReservation selectedReservation;
         private Accommodation selectedAccommodation;
         private DateTime startDate;
@@ -42,6 +43,7 @@ namespace projekatSIMS.UI.Dialogs.View
             accommodationReservationService = new AccommodationReservationService();
             reservationRescheduleRequestService = new ReservationRescheduleRequestService();
             accommodationOwnerRatingService = new AccommodationOwnerRatingService();
+            userService = new UserService();
 
             LoadAccommodations();
             LoadReservations();
@@ -309,7 +311,8 @@ namespace projekatSIMS.UI.Dialogs.View
                 NewStartDate = (DateTime)NewStartDatePicker.SelectedDate,
                 NewEndDate = (DateTime)NewEndDatePicker.SelectedDate,
                 GuestName = "Andrea",
-                Status = RequestStatusType.PENDING
+                Status = RequestStatusType.PENDING,
+                Comment = null
             };
 
             reservationRescheduleRequestService.Add(request);
@@ -434,6 +437,10 @@ namespace projekatSIMS.UI.Dialogs.View
 
             // save the rating
             accommodationOwnerRatingService.Add(rating);
+
+            accommodationOwnerRatingService.Add(rating);
+            int owner = accommodationOwnerRatingService.GetRatingOwnerId(rating);
+            userService.UpdateOwnerRating(owner, ownerPoliteness);
 
             // mark the reservation as rated by the guest
             selectedReservation.GuestsRate = true;

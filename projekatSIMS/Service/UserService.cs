@@ -86,6 +86,50 @@ namespace projekatSIMS.Service
             return unitOfWork.Users.GetLoginUserType();
         }
 
+        public void UpdateOwnerRating(int ownerId, double newRating)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            User owner = (User)unitOfWork.Users.Get(ownerId);
+
+            if (owner == null)
+            {
+                throw new ArgumentException("Vlasnik sa datim ID-jem nije pronađen.");
+            }
+
+
+            double currentRating = owner.AverageRating;
+            int reviewCount = owner.ReviewCount;
+
+            double newAverageRating = ((currentRating * reviewCount) + newRating) / (reviewCount + 1);
+            owner.AverageRating = newAverageRating;
+            owner.ReviewCount = reviewCount + 1;
+
+            // Save changes to the repository
+            unitOfWork.Users.Edit(owner);
+            SetSuperOwner(ownerId);
+            unitOfWork.Save();
+        }
+
+        public bool IsSuperOwner(int ownerId)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            User owner = (User)unitOfWork.Users.Get(ownerId);
+            return unitOfWork.Users.GetOwnerReviewCount() >= 50 && unitOfWork.Users.GetOwnerAverageRating() > 9.5;
+        }
+
+        public void SetSuperOwner(int ownerId)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            User owner = (User)unitOfWork.Users.Get(ownerId);
+
+            if (owner != null && IsSuperOwner(ownerId))
+            {
+                owner.SuperStatus = true;
+            }
+
+            owner.SuperStatus = false;
+
+        }
 
     }
 }
