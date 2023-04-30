@@ -28,18 +28,60 @@
                     <ColumnDefinition Width="240"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" />
-                <Ellipse HorizontalAlignment="Center" Height="100" Margin="0,62,0,0" Stroke="#121212" VerticalAlignment="Top" Width="100">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y" />
-                    </Ellipse.Fill>
-                </Ellipse>
-                <Label Content="Uros Lohinski" HorizontalAlignment="Center" Margin="0,167,0,0" VerticalAlignment="Top" FontFamily="Oswald" FontWeight="Bold" Foreground="White" FontSize="16"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="100,227,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="#251075" Foreground="White" Background="#251075" />
-                
-                
+                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
 
-                <Button Content="Button" HorizontalAlignment="Left" Margin="100,277,0,0" VerticalAlignment="Top" Height="30" Width="60" FontWeight="Bold" BorderThickness="2" BorderBrush="#232424" Foreground="White" Background="#251075"> </Button>
+                </Border>
+
+
+                <Grid Width="240">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse HorizontalAlignment="Left" Height="100" Margin="70,75,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-64.png" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <Label Content="Uros Lohinski" HorizontalAlignment="Left" Margin="64,167,0,0" VerticalAlignment="Top" FontFamily="Oswald" FontWeight="Bold" Foreground="White" FontSize="16"/>
+
+
+                    <Button Content="Profile" HorizontalAlignment="Left" Margin="90,250,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Button Content="Home Page" HorizontalAlignment="Left" Margin="90,310,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Button Content="New Tour" HorizontalAlignment="Left" Margin="90,370,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Button Content="All Tours" HorizontalAlignment="Left" Margin="90,430,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Button Content="Tours Today" HorizontalAlignment="Left" Margin="90,490,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Button Content="Tour Requests" HorizontalAlignment="Left" Margin="90,550,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="White" Background="#301596" />
+
+                    <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" Margin="40,250,106,390" Width="40" Height="40" />
+
+                    <Image Source="https://cdn0.iconfinder.com/data/icons/set-app-incredibles/24/Home-01-512.png" Margin="40,310,106,330" Width="40" Height="40" />
+
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/feather-5/24/plus-512.png" Margin="40,370,106,270" Width="40" Height="40" />
+
+                    <Image Source="https://cdn0.iconfinder.com/data/icons/evericons-24px-vol-1/24/list-256.png" Margin="40,430,106,210" Width="40" Height="40" />
+
+                    <Image Source="https://cdn0.iconfinder.com/data/icons/evericons-24px-vol-2/24/calendar-checked-64.png" Margin="40,490,106,150" Width="40" Height="40" />
+
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/feather-5/24/bell-64.png" Margin="40,550,106,90" Width="40" Height="40" />
+                </Grid>
+
+
             </Grid>
         </Border>
     </Border>
