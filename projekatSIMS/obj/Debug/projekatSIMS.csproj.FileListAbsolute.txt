@@ -280,3 +280,15 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideMainWindow.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideToursToday.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristRatingToursView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\kt2.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerHomeView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerMainWindowView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\SuperOwnerView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristRatingToursView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\kt2.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerHomeView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerMainWindowView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\SuperOwnerView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristRatingToursView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideHomePageView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideHomePageView.baml

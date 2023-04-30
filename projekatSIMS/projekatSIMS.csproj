@@ -102,6 +102,7 @@
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomePageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestMainViewModel.cs" />
@@ -131,6 +132,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\OwnerView\SuperOwnerView.xaml.cs">
       <DependentUpon>SuperOwnerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml.cs">
+      <DependentUpon>TourGuideHomePageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideHomeView.xaml.cs">
       <DependentUpon>TourGuideHomeView.xaml</DependentUpon>
@@ -213,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\OwnerView\SuperOwnerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
