@@ -450,6 +450,11 @@ namespace projekatSIMS.UI.Dialogs.View
 
             MessageBox.Show("Rating submitted successfully.");
         }
+
+        private void RequestReservationRescheduleViewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }

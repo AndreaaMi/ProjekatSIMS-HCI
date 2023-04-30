@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.GuestView
 {
     /// <summary>
-    /// Interaction logic for GuestPageView.xaml
+    /// Interaction logic for NewReservationView.xaml
     /// </summary>
-    public partial class GuestPageView : UserControl
+    public partial class NewReservationView : UserControl
     {
-        public GuestPageView()
+        public NewReservationView()
         {
             InitializeComponent();
-            DataContext = new GuestPageViewModel();
+            DataContext = new NewReservationViewModel();
         }
     }
 }
