@@ -280,3 +280,9 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideMainWindow.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideToursToday.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristRatingToursView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.csproj.CopyComplete
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\FontAwesome.WPF.dll
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\FontAwesome.WPF.xml
