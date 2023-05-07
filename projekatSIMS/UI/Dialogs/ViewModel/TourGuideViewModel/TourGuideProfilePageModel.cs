@@ -1,5 +1,4 @@
 ﻿using projekatSIMS.CompositeComon;
-using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideHomePageModel : ViewModelBase
+    internal class TourGuideProfilePageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -97,7 +96,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return homePageCommand;
             }
         }
-     
+
         public RelayCommand NewTourPageCommand
         {
             get
@@ -110,7 +109,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return newTourPageCommand;
             }
         }
-   
+
         public RelayCommand AllToursPageCommand
         {
             get
@@ -149,9 +148,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return tourRequestsPageCommand;
             }
         }
-
-
         #endregion
-        public TourGuideHomePageModel() { }
     }
 }
