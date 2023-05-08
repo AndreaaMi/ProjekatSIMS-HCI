@@ -34,7 +34,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
-
+                    
                 </Border>
 
 
@@ -85,8 +85,16 @@
 
                     <Image Source="https://cdn3.iconfinder.com/data/icons/feather-5/24/bell-64.png" Margin="40,550,106,90" Width="40" Height="40" />
                 </Grid>
-
-
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,100,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,150,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,200,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,250,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,300,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,350,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,400,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,450,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,500,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
+                <Label Grid.Column="1" Content="Tour Name:" HorizontalAlignment="Left" Margin="103,550,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource TextColor}" Style="{StaticResource Label1}"/>
             </Grid>
         </Border>
     </Border>

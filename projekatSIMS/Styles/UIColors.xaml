@@ -70,4 +70,13 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Label" x:Key="Label1">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="120"/>
+        
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+        
+    </Style>
+
 </ResourceDictionary>
