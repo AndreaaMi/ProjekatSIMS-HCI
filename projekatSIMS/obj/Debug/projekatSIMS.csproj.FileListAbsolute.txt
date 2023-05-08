@@ -296,3 +296,9 @@ C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSI
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.baml
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\Theme\Dark.baml
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\Theme\Light.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.baml

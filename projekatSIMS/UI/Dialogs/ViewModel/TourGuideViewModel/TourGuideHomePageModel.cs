@@ -41,7 +41,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
 
             TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TourGuideView/TourGuideNewTourPageView.xaml", UriKind.Relative));
 
 
         }
@@ -50,7 +50,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
 
             TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TourGuideView/TourGuideAllToursPageView.xaml", UriKind.Relative));
 
 
         }
@@ -59,7 +59,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
 
             TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursTodayPageView.xaml", UriKind.Relative));
 
 
         }
@@ -68,7 +68,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
 
             TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TourGuideView/TourGuideToursToday.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TourGuideView/TourGuideTourRequestsPageView.xaml", UriKind.Relative));
 
 
         }

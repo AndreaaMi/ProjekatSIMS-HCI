@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideProfilePageModel : ViewModelBase
+    internal class TourGuideNewTourPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -148,6 +148,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return tourRequestsPageCommand;
             }
         }
+
+
         #endregion
-    }
+        public TourGuideNewTourPageModel() { }
+    
+}
 }

@@ -60,21 +60,21 @@
                     <Label Content="Uros Lohinski" HorizontalAlignment="Left" Margin="64,172,0,0" VerticalAlignment="Top" FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16"/>
 
 
-                    <Button Content="Profile" HorizontalAlignment="Left" Margin="90,250,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding ProfilePageCommand}" />
+                    <Button Content="Profile" HorizontalAlignment="Left" Margin="90,250,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding ProfilePageCommand}" Style="{StaticResource Button1}" />
 
-                    <Button Content="Home Page" HorizontalAlignment="Left" Margin="90,310,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding HomePageCommand}" />
+                    <Button Content="Home Page" HorizontalAlignment="Left" Margin="90,310,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding HomePageCommand}" Style="{StaticResource Button1}" />
 
-                    <Button Content="New Tour" HorizontalAlignment="Left" Margin="90,370,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding NewTourPageCommand}"/>
+                    <Button Content="New Tour" HorizontalAlignment="Left" Margin="90,370,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding NewTourPageCommand}" Style="{StaticResource Button1}"/>
 
-                    <Button Content="All Tours" HorizontalAlignment="Left" Margin="90,430,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding AllToursPageCommand}" />
+                    <Button Content="All Tours" HorizontalAlignment="Left" Margin="90,430,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding AllToursPageCommand}" Style="{StaticResource Button1}" />
 
-                    <Button Content="Tours Today" HorizontalAlignment="Left" Margin="90,490,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding ToursTodayPageCommand}" />
+                    <Button Content="Tours Today" HorizontalAlignment="Left" Margin="90,490,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding ToursTodayPageCommand}" Style="{StaticResource Button1}" />
 
-                    <Button Content="Tour Requests" HorizontalAlignment="Left" Margin="90,550,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding TourRequestsPageCommand}"/>
+                    <Button Content="Tour Requests" HorizontalAlignment="Left" Margin="90,550,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding TourRequestsPageCommand}" Style="{StaticResource Button1}"/>
 
                     <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" Margin="40,250,106,390" Width="40" Height="40" />
 
-                    <Image Source="https://cdn0.iconfinder.com/data/icons/set-app-incredibles/24/Home-01-512.png" Margin="40,310,106,330" Width="40" Height="40" />
+                    <Image Source="https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Home-House--512.png" Margin="40,310,106,330" Width="40" Height="40" />
 
                     <Image Source="https://cdn3.iconfinder.com/data/icons/feather-5/24/plus-512.png" Margin="40,370,106,270" Width="40" Height="40" />
 

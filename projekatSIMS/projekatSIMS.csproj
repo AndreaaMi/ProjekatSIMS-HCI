@@ -101,12 +101,15 @@
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerMainWindowModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideAllToursPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomePageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideMainWindowModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideNewTourPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideProfilePageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestMainViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristRatingToursModel.cs" />
@@ -134,6 +137,9 @@
     <Compile Include="UI\Dialogs\View\OwnerView\SuperOwnerView.xaml.cs">
       <DependentUpon>SuperOwnerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.xaml.cs">
+      <DependentUpon>TourGuideAllToursPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml.cs">
       <DependentUpon>TourGuideHomePageView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +148,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideMainWindow.xaml.cs">
       <DependentUpon>TourGuideMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml.cs">
+      <DependentUpon>TourGuideNewTourPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.xaml.cs">
       <DependentUpon>TourGuideProfilePageView.xaml</DependentUpon>
@@ -157,6 +166,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestReviewView.xaml.cs">
       <DependentUpon>GuestReviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.xaml.cs">
+      <DependentUpon>TourGuideToursTodayPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristHomeView.xaml.cs">
       <DependentUpon>TouristHomeView.xaml</DependentUpon>
@@ -232,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,6 +281,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestReviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
