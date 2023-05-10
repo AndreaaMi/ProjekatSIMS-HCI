@@ -17,6 +17,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
     public class NewReservationViewModel : ViewModelBase
     {
+        //property pravim
+        //Unututar propertija SelectedItems.selectedRenovation = taj property
         private UserControl _selectedView;
 
         public UserControl SelectedView
@@ -28,7 +30,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 OnPropertyChanged(nameof(SelectedView));
             }
         }
-     
 
         public ICommand ShowNewReservationHelpCommand { get; private set; }
 
@@ -135,13 +136,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         private void FilterAccommodations()
         {
             var filteredAccommodations = AccommodationItems.Where(x =>
-     (string.IsNullOrEmpty(Name) || x.Name.ToLower().Contains(Name.ToLower()))
-     && (string.IsNullOrEmpty(SelectedCountry) || x.Location.Country.Equals(SelectedCountry, StringComparison.OrdinalIgnoreCase))
-     && (string.IsNullOrEmpty(SelectedCity) || x.Location.City.Equals(SelectedCity, StringComparison.OrdinalIgnoreCase))
-     && (!GuestLimit.HasValue || x.GuestLimit >= GuestLimit.Value)
-     && (!MinimalStayDays.HasValue || x.MinimumStayDays >= MinimalStayDays.Value)
-     && (!PropertyType.HasValue || x.Type == PropertyType.Value)
-     ).ToList();
+             (string.IsNullOrEmpty(Name) || x.Name.ToLower().Contains(Name.ToLower()))
+             && (string.IsNullOrEmpty(SelectedCountry) || x.Location.Country.Equals(SelectedCountry, StringComparison.OrdinalIgnoreCase))
+             && (string.IsNullOrEmpty(SelectedCity) || x.Location.City.Equals(SelectedCity, StringComparison.OrdinalIgnoreCase))
+             && (!GuestLimit.HasValue || x.GuestLimit >= GuestLimit.Value)
+             && (!MinimalStayDays.HasValue || x.MinimumStayDays >= MinimalStayDays.Value)
+             && (!PropertyType.HasValue || x.Type == PropertyType.Value)
+             ).ToList();
 
             // Update the collection of accommodations that should be displayed
             AccommodationItems.Clear();

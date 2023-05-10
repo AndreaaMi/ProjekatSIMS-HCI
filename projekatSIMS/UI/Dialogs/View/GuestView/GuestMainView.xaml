@@ -24,7 +24,7 @@
     </Window.Resources>
 
     <Border CornerRadius="1"                    
-            BorderThickness="1" Background="White">
+            BorderThickness="1" Background="#EEEEEE">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350"/>
@@ -35,15 +35,15 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Height="180" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Background="#8D94BA"/>
-            <StackPanel Height="180" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Background="#8D94BA"/>
+            <StackPanel Height="180" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Background="#426A5A"/>
+            <StackPanel Height="180" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Background="#426A5A"/>
 
 
-            <StackPanel Height="900" Orientation="Vertical" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="1" Grid.Column="0" Background="#DCD6F7">
+            <StackPanel Height="900" Orientation="Vertical" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="1" Grid.Column="0" Background="#7FB685">
 
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type RadioButton}">
-                        <Setter Property="Foreground" Value="#4E4C67"/>
+                        <Setter Property="Foreground" Value="#244035"/>
                         <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Padding" Value="25"/>
                         <Setter Property="FontSize" Value="20"/>
@@ -56,12 +56,12 @@
                                                 <Style TargetType="{x:Type TextBlock}">
                                                     <Style.Triggers>
                                                         <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Foreground" Value="#FFFFFF"/>
-                                                            <Setter Property="Background" Value="#ebe9f8"/>
+                                                            <Setter Property="Foreground" Value="#F5F5F5"/>
+                                                            <Setter Property="Background" Value="#7FB685"/>
                                                         </Trigger>
                                                         <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background" Value="#ebe9f8"/>
-                                                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                                                            <Setter Property="Background" Value="#7FB685"/>
+                                                            <Setter Property="Foreground" Value="#F5F5F5"/>
                                                         </Trigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -73,7 +73,7 @@
                                             <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#E4DDFF"/>
+                                            <Setter Property="Background" Value="#85BC8B"/>
                                             <Setter Property="RenderTransform">
                                                 <Setter.Value>
                                                     <TransformGroup>
@@ -89,59 +89,59 @@
                     </Style>
                 </StackPanel.Resources>
 
-                <RadioButton Content="A C C O M M O D A T I O N S" GroupName="accommodations" FontWeight="Bold"
-        FontFamily="Agency FB" FontSize="24"></RadioButton>
-                <RadioButton Content="A N Y T I M E  /  A N Y W H E R E"  FontWeight="Bold"
-        FontFamily="Agency FB" FontSize="24">
+                <RadioButton Content="ACOMMODATIONS" GroupName="accommodations" FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="24" Checked="RadioButton_Checked" Command="{Binding ShowAllAccommodationsCommand}"></RadioButton>
+                <RadioButton Content="ANYTIME / ANYWHERE"  FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="24">
                 </RadioButton>
-                <RadioButton Content="F O R U M"  FontWeight="Bold"
-        FontFamily="Agency FB" FontSize="24">
+                <RadioButton Content="FORUM"  FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="24">
                 </RadioButton>
 
-                <Button Content="L O G O U T" FontSize="18" Margin="0,20,0,0" Foreground="#4E4C67"
-        BorderThickness="1" BorderBrush="#4E4C67"
+                <Button Content="LOGOUT" FontSize="20" Margin="0,20,0,0" Foreground="#244035"
+        BorderThickness="1" BorderBrush="#244035"
         Background ="Transparent" Width="287" Height="43"  FontWeight="Bold"
-        FontFamily="Agency FB" Command="{Binding LogoutCommand}"
-CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+        FontFamily="Bahnschrift" Command="{Binding LogoutCommand}"
+CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Click="Button_Click_1">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="ActiveReservationsButton" CornerRadius="20" BorderThickness="3" BorderBrush="#4E4C67">
+                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="3" BorderBrush="#244035">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#E4DDFF"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#E4DDFF"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button FontSize="38" Margin="0,460,0,0" Foreground="#4E4C67" Height="83" Width="286"
-        BorderThickness="1" BorderBrush="#4E4C67" HorizontalAlignment="Center"
-        Background="#4E4C67">
+                <Button FontSize="38" Margin="0,460,0,0" Height="83" Width="286"
+        BorderThickness="1" BorderBrush="#426A5A" HorizontalAlignment="Center"
+        Background="Black" Click="Button_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="ActiveReservationsButton" CornerRadius="20" BorderThickness="3" BorderBrush="#4E4C67" Background="#4E4C67">
+                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="3" Background="#426A5A">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentPresenter VerticalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
-                                    <fa:ImageAwesome Icon="PlayCircle" Width="40" Height="40" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground ="White"/>
+                                    <fa:ImageAwesome Icon="PlayCircle" Width="40" Height="40" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground ="#244035"/>
                                 </StackPanel>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#eae6fa"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#eae6fa"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
-                    <Label Content="PLAY DEMO" Width="191" Height="69"
-        FontFamily="Agency FB" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="52" Margin="20,0,0,0"/>
+                    <Label Content="PLAY DEMO" Width="209" Height="52"
+        FontFamily="Bahnschrift" Foreground="#244035" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="38"/>
                 </Button>
 
             </StackPanel>
@@ -183,13 +183,13 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                 <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowNewUserControlCommand}" Padding="0">
                     <Button.Resources>
                         <Style TargetType="{x:Type fa:ImageAwesome}">
-                            <Setter Property="Foreground" Value="#4E4C67" />
+                            <Setter Property="Foreground" Value="#244035" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -202,10 +202,10 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="UserButton" Property="Background" Value="#8D94BA" />
+                                    <Setter TargetName="UserButton" Property="Background" Value="#426A5A" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="UserButton" Property="Background" Value="#8D94BA"/>
+                                    <Setter TargetName="UserButton" Property="Background" Value="#426A5A"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -214,13 +214,13 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                 <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowNewUserControlCommand}" Padding="0">
                     <Button.Resources>
                         <Style TargetType="{x:Type fa:ImageAwesome}">
-                            <Setter Property="Foreground" Value="#4E4C67" />
+                            <Setter Property="Foreground" Value="#244035" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -233,10 +233,10 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="EnvelopeButton" Property="Background" Value="#8D94BA" />
+                                    <Setter TargetName="EnvelopeButton" Property="Background" Value="#426A5A" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="EnvelopeButton" Property="Background" Value="#8D94BA"/>
+                                    <Setter TargetName="EnvelopeButton" Property="Background" Value="#426A5A"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -246,13 +246,13 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                 <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowNewUserControlCommand}" Padding="0">
                     <Button.Resources>
                         <Style TargetType="{x:Type fa:ImageAwesome}">
-                            <Setter Property="Foreground" Value="#4E4C67" />
+                            <Setter Property="Foreground" Value="#244035" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Foreground" Value="#716e94" />
+                                    <Setter Property="Foreground" Value="#497563" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -265,36 +265,36 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="GiftButton" Property="Background" Value="#8D94BA" />
+                                    <Setter TargetName="GiftButton" Property="Background" Value="#426A5A" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="GiftButton" Property="Background" Value="#8D94BA"/>
+                                    <Setter TargetName="GiftButton" Property="Background" Value="#426A5A"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="A C T I V E  R E S E R V A T I O N S" 
+                <Button Content="ACTIVE  RESERVATIONS" 
         Margin="15,30,0,30" 
         Width="260"
         Height="60"
-        Foreground="#4E4C67"
-        FontSize="18"
+        Foreground="#244035"
+        FontSize="20"
         Background="Transparent"
-        FontWeight="UltraBold"
-        FontFamily="Agency FB"
+        FontWeight="Bold"
+        FontFamily="Bahnschrift"
         Command="{Binding ShowActiveReservationCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="ActiveReservationsButton" CornerRadius="20" BorderThickness="6.5" BorderBrush="#4E4C67">
+                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="6.5" BorderBrush="#244035">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#999fc1"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#999fc1"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

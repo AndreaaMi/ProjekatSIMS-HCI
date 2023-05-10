@@ -45,6 +45,8 @@ namespace projekatSIMS.UI.Dialogs.View
             accommodationOwnerRatingService = new AccommodationOwnerRatingService();
             userService = new UserService();
 
+            
+
             LoadAccommodations();
             LoadReservations();
         }

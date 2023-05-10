@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 using System.Xml.Serialization;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
@@ -29,9 +31,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
+        public ICommand BackCommand { get; set; }   
+
         public ICommand ShowNewReservationsCommand { get; private set; }
 
         public ICommand ShowActiveReservationsHelpCommand { get; private set; }
+
+        public ICommand ShowNewDateRequestCommand { get; private set; }
 
 
         private ObservableCollection<AccommodationReservation> reservationItems = new ObservableCollection<AccommodationReservation>();
@@ -48,14 +54,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             accommodationService = new AccommodationService();
             accommodationReservationService = new AccommodationReservationService();
 
-            Reservations = new ObservableCollection<AccommodationReservation>(); 
+            Reservations = new ObservableCollection<AccommodationReservation>();
 
+            BackCommand = new RelayCommand(BackControl);
             ShowActiveReservationsHelpCommand = new RelayCommand(ShowActiveReservationsHelpControl);
+            ShowNewDateRequestCommand = new RelayCommand(ShowNewDateRequestControl);
             ShowNewReservationsCommand = new RelayCommand(ShowNewReservations);
             SetService();
             LoadData();
 
-            CancelReservationCommand = new RelayCommand(CancelReservation);
             CancelReservationCommand = new RelayCommand(CancelReservation);
         }
 
@@ -74,6 +81,17 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
            
         }
 
+        private string _successMessage;
+        public string SuccessMessage
+        {
+            get { return _successMessage; }
+            set
+            {
+                _successMessage = value;
+                OnPropertyChanged(nameof(SuccessMessage));
+            }
+        }
+
         private string _cancelMessage;
         public string CancelMessage
         {
@@ -90,8 +108,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             if (!ValidateReservation()) return;
 
             RemoveReservation();
-
-            CancelMessage = "Reservation canceled successfully";
+            CancelMessage = "";
+            SuccessMessage = "Reservation canceled successfully";
 
             LoadData();
         }
@@ -100,6 +118,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         {
             if (SelectedReservation == null)
             {
+                SuccessMessage = "";
                 CancelMessage = "Invalid reservation selected";
                 return false;
             }
@@ -108,6 +127,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
             if (selectedAccommodation == null)
             {
+                SuccessMessage = "";
                 CancelMessage = $"Accommodation for reservation {SelectedReservation.Id} not found";
                 return false;
             }
@@ -119,6 +139,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 var daysUntilStart = (SelectedReservation.StartDate - DateTime.Today).Days;
                 if (daysUntilStart <= cancelationLimit)
                 {
+                    SuccessMessage = "";
                     CancelMessage = $"Sorry, you cannot cancel this reservation as the cancellation limit is {cancelationLimit} days";
                     return false;
                 }
@@ -143,8 +164,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
-
-
         public void SetService()
         {
             accommodationReservationService = new AccommodationReservationService();
@@ -160,6 +179,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
+
         private void ShowNewReservations(object parameter)
         {
             SelectedView = new NewReservationView();
@@ -168,6 +188,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         private void ShowActiveReservationsHelpControl(object parameter)
         {
             SelectedView = new ActiveReservationsHelpView();
+        }
+
+        private void ShowNewDateRequestControl(object parameter)
+        {
+            SelectedView = new RequestNewDateView();
+        }
+
+        private void BackControl(object parameter)
+        {
         }
     }
 }

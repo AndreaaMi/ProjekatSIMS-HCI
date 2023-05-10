@@ -6,7 +6,7 @@
              x:Class="projekatSIMS.UI.Dialogs.View.GuestView.GuestPageView"
              xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"       
     Width="1570" Height="900">
-    <Grid Background="White" >
+    <Grid Background="#EEEEEE" >
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*"/>
             <RowDefinition Height="*"/>
@@ -19,12 +19,12 @@
         </Grid.ColumnDefinitions>
 
 
-        <Border Grid.Row="0" Grid.Column="0" Margin="10" CornerRadius="20" Background="#4E4C67" BorderThickness="10" BorderBrush="#FFFAC4">
-            <fa:ImageAwesome Icon="UserOutline" Opacity="1" Foreground="#FFFAC4" Margin="51,24,56,52"/>
+        <Border Grid.Row="0" Grid.Column="0" CornerRadius="8" Margin="33,10,0,10" Background="#244035" BorderThickness="10" BorderBrush="#EEEEEE">
+            <fa:ImageAwesome Icon="UserOutline" Opacity="1" Foreground="#EEEEEE" Margin="51,24,56,52"/>
         </Border>
 
 
-        <Border Grid.Row="0" Grid.Column="1" Margin="10" CornerRadius="20" Background="#FFFAC4">
+        <Border Grid.Row="0" Grid.Column="1" Margin="10">
 
             <!-- Sadržaj za drugu kolonu -->
             <Grid>
@@ -33,18 +33,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="1" Margin="0,100,50,10" HorizontalAlignment="Right" >
-                    <Button Content="See Reservations" Width="200" Foreground="White" FontFamily="Agency FB" FontSize="22" Height="46"  Command="{Binding ShowActiveReservationCommand}">
+                    <Button Content="See Reservations" Width="221" Foreground="#244035" FontFamily="Bahnschrift SemiLight" FontSize="22" Height="46"  Command="{Binding ShowActiveReservationCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="SeeReservationsButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#4E4C67" Background="#4E4C67">
+                                <Border x:Name="SeeReservationsButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#D6D6D6" Background="#D6D6D6">
                                     <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="SeeReservationsButton" Property="Background" Value="#8D94BA"/>
+                                        <Setter TargetName="SeeReservationsButton" Property="Background" Value="#426A5A"/>
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="True">
-                                        <Setter TargetName="SeeReservationsButton" Property="Background" Value="#DCD6F7"/>
+                                        <Setter TargetName="SeeReservationsButton" Property="Background" Value="#7FB685"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -53,7 +53,7 @@
                 </StackPanel>
                 <StackPanel Grid.Row="0" Margin="0,0,0,-95">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                        <ListView x:Name="RequestReservationRescheduleViewList" Margin="20,30,20,60" ItemsSource="{Binding ReservationRescheduleItems}" Height="225" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Agency FB" FontSize="22" IsSynchronizedWithCurrentItem="False" RenderTransformOrigin="0.494,0.64" Width="543">
+                        <ListView x:Name="RequestReservationRescheduleViewList" Margin="20,30,20,60" ItemsSource="{Binding ReservationRescheduleItems}" Height="225" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Bahnschrift" FontSize="22" IsSynchronizedWithCurrentItem="False" RenderTransformOrigin="0.494,0.64" Width="543">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type ListView}">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -62,20 +62,11 @@
                                     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
                                     <Setter Property="Padding" Value="7"/>
                                 </Style>
-                                <!--<Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#dad2cb"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="Padding" Value="10"/>
-                                <Setter Property="BorderThickness" Value="3"/>
-                                <Setter Property="BorderBrush" Value="#dad2cb"/>
-                            </Style>-->
+
                                 <Style TargetType="{x:Type ListViewItem}">
                                     <Setter Property="Margin" Value="0,0,0,25"/>
                                     <Setter Property="Height" Value="100"/>
                                     <Setter Property="Padding" Value="10"/>
-                                    <Setter Property="Background" Value="#F0F0F0"/>
-                                    <Setter Property="Foreground" Value="#4E4C67"/>
                                     <Setter Property="BorderThickness" Value="0"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
@@ -83,8 +74,8 @@
                                                 <Border x:Name="border" CornerRadius="2" BorderBrush="Transparent" BorderThickness="1">
                                                     <Border.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                            <GradientStop Offset="0.0" Color="White"/>
-                                                            <GradientStop Offset="0.8" Color="#DCD6F7"/>
+                                                            <GradientStop Offset="0.4" Color="White"/>
+                                                            <GradientStop Offset="1.4" Color="#FAFAFA"/>
                                                         </LinearGradientBrush>
                                                     </Border.Background>
                                                     <Grid>
@@ -93,7 +84,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="border" Property="Background" Value="#FFC4C4C4"/>
+                                                        <Setter TargetName="border" Property="Background" Value="#EAEAEA"/>
                                                     </Trigger>
                                                     <Trigger Property="IsSelected" Value="True">
                                                         <Setter TargetName="border" Property="Background" Value="#D6D6D6"/>
@@ -110,10 +101,10 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
-                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="390" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Text="{Binding ReservationId}" FontWeight="Bold"  FontFamily="Agency FB" Margin="12,36,12,36" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Status}" FontWeight="Bold"  FontFamily="Agency FB" Margin="122,36,122,36" Width="NaN" />
+                                        <TextBlock Text="{Binding ReservationId}" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#426A5A" FontSize="18" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Status}" FontWeight="Normal"  FontFamily="Bahnschrift Light" HorizontalAlignment="Center" VerticalAlignment="Center" Width="NaN" Margin="0,0,70,0" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -124,73 +115,70 @@
             </Grid>
 
         </Border>
-        <Border CornerRadius="10" Background="#FFFAC4"  Opacity="0.6" BorderThickness="2" BorderBrush="White" Margin="17,-5,298,302" Grid.Column="1" Height="40" Width="300">
+        <Border CornerRadius="5" Background="#EEEEEE"  Opacity="1" BorderThickness="2" BorderBrush="White" Margin="17,-5,246,302" Grid.Column="1" Height="40">
             <TextBlock Text="Reschedule Reservation Requests" 
                Margin="-2,-3,-2,-1" Padding="10" 
-               Foreground="#4E4C67"
-               FontSize="22" FontWeight="Bold"  FontFamily="Agency FB"/>
+               Foreground="#426A5A"
+               FontSize="22" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight"/>
         </Border>
         <!-- Treća kolona -->
-        <Border Grid.Row="0" Grid.Column="2" Margin="10,10,10,10" CornerRadius="20" Background="#FFFAC4">
+        <Border Grid.Row="0" Grid.Column="2" Margin="10,10,10,10">
             <!-- Sadržaj za treću kolonu -->
-            <Border CornerRadius="10" Background="#FFFAC4" Opacity="0.6" BorderThickness="2" BorderBrush="White" Margin="10,-16,445,294" Grid.Column="2" Height="40">
+            <Border CornerRadius="5" Background="#EEEEEE" Opacity="1" BorderThickness="2" BorderBrush="White" Margin="10,-16,445,294" Grid.Column="2" Height="40">
                 <TextBlock Text="User Status" 
                Margin="-2,-2,9,-2" Padding="10" 
-               Foreground="#4E4C67"
-               FontSize="22" FontWeight="Bold"  FontFamily="Agency FB"/>
+               Foreground="#426A5A"
+               FontSize="22" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight"/>
             </Border>
         </Border>
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="20" Margin="10,0,10,20">
-            <Border.Background>
-                <ImageBrush ImageSource="https://wallpaperaccess.com/full/3710989.png" Opacity="1"/>
-            </Border.Background>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="773*"/>
+                    <ColumnDefinition Width="777*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="34,0,0,400" Grid.ColumnSpan="2">
-                    <Button Content="Not Rated" Margin="0,20,0,20" Width="728" Background="#8D94BA" Foreground="White" FontFamily="Agency FB" FontSize="22">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,0,0,0" Grid.ColumnSpan="2" Width="1487">
+                    <Button Content="Not Rated" Margin="0,20,0,20" Width="704.5" Foreground="DarkRed" FontFamily="Bahnschrift SemiLight" FontSize="22">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="NotRatedButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#8D94BA" Background="#8D94BA">
+                                <Border x:Name="NotRatedButton" CornerRadius="5" Margin="2,0,4,0" BorderThickness="1" Background="#D6D6D6">
                                     <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#8D94BA"/>
+                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#AEAEAE"/>
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="True">
-                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#DCD6F7"/>
+                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#9A9A9A"/>
                                     </Trigger>
                                     <Trigger Property="IsFocused" Value="True">
-                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#DCD6F7"/>
+                                        <Setter TargetName="NotRatedButton" Property="Background" Value="#9A9A9A"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Content="Rated" Margin="50,20,0,20" Width="703" Background="#8D94BA" Foreground="White" FontFamily="Agency FB" FontSize="22">
+                    <Button Content="Rated" Margin="81,20,0,20" Width="704.5" Foreground="ForestGreen" FontFamily="Bahnschrift SemiLight" FontSize="22">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="RatedButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#8D94BA" Background="#8D94BA">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                                <Border x:Name="RatedButton" CornerRadius="5" Margin="2,0,4,0" BorderThickness="1" Background="#D6D6D6">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" ContentSource="Content" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="RatedButton" Property="Background" Value="#8D94BA"/>
+                                        <Setter TargetName="RatedButton" Property="Background" Value="#AEAEAE"/>
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="True">
-                                        <Setter TargetName="RatedButton" Property="Background" Value="#DCD6F7"/>
+                                        <Setter TargetName="RatedButton" Property="Background" Value="#9A9A9A"/>
                                     </Trigger>
                                     <Trigger Property="IsFocused" Value="True">
-                                        <Setter TargetName="RatedButton" Property="Background" Value="#DCD6F7"/>
+                                        <Setter TargetName="RatedButton" Property="Background" Value="#9A9A9A"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -200,7 +188,7 @@
 
 
                 <!-- Sadržaj za drugi red Grid-a -->
-                <ListView x:Name="RatingsViewList" ItemsSource="{Binding RatingItems}" Margin="34,86,34,51" Height="351" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Agency FB" FontSize="18" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2">
+                <ListView x:Name="RatingsViewList" ItemsSource="{Binding RatingItems}" Margin="20,86,20,474" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Bahnschrift SemiLight" FontSize="18" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2">
                     <ListView.Resources>
                         <Style TargetType="{x:Type ListView}">
                             <Setter Property="Background" Value="Transparent"/>
@@ -218,18 +206,18 @@
                         <Style TargetType="{x:Type ListViewItem}">
                             <Setter Property="Margin" Value="0,5,0,5"/>
                             <Setter Property="Padding" Value="10"/>
-                            <Setter Property="Background" Value="#F0F0F0"/>
-                            <Setter Property="Foreground" Value="#4E4C67"/>
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="#244035"/>
                             <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="Height" Value="88"/>
+                            <Setter Property="Height" Value="68"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                        <Border x:Name="border" CornerRadius="2" BorderBrush="Transparent" BorderThickness="1">
+                                        <Border x:Name="border" CornerRadius="5" BorderBrush="Transparent" BorderThickness="1">
                                             <Border.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                    <GradientStop Offset="0.0" Color="#FFEFEFEF"/>
-                                                    <GradientStop Offset="1.4" Color="#DCD6F7"/>
+                                                    <GradientStop Offset="0.4" Color="White"/>
+                                                    <GradientStop Offset="1.4" Color="#FAFAFA"/>
                                                 </LinearGradientBrush>
                                             </Border.Background>
                                             <Grid>
@@ -238,7 +226,7 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#FFC4C4C4"/>
+                                                <Setter TargetName="border" Property="Background" Value="#EAEAEA"/>
                                             </Trigger>
                                             <Trigger Property="IsSelected" Value="True">
                                                 <Setter TargetName="border" Property="Background" Value="#D6D6D6"/>
@@ -259,24 +247,33 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding ReservationId}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
-                                <TextBlock Grid.Column="1" Text="{Binding Cleanliness}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
-                                <TextBlock Grid.Column="2" Text="{Binding OwnerPoliteness}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
-                                <TextBlock Grid.Column="3" Text="{Binding Comment}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ReservationId}" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight" Margin="5" Foreground="#426A5A" />
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Cleanliness}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding OwnerPoliteness}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Comment}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Reservation Id" DisplayMemberBinding="{Binding ReservationId}"/>
-                            <GridViewColumn Header="Cleanliness" DisplayMemberBinding="{Binding Cleanliness}"/>
-                            <GridViewColumn Header="OwnerPoliteness" DisplayMemberBinding="{Binding OwnerPoliteness}"/>
-                            <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}"/>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Background" Value="#426A5A"/>
+                                    <Setter Property="Foreground" Value="#EEEEEE"/>
+                                    <Setter Property="Height" Value="50"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn Header="Reservation Id" DisplayMemberBinding="{Binding ReservationId}" Width="375"/>
+                            <GridViewColumn Header="Cleanliness" DisplayMemberBinding="{Binding Cleanliness}" Width="375"/>
+                            <GridViewColumn Header="OwnerPoliteness" DisplayMemberBinding="{Binding OwnerPoliteness}" Width="370"/>
+                            <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}" Width="370"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </Grid>
         </Border>
-        <ContentControl Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding SelectedView}" Grid.RowSpan="2" />
+        <ContentControl Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding SelectedView}" Grid.RowSpan="2" FontFamily="Segoe UI" />
     </Grid>
 </UserControl>

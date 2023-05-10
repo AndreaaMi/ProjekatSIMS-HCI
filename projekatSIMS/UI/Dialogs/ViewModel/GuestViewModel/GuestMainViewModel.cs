@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
+
     public class GuestMainViewModel : ViewModelBase
     {
+        public static NavigationService navigationService;
+
         private UserControl _selectedView;
 
         public UserControl SelectedView
@@ -29,10 +33,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         public ICommand ShowRescheduleReservationCommand { get; private set; }
 
         public ICommand ShowActiveReservationCommand { get; private set; }
+
+        public ICommand ShowAllAccommodationsCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
 
         public GuestMainViewModel()
         {
+            ShowAllAccommodationsCommand = new RelayCommand(ShowAllAccommodationsControl);
             ShowNewUserControlCommand = new RelayCommand(ShowNewUserControl);
             LogoutCommand = new RelayCommand(Logout);
             ShowActiveReservationCommand = new RelayCommand(ShowActiveReservation);
@@ -49,6 +56,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             SelectedView = new ActiveReservationsView();
         }
 
+        private void ShowAllAccommodationsControl(object parameter)
+        {
+            SelectedView = new AllAccommodationsView();
+        }
         private void Logout(object parameter)
         {
             // Close all open windows except the main window

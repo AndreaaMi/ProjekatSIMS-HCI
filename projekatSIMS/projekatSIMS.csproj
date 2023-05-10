@@ -71,6 +71,7 @@
     <Compile Include="Model\DataContext.cs" />
     <Compile Include="Model\RequestStatusType.cs" />
     <Compile Include="Model\ReservationRescheduleRequest.cs" />
+    <Compile Include="Model\SelectedItems.cs" />
     <Compile Include="Model\Tour.cs" />
     <Compile Include="Model\TourRating.cs" />
     <Compile Include="Model\TourReservation.cs" />
@@ -104,9 +105,12 @@
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsHelpViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AllAccommodationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestPageViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationHelpViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\RequestNewDateHelpViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\RequestNewDateViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
@@ -131,6 +135,9 @@
     <Compile Include="UI\Dialogs\View\GuestView\ActiveReservationsView.xaml.cs">
       <DependentUpon>ActiveReservationsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\AllAccommodationsView.xaml.cs">
+      <DependentUpon>AllAccommodationsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +146,12 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\NewReservationView.xaml.cs">
       <DependentUpon>NewReservationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\RequestNewDateHelpView.xaml.cs">
+      <DependentUpon>RequestNewDateHelpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\RequestNewDateView.xaml.cs">
+      <DependentUpon>RequestNewDateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\OwnerView\kt2.xaml.cs">
       <DependentUpon>kt2.xaml</DependentUpon>
@@ -221,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\GuestView\AllAccommodationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\GuestView\GuestMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +247,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestView\NewReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\RequestNewDateHelpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\RequestNewDateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

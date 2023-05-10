@@ -20,14 +20,14 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" Margin="230,13,0,0" HorizontalAlignment="Left">
-            <TextBlock Text="Choose Accommodation:" Foreground="#4E4C67" FontSize="36" FontFamily="Agency FB" FontWeight="Bold" Width="302"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" Margin="200,13,0,0" HorizontalAlignment="Left">
+            <TextBlock Text="Choose Accommodation:" Foreground="#426A5A" FontSize="36" FontFamily="Bahnschrift" Width="400"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="750" Height="35" Margin="23,68,0,0">
-            <RadioButton Content="Apartment" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#4E4C67"
-             GroupName="PropertyType" FontSize="24" FontFamily="Agency FB" BorderBrush="#FFDCD6F7"
-             Command="{Binding SetApartmentTypeCommand}" CommandParameter="Apartment" IsEnabled="False">
+            <RadioButton Content="Apartment" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035"
+             GroupName="PropertyType" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7"
+             Command="{Binding SetApartmentTypeCommand}" CommandParameter="Apartment">
                 <RadioButton.Style>
                     <Style TargetType="RadioButton">
                         <Setter Property="Template">
@@ -41,16 +41,16 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="#FFDCD6F7"/>
+                                <Setter Property="Background" Value="#9CDCA3"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </RadioButton.Style>
             </RadioButton>
 
-            <RadioButton Content="House" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#4E4C67"
-             GroupName="PropertyType" FontSize="24" FontFamily="Agency FB" BorderBrush="#FFDCD6F7"
-             Command="{Binding SetHouseTypeCommand}" CommandParameter="House" IsEnabled="False">
+            <RadioButton Content="House" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7"
+            GroupName="PropertyType" IsChecked="{Binding PropertyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+             Command="{Binding ShowAccommodationsCommand}" CommandParameter="1">
                 <RadioButton.Style>
                     <Style TargetType="RadioButton">
                         <Setter Property="Template">
@@ -64,16 +64,17 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="#FFDCD6F7"/>
+                                <Setter Property="Background" Value="#9CDCA3"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </RadioButton.Style>
             </RadioButton>
 
-            <RadioButton Content="Cottage" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#4E4C67"
-             GroupName="PropertyType" FontSize="24" FontFamily="Agency FB" BorderBrush="#FFDCD6F7"
-             Command="{Binding SetCottageTypeCommand}" CommandParameter="Cottage" IsEnabled="False">
+            <RadioButton Content="Cottage" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035"
+             GroupName="PropertyType" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7" 
+            IsChecked="{Binding PropertyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+             Command="{Binding ShowAccommodationsCommand}" CommandParameter="2">
                 <RadioButton.Style>
                     <Style TargetType="RadioButton">
                         <Setter Property="Template">
@@ -87,7 +88,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="#FFDCD6F7"/>
+                                <Setter Property="Background" Value="#9CDCA3"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -96,61 +97,64 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="3,116,782,268" Grid.ColumnSpan="2">
-            <Label Content="Name:" FontFamily="Agency FB" FontSize="22" Width="52" Margin="0,0,0,0" Foreground="#4E4C67"/>
-            <TextBox Width="750" Height="30" Foreground="#4E4C67" Margin="0,0,0,0" Text="{Binding Name, Mode=TwoWay}"/>
+            <Label Content="Name:" FontFamily="Bahnschrift" FontSize="22" Width="72" Margin="0,0,0,0" Foreground="#244035"/>
+            <TextBox Width="750" Height="30" Foreground="#244035" Margin="0,0,0,0" Text="{Binding Name, Mode=TwoWay}"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="3,182,782,224" Grid.ColumnSpan="2">
-            <Label Content="Country:" FontFamily="Agency FB" HorizontalAlignment="Center" FontSize="22" Foreground="#4E4C67" Width="75" Margin="155,10,0,0"/>
-            <Label Content="City:" FontFamily="Agency FB" FontSize="22" Width="42" Foreground="#4E4C67" Margin="355,10,0,0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0,182,785,220" Grid.ColumnSpan="2">
+            <Label Content="Country:" FontFamily="Bahnschrift" FontSize="22" Foreground="#244035" Width="93" Margin="135,10,0,0"/>
+            <Label Content="City:" FontFamily="Bahnschrift" FontSize="22" Width="54" Foreground="#244035" Margin="355,10,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="3,226,782,169" Grid.ColumnSpan="2">
-            <ComboBox FontFamily="Agency FB" FontSize="22" Height="30" HorizontalAlignment="Center" Foreground="#4E4C67" Width="315" Margin="20,0,0,10" ItemsSource="{Binding AccommodationCountryItems}" IsEnabled="False">
+            <ComboBox FontFamily="Bahnschrift" FontSize="22" Height="30" HorizontalAlignment="Center" Foreground="#244035" Width="315" Margin="20,0,0,10" ItemsSource="{Binding AccommodationCountryItems}" SelectedItem="{Binding SelectedCountry}">
                 <ComboBox.Resources>
                     <Style TargetType="ComboBoxItem">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#8D94BA"/>
+                                <Setter Property="Background" Value="#426A5A"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </ComboBox.Resources>
             </ComboBox>
-            <ComboBox FontFamily="Agency FB" FontSize="22" Height="30" Width="315" Foreground="#4E4C67" Margin="120,0,0,10" ItemsSource="{Binding AccommodationCityItems}" IsEnabled="False">
+            <ComboBox FontFamily="Bahnschrift" FontSize="22" Height="30" Width="315" Foreground="#244035" Margin="120,0,0,10" ItemsSource="{Binding AccommodationCityItems}" SelectedItem="{Binding SelectedCity}">
                 <ComboBox.Resources>
                     <Style TargetType="ComboBoxItem">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#8D94BA"/>
+                                <Setter Property="Background" Value="#426A5A"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </ComboBox.Resources>
             </ComboBox>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="2,281,782,129" Grid.ColumnSpan="2">
-            <Label Content="Guest Limit:" FontFamily="Agency FB" HorizontalAlignment="Center" Foreground="#4E4C67" FontSize="22" Width="95" Margin="142,0,0,0"/>
-            <Label Content="Minimal Stay Days:" FontFamily="Agency FB" FontSize="22" Width="140" Foreground="#4E4C67" Margin="295,0,0,0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0,281,782,128" Grid.ColumnSpan="2">
+            <Label Content="Guest Limit:" FontFamily="Bahnschrift" Foreground="#244035" FontSize="22" Width="130" Margin="120,0,0,0"/>
+            <Label Content="Minimal Stay Days:" FontFamily="Bahnschrift" FontSize="22" Width="194" Foreground="#244035" Margin="270,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="2,321,782,77" Grid.ColumnSpan="2">
-            <TextBox FontFamily="Agency FB" FontSize="22" Height="30" HorizontalAlignment="Center" Width="315" Foreground="#4E4C67" Margin="20,0,0,10"
+            <TextBox FontFamily="Bahnschrift" FontSize="22" Height="30" HorizontalAlignment="Center" Width="315" Foreground="#244035" Margin="20,0,0,10"
          Text="{Binding MinimalStayDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox FontFamily="Agency FB" FontSize="22" Height="30" Width="315" Foreground="#4E4C67" Margin="120,0,0,10"
+            <TextBox FontFamily="Bahnschrift" FontSize="22" Height="30" Width="315" Foreground="#244035" Margin="120,0,0,10"
          Text="{Binding GuestLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0,385,0,10">
-            <Button Content="Show Accommodations" Width="764" Height="58" Foreground="White" Background="#8D94BA" Margin="14,0,0,0" FontFamily="Agency FB" FontSize="30" Command="{Binding ShowAccommodationCommand}" IsEnabled="False">
+            <Button Content="Show Accommodations" Width="764" Height="58" Foreground="White" Margin="14,0,0,0" FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowAccommodationsCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="RatedButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#8D94BA" Background="#8D94BA">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                        <Border x:Name="ShowAccommodaionButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#D6D6D6">
+                            <ContentPresenter ContentSource="Content"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="RatedButton" Property="Background" Value="#DCD6F7"/>
+                                <Setter TargetName="ShowAccommodaionButton" Property="Background" Value="#AEAEAE"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="RatedButton" Property="Background" Value="#DCD6F7"/>
+                                <Setter TargetName="ShowAccommodaionButton" Property="Background" Value="#9A9A9A"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="ShowAccommodaionButton" Property="Background" Value="#9A9A9A"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -158,37 +162,37 @@
             </Button>
         </StackPanel>
 
-        <Border Grid.Row="0" Grid.Column="1" CornerRadius="20" Margin="10,10,10,10">
-            <ListView x:Name="AccommodationListView" ItemsSource="{Binding AccommodationItems}" SelectedItem="{Binding SelectedAccommodation}" Margin="10,10,10,10" FontFamily="Agency FB" FontSize="18" IsSynchronizedWithCurrentItem="False" IsEnabled="False">
+        <Border Grid.Row="0" Grid.Column="1" CornerRadius="5" Margin="10,10,10,10" Background="#eeeeee">
+            <ListView x:Name="AccommodationListView" ItemsSource="{Binding AccommodationItems}" SelectedItem="{Binding SelectedAccommodation}" Margin="10,10,10,10" FontFamily="Bahnschrift" FontSize="18" IsSynchronizedWithCurrentItem="False" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListView.Resources>
                     <Style TargetType="{x:Type ListView}">
-                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Background" Value="#eeeeee"/>
                         <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
                         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
                         <Setter Property="Padding" Value="4"/>
                     </Style>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
-                        <Setter Property="Background" Value="#DCD6F7"/>
+                        <Setter Property="Background" Value="#426A5A"/>
                         <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Padding" Value="2"/>
+                        <Setter Property="FontFamily" Value="Bahnschrift SemiLight" />
+                        <Setter Property="Padding" Value="5"/>
                     </Style>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Margin" Value="0,0,0,0"/>
+                        <Setter Property="Margin" Value="0,2,0,2"/>
                         <Setter Property="Padding" Value="10"/>
                         <Setter Property="Background" Value="#F0F0F0"/>
-                        <Setter Property="Foreground" Value="#4E4C67"/>
+                        <Setter Property="Foreground" Value="#244035"/>
                         <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Height" Value="78"/>
+                        <Setter Property="Height" Value="70"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListViewItem}">
                                     <Border x:Name="border" CornerRadius="2" BorderBrush="Transparent" BorderThickness="1">
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Offset="0.0" Color="#FFEFEFEF"/>
-                                                <GradientStop Offset="1.4" Color="#DCD6F7"/>
+                                                <GradientStop Offset="0.0" Color="White"/>
+                                                <GradientStop Offset="1.4" Color="#FAFAFA"/>
                                             </LinearGradientBrush>
                                         </Border.Background>
                                         <Grid>
@@ -216,36 +220,35 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
-                            <TextBlock Grid.Column="1" Text="{Binding  Location.City}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
-                            <TextBlock Grid.Column="2" Text="{Binding Type}" FontWeight="Bold"  FontFamily="Agency FB" Margin="5" />
+                            <TextBlock Grid.Column="0" Text="{Binding Name}"  FontFamily="Bahnschrift Light" Margin="25" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="{Binding  Location.City}"  FontFamily="Bahnschrift Light" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25" />
+                            <TextBlock Grid.Column="2" Text="{Binding Type}" FontFamily="Bahnschrift Light" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Accommodation Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="City" DisplayMemberBinding="{Binding  Location.City}"/>
-                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Accommodation Name" DisplayMemberBinding="{Binding Name}" Width="240"/>
+                        <GridViewColumn Header="City" DisplayMemberBinding="{Binding  Location.City}" Width="240"/>
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="240"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </Border>
-        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#DCD6F7" CornerRadius="15" Margin="10,10,10,10"/>
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" Height="88" Margin="20,10,0,0" HorizontalAlignment="Left" Width="499">
-            <TextBlock Text="New Reservation" Foreground="#4E4C67" FontSize="70" FontFamily="Agency FB" Width="406" Height="80" FontWeight="Bold"/>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,10,0,0" Background="Transparent" BorderThickness="0" Command="{Binding MyCommand}" IsEnabled="False">
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#eeeeee" CornerRadius="15" Margin="10,10,10,10"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" Height="88" Margin="20,10,0,0" HorizontalAlignment="Left" Width="613">
+            <TextBlock Text="New Reservation" Foreground="#244035" FontSize="70" FontFamily="Bahnschrift" Width="538" Height="80"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,10,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowNewReservationHelpCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type fa:ImageAwesome}">
-                        <Setter Property="Foreground" Value="#4E4C67" />
+                        <Setter Property="Foreground" Value="#244035" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#716e94" />
+                                <Setter Property="Foreground" Value="#426A5A" />
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="Foreground" Value="#716e94" />
+                                <Setter Property="Foreground" Value="#426A5A" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -254,14 +257,14 @@
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="ActiveReservationsButton">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,6,8,6" ContentSource="Content" />
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,8,10" ContentSource="Content" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#DCD6F7" />
+                                <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#eeeeee" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#DCD6F7"/>
+                                <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#eeeeee"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -269,49 +272,39 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="2,200,0,210" Grid.ColumnSpan="2">
-            <Label Content="Arrival:" FontFamily="Agency FB" Foreground="#4E4C67" FontSize="22" Width="101" Margin="535,0,0,0"/>
-            <Label Content="Departure:" FontFamily="Agency FB" FontSize="22" Width="84" Foreground="#4E4C67" Margin="320,0,0,0"/>
+            <Label Content="Arrival:" FontFamily="Bahnschrift" Foreground="#426A5A" FontSize="22" Width="85" Margin="520,0,0,0" FontWeight="Bold"/>
+            <Label Content="Departure:" FontFamily="Bahnschrift" FontSize="22" Width="114" Foreground="#426A5A" Margin="330,0,0,0" FontWeight="Bold"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0,103,0,174" Grid.ColumnSpan="2">
-            <Label Content="Number of Guests:" FontFamily="Agency FB" HorizontalAlignment="Center" Foreground="#4E4C67" FontSize="22" Width="138"/>
-            <TextBox FontFamily="Agency FB" FontSize="22" Height="45" HorizontalAlignment="Center" Width="450" Foreground="#4E4C67" Margin="0,0,0,10"/>
+            <Label Content="Number of Guests:" FontFamily="Bahnschrift" HorizontalAlignment="Center" Foreground="#244035" FontSize="22" Width="194" FontWeight="Bold"/>
+            <TextBox  Text="{Binding GuestCount, Mode=TwoWay}" FontFamily="Bahnschrift" FontSize="22" Height="45" HorizontalAlignment="Center" Width="450" Foreground="#244035" Margin="0,0,0,10"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="0,240,0,154" Grid.ColumnSpan="2">
-            <DatePicker FontFamily="Agency FB" FontSize="22" Height="45" Width="315" Foreground="#4E4C67" Margin="405,0,0,10" IsEnabled="False"/>
-            <DatePicker FontFamily="Agency FB" FontSize="22" Height="45" Width="315" Foreground="#4E4C67" Margin="120,0,0,10" IsEnabled="False"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="22" Height="45" Width="315" Foreground="#244035" Margin="405,0,0,10"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" FontSize="22" SelectedDate="{Binding EndDate, Mode=TwoWay}" Height="45" Width="315" Foreground="#244035" Margin="120,0,0,10"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,302,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="138" Width="1550">
-            <Button Content="BOOK" Width="764" Height="88" Foreground="White" Margin="0,0,0,0" FontFamily="Agency FB" FontSize="60" FontWeight="Bold" Command="{Binding BookCommand}" IsEnabled="False">
+            <Button Content="BOOK" Width="764" Height="88" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="60" Command="{Binding BookCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="RatedButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#4E4C67" Background="#4E4C67">
+                        <Border x:Name="BookButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#7FB685">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="RatedButton" Property="Background" Value="#8D94BA"/>
+                                <Setter TargetName="BookButton" Property="Background" Value="#85BC8B"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="RatedButton" Property="Background" Value="#DCD6F7"/>
+                                <Setter TargetName="BookButton" Property="Background" Value="#426A5A"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-
-            <Label x:Name="SuccessLabel" Content="Accommodation successfully booked!" Margin="612,-7,0,16" HorizontalAlignment="Left" Foreground="ForestGreen" FontSize="20" Grid.ColumnSpan="2"
-       Visibility="{Binding SuccessLabelVisibility}">
-                <Label.Style>
-                    <Style TargetType="{x:Type Label}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsButtonPressed}" Value="True">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Label.Style>
-            </Label>
         </StackPanel>
+        <Label Grid.Row="1"  Content="{Binding ErrorLabel}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="MediumVioletRed" FontSize="20" Margin="0,0,0,36" Grid.ColumnSpan="2"/>
+        <Label Grid.Row="1" Content="{Binding ReservationSuccessfulLabel}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="ForestGreen" FontSize="20" Margin="0,0,0,36" Grid.ColumnSpan="2" />
+
         <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Background="Black" Width="1570" Height="900" Opacity="0.5">
 
         </Border>
@@ -325,8 +318,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="10" 
-        BorderThickness="1" BorderBrush="White" Padding="10" Margin="808,291,391,0" Height="149" VerticalAlignment="Top">
-                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Agency FB" FontSize="20" Height="128" Width="351">
+        BorderThickness="1" BorderBrush="White" Padding="10" Margin="808,258,314,0" Height="182" VerticalAlignment="Top">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift" FontSize="20" Height="150" Width="396">
          Enter the parameters by which you want to <Run FontWeight="Bold" Text="search for accommodations" />. 
     Appropriate accommodations will appear in the list after you press the button 
     <Run FontWeight="Bold" Text="&quot;Show Accommodations&quot;" /> that you can <Run FontWeight="Bold" Text="select" /> later during the reservation.
@@ -346,8 +339,8 @@
             </Polygon>
 
             <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="10" 
-        BorderThickness="1" BorderBrush="White" Padding="10" Height="140" Width="340" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1202,697,0,0">
-                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Agency FB" FontSize="20" Height="112" Text="After selecting the accommodation, choose the dates and the number of guests for which you are booking, click the 'Book' button and reserve the accommodation." Width="306"/>
+        BorderThickness="1" BorderBrush="White" Padding="10" Height="175" Width="340" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1202,662,0,0">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift" FontSize="20" Height="160" Text="After selecting the accommodation, choose the dates and the number of guests for which you are booking, click the 'Book' button and reserve the accommodation." Width="306"/>
             </Border>
 
             <Polygon Grid.Row="1" Grid.Column="1" Fill="White" Points="0,0 20,0 10,10" Stroke="White" 
@@ -361,7 +354,7 @@
                     </TransformGroup>
                 </Polygon.RenderTransform>
             </Polygon>
-            <Button Content="OK" Height="20" FontFamily="Agency FB" FontSize="16" Grid.Column="1" Margin="1406,794,62,22" Grid.Row="1" Command="{Binding ShowNewReservationCommand}"/>
+            <Button Content="OK" Height="20" FontFamily="Bahnschrift" FontSize="16" Grid.Column="1" Margin="1406,794,50,23" Grid.Row="1" Command="{Binding ShowNewReservationCommand}"/>
         </Grid>
         <ContentControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding SelectedView}"/>
     </Grid>

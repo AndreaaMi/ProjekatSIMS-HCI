@@ -307,3 +307,9 @@ C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\NewReservationHelpView.baml
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\ActiveReservationsHelpView.g.cs
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\ActiveReservationsHelpView.baml
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RequestNewDateView.g.cs
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RequestNewDateView.baml
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RequestNewDateHelpView.g.cs
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RequestNewDateHelpView.baml
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\AllAccommodationsView.g.cs
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\AllAccommodationsView.baml

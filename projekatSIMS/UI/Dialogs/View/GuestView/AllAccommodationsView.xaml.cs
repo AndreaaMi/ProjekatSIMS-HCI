@@ -11,38 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace projekatSIMS.UI.Dialogs.View.GuestView
 {
     /// <summary>
-    /// Interaction logic for GuestMainView.xaml
+    /// Interaction logic for AllAccommodationsView.xaml
     /// </summary>
-    public partial class GuestMainView : Window
+    public partial class AllAccommodationsView : UserControl
     {
-        public GuestMainView()
+        public AllAccommodationsView()
         {
             InitializeComponent();
-        }
-
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            DataContext = new AllAccommodationsViewModel();
         }
     }
 }
