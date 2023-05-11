@@ -1,6 +1,7 @@
 ﻿using projekatSIMS.CompositeComon;
 using projekatSIMS.Model;
 using projekatSIMS.Service;
+using projekatSIMS.UI.Dialogs.View.GuestView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,6 +35,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public ICommand MoveToNextImageCommand { get; set; }
         public ICommand MoveToPreviousImageCommand { get; set; }
+        public ICommand BackCommand { get; set; }
 
         private void MoveToNextImage(object paremater)
         {
@@ -71,19 +73,31 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             OnPropertyChanged(nameof(CurrentImageUrl));
         }
 
+        public ICommand ShowAllAccommodationsHelpCommand { get; private set; }
+
 
         private ObservableCollection<Accommodation> accommodationItems = new ObservableCollection<Accommodation>();
 
         private AccommodationService accommodationService;
         public AllAccommodationsViewModel()
         {
+            BackCommand = new RelayCommand(BackControl);
             CurrentImageIndex = 0;
+            ShowAllAccommodationsHelpCommand = new RelayCommand(ShowAllAccommodationsHelpControl);
             MoveToNextImageCommand = new RelayCommand(MoveToNextImage);
             MoveToPreviousImageCommand = new RelayCommand(MoveToPreviousImage);
             SetService();
             InitialListViewLoad();
         }
 
+        private void BackControl(object parameter)
+        {
+            SelectedView = new GuestPageView();
+        }
+        private void ShowAllAccommodationsHelpControl(object parameter)
+        {
+            SelectedView = new AllAccommodationHelpView();
+        }
         public void SetService()
         {
             accommodationService = new AccommodationService();

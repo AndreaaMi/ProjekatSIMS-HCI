@@ -31,19 +31,24 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public ICommand ShowNewUserControlCommand { get; private set; }
         public ICommand ShowRescheduleReservationCommand { get; private set; }
-
         public ICommand ShowActiveReservationCommand { get; private set; }
-
+        public ICommand ShowAnywhereAnytimeViewCommand { get; private set; }
         public ICommand ShowAllAccommodationsCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
 
         public GuestMainViewModel()
         {
+            ShowAnywhereAnytimeViewCommand = new RelayCommand(ShowAnywhereAnytimeViewControl);
             ShowAllAccommodationsCommand = new RelayCommand(ShowAllAccommodationsControl);
             ShowNewUserControlCommand = new RelayCommand(ShowNewUserControl);
             LogoutCommand = new RelayCommand(Logout);
             ShowActiveReservationCommand = new RelayCommand(ShowActiveReservation);
+            ShowNewUserControl(null);
+        }
 
+        private void ShowAnywhereAnytimeViewControl(object parameter)
+        {
+            SelectedView = new AnywhereAnytimeView();
         }
 
         private void ShowNewUserControl(object parameter)

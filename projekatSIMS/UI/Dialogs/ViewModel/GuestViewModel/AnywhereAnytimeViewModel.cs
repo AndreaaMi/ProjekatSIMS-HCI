@@ -7,19 +7,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
-    public class NewReservationViewModel : ViewModelBase
+    public class AnywhereAnytimeViewModel : ViewModelBase
     {
-        //property pravim
-        //Unututar propertija SelectedItems.selectedRenovation = taj property
         private UserControl _selectedView;
 
         public UserControl SelectedView
@@ -32,97 +28,31 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
-        public ICommand ShowNewReservationHelpCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
-
-
+        public ICommand ShowAnywhereAnytimeHelpCommand { get; set; }
+        public ICommand BackCommand { get; set; }
         private ObservableCollection<Accommodation> accommodationItems = new ObservableCollection<Accommodation>();
-        private ObservableCollection<string> accommodationCountryItems = new ObservableCollection<string>();
-        private ObservableCollection<string> accommodationCityItems = new ObservableCollection<string>();
         private AccommodationService accommodationService;
         private AccommodationReservationService accommodationReservationService;
 
-        public NewReservationViewModel()
+
+        public AnywhereAnytimeViewModel()
         {
-            BackCommand = new RelayCommand(BackControl);
-            ShowNewReservationHelpCommand = new RelayCommand(ShowNewReservationHelpControl);
-            accommodationReservationService = new AccommodationReservationService();
-            GuestCount = 1;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now.AddDays(1);
+            BackCommand = new RelayCommand(BackControl);
+            ShowAnywhereAnytimeHelpCommand = new RelayCommand(ShowAnywhereAnytimeHelpControl);
             SetService();
             LoadData();
         }
 
-        private void BackControl(object parameter)
+        private Accommodation selectedAccommodation;
+        public Accommodation SelectedAccommodation
         {
-            SelectedView = new ActiveReservationsView();
-        }
-
-        private string _name;
-        private int? _guestLimit;
-        private int? _minimalStayDays;
-        private AccommodationType? _propertyType;
-
-        public string Name
-        {
-            get => _name;
+            get { return selectedAccommodation; }
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
-        private string _selectedCountry;
-        public string SelectedCountry
-        {
-            get => _selectedCountry;
-            set
-            {
-                _selectedCountry = value;
-                OnPropertyChanged(nameof(SelectedCountry));
-            }
-        }
-
-        private string _selectedCity;
-        public string SelectedCity
-        {
-            get => _selectedCity;
-            set
-            {
-                _selectedCity = value;
-                OnPropertyChanged(nameof(SelectedCity));
-            }
-        }
-
-        public int? GuestLimit
-        {
-            get => _guestLimit;
-            set
-            {
-                _guestLimit = value;
-                OnPropertyChanged(nameof(GuestLimit));
-            }
-        }
-
-        public int? MinimalStayDays
-        {
-            get => _minimalStayDays;
-            set
-            {
-                _minimalStayDays = value;
-                OnPropertyChanged(nameof(MinimalStayDays));
-            }
-        }
-
-        public AccommodationType? PropertyType
-        {
-            get => _propertyType;
-            set
-            {
-                _propertyType = value;
-                OnPropertyChanged(nameof(PropertyType));
+                selectedAccommodation = value;
+                OnPropertyChanged(nameof(SelectedAccommodation));
             }
         }
 
@@ -142,26 +72,33 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
-        private void FilterAccommodations()
+        private ICommand bookCommand;
+        public ICommand BookCommand
         {
-            var filteredAccommodations = AccommodationItems.Where(x =>
-             (string.IsNullOrEmpty(Name) || x.Name.ToLower().Contains(Name.ToLower()))
-             && (string.IsNullOrEmpty(SelectedCountry) || x.Location.Country.Equals(SelectedCountry, StringComparison.OrdinalIgnoreCase))
-             && (string.IsNullOrEmpty(SelectedCity) || x.Location.City.Equals(SelectedCity, StringComparison.OrdinalIgnoreCase))
-             && (!GuestLimit.HasValue || x.GuestLimit >= GuestLimit.Value)
-             && (!MinimalStayDays.HasValue || x.MinimumStayDays >= MinimalStayDays.Value)
-             && (!PropertyType.HasValue || x.Type == PropertyType.Value)
-             ).ToList();
-
-            // Update the collection of accommodations that should be displayed
-            AccommodationItems.Clear();
-            filteredAccommodations.ForEach(x => AccommodationItems.Add(x));
+            get
+            {
+                if (bookCommand == null)
+                {
+                    bookCommand = new RelayCommand(
+                        param => BookAccommodation(),
+                        param => true
+                    );
+                }
+                return bookCommand;
+            }
         }
 
-        private void ShowNewReservationHelpControl(object parameter)
+
+        public ObservableCollection<Accommodation> AccommodationItems
         {
-            SelectedView = new NewReservationHelpView();
+            get { return accommodationItems; }
+            set
+            {
+                accommodationItems = value;
+                OnPropertyChanged(nameof(accommodationItems));
+            }
         }
+
 
         private void LoadData()
         {
@@ -174,61 +111,26 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             {
                 AccommodationItems.Add(accommodation);
             }
-
-            foreach (Accommodation accommodation in accommodationService.GetAll().Cast<Accommodation>())
-            {
-                if (!AccommodationCountryItems.Contains(accommodation.Location.Country.ToString()))
-                {
-                    AccommodationCountryItems.Add(accommodation.Location.Country.ToString());
-                }
-            }
-
-            foreach (Accommodation accommodation in accommodationService.GetAll().Cast<Accommodation>())
-            {
-                if (!AccommodationCityItems.Contains(accommodation.Location.City.ToString()))
-                {
-                    AccommodationCityItems.Add(accommodation.Location.City.ToString());
-                }
-            }
         }
 
         public void SetService()
         {
             accommodationService = new AccommodationService();
+            accommodationReservationService = new AccommodationReservationService();
         }
 
-        public ObservableCollection<Accommodation> AccommodationItems
+
+        private void BackControl(object parameter)
         {
-            get { return accommodationItems; }
-            set
-            {
-                accommodationItems = value;
-                OnPropertyChanged(nameof(accommodationItems));
-            }
+            SelectedView = new GuestPageView();
         }
-
-        public ObservableCollection<string> AccommodationCountryItems
+        private void ShowAnywhereAnytimeHelpControl(object parameter)
         {
-            get { return accommodationCountryItems; }
-            set
-            {
-                accommodationCountryItems = value;
-                OnPropertyChanged(nameof(accommodationCountryItems));
-            }
+            SelectedView = new AnywhereAnytimeHelpView();
         }
 
-        public ObservableCollection<string> AccommodationCityItems
-        {
-            get { return accommodationCityItems; }
-            set
-            {
-                accommodationCityItems = value;
-                OnPropertyChanged(nameof(accommodationCityItems));
-            }
-        }
-
-        private int guestCount;
-        public int GuestCount
+        private int? guestCount;
+        public int? GuestCount
         {
             get { return guestCount; }
             set
@@ -260,40 +162,38 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
-        private Accommodation selectedAccommodation;
-        public Accommodation SelectedAccommodation
+        private int? minimalStayDays;
+
+        public int? MinimalStayDays
         {
-            get { return selectedAccommodation; }
+            get => minimalStayDays;
             set
             {
-                selectedAccommodation = value;
-                OnPropertyChanged(nameof(SelectedAccommodation));
+                minimalStayDays = value;
+                OnPropertyChanged(nameof(MinimalStayDays));
             }
         }
 
-        private ICommand bookCommand;
-        public ICommand BookCommand
+        private void FilterAccommodations()
         {
-            get
-            {
-                if (bookCommand == null)
-                {
-                    bookCommand = new RelayCommand(
-                        param => BookAccommodation(),
-                        param => true
-                    );
-                }
-                return bookCommand;
-            }
-        }
+            var filteredAccommodations = AccommodationItems.Where(x =>
+                (!GuestCount.HasValue || x.GuestLimit >= GuestCount.Value)
+                && (!MinimalStayDays.HasValue || x.MinimumStayDays <= MinimalStayDays.Value)
+            ).ToList();
 
+            // Update the collection of accommodations that should be displayed
+            AccommodationItems.Clear();
+            filteredAccommodations.ForEach(x => AccommodationItems.Add(x));
+            CommandManager.InvalidateRequerySuggested();
+
+        }
 
         private void BookAccommodation()
         {
             if (!ValidateInput())
             {
                 return; // do not book the accommodation if input is not valid
-            } 
+            }
 
             var newReservation = new AccommodationReservation
             {
@@ -301,7 +201,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 AccommodationName = SelectedAccommodation.Name,
                 StartDate = StartDate,
                 EndDate = EndDate,
-                GuestCount = GuestCount
+                GuestCount = (int)GuestCount
             };
 
             accommodationReservationService.CreateAccommodationReservation(newReservation);
@@ -412,6 +312,4 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
     }
-
 }
-

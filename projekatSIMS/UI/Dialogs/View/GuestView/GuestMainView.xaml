@@ -92,7 +92,7 @@
                 <RadioButton Content="ACOMMODATIONS" GroupName="accommodations" FontWeight="Bold"
         FontFamily="Bahnschrift" FontSize="24" Checked="RadioButton_Checked" Command="{Binding ShowAllAccommodationsCommand}"></RadioButton>
                 <RadioButton Content="ANYTIME / ANYWHERE"  FontWeight="Bold"
-        FontFamily="Bahnschrift" FontSize="24">
+        FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowAnywhereAnytimeViewCommand}">
                 </RadioButton>
                 <RadioButton Content="FORUM"  FontWeight="Bold"
         FontFamily="Bahnschrift" FontSize="24">
@@ -277,7 +277,7 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                 <Button Content="ACTIVE  RESERVATIONS" 
         Margin="15,30,0,30" 
         Width="260"
-        Height="60"
+        Height="100"
         Foreground="#244035"
         FontSize="20"
         Background="Transparent"

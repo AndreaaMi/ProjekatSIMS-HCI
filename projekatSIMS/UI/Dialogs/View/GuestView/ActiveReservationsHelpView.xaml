@@ -92,7 +92,7 @@
         </Border>
 
         <StackPanel Grid.Row="2" Margin="14,20,10,10" Orientation="Horizontal" VerticalAlignment="Top">
-            <Button Content="New Reservation" HorizontalAlignment="Left" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowNewReservationsCommand}">
+            <Button Content="New Reservation" IsEnabled="False" HorizontalAlignment="Left" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowNewReservationsCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="NewReservationButton" CornerRadius="5" Margin="20,4,0,4" BorderThickness="1" BorderBrush="#7FB685" Background="#7FB685">
@@ -117,7 +117,7 @@
             </Button>
 
 
-            <Button Content="Cancel Reservation" HorizontalAlignment="Center" Margin="310,0,0,0" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding CancelReservationCommand}"  CommandParameter="{Binding SelectedReservation}">
+            <Button Content="Cancel Reservation" IsEnabled="False" HorizontalAlignment="Center" Margin="310,0,0,0" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding CancelReservationCommand}"  CommandParameter="{Binding SelectedReservation}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="CancelReservationButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="DarkRed" Background="DarkRed" >
@@ -137,7 +137,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Request New Date" HorizontalAlignment="Right" Margin="12,0,0,0" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowNewDateRequestCommand}">
+            <Button Content="Request New Date" IsEnabled="False" HorizontalAlignment="Right" Margin="12,0,0,0" Width="400" Height="80" Foreground="White" FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowNewDateRequestCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="RequestNewDateButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#D6D6D6" Background="#D6D6D6">

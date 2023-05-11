@@ -24,7 +24,7 @@
             <TextBlock Text="Choose Accommodation:" Foreground="#426A5A" FontSize="36" FontFamily="Bahnschrift" Width="400"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="750" Height="35" Margin="23,68,0,0">
+        <StackPanel Grid.Column="0" IsEnabled="False" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="750" Height="35" Margin="23,68,0,0">
             <RadioButton Content="Apartment" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035"
              GroupName="PropertyType" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7"
              Command="{Binding SetApartmentTypeCommand}" CommandParameter="Apartment">
@@ -48,7 +48,7 @@
                 </RadioButton.Style>
             </RadioButton>
 
-            <RadioButton Content="House" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7"
+            <RadioButton Content="House" IsEnabled="False" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7"
             GroupName="PropertyType" IsChecked="{Binding PropertyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
              Command="{Binding ShowAccommodationsCommand}" CommandParameter="1">
                 <RadioButton.Style>
@@ -71,7 +71,7 @@
                 </RadioButton.Style>
             </RadioButton>
 
-            <RadioButton Content="Cottage" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035"
+            <RadioButton Content="Cottage" IsEnabled="False" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#244035"
              GroupName="PropertyType" FontSize="24" FontFamily="Bahnschrift" BorderBrush="#FFDCD6F7" 
             IsChecked="{Binding PropertyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
              Command="{Binding ShowAccommodationsCommand}" CommandParameter="2">
@@ -106,7 +106,7 @@
             <Label Content="City:" FontFamily="Bahnschrift" FontSize="22" Width="54" Foreground="#244035" Margin="355,10,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="3,226,782,169" Grid.ColumnSpan="2">
-            <ComboBox FontFamily="Bahnschrift" FontSize="22" Height="30" HorizontalAlignment="Center" Foreground="#244035" Width="315" Margin="20,0,0,10" ItemsSource="{Binding AccommodationCountryItems}" SelectedItem="{Binding SelectedCountry}">
+            <ComboBox FontFamily="Bahnschrift" IsEnabled="False" FontSize="22" Height="30" HorizontalAlignment="Center" Foreground="#244035" Width="315" Margin="20,0,0,10" ItemsSource="{Binding AccommodationCountryItems}" SelectedItem="{Binding SelectedCountry}">
                 <ComboBox.Resources>
                     <Style TargetType="ComboBoxItem">
                         <Style.Triggers>
@@ -117,7 +117,7 @@
                     </Style>
                 </ComboBox.Resources>
             </ComboBox>
-            <ComboBox FontFamily="Bahnschrift" FontSize="22" Height="30" Width="315" Foreground="#244035" Margin="120,0,0,10" ItemsSource="{Binding AccommodationCityItems}" SelectedItem="{Binding SelectedCity}">
+            <ComboBox FontFamily="Bahnschrift" IsEnabled="False" FontSize="22" Height="30" Width="315" Foreground="#244035" Margin="120,0,0,10" ItemsSource="{Binding AccommodationCityItems}" SelectedItem="{Binding SelectedCity}">
                 <ComboBox.Resources>
                     <Style TargetType="ComboBoxItem">
                         <Style.Triggers>
@@ -140,7 +140,7 @@
          Text="{Binding GuestLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0,385,0,10">
-            <Button Content="Show Accommodations" Width="764" Height="58" Foreground="White" Margin="14,0,0,0" FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowAccommodationsCommand}">
+            <Button Content="Show Accommodations" Width="764" Height="58" IsEnabled="False" Foreground="White" Margin="14,0,0,0" FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowAccommodationsCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="ShowAccommodaionButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#D6D6D6">
@@ -239,7 +239,7 @@
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#eeeeee" CornerRadius="15" Margin="10,10,10,10"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" Height="88" Margin="20,10,0,0" HorizontalAlignment="Left" Width="613">
             <TextBlock Text="New Reservation" Foreground="#244035" FontSize="70" FontFamily="Bahnschrift" Width="538" Height="80"/>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,10,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowNewReservationHelpCommand}">
+            <Button VerticalAlignment="Center" IsEnabled="False" HorizontalAlignment="Left" Margin="5,10,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowNewReservationHelpCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type fa:ImageAwesome}">
                         <Setter Property="Foreground" Value="#244035" />
@@ -280,11 +280,11 @@
             <TextBox  Text="{Binding GuestCount, Mode=TwoWay}" FontFamily="Bahnschrift" FontSize="22" Height="45" HorizontalAlignment="Center" Width="450" Foreground="#244035" Margin="0,0,0,10"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="0,240,0,154" Grid.ColumnSpan="2">
-            <DatePicker FontFamily="Bahnschrift SemiLight" SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="22" Height="45" Width="315" Foreground="#244035" Margin="405,0,0,10"/>
-            <DatePicker FontFamily="Bahnschrift SemiLight" FontSize="22" SelectedDate="{Binding EndDate, Mode=TwoWay}" Height="45" Width="315" Foreground="#244035" Margin="120,0,0,10"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" IsEnabled="False" SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="22" Height="45" Width="315" Foreground="#244035" Margin="405,0,0,10"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" IsEnabled="False" FontSize="22" SelectedDate="{Binding EndDate, Mode=TwoWay}" Height="45" Width="315" Foreground="#244035" Margin="120,0,0,10"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,302,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="138" Width="1550">
-            <Button Content="BOOK" Width="764" Height="88" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="60" Command="{Binding BookCommand}">
+            <Button Content="BOOK" Width="764" Height="88" IsEnabled="False" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="60" Command="{Binding BookCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="BookButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#7FB685">

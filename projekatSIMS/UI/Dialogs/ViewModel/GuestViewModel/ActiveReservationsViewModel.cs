@@ -197,6 +197,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         private void BackControl(object parameter)
         {
+            SelectedView = new GuestPageView();
         }
     }
 }

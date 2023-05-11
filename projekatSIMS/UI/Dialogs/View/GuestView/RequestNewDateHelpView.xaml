@@ -16,7 +16,7 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
             <TextBlock Text="Request New Date" Margin="20,0,0,0" Foreground="#244035" FontSize="72" FontFamily="Bahnschrift" FontWeight="Bold"/>
-            <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowRequestNewDateHelpViewCommand}">
+            <Button Grid.Row="0" VerticalAlignment="Center" IsEnabled="False" HorizontalAlignment="Left" Margin="15,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowRequestNewDateHelpViewCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type fa:ImageAwesome}">
                         <Setter Property="Foreground" Value="#244035" />
@@ -50,7 +50,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Background="#426A5A" VerticalAlignment="Center" Orientation="Horizontal" Width="1530">
             <Label Content="Name:" FontFamily="Bahnschrift" Foreground="White" FontSize="32" Width="101" Margin="20,0,0,0" VerticalAlignment="Center"/>
-            <ComboBox Margin="20,10,20,10" Width="1365" Height="45" Background="White" Foreground="#244035" FontFamily="Bahnschrift" FontSize="20" 
+            <ComboBox Margin="20,10,20,10" Width="1365" IsEnabled="False" Height="45" Background="White" Foreground="#244035" FontFamily="Bahnschrift" FontSize="20" 
     ItemsSource="{Binding ReservationItems}" 
     SelectedItem="{Binding SelectedReservation}" BorderBrush="White">
                 <ComboBox.ItemTemplate>
@@ -71,8 +71,8 @@
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="2" Margin="20,50,20,20" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1500">
-            <DatePicker Foreground="#244035" FontFamily="Bahnschrift" Margin="25,0,0,0" FontSize="30" Width="700" SelectedDate="{Binding NewStartDate}"/>
-            <DatePicker Foreground="#244035" FontFamily="Bahnschrift" FontSize="30" Margin="50,0,0,0" Width="700" SelectedDate="{Binding NewEndDate}"/>
+            <DatePicker Foreground="#244035" IsEnabled="False" FontFamily="Bahnschrift" Margin="25,0,0,0" FontSize="30" Width="700" SelectedDate="{Binding NewStartDate}"/>
+            <DatePicker Foreground="#244035" IsEnabled="False" FontFamily="Bahnschrift" FontSize="30" Margin="50,0,0,0" Width="700" SelectedDate="{Binding NewEndDate}"/>
         </StackPanel>
         <Border CornerRadius="5" Background="White"  Opacity="1" BorderThickness="2" BorderBrush="White" Margin="40,122,0,0" Grid.Row="1" Height="40" Width="364" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2">
             <TextBlock Text="Reschedule Reservation Requests" 
@@ -80,7 +80,7 @@
                Foreground="#244035"
                FontSize="22" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight"/>
         </Border>
-        <Button Grid.Row="3" Content="Send Request" HorizontalAlignment="Center" Margin="0,20,0,80" Width="400" Foreground="White" FontFamily="Bahnschrift" FontSize="24" FontWeight="Bold" Command="{Binding RequestRescheduleCommand}">
+        <Button Grid.Row="3" Content="Send Request" IsEnabled="False" HorizontalAlignment="Center" Margin="0,20,0,80" Width="400" Foreground="White" FontFamily="Bahnschrift" FontSize="24" FontWeight="Bold" Command="{Binding RequestRescheduleCommand}">
 
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">

@@ -103,6 +103,47 @@
         </Button>
         <Label Grid.Row="3" Content="{Binding ErrorLabel}" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="MediumVioletRed" Margin="0,130,0,0"></Label>
         <Label Grid.Row="3" Content="{Binding SuccessfulLabel}" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="ForestGreen" Margin="0,130,0,0"></Label>
+        <Button Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,40" Height="40" Width="40" Command="{Binding BackCommand}">
+            <Button.Resources>
+                <Style TargetType="{x:Type fa:ImageAwesome}">
+                    <Setter Property="Foreground" Value="#244035" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#426A5A" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#426A5A" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+            <fa:ImageAwesome Icon="Play" Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
+                <fa:ImageAwesome.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </fa:ImageAwesome.RenderTransform>
+            </fa:ImageAwesome>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ActiveReservationsButton">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" ContentSource="Content" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ActiveReservationsButton" Property="Background" Value="transparent" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ActiveReservationsButton" Property="Background" Value="transparent"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <ContentControl Grid.Row="0" Grid.RowSpan="4" Content="{Binding SelectedView}"/>
+        
     </Grid>
 </UserControl>

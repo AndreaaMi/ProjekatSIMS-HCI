@@ -105,7 +105,10 @@
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsHelpViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AllAccommodationHelpViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AllAccommodationsViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AnywhereAnytimeHelpViewModel.cs.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AnywhereAnytimeViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestPageViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationHelpViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationViewModel.cs" />
@@ -140,8 +143,17 @@
     <Compile Include="UI\Dialogs\View\GuestView\ActiveReservationsView.xaml.cs">
       <DependentUpon>ActiveReservationsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\AllAccommodationHelpView.xaml.cs">
+      <DependentUpon>AllAccommodationHelpView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\AllAccommodationsView.xaml.cs">
       <DependentUpon>AllAccommodationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\AnywhereAnytimeHelpView.xaml.cs">
+      <DependentUpon>AnywhereAnytimeHelpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\AnywhereAnytimeView.xaml.cs">
+      <DependentUpon>AnywhereAnytimeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
@@ -254,7 +266,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\GuestView\AllAccommodationHelpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\GuestView\AllAccommodationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\AnywhereAnytimeHelpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\AnywhereAnytimeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

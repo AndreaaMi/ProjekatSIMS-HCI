@@ -30,6 +30,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         }
 
         public ICommand ShowRequestNewDateHelpViewCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
+
 
         private AccommodationReservation _selectedReservation;
         private DateTime _newStartDate;
@@ -42,6 +44,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public RequestNewDateViewModel()
         {
+            BackCommand = new RelayCommand(BackControl);
             ShowRequestNewDateHelpViewCommand = new RelayCommand(ShowRequestNewDateHelpViewControl);
             accommodationReservationService = new AccommodationReservationService();
             NewStartDate = DateTime.Now;
@@ -53,6 +56,11 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         private void ShowRequestNewDateHelpViewControl(object parameter)
         {
             SelectedView = new RequestNewDateHelpView();
+        }
+
+        private void BackControl(object parameter)
+        {
+            SelectedView = new ActiveReservationsView();
         }
 
         public ObservableCollection<AccommodationReservation> ReservationItems
