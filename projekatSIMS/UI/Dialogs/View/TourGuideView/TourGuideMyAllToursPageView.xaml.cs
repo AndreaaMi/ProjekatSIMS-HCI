@@ -1,6 +1,8 @@
-﻿using projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel;
+﻿using projekatSIMS.Model;
+using projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +19,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.TourGuideView
 {
     /// <summary>
-    /// Interaction logic for TourGuideAllToursPageView.xaml
+    /// Interaction logic for TourGuideMyAllToursPageView.xaml
     /// </summary>
-    public partial class TourGuideAllToursPageView : Page
+    public partial class TourGuideMyAllToursPageView : Page
     {
-        public TourGuideAllToursPageView()
+        public TourGuideMyAllToursPageView(Tour selectedTour)
         {
             InitializeComponent();
-            DataContext = new TourGuideAllToursPageModel();
+            DataContext = new TourGuideMyAllToursPageModel(selectedTour);
         }
-
-        
     }
 }

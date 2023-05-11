@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideAllToursPageModel : ViewModelBase
+    internal class TourGuideMyAllToursPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -168,7 +168,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private Tour selectedTour;
+        private Tour selectedTour = new Tour();
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
 
@@ -181,23 +181,32 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private RelayCommand tourButtonCommand;
 
 
-        public TourGuideAllToursPageModel()
+        public TourGuideMyAllToursPageModel(Tour selectedTour)
         {
             SetService();
-            var tours = tourService.GetAll();
+           /* Name = selectedTour.Name;
+            Country = selectedTour.Location.Country;
+            City = selectedTour.Location.City;
+            StartingDate = selectedTour.StartingDate;
+            Duration = (selectedTour.Duration).ToString();
+            MaximumNumberOfGuests = selectedTour.MaxNumberOfGuests.ToString();
+            
+            */
+           Tours.Add(selectedTour);
+            
 
 
 
 
-            foreach (Tour tour in tours)
-            {
-                
-                Tours.Add(tour);
-                
-               // Name = tour.Name;
-               // Description = tour.Description;
-                
-            }
+
+
+
+
+
+            // Name = tour.Name;
+            // Description = tour.Description;
+
+
 
 
 
@@ -214,26 +223,17 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             userService = new UserService();
         }
 
-        private void TourButtonCommandExecute()
+        
+        public Tour SelectedTour 
         {
-            
-            TourGuideMainWindow.navigationService.Navigate(
-                new TourGuideMyAllToursPageView(selectedTour));
-        }
-
-        public RelayCommand TourButtonCommand
-        {
-            get
+            get { return selectedTour; }
+            set
             {
-                if (tourButtonCommand == null)
-                {
-                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
-                }
-
-                return tourButtonCommand;
+                selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
             }
-        }
 
+        }
         public ObservableCollection<Tour> Tours
         {
             get { return tours; }
@@ -244,16 +244,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        public Tour SelectedTour
-        {
-            get { return selectedTour; }
-            set
-            {
-                selectedTour = value;
-                OnPropertyChanged(nameof(SelectedTour));
-
-            }
-        }
         public string Id
         {
             get { return id; }
@@ -387,7 +377,5 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         }
-
-
     }
 }
