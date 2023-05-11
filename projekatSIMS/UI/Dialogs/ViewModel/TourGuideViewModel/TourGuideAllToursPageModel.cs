@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
@@ -216,9 +217,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-            
-            TourGuideMainWindow.navigationService.Navigate(
-                new TourGuideMyAllToursPageView(selectedTour));
+            if (selectedTour != null)
+            {
+                TourGuideMainWindow.navigationService.Navigate(
+                    new TourGuideMyAllToursPageView(selectedTour));
+            }
+            else
+            {
+                MessageBox.Show("eeeeeeeeeeeee");
+            }
         }
 
         public RelayCommand TourButtonCommand

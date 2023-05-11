@@ -181,7 +181,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private RelayCommand tourButtonCommand;
 
 
-        public TourGuideMyAllToursPageModel(Tour selectedTour)
+        public TourGuideMyAllToursPageModel(Tour selected)
         {
             SetService();
            /* Name = selectedTour.Name;
@@ -192,7 +192,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             MaximumNumberOfGuests = selectedTour.MaxNumberOfGuests.ToString();
             
             */
-           Tours.Add(selectedTour);
+           Tours.Add(selected);
             
 
 

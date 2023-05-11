@@ -35,11 +35,11 @@
                 </Grid.ColumnDefinitions>
                 
                 <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                        
+                    
+                        <ScrollViewer >
                         <StackPanel>
-
-                            <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" BorderThickness="0" Background="#121212">
+                        
+                            <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" ScrollViewer.CanContentScroll="True">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Button Background="#121212"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" >
@@ -75,8 +75,9 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
+                        
 
-                            <Button Background="#121212"  Command="{Binding TourButtonCommand}">
+                        <Button Background="#121212"  Command="{Binding TourButtonCommand}">
                                 <Border  Height="300" BorderThickness="0,0,0,1" BorderBrush="White">
 
 
@@ -110,9 +111,9 @@
 
 
                         </StackPanel>
+                        </ScrollViewer>
                         
-                        
-                    </ScrollViewer>
+                    
                 </Border>
 
 

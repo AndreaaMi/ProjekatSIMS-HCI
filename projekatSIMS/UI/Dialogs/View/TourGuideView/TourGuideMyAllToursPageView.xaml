@@ -73,7 +73,9 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    
                 </Border>
+                
 
 
                 <Grid Width="240">
