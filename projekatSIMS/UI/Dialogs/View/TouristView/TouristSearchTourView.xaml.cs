@@ -27,5 +27,30 @@ namespace projekatSIMS.UI.Dialogs.View.TouristView
             DataContext = new TouristSearchTourModel();
         }
 
+        private void StateComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            StateComboBox.Focus();
+        }
+
+        private void CityComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            CityComboBox.Focus();
+        }
+
+        private void LanguageComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            LanguageComboBox.Focus();
+        }
+
+        private void DurationComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            DurationComboBox.Focus();
+        }
+
+        private void SlotComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            SlotComboBox.Focus();
+        }
+
     }
 }
