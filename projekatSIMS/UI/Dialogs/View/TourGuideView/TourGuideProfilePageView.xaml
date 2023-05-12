@@ -9,7 +9,7 @@
       Title="TourGuideProfilePageView">
 
     <Page.Resources>
-        <ResourceDictionary Source="Theme/Dark.xaml"/>
+        <ResourceDictionary Source="Theme/Light.xaml"/>
     </Page.Resources>
 
     <Border>
