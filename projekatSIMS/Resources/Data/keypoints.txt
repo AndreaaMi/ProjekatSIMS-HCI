@@ -9,3 +9,7 @@
 10|pozoriste|False|12
 11|pekara|True|13
 12|centar|True|13
+1|aa|False|15
+2|ss|False|15
+1|aa|False|15
+2|ss|False|15

@@ -217,15 +217,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-            if (selectedTour != null)
-            {
+          //  if (selectedTour != null)
+           // {
                 TourGuideMainWindow.navigationService.Navigate(
                     new TourGuideMyAllToursPageView(selectedTour));
-            }
-            else
-            {
-                MessageBox.Show("eeeeeeeeeeeee");
-            }
+         //   }
+          //  else
+          //  {
+           //     MessageBox.Show("eeeeeeeeeeeee");
+           // }
         }
 
         public RelayCommand TourButtonCommand
