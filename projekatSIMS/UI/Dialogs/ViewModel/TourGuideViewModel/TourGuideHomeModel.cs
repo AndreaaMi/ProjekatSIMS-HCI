@@ -47,8 +47,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string maxNumberOfGuests;
         private string duration;
         private string description;
-        private string keyPointId;
         private string keyPointName;
+        private string keyPointId;
+        private List<KeyPoints> keyPoints;
 
         private string minor;
         private string adult;
@@ -428,7 +429,17 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        
+        public List<KeyPoints> KeyPoints
+        {
+            get { return keyPoints; }
+            set
+            {
+                keyPoints = value;
+                OnPropertyChanged(nameof(KeyPoints));
+            }
+
+
+        }
         public string KeyPointId
         {
             get { return keyPointId; }

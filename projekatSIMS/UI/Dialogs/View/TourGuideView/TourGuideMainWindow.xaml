@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="TourGuideMainWindow" Height="450" Width="800">
     <Grid>
-        <Frame NavigationUIVisibility="Hidden" x:Name="frame" Source="TourGuideHomeView.xaml"/>
+        <Frame NavigationUIVisibility="Hidden" x:Name="frame" Source="TourGuideHomePageView.xaml"/>
     </Grid>
 </Window>

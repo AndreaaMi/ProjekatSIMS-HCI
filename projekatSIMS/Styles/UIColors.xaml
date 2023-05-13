@@ -2,14 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--Background Colors-->
-    <Color x:Key="primaryBackColor1">#0A003A</Color>
-    <Color x:Key="primaryBackColor2">#784DFD</Color>
-    <Color x:Key="secondaryBackColor1">#24105F</Color>
-    <Color x:Key="secondaryBackColor2">#210F55</Color>
+    <Color x:Key="primaryBackColor1">#f0f0f0</Color>
+    <Color x:Key="primaryBackColor2">#FFB6C1</Color>
+    <Color x:Key="secondaryBackColor1">#ECECEC</Color>
+    <Color x:Key="secondaryBackColor2">#e3e3e3</Color>
     <!--Window Border Colors-->
     <Color x:Key="winBorderColor1">#0052BF</Color>
     <Color x:Key="winBorderColor2">#FB539B</Color>
-    <Color x:Key="winBorderColor3">#4BB3FF</Color>
+    <Color x:Key="winBorderColor3">#75ff8c</Color>
     <!--Color Palette-->
     <SolidColorBrush x:Key="color1" Color="#E285DE"/>
     <SolidColorBrush x:Key="color2" Color="#784DFD"/>
@@ -38,5 +38,53 @@
     <Color x:Key="ButtonColor3">#4BB3FF</Color>
     <!--TextBox Colors-->
     <!--Etc-->
+    
+    <Style TargetType="Button" x:Key="Button1">
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#1976D2"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#0D47A1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter TargetName="border" Property="Background" Value="#BDBDBD"/>
+                            <Setter Property="Cursor" Value="Arrow"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="Label1">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="120"/>
+        
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+        
+    </Style>
+
+    <Style x:Key="CustomScrollBarStyle" TargetType="{x:Type ScrollBar}">
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Thumb.Background" Value="Red" />
+        <Setter Property="Thumb.BorderBrush" Value="Red" />
+        
+    </Style>
 
 </ResourceDictionary>

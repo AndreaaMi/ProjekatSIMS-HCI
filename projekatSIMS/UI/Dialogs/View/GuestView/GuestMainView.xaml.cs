@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,21 @@ namespace projekatSIMS.UI.Dialogs.View.GuestView
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

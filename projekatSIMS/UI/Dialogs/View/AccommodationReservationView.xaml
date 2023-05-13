@@ -40,7 +40,7 @@
                 <DataGridTextColumn Header="Cancellation Days" Binding="{Binding CancellationDays}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <ListView Grid.Row="0" x:Name="RequestReservationRescheduleViewList" Margin="793,10,10,10" Grid.Column="1">
+        <ListView Grid.Row="0" x:Name="RequestReservationRescheduleViewList" Margin="793,10,10,10" Grid.Column="1" SelectionChanged="RequestReservationRescheduleViewList_SelectionChanged">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="FontSize" Value="10" />
