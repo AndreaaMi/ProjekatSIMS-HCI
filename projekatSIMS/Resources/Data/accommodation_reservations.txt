@@ -10,8 +10,8 @@
 8|Grand Hotel Sofia|2023-05-07|2023-05-01|11|False|False
 9|Hotel Belgrade1|2023-05-03|2023-05-28|3|False|False
 10|Hotel Belgrade1|2023-05-06|2023-05-09|2|False|False
-11|Hotel Belgrade1|2023-05-04|2023-05-09|2|False|False
-12|Grand Hotel Sofia|2023-05-01|2023-05-11|567|False|False
+11|Hotel Belgrade1|2023-05-04|2023-05-09|2|True|False
+12|Grand Hotel Sofia|2023-05-01|2023-05-11|567|True|False
 13|Grand Hotel Sofia2|2023-05-01|2023-06-04|300|False|False
 14|Grand Hotel Sofia|2023-05-01|2023-06-02|2|False|False
 15|Grand Hotel Sofia|2023-05-12|2023-05-23|2|False|False

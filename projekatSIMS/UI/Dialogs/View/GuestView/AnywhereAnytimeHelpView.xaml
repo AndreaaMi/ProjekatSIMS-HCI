@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
             <TextBlock Text="Anywhere/Anytime Accommodations" Margin="20,0,0,0" Foreground="#244035" FontSize="72" FontFamily="Bahnschrift" FontWeight="Bold"/>
-            <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowAllAccommodationsHelpCommand}">
+            <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowAnywhereAnytimeHelpCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type fa:ImageAwesome}">
                         <Setter Property="Foreground" Value="#244035" />
@@ -120,17 +120,17 @@
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="356" Margin="50,70,0,0">
-            <Label Content="Number Of Guestst:" FontFamily="Bahnschrift" Foreground="#426A5A" HorizontalAlignment="Left" FontSize="22" Width="262" Margin="0,0,0,20"/>
-            <Label Content="Reservation Days:" FontFamily="Bahnschrift" FontSize="22" Width="256" Foreground="#426A5A" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+            <Label Content="Reservation Days:" FontFamily="Bahnschrift" Foreground="#426A5A" HorizontalAlignment="Left" FontSize="22" Width="262" Margin="0,0,0,20"/>
+            <Label Content="Number Of Guestst:" FontFamily="Bahnschrift" FontSize="22" Width="256" Foreground="#426A5A" HorizontalAlignment="Left" Margin="0,20,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment ="Top" Margin="0,70,0,0" Grid.RowSpan="2">
             <TextBox FontFamily="Bahnschrift" FontSize="22" Height="40" HorizontalAlignment="Center" Width="600" Foreground="#244035" Margin="0,0,0,20"
          Text="{Binding MinimalStayDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <TextBox FontFamily="Bahnschrift" FontSize="22" Height="40" Width="600" Foreground="#244035" Margin="0,20,0,0"
-         Text="{Binding GuestLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+         Text="{Binding GuestCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment ="top" Margin="0,110,70,0" Grid.RowSpan="2">
-            <Button Content="Show" Width="250" Height="50" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="30" IsEnabled="False" Command="{Binding ShowAccommodationsCommand}">
+            <Button Content="Show" Width="250" Height="50" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowAccommodationsCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="ShowAccommodaionButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#D6D6D6">
@@ -158,15 +158,15 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,0,0,90" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <DatePicker FontFamily="Bahnschrift SemiLight" IsEnabled="False" SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="22" Height="45" Width="415" Foreground="#244035" Margin="50,0,0,10"/>
-            <DatePicker FontFamily="Bahnschrift SemiLight" IsEnabled="False" FontSize="22" SelectedDate="{Binding EndDate, Mode=TwoWay}" Height="45" Width="415" Foreground="#244035" Margin="205,0,0,10"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="22" Height="45" Width="415" Foreground="#244035" Margin="50,0,0,10"/>
+            <DatePicker FontFamily="Bahnschrift SemiLight" FontSize="22" SelectedDate="{Binding EndDate, Mode=TwoWay}" Height="45" Width="415" Foreground="#244035" Margin="205,0,0,10"/>
         </StackPanel>
 
-        <Label Grid.Row="2"  Content="{Binding ErrorLabel}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="MediumVioletRed" FontSize="20" Margin="1375,0,0,171"/>
-        <Label Grid.Row="2" Content="{Binding ReservationSuccessfulLabel}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="ForestGreen" FontSize="20"  Margin="1375,0,0,171" />
+        <Label Grid.Row="2" Content="{Binding ErrorLabel}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="MediumVioletRed" FontSize="20" Margin="1191,0,0,171"/>
+        <Label Grid.Row="2" Content="{Binding ReservationSuccessfulLabel}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="ForestGreen" FontSize="20"  Margin="1191,0,0,171" />
 
-        <StackPanel Grid.Row="3" Margin="0,0,40,70" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Button Content="BOOK" Width="300" Height="90" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="60" Command="{Binding BookCommand}">
+        <StackPanel Grid.Row="3" Margin="0,0,40,90" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="BOOK" Width="300" Height="90" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Margin="0,0,0,0" FontFamily="Bahnschrift" FontSize="60" Command="{Binding BookCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="BookButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#7FB685">
@@ -184,6 +184,46 @@
                 </Button.Template>
             </Button>
         </StackPanel>
+        <Button Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,40" Height="40" Width="40" Command="{Binding BackCommand}">
+            <Button.Resources>
+                <Style TargetType="{x:Type fa:ImageAwesome}">
+                    <Setter Property="Foreground" Value="#244035" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#426A5A" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#426A5A" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+            <fa:ImageAwesome Icon="Play" Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
+                <fa:ImageAwesome.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </fa:ImageAwesome.RenderTransform>
+            </fa:ImageAwesome>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ActiveReservationsButton">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" ContentSource="Content" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ActiveReservationsButton" Property="Background" Value="transparent" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ActiveReservationsButton" Property="Background" Value="transparent"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <Border Grid.Row="0" Grid.RowSpan="3" Background="Black" Width="1570" Height="900" Opacity="0.5">
 
         </Border>

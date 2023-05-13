@@ -61,6 +61,7 @@
     <Compile Include="CompositeComon\RelayCommand.cs" />
     <Compile Include="Model\Accommodation.cs" />
     <Compile Include="Model\AccommodationOwnerRating.cs" />
+    <Compile Include="Model\AccommodationRenovationRecommendation.cs" />
     <Compile Include="Model\AccommodationReservation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
     <Compile Include="Model\AvailableDate.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Voucher.cs" />
     <Compile Include="Repository\AccommodationOwnerRatingRepository.cs" />
+    <Compile Include="Repository\AccommodationRenovationRecommendationRepository.cs" />
     <Compile Include="Repository\AccommodationRepository.cs" />
     <Compile Include="Repository\AccommodationReservationRepository.cs" />
     <Compile Include="Repository\GuestReviewRepository.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\VoucherRepository.cs" />
     <Compile Include="Service\AccommodationOwnerRatingService.cs" />
+    <Compile Include="Service\AccommodationRenovationRecommendationService.cs" />
     <Compile Include="Service\AccommodationReservationService.cs" />
     <Compile Include="Service\AccommodationService.cs" />
     <Compile Include="Service\GuestReviewService.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\RequestNewDateViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\OwnerViewModel\OwnerMainWindowModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\RateNowViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideAllToursPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomePageModel.cs" />
@@ -163,6 +167,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\NewReservationView.xaml.cs">
       <DependentUpon>NewReservationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\RateNowView.xaml.cs">
+      <DependentUpon>RateNowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\RequestNewDateHelpView.xaml.cs">
       <DependentUpon>RequestNewDateHelpView.xaml</DependentUpon>
@@ -291,6 +298,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestView\NewReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\RateNowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -471,6 +482,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\tourRatings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\accommodation_renovation_recommendation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

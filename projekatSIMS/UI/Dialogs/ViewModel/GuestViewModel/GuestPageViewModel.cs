@@ -30,25 +30,65 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
         public ICommand ShowActiveReservationCommand { get; private set; }
+        public ICommand ShowRateNowCommand { get; private set; }
 
         private ObservableCollection<ReservationRescheduleRequest> reservationRescheduleItems = new ObservableCollection<ReservationRescheduleRequest>();
         private ObservableCollection<AccommodationOwnerRating> ratingItems = new ObservableCollection<AccommodationOwnerRating>();
+        public ObservableCollection<AccommodationReservation> reservationItems = new ObservableCollection<AccommodationReservation>();
+
+        private AccommodationReservationService accommodationReservationService;
 
         private ReservationRescheduleRequestService reservationRescheduleRequestService;
         private AccommodationOwnerRatingService ratingService;
 
+        public ICommand ShowRatedReservationsCommand { get; set; }
+        public ICommand ShowNotRatedReservationsCommand { get; set; }
+
+
         public GuestPageViewModel()
         {
-
+            ShowRateNowCommand = new RelayCommand(ShowRateNowControl);
+            ShowRatedReservationsCommand = new RelayCommand(ShowRatedReservations);
+            ShowNotRatedReservationsCommand = new RelayCommand(ShowNotRatedReservations);
             ShowActiveReservationCommand = new RelayCommand(ShowActiveReservation);
             SetService();
             LoadData();
+            IsRatedSelected = false;
 
+        }
+
+        private bool isRatedSelected;
+        public bool IsRatedSelected
+        {
+            get { return isRatedSelected; }
+            set
+            {
+                isRatedSelected = value;
+                OnPropertyChanged(nameof(IsRatedSelected));
+                OnPropertyChanged(nameof(IsNotRatedSelected));
+            }
+        }
+
+        public bool IsNotRatedSelected
+        {
+            get { return !isRatedSelected; }
         }
         private void LoadData()
         {
             InitialListViewLoad();
         }
+        private void ShowRatedReservations(object parameter)
+        {
+            ReservationItems = new ObservableCollection<AccommodationReservation>(ReservationItems.Where(r => r.GuestsRate));
+            IsRatedSelected = true;
+        }
+
+        private void ShowNotRatedReservations(object parameter)
+        {
+            ReservationItems = new ObservableCollection<AccommodationReservation>(ReservationItems.Where(r => !r.GuestsRate));
+            IsRatedSelected = false;
+        }
+
         private void InitialListViewLoad()
         {
 
@@ -60,10 +100,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             {
                 RatingItems.Add(rating);
             }
- 
+            foreach (AccommodationReservation reservation in accommodationReservationService.GetAll().Cast<AccommodationReservation>())
+            {
+                ReservationItems.Add(reservation);
+            }
+
         }
         public void SetService()
         {
+            accommodationReservationService = new AccommodationReservationService();
             reservationRescheduleRequestService = new ReservationRescheduleRequestService();
             ratingService = new AccommodationOwnerRatingService();
         }
@@ -89,9 +134,24 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             }
         }
 
+        public ObservableCollection<AccommodationReservation> ReservationItems
+        {
+            get { return reservationItems; }
+            set
+            {
+                reservationItems = value;
+                OnPropertyChanged(nameof(ReservationItems));
+            }
+        }
+
         private void ShowActiveReservation(object parameter)
         {
             SelectedView = new ActiveReservationsView();
+        }
+
+        private void ShowRateNowControl(object parameter)
+        {
+            SelectedView = new RateNowView();
         }
     }
 }

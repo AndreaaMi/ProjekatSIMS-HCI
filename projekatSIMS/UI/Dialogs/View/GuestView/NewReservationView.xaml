@@ -238,7 +238,7 @@
         </Border>
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#eeeeee" CornerRadius="15" Margin="10,10,10,10"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" Height="88" Margin="20,10,0,0" HorizontalAlignment="Left" Width="613">
-            <TextBlock Text="New Reservation" Foreground="#244035" FontSize="70" FontFamily="Bahnschrift" Width="538" Height="80"/>
+            <TextBlock Text="New Reservation" Foreground="#244035" FontSize="50" FontFamily="Bahnschrift" Width="386" Height="52" VerticalAlignment="Center"/>
             <Button VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,10,0,0" Background="Transparent" BorderThickness="0" Command="{Binding ShowNewReservationHelpCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type fa:ImageAwesome}">
@@ -253,11 +253,11 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Resources>
-                <fa:ImageAwesome Icon="QuestionCircleOutline" Width="60" Height="60" />
+                <fa:ImageAwesome Icon="QuestionCircleOutline" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="ActiveReservationsButton">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,8,10" ContentSource="Content" />
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,5" ContentSource="Content" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
