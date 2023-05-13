@@ -16,7 +16,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
     {
         private RelayCommand backCommand;
         private RelayCommand confirmCommand;
-        private RelayCommand goToProfilePageCommand;
         private RelayCommand setFirstTourItemCommand;
         private RelayCommand setFirstVoucherItemCommand;
         private RelayCommand toursMoveDownCommand;
@@ -36,16 +35,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private TourService tourService;
         private TourReservationService tourReservationService;
 
-        public TouristReservationModel(Tour selectedTour)
+        public TouristReservationModel(Tour tour)
         {
             SetService();
-            Items.Add(selectedTour);
+            Items.Add(tour);
             CheckVoucherExpirationDate();
             LoadVouchers();
 
         }
 
         #region COMMANDS
+        private bool CanThisCommandExecute()
+        {
+            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
+            return string.IsNullOrEmpty(currentUri);
+        }
         private void BackCommandExecute()
         {
             TouristMainWindow.navigationService.Navigate(
@@ -61,11 +65,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 TouristMainWindow.navigationService.Navigate(
                 new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
             }
-        }
-        private void GoToProfilePageCommandExecute()
-        {
-            TouristMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
         }
         private bool CanConfirmCommandExecute()
         {
@@ -244,7 +243,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute()));
+                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute(),param => CanThisCommandExecute()));
             }
         }
 
@@ -282,35 +281,28 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return confirmCommand ?? (confirmCommand = new RelayCommand(param => ConfirmCommandExecute()));
-            }
-        }
-        public RelayCommand GoToProfilePageCommand
-        {
-            get
-            {
-                return goToProfilePageCommand ?? (goToProfilePageCommand = new RelayCommand(param => GoToProfilePageCommandExecute()));
+                return confirmCommand ?? (confirmCommand = new RelayCommand(param => ConfirmCommandExecute(),param => CanThisCommandExecute()));
             }
         }
         public RelayCommand SetFirstTourItemCommand
         {
             get
             {
-                return setFirstTourItemCommand ?? (setFirstTourItemCommand = new RelayCommand(param => SetFirstTourItemCommandExecute()));
+                return setFirstTourItemCommand ?? (setFirstTourItemCommand = new RelayCommand(param => SetFirstTourItemCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand SetFirstVoucherItemCommand
         {
             get
             {
-                return setFirstVoucherItemCommand ?? (setFirstVoucherItemCommand = new RelayCommand(param => SetFirstVoucherItemCommandExecute()));
+                return setFirstVoucherItemCommand ?? (setFirstVoucherItemCommand = new RelayCommand(param => SetFirstVoucherItemCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand ToursMoveDownCommand
         {
             get
             {
-                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute()));
+                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -318,14 +310,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute()));
+                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand VouchersMoveDownCommand
         {
             get
             {
-                return vouchersMoveDownCommand ?? (vouchersMoveDownCommand = new RelayCommand(param => VouchersMoveDownCommandExecute()));
+                return vouchersMoveDownCommand ?? (vouchersMoveDownCommand = new RelayCommand(param => VouchersMoveDownCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -333,7 +325,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return vouchersMoveUpCommand ?? (vouchersMoveUpCommand = new RelayCommand(param => VouchersMoveUpCommandExecute()));
+                return vouchersMoveUpCommand ?? (vouchersMoveUpCommand = new RelayCommand(param => VouchersMoveUpCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 

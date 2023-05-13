@@ -1,4 +1,4 @@
-﻿<Page x:Class="projekatSIMS.UI.Dialogs.View.TouristView.TouristReservationView"
+﻿<Page x:Class="projekatSIMS.UI.Dialogs.View.TouristView.TouristVouchersView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,7 @@
       xmlns:Icon="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Title="TouristReservationView"
-      Focusable="False"
-      >
+      Title="TouristVouchersView">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -57,10 +55,8 @@
             </Border>
         </Border>
 
-        <TextBox x:Name="GNumber" Text="{Binding GuestNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontFamily="Montserrat" Margin="433,0,71,250" Grid.Column="1" Grid.Row="2" IsTabStop="True" TabIndex="0"/>
 
-
-        <DataGrid Grid.Row="1" Grid.RowSpan="2" x:Name="Vouchers" Margin="47,68,46,236" AutoGenerateColumns="False" ItemsSource="{Binding Path=Vouchers}" SelectedItem="{Binding Path=SelectedVoucher}" IsReadOnly="True" Grid.Column="2" IsTabStop="False">
+        <DataGrid Grid.Row="1" Grid.RowSpan="2" x:Name="Vouchers" Margin="475,135,155,169" AutoGenerateColumns="False" ItemsSource="{Binding Path=Vouchers}" IsReadOnly="True" Grid.Column="1" IsTabStop="False" Grid.ColumnSpan="2">
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -87,37 +83,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <DataGrid Grid.Row="1" Grid.RowSpan="2" x:Name="Tours" Margin="38,68,322,68" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" SelectedItem="{Binding Path=SelectedTour, Mode=TwoWay}" IsReadOnly="True" Grid.ColumnSpan="2" IsTabStop="False">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                </Style>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="IsTabStop" Value="False"/>
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Tour Name" Width="89" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Country" Width="89" Binding="{Binding Path=Location.Country}"/>
-                <DataGridTextColumn Header="City" Width="89" Binding="{Binding Path=Location.City}"/>
-                <DataGridTextColumn Header="Start Date and Time" Width="139" Binding="{Binding Path=StartingDate}"/>
-                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Path=Description}"/>
-            </DataGrid.Columns>
-            <i:Interaction.Triggers>
-                <i:KeyTrigger Key="R" Modifiers="Shift">
-                    <i:InvokeCommandAction Command="{Binding SetFirstTourItemCommand}" />
-                </i:KeyTrigger>
-                <i:KeyTrigger Key="W">
-                    <i:InvokeCommandAction Command="{Binding ToursMoveUpCommand}" />
-                </i:KeyTrigger>
-                <i:KeyTrigger Key="S">
-                    <i:InvokeCommandAction Command="{Binding ToursMoveDownCommand}" />
-                </i:KeyTrigger>
-            </i:Interaction.Triggers>
-        </DataGrid>
-
-        <Button Grid.Row="2" Grid.Column="2" Content="Confirm Reservation" FontWeight="Bold" Command="{Binding ConfirmCommand}" Margin="81,135,80,34" IsTabStop="False">
+        <Button Grid.Row="2" Content="Use Them" FontWeight="Bold" Command="{Binding UseCommand}" Margin="179,135,408,34" IsTabStop="False" Click="Button_Click" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -138,35 +104,8 @@
                 </ControlTemplate>
             </Button.Template>
             <i:Interaction.Triggers>
-                <i:KeyTrigger Key="Return" Modifiers="Ctrl">
-                    <i:InvokeCommandAction Command="{Binding ConfirmCommand}" />
-                </i:KeyTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-
-        <Button Grid.Row="2" Grid.Column="1" Content="Cancel" FontWeight="Bold" Command="{Binding BackCommand}" Margin="274,135,424,34" IsTabStop="False" Grid.ColumnSpan="2">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#808080" Offset="0"/>
-                                <GradientStop Color="#C0C0C0" Offset="0.6"/>
-                            </LinearGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="250" Height="100" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-            <i:Interaction.Triggers>
-                <i:KeyTrigger Key="B" Modifiers="Ctrl">
-                    <i:InvokeCommandAction Command="{Binding BackCommand}" />
+                <i:KeyTrigger Key="U" Modifiers="Ctrl">
+                    <i:InvokeCommandAction Command="{Binding UseCommand}" />
                 </i:KeyTrigger>
             </i:Interaction.Triggers>
         </Button>
@@ -185,14 +124,15 @@
         <TextBlock Text="View notifications" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="185,106,0,10" Width="106"/>
         <Icon:FontAwesome Icon="Question" Foreground="SlateGray" FontSize="60" Grid.Column="2" Margin="319,40,27,29"/>
         <TextBlock Text="Help" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="345,106,0,10" Width="28"/>
-        <TextBlock Text="Your vouchers" Grid.Row="1" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,48,0,202" Width="106" Grid.Column="2"/>
-        <TextBlock Text="CTRL+ENTER" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,113,0,140" Grid.Column="2" Width="106" RenderTransformOrigin="0.467,0.671"/>
-        <TextBlock Text="SHIFT + V to select a voucher UP DOWN to navigate" Grid.Row="2" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,39,0,211" Width="357" Grid.Column="2"/>
-        <TextBlock Text="SHIFT + R to confirm the selected tour" Grid.Row="1" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="152,48,0,202" Width="265" Grid.ColumnSpan="2"/>
-        <TextBlock Text="CTRL+B" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="374,113,0,140" Grid.Column="1" Width="66" RenderTransformOrigin="0.467,0.671"/>
-        <TextBlock Text="Guest number:" Grid.Row="2" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="324,0,0,250" Width="106" Grid.Column="1" RenderTransformOrigin="0.492,1.43"/>
-        <TextBlock Text="TAB to enter the guest number" Grid.Row="1" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="313,240,0,10" Width="214" Grid.Column="1"/>
+        <TextBlock Text="CTRL+U" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="278,108,0,145" Width="68" RenderTransformOrigin="0.467,0.671" Grid.ColumnSpan="2"/>
+        <TextBlock Text="You get vouchers after every" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="76,59,0,167" Width="472" Grid.ColumnSpan="2"/>
+        <TextBlock Text="5 tours in a calendar year!" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="102,103,0,123" Width="420" Grid.ColumnSpan="2"/>
+        <TextBlock Text="You currently have:" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="76,208,0,18" Width="304" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{Binding CurrentReservations}" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="82,208,0,18" Width="60" Grid.Column="1"/>
+        <TextBlock Text="Only" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="84,248,0,248" Width="296" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{Binding NeededReservations}" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="172,248,0,248" Width="60" Grid.RowSpan="2"/>
+        <TextBlock Text="more needed" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="208,248,0,248" Width="220" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
 
     </Grid>
-
 </Page>

@@ -286,3 +286,9 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsof
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\projekatSIMS.csproj.CopyComplete
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\FontAwesome.WPF.dll
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\FontAwesome.WPF.xml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristVouchersView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristVouchersView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewHelp.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewHelp.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristSearchTourHelpView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristSearchTourHelpView.baml

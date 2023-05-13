@@ -18,7 +18,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 {
     internal class TouristSearchTourModel : ViewModelBase
     {
-        private RelayCommand backCommand;
+        private RelayCommand goToProfilePageCommand;
         private RelayCommand proceedCommand;
         private RelayCommand openStateComboboxCommand;
         private RelayCommand openCityComboboxCommand;
@@ -27,7 +27,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private RelayCommand openSlotComboboxCommand;
         private RelayCommand toursMoveDownCommand;
         private RelayCommand toursMoveUpCommand;
-        private RelayCommand setFirstTourItemCommand;
+        public RelayCommand helpCommand;
 
         private bool isStateComboboxOpened;
         private bool isCityComboboxOpened;
@@ -65,8 +65,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             }
         }
         #region COMMANDS
+        private bool CanThisCommandExecute()
+        {
+            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
+            return currentUri?.EndsWith("TouristSearchTourView.xaml", StringComparison.OrdinalIgnoreCase) == true;
+        }
 
-        private void BackCommandExecute()
+        private void GoToProfilePageCommandExecute()
         {
             TouristMainWindow.navigationService.Navigate(
                 new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
@@ -83,6 +88,11 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             {
                 MessageBox.Show("Please select a tour before proceeding to reservation.");
             }
+        }
+        private void HelpCommandExecute()
+        {
+            TouristMainWindow.navigationService.Navigate(
+                new Uri("UI/Dialogs/View/TouristView/TouristSearchTourHelpView.xaml", UriKind.Relative));
         }
         private void OpenStateComboboxCommandExecute()
         {
@@ -103,13 +113,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private void OpenSlotComboboxCommandExecute()
         {
             IsSlotComboboxOpened = true;
-        }
-        private void SetFirstTourItemCommandExecute()
-        {
-            if (Items.Count > 0)
-            {
-                SelectedTour = Items[0];
-            }
         }
         private void ToursMoveDownCommandExecute()
         {
@@ -422,20 +425,20 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 isSlotComboboxOpened = value;
                 OnPropertyChanged(nameof(IsSlotComboboxOpened));
             }
-        }
+        }   
 
-        public RelayCommand BackCommand
+        public RelayCommand GoToProfilePageCommand
         {
             get
             {
-                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute()));
+                return goToProfilePageCommand ?? (goToProfilePageCommand = new RelayCommand(param => GoToProfilePageCommandExecute()));
             }
         }
         public RelayCommand ProceedCommand
         {
             get
             {
-                return proceedCommand ?? (proceedCommand = new RelayCommand(param => ProceedCommandExecute()));
+                return proceedCommand ?? (proceedCommand = new RelayCommand(param => ProceedCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -443,49 +446,42 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return openStateComboboxCommand ?? (openStateComboboxCommand = new RelayCommand(param => OpenStateComboboxCommandExecute()));
+                return openStateComboboxCommand ?? (openStateComboboxCommand = new RelayCommand(param => OpenStateComboboxCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand OpenCityComboboxCommand
         {
             get
             {
-                return openCityComboboxCommand ?? (openCityComboboxCommand = new RelayCommand(param => OpenCityComboboxCommandExecute()));
+                return openCityComboboxCommand ?? (openCityComboboxCommand = new RelayCommand(param => OpenCityComboboxCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand OpenLanguageComboboxCommand
         {
             get
             {
-                return openLanguageComboboxCommand ?? (openLanguageComboboxCommand = new RelayCommand(param => OpenLanguageComboboxCommandExecute()));
+                return openLanguageComboboxCommand ?? (openLanguageComboboxCommand = new RelayCommand(param => OpenLanguageComboboxCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand OpenDurationComboboxCommand
         {
             get
             {
-                return openDurationComboboxCommand ?? (openDurationComboboxCommand = new RelayCommand(param => OpenDurationComboboxCommandExecute()));
+                return openDurationComboboxCommand ?? (openDurationComboboxCommand = new RelayCommand(param => OpenDurationComboboxCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand OpenSlotComboboxCommand
         {
             get
             {
-                return openSlotComboboxCommand ?? (openSlotComboboxCommand = new RelayCommand(param => OpenSlotComboboxCommandExecute()));
-            }
-        }
-        public RelayCommand SetFirstTourItemCommand
-        {
-            get
-            {
-                return setFirstTourItemCommand ?? (setFirstTourItemCommand = new RelayCommand(param => SetFirstTourItemCommandExecute()));
+                return openSlotComboboxCommand ?? (openSlotComboboxCommand = new RelayCommand(param => OpenSlotComboboxCommandExecute(), param => CanThisCommandExecute()));
             }
         }
         public RelayCommand ToursMoveDownCommand
         {
             get
             {
-                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute()));
+                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -493,7 +489,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute()));
+                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand HelpCommand
+        {
+            get
+            {
+                if (helpCommand == null)
+                {
+                    helpCommand = new RelayCommand(param => HelpCommandExecute(), param => CanThisCommandExecute());
+                }
+
+                return helpCommand;
             }
         }
 
