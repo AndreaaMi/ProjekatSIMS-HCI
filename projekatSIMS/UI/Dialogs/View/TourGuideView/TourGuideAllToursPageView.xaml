@@ -34,15 +34,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
+                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" Background="{DynamicResource BackgroundColor3}" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
                     
                         <ScrollViewer >
                         <StackPanel>
-                        
-                            <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" ScrollViewer.CanContentScroll="True">
+
+                            <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" SelectedValuePath="Id" ScrollViewer.CanContentScroll="True" Background="{DynamicResource BackgroundColor3}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Background="#121212"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" >
                                             <Border  Height="300" BorderThickness="0,0,0,1" BorderBrush="White"  >
                                             
                                                 
@@ -50,7 +49,8 @@
                                                     <Border BorderThickness="2" BorderBrush="White" Height="200" Width="200" HorizontalAlignment="Left" Margin="50,0,0,20" >
                                                         <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" />
                                                     </Border>
-                                                    <Label HorizontalAlignment="Left" Margin="50,220,0,0" Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="16" FontWeight="Bold" />
+                                                <Button Foreground="{DynamicResource TextColor}" Content="Proceed" Background="{DynamicResource TextBoxColor}" Margin="566,260,10,10"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" />
+                                                <Label HorizontalAlignment="Left" Margin="50,220,0,0" Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="16" FontWeight="Bold" />
 
                                                     <Label Width="200" Height="30" Content="Short Description about tour:" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,40,288,229" />
                                                     <Label Width="200" Height="30" Content="Tour Name" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,70,288,199" />
@@ -71,7 +71,7 @@
                                                 
                                             
                                         </Border>
-                                        </Button>
+                                        
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>

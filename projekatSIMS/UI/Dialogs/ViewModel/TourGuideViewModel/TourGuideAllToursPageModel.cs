@@ -188,12 +188,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             var tours = tourService.GetAll();
 
 
-
+            
 
             foreach (Tour tour in tours)
             {
+
+                if (tour.GetType() == typeof(Tour))
+                {
+                    // The object is of type Tour
+                     Tours.Add(tour);
+                }
+                else
+                {
+                    MessageBox.Show("Nije tipa tour");
+                }
                 
-                Tours.Add(tour);
                 
                // Name = tour.Name;
                // Description = tour.Description;
@@ -217,15 +226,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-          //  if (selectedTour != null)
-           // {
+            if (selectedTour != null)
+            {
                 TourGuideMainWindow.navigationService.Navigate(
                     new TourGuideMyAllToursPageView(selectedTour));
-         //   }
-          //  else
-          //  {
-           //     MessageBox.Show("eeeeeeeeeeeee");
-           // }
+            }
+            else
+            {
+                MessageBox.Show("eeeeeeeeeeeee");
+            }
         }
 
         public RelayCommand TourButtonCommand

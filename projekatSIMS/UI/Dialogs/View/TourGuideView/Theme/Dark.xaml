@@ -4,6 +4,7 @@
 
     <Color  x:Key ="BackgroundColor">#121212</Color>
     <Color  x:Key ="BackgroundColor2">#121212</Color>
+    <SolidColorBrush  x:Key ="BackgroundColor3">#121212</SolidColorBrush>
     <SolidColorBrush  x:Key = "TextBoxColor">#171717</SolidColorBrush>
     <SolidColorBrush  x:Key ="ButtonColor">#301596</SolidColorBrush>
     <SolidColorBrush  x:Key ="TextColor">White</SolidColorBrush>
