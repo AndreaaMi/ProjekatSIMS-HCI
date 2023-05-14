@@ -219,7 +219,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             //  if (selectedTour != null)
             // {
             TourGuideMainWindow.navigationService.Navigate(
-                new TourGuideMyAllToursPageView(selectedTour));
+                new TourGuideTourStartSoonPageView(selectedTour));
             //   }
             //  else
             //  {

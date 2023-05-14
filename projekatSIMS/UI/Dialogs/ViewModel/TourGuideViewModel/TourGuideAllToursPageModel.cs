@@ -233,7 +233,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
             else
             {
-                MessageBox.Show("eeeeeeeeeeeee");
+                MessageBox.Show("Please select a tour first");
             }
         }
 

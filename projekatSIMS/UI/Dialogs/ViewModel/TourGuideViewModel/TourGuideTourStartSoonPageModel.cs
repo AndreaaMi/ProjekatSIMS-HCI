@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideNewTourPageModel : ViewModelBase
+    internal class TourGuideTourStartSoonPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -154,13 +154,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         #endregion
-        
 
-        private int id;
+        private string id;
         private string name;
         private string country;
         private string city;
-        private string startingDate;
+        private DateTime startingDate;
         private string time;
         private string maxNumberOfGuests;
         private string duration;
@@ -169,7 +168,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private Tour selectedTour;
+        private Tour selectedTour = new Tour();
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
 
@@ -179,23 +178,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private VoucherService voucherService;
         private UserService userService;
 
-        private RelayCommand createTour;
+        private RelayCommand tourButtonCommand;
 
 
-        public TourGuideNewTourPageModel()
+        public TourGuideTourStartSoonPageModel(Tour selected)
         {
             SetService();
-            var tours = tourService.GetAll();
+            /* Name = selectedTour.Name;
+             Country = selectedTour.Location.Country;
+             City = selectedTour.Location.City;
+             StartingDate = selectedTour.StartingDate;
+             Duration = (selectedTour.Duration).ToString();
+             MaximumNumberOfGuests = selectedTour.MaxNumberOfGuests.ToString();
 
-
-
-
-            
-
-
-
-
-
+             */
+            Tours.Add(selected);
         }
 
         public void SetService()
@@ -207,76 +204,17 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             userService = new UserService();
         }
 
-        private void CreateTourExecute()
+
+        public Tour SelectedTour
         {
-            #region create tour
-            TourService tourService = new TourService();
-            KeyPointsService keyPointsService = new KeyPointsService();
-            Tour newTour = new Tour();
-            newTour.Id = 15;
-            newTour.Name = Name;
-            newTour.Location.Country = Country;
-            newTour.Location.City = City;
-            newTour.Language = Language.ENGLISH;
-            newTour.StartingDate = DateTime.Parse(StartingDate);
-            newTour.StartingTime = Time;
-            newTour.MaxNumberOfGuests = int.Parse(MaximumNumberOfGuests);
-            newTour.Duration = int.Parse(Duration);
-            newTour.Description = Description;
-            newTour.GuestNumber = 22;
-            newTour.AssociatedTourGuide = 4;
-
-            //////
-            string i = KeyPointId;
-            string j = KeyPointName;
-            string[] keyId = i.Split(' ');
-            string[] keyName = j.Split(' ');
-            int k = 0;
-
-
-
-
-            foreach (var word in keyId)
+            get { return selectedTour; }
+            set
             {
-
-
-                if (word == "x")
-                {
-                    break;
-                }
-                KeyPoints key = new KeyPoints();
-                key.Id = int.Parse(word);
-                key.Name = keyName[k];
-                key.IsActive = false;
-                key.AssociatedTour = 15;
-                newTour.KeyPoints.Add(key);
-                keyPointsService.Add(key);
-                k++;
+                selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
             }
 
-
-
-            //////
-            ///
-            tourService.Add(newTour);
-            #endregion
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideAllToursPageView.xaml", UriKind.Relative));
         }
-
-        public RelayCommand CreateTour
-        {
-            get
-            {
-                if (createTour == null)
-                {
-                    createTour = new RelayCommand(param => CreateTourExecute());
-                }
-
-                return createTour;
-            }
-        }
-
         public ObservableCollection<Tour> Tours
         {
             get { return tours; }
@@ -287,17 +225,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        public Tour SelectedTour
-        {
-            get { return selectedTour; }
-            set
-            {
-                selectedTour = value;
-                OnPropertyChanged(nameof(SelectedTour));
-
-            }
-        }
-        public int Id
+        public string Id
         {
             get { return id; }
             set
@@ -343,7 +271,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         }
 
 
-        public string StartingDate
+        public DateTime StartingDate
         {
             get { return startingDate; }
             set
@@ -430,6 +358,5 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         }
-
     }
 }
