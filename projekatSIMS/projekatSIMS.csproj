@@ -88,6 +88,7 @@
     <Compile Include="Repository\AccommodationReservationRepository.cs" />
     <Compile Include="Repository\GuestReviewRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IVoucherRepository.cs" />
     <Compile Include="Repository\KeyPointsRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\ReservationRescheduleRequestRepository.cs" />
@@ -228,6 +229,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.xaml.cs">
       <DependentUpon>TourGuideToursTodayPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristActiveToursView.xaml.cs">
+      <DependentUpon>TouristActiveToursView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristHomeView.xaml.cs">
       <DependentUpon>TouristHomeView.xaml</DependentUpon>
@@ -395,9 +399,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristActiveToursView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristHomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristMainWindow.xaml">
       <SubType>Designer</SubType>
@@ -411,9 +423,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristSearchTourHelpView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristSearchTourView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristVouchersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Dialogs\View\Vlasnik.xaml">
       <SubType>Designer</SubType>
@@ -474,8 +494,13 @@
     <Resource Include="Resources\Data\guest_reviews.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fonts\" />
     <Folder Include="Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\TouristImages\NF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\reservation_reschedule_request.txt" />
@@ -503,6 +528,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Data\accommodation_renovation_recommendation.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\TouristImages\profile_picture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

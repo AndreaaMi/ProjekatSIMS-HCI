@@ -83,7 +83,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Proceed" FontWeight="Bold" Command="{Binding ProceedCommand}" Margin="81,135,80,34" IsTabStop="False">
+        <Button Grid.Row="2" Grid.Column="2" FontSize="19" Content="Proceed" FontWeight="Bold" Command="{Binding ProceedCommand}" Margin="81,135,80,34" IsTabStop="False">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -176,9 +176,6 @@
 
 
         <i:Interaction.Triggers>
-            <i:KeyTrigger Key="P" Modifiers="Ctrl">
-                <i:InvokeCommandAction Command="{Binding GoToProfilePageCommand}" />
-            </i:KeyTrigger>
             <i:KeyTrigger Key="H" Modifiers="Ctrl">
                 <i:InvokeCommandAction Command="{Binding HelpCommand}" />
             </i:KeyTrigger>

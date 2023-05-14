@@ -84,7 +84,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private void BackCommandExecute()
         {
             TouristMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TouristView/TouristActiveToursView.xaml", UriKind.Relative));
         }
 
         private void SubmitCommandExecute()

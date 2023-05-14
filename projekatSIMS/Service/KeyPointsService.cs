@@ -50,5 +50,23 @@ namespace projekatSIMS.Service
             return unitOfWork.KeyPoint.CheckIfKeyPointsPassed(keyPointIds);
         }
 
+        public int GetActiveKeyPointId(int tourId)
+        {
+            UnitOfWork unitOfWork= new UnitOfWork();
+            return unitOfWork.KeyPoint.GetActiveKeyPointId(tourId);
+        }
+
+        public bool HasTheTourStarted(int tourId)
+        {
+            UnitOfWork unitOfWork= new UnitOfWork();
+            return unitOfWork.KeyPoint.HasTheTourStarted(tourId);
+        }
+
+        public bool HasTheTourEnded(int tourId)
+        {
+            UnitOfWork unitOfWork= new UnitOfWork();
+            return unitOfWork.KeyPoint.HasTheTourEnded(tourId);
+        }
+
     }
 }

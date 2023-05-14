@@ -83,7 +83,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <Button Grid.Row="2" Content="Use Them" FontWeight="Bold" Command="{Binding UseCommand}" Margin="179,135,408,34" IsTabStop="False" Click="Button_Click" Grid.ColumnSpan="2">
+        <Button Grid.Row="2" FontSize="19" Content="Use Them" FontWeight="Bold" Command="{Binding UseCommand}" Margin="179,135,408,34" IsTabStop="False" Click="Button_Click" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">

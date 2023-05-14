@@ -1,6 +1,6 @@
-1|Aleksa|Vuckovic|aleksa@gmail.com|vuckovic|TOURIST|-1|-1|False|17|False|-1|-1|2023-05-23
+1|Aleksa|Vuckovic|a|a|TOURIST|-1|-1|False|17|False|-1|-1|2023-05-23
 2|Andrea|Mitic|andrea@gmail.com|mitic|GUEST|-1|-1|False|15|True|0|2|2024-05-14
-3|Dunja|Trikic|dunja@gmail.com|trikic|OWNER|53|92,754716981132|False|22|False|-1|-1|2023-05-23
+3|Dunja|Trikic|dunja@gmail.com|trikic|OWNER|53|92754716981132|False|22|False|-1|-1|2023-05-23
 4|Uros|Lohinski|uros@gmail.com|lohinski|TOURGUIDE|-1|-1|False|21|False|-1|-1|2023-05-23
-5|Ana|Anic|ana@gmail.com|anic|OWNER|53|92,3962264150943|False|20|False|-1|-1|2023-05-23
+5|Ana|Anic|ana@gmail.com|anic|OWNER|53|923962264150943|False|20|False|-1|-1|2023-05-23
 6|Vlatko|Ivanisevic|vlatko@gmail.com|vlatko|GUEST|-1|-1|False|15|False|-1|-1|2023-05-23

@@ -117,7 +117,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Confirm Reservation" FontWeight="Bold" Command="{Binding ConfirmCommand}" Margin="81,135,80,34" IsTabStop="False">
+        <Button Grid.Row="2" Grid.Column="2" FontSize="19" Content="Confirm Reservation" FontWeight="Bold" Command="{Binding ConfirmCommand}" Margin="81,135,80,34" IsTabStop="False">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -144,7 +144,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Button Grid.Row="2" Grid.Column="1" Content="Cancel" FontWeight="Bold" Command="{Binding BackCommand}" Margin="274,135,424,34" IsTabStop="False" Grid.ColumnSpan="2">
+        <Button Grid.Row="2" FontSize="19" Grid.Column="1" Content="Cancel" FontWeight="Bold" Command="{Binding BackCommand}" Margin="274,135,424,34" IsTabStop="False" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">

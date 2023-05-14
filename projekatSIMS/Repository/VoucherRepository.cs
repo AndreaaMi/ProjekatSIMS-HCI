@@ -7,14 +7,35 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Repository
 {
-    public class VoucherRepository : Repository<Voucher>
+    public class VoucherRepository : IVoucherRepository
     {
-        public override void Edit(Entity entity)
+        public void Add(Entity voucher)
         {
-            Entity voucher = base.Get(entity.Id);
+            DataContext.Instance.GetAllEntitiesOfType(typeof(Voucher)).Add(voucher);
+        }
+        public int GenerateId()
+        {
+            return DataContext.Instance.GenerateId(DataContext.Instance.GetAllEntitiesOfType(typeof(Voucher)));
+        }
 
-            ((Voucher)voucher).GuestId = ((Voucher)entity).GuestId;
-            ((Voucher)voucher).ExpirationDate = ((Voucher)entity).ExpirationDate;
+        public Entity Get(int id)
+        {
+            return DataContext.Instance.GetAllEntitiesOfType(typeof(Voucher)).Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<Entity> GetAll()
+        {
+            return DataContext.Instance.GetAllEntitiesOfType(typeof(Voucher));
+        }
+
+        public void Remove(Entity voucher)
+        {
+            DataContext.Instance.GetAllEntitiesOfType(typeof(Voucher)).Remove(voucher);
+        }
+
+        public void Save()
+        {
+            DataContext.Instance.Save();
         }
     }
 }

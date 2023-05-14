@@ -16,14 +16,6 @@ namespace projekatSIMS.Service
             unitOfWork.Vouchers.Add(voucher);
             unitOfWork.Save();
         }
-
-        public void Edit(Voucher voucher)
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Vouchers.Edit(voucher);
-            unitOfWork.Save();
-        }
-
         public void Remove(Voucher voucher)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
