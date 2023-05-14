@@ -106,6 +106,7 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\VoucherService.cs" />
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\DisplayReviewsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsHelpViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AllAccommodationHelpViewModel.cs" />
@@ -159,6 +160,9 @@
     <Compile Include="UI\Dialogs\View\GuestView\AnywhereAnytimeView.xaml.cs">
       <DependentUpon>AnywhereAnytimeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\DisplayReviewsView.xaml.cs">
+      <DependentUpon>DisplayReviewsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
     </Compile>
@@ -167,6 +171,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\NewReservationView.xaml.cs">
       <DependentUpon>NewReservationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\RateNowHelpView.xaml.cs">
+      <DependentUpon>RateNowHelpView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\RateNowView.xaml.cs">
       <DependentUpon>RateNowView.xaml</DependentUpon>
@@ -289,6 +296,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\GuestView\DisplayReviewsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\GuestView\GuestMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\GuestView\NewReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\RateNowHelpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

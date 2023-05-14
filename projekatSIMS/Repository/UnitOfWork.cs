@@ -45,6 +45,7 @@ namespace projekatSIMS.Repository
         public VoucherRepository Vouchers { get; private set; }
 
         public TourRatingRepository TourRatings { get; private set; }
+
         public void Save()
         {
             DataContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa

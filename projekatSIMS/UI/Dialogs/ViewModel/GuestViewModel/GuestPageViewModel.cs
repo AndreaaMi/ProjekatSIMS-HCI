@@ -43,17 +43,25 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public ICommand ShowRatedReservationsCommand { get; set; }
         public ICommand ShowNotRatedReservationsCommand { get; set; }
+        public ICommand ShowDisplayReviewsViewCommand { get; set; }
 
+        public UserService userService;
 
         public GuestPageViewModel()
-        {
+        {   
+
+            userService = new UserService();
+            userId = userService.GetCurrentUserId();
+            SetService();
+            LoadData();
+            UseBonusPointCommand = new RelayCommand(UseBonusPoint);
+            ShowDisplayReviewsViewCommand = new RelayCommand(ShowDisplayReviewsControl);
             ShowRateNowCommand = new RelayCommand(ShowRateNowControl);
             ShowRatedReservationsCommand = new RelayCommand(ShowRatedReservations);
             ShowNotRatedReservationsCommand = new RelayCommand(ShowNotRatedReservations);
             ShowActiveReservationCommand = new RelayCommand(ShowActiveReservation);
-            SetService();
-            LoadData();
             IsRatedSelected = false;
+            userService.UpdateSuperGuestStatus(userId, ReservationCount);
 
         }
 
@@ -75,6 +83,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         }
         private void LoadData()
         {
+            User currentUser = userService.GetLoginUser();
+
+            if (currentUser != null)
+            {
+                IsSuperGuest = currentUser.IsSuperGuest;
+                ReservationCount = currentUser.ReservationCount;
+                BonusPoints = currentUser.BonusPoints;
+                SuperGuestExpirationDate = currentUser.SuperGuestExpirationDate;
+            }
             InitialListViewLoad();
         }
         private void ShowRatedReservations(object parameter)
@@ -152,6 +169,75 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         private void ShowRateNowControl(object parameter)
         {
             SelectedView = new RateNowView();
+        }
+
+        private void ShowDisplayReviewsControl(object parameter)
+        {
+            SelectedView = new DisplayReviewsView();
+        }
+
+
+        private DateTime superGuestExpirationDate;
+        private int userId;
+        private bool isSuperGuest;
+        public bool IsSuperGuest
+        {
+            get { return isSuperGuest; }
+            set
+            {
+                isSuperGuest = value;
+                OnPropertyChanged(nameof(IsSuperGuest));
+            }
+        }
+
+        private int reservationCount;
+        public int ReservationCount
+        {
+            get { return reservationCount; }
+            set
+            {
+                reservationCount = value;
+                OnPropertyChanged(nameof(ReservationCount));
+            }
+        }
+
+        private int bonusPoints;
+        public int BonusPoints
+        {
+            get { return bonusPoints; }
+            set
+            {
+                bonusPoints = value;
+                OnPropertyChanged(nameof(BonusPoints));
+            }
+        }
+
+        public ICommand UseBonusPointCommand { get; set; }
+
+
+        public DateTime SuperGuestExpirationDate
+        {
+            get { return superGuestExpirationDate; }
+            set
+            {
+                superGuestExpirationDate = value;
+                OnPropertyChanged(nameof(SuperGuestExpirationDate));
+            }
+        }
+
+        private void UseBonusPoint(object parameter)
+        {
+            bool success = userService.UseBonusPoint(userId);
+            if (success)
+            {
+                MessageBox.Show("Uspešno iskorišćen bonus poen.");
+            }
+            else
+            {
+                MessageBox.Show("Nemoguće iskoristiti bonus poen.");
+            }
+
+            LoadData();
         }
     }
 }

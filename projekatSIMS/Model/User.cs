@@ -1,9 +1,14 @@
-﻿using projekatSIMS.UI.Dialogs.View;
+﻿using projekatSIMS.Repository;
+using projekatSIMS.Service;
+using projekatSIMS.UI.Dialogs.View;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projekatSIMS.Model
 {
@@ -20,12 +25,43 @@ namespace projekatSIMS.Model
         private double averageRating;
         private bool superStatus;
 
+        private bool isSuperGuest;
+        private int reservationCount;
+        private int bonusPoints;
+        private DateTime superGuestExpirationDate;
+
         public User() { }
 
         public User(User user, int id)
         {
 
         }
+
+        public bool IsSuperGuest
+        {
+            get { return isSuperGuest; }
+            set { isSuperGuest = value; }
+        }
+
+        public int ReservationCount
+        {
+            get { return reservationCount; }
+            set { reservationCount = value; }
+        }
+
+        public int BonusPoints
+        {
+            get { return bonusPoints; }
+            set { bonusPoints = value; }
+        }
+
+        public DateTime SuperGuestExpirationDate
+        {
+            get { return superGuestExpirationDate; }
+            set { superGuestExpirationDate = value; }
+        }
+
+       
 
         public User(string firstName, string lastName, string email, string password)
         {
@@ -34,6 +70,14 @@ namespace projekatSIMS.Model
             Email = email;
             Password = password;
 
+        }
+
+        public void BecomeSuperGuest()
+        {
+            if (reviewCount >= 10)
+            {
+                superStatus = true;
+            }
         }
 
         public string FirstName
@@ -148,7 +192,7 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString() + "|" + reviewCount + "|" + averageRating + "|" + superStatus + "|" + age;
+            return id + "|" + firstName + "|" + lastName + "|" + email + "|" + password + "|" + userType.ToString() + "|" + reviewCount + "|" + averageRating + "|" + superStatus + "|" + age + "|" + isSuperGuest + "|" + reservationCount + "|" + bonusPoints +"|"+ superGuestExpirationDate.ToString("yyyy-MM-dd");
         }
 
         public override void ImportFromString(string[] parts)
@@ -163,6 +207,10 @@ namespace projekatSIMS.Model
             AverageRating = double.Parse(parts[7]);
             SuperStatus = bool.Parse(parts[8]);
             Age = int.Parse(parts[9]);
+            IsSuperGuest = bool.Parse(parts[10]);
+            ReservationCount = int.Parse(parts[11]);
+            BonusPoints = int.Parse(parts[12]);
+            SuperGuestExpirationDate = DateTime.ParseExact(parts[13], "yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
     }
 }

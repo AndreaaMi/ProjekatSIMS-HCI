@@ -131,6 +131,27 @@
                FontSize="22" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight"/>
             </Border>
         </Border>
+        <Grid Grid.Column="3">
+            <Label Content="Reservations Count:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,70"  />
+            <TextBlock Text="{Binding ReservationCount, Mode=TwoWay}" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,70"/>
+            <Label Content="Bonus Points:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"  />
+            <TextBlock Text="{Binding BonusPoints, Mode=TwoWay}" FontFamily="Bahnschrift Light"  FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,0"/>
+            <Label Content="Expiration Date:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,-70" />
+            <TextBlock Text="{Binding SuperGuestExpirationDate, Mode=TwoWay}" FontFamily="Bahnschrift Light" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,-70" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red" FontFamily="Bahnschrift Light" FontSize="36" Margin="20">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Text" Value="None" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSuperGuest, Mode=TwoWay}" Value="True">
+                                <Setter Property="Text" Value="Super Guest" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Button Content="Use Bonus Point" Command="{Binding UseBonusPointCommand}" VerticalAlignment="Bottom" />
+        </Grid>
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="20" Margin="10,0,10,20">
             <Grid>
@@ -292,7 +313,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Display" Grid.Row="3" Grid.Column="2" Width="220" Foreground="#244035" FontFamily="Bahnschrift SemiLight" FontSize="22" Height="46" VerticalAlignment="top" HorizontalAlignment="Right" Margin="0,30,300,0" IsEnabled="{Binding IsRatedSelected}">
+                <Button Content="Display" Grid.Row="3" Grid.Column="2" Width="220" Foreground="#244035" FontFamily="Bahnschrift SemiLight" FontSize="22" Height="46" VerticalAlignment="top" HorizontalAlignment="Right" Margin="0,30,300,0" Command="{Binding ShowDisplayReviewsViewCommand}" IsEnabled="{Binding IsRatedSelected}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border x:Name="SeeReservationsButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#D6D6D6" Background="#D6D6D6">
