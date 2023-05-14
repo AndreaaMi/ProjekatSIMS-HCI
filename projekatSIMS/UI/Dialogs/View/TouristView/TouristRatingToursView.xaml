@@ -55,7 +55,7 @@
             </Border>
         </Border>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Submit rating" FontWeight="Bold" Command="{Binding SubmitCommand}" Margin="81,135,80,34" IsTabStop="False">
+        <Button Grid.Row="2" Grid.Column="2" FontSize="19" Content="Submit rating" FontWeight="Bold" Command="{Binding SubmitCommand}" Margin="81,135,80,34" IsTabStop="False">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -82,7 +82,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Button Grid.Row="2" Grid.Column="1" Content="Back" FontWeight="Bold" Command="{Binding BackCommand}" Margin="294,135,404,34" IsTabStop="False" Grid.ColumnSpan="2">
+        <Button Grid.Row="2" FontSize="19" Grid.Column="1" Content="Back" FontWeight="Bold" Command="{Binding BackCommand}" Margin="294,135,404,34" IsTabStop="False" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -179,14 +179,6 @@
         <TextBox Width="20" Height="20" Text="{Binding InterestLevel, Mode=TwoWay}" Margin="204,201,203,49" Grid.Row="1" Grid.Column="2"/>
         <TextBox Text="{Binding Comment, Mode=TwoWay}" Margin="204,243,93,5" Grid.Column="2" Grid.Row="1"/>
         <TextBox Text="{Binding ImageUrl, Mode=TwoWay}" Margin="204,10,93,238" Grid.Column="2" Grid.Row="2"/>
-
-
-
-        <i:Interaction.Triggers>
-            <i:KeyTrigger Key="P" Modifiers="Ctrl">
-                <i:InvokeCommandAction Command="{Binding BackCommand}" />
-            </i:KeyTrigger>
-        </i:Interaction.Triggers>
 
     </Grid>
 </Page>

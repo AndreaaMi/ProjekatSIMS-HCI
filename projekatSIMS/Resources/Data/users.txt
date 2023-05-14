@@ -2,5 +2,5 @@
 2|Andrea|Mitic|andrea@gmail.com|mitic|GUEST|-1|-1|False|15
 3|Dunja|Trikic|dunja@gmail.com|trikic|OWNER|51|96|True|22
 4|Uros|Lohinski|uros@gmail.com|lohinski|TOURGUIDE|-1|-1|False|21
-5|Ana|Anic|ana@gmail.com|anic|OWNER|53|92,3962264150943|False|20
+5|Ana|Anic|ana@gmail.com|anic|OWNER|53|923962264150943|False|20
 6|Vlatko|Ivanisevic|vlatko@gmail.com|vlatko|GUEST|-1|-1|False|15
