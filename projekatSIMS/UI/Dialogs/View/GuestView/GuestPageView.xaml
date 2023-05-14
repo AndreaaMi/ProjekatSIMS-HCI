@@ -131,6 +131,27 @@
                FontSize="22" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight"/>
             </Border>
         </Border>
+        <Grid Grid.Column="3">
+            <Label Content="Reservations Count:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,70"  />
+            <TextBlock Text="{Binding ReservationCount, Mode=TwoWay}" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,70"/>
+            <Label Content="Bonus Points:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"  />
+            <TextBlock Text="{Binding BonusPoints, Mode=TwoWay}" FontFamily="Bahnschrift Light"  FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,0"/>
+            <Label Content="Expiration Date:" FontFamily="Bahnschrift Light" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,-70" />
+            <TextBlock Text="{Binding SuperGuestExpirationDate, Mode=TwoWay}" FontFamily="Bahnschrift Light" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,-70" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red" FontFamily="Bahnschrift Light" FontSize="36" Margin="20">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Text" Value="None" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSuperGuest, Mode=TwoWay}" Value="True">
+                                <Setter Property="Text" Value="Super Guest" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Button Content="Use Bonus Point" Command="{Binding UseBonusPointCommand}" VerticalAlignment="Bottom" />
+        </Grid>
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="20" Margin="10,0,10,20">
             <Grid>
@@ -144,7 +165,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,0,0,0" Grid.ColumnSpan="2" Width="1487">
-                    <Button Content="Not Rated" Margin="0,20,0,20" Width="704.5" Foreground="DarkRed" FontFamily="Bahnschrift SemiLight" FontSize="22">
+                    <Button Content="Not Rated" Margin="0,20,0,20" Width="704.5" Foreground="DarkRed" FontFamily="Bahnschrift SemiLight" FontSize="22" Command="{Binding ShowNotRatedReservationsCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border x:Name="NotRatedButton" CornerRadius="5" Margin="2,0,4,0" BorderThickness="1" Background="#D6D6D6">
@@ -164,7 +185,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Content="Rated" Margin="81,20,0,20" Width="704.5" Foreground="ForestGreen" FontFamily="Bahnschrift SemiLight" FontSize="22">
+                    <Button Content="Rated" Margin="81,20,0,20" Width="704.5" Foreground="ForestGreen" FontFamily="Bahnschrift SemiLight" FontSize="22" Command="{Binding ShowRatedReservationsCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border x:Name="RatedButton" CornerRadius="5" Margin="2,0,4,0" BorderThickness="1" Background="#D6D6D6">
@@ -188,7 +209,7 @@
 
 
                 <!-- Sadržaj za drugi red Grid-a -->
-                <ListView x:Name="RatingsViewList" ItemsSource="{Binding RatingItems}" Margin="20,86,20,474" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Bahnschrift SemiLight" FontSize="18" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2">
+                <ListView x:Name="RatingsViewList" ItemsSource="{Binding ReservationItems}" Margin="20,80,20,0" av:ItemsSource="{av:SampleData ItemCount=5}" FontFamily="Bahnschrift SemiLight" FontSize="18" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" Height="294" VerticalAlignment="Top">
                     <ListView.Resources>
                         <Style TargetType="{x:Type ListView}">
                             <Setter Property="Background" Value="Transparent"/>
@@ -246,11 +267,13 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ReservationId}" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight" Margin="5" Foreground="#426A5A" />
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Cleanliness}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
-                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding OwnerPoliteness}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
-                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Comment}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding AccommodationName}" FontWeight="Bold"  FontFamily="Bahnschrift SemiLight" Margin="5" Foreground="#426A5A" />
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding StartDate}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding EndDate}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding GuestsRate}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
+                                <TextBlock Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding OwnersRate}" FontWeight="Bold"  FontFamily="Bahnschrift Light" Margin="5" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -265,13 +288,48 @@
                                     <Setter Property="FontSize" Value="20"/>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn Header="Reservation Id" DisplayMemberBinding="{Binding ReservationId}" Width="375"/>
-                            <GridViewColumn Header="Cleanliness" DisplayMemberBinding="{Binding Cleanliness}" Width="375"/>
-                            <GridViewColumn Header="OwnerPoliteness" DisplayMemberBinding="{Binding OwnerPoliteness}" Width="370"/>
-                            <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}" Width="370"/>
+                            <GridViewColumn Header="Accommodation Name" DisplayMemberBinding="{Binding AccommodationName}" Width="375"/>
+                            <GridViewColumn Header="Arrival" DisplayMemberBinding="{Binding StartDate}" Width="375"/>
+                            <GridViewColumn Header="Departure" DisplayMemberBinding="{Binding EndDate}" Width="370"/>
+                            <GridViewColumn Header="Guests Rate" DisplayMemberBinding="{Binding GuestsRate}" Width="370"/>
+                            <GridViewColumn Header="Owners Rate" DisplayMemberBinding="{Binding OwnersRate}" Width="370"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="RATE NOW !" Grid.Row="3" Grid.Column="2" Width="220" Foreground="White" FontFamily="Bahnschrift SemiLight" FontSize="22" Height="46" VerticalAlignment="top" HorizontalAlignment="Right" Margin="0,30,50,0" IsEnabled="{Binding IsNotRatedSelected}" Command="{Binding ShowRateNowCommand}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="BookButton" CornerRadius="5" Margin="4" BorderThickness="1" Background="#7FB685">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="BookButton" Property="Background" Value="#85BC8B"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="BookButton" Property="Background" Value="#426A5A"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Display" Grid.Row="3" Grid.Column="2" Width="220" Foreground="#244035" FontFamily="Bahnschrift SemiLight" FontSize="22" Height="46" VerticalAlignment="top" HorizontalAlignment="Right" Margin="0,30,300,0" Command="{Binding ShowDisplayReviewsViewCommand}" IsEnabled="{Binding IsRatedSelected}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="SeeReservationsButton" CornerRadius="5" Margin="4" BorderThickness="1" BorderBrush="#D6D6D6" Background="#D6D6D6">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="SeeReservationsButton" Property="Background" Value="#7FB685"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="SeeReservationsButton" Property="Background" Value="#7FB685"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </Border>
         <ContentControl Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding SelectedView}" Grid.RowSpan="2" FontFamily="Segoe UI" />

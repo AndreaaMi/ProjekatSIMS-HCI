@@ -17,6 +17,7 @@ namespace projekatSIMS.Model
         private bool guestsRate;
         private bool ownersRate;
 
+
         public AccommodationReservation()
         {
 

@@ -23,6 +23,9 @@ namespace projekatSIMS.Repository
             ((User)user).ReviewCount = ((User)entity).ReviewCount;
             ((User)user).SuperStatus = ((User)entity).SuperStatus;
             ((User)user).Age = ((User)entity).Age;
+            ((User)user).IsSuperGuest = ((User)entity).IsSuperGuest;
+            ((User)user).ReservationCount = ((User)entity).ReservationCount;
+            ((User)user).BonusPoints = ((User)entity).BonusPoints;
         }
 
         public void SetLoginUser(User user)

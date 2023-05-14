@@ -31,7 +31,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 OnPropertyChanged(nameof(SelectedView));
             }
         }
-
+        private int userId;
+        UserService userService;
         public ICommand ShowNewReservationHelpCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
 
@@ -44,6 +45,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public NewReservationViewModel()
         {
+            userService = new UserService();
+            userId = userService.GetCurrentUserId();
             BackCommand = new RelayCommand(BackControl);
             ShowNewReservationHelpCommand = new RelayCommand(ShowNewReservationHelpControl);
             accommodationReservationService = new AccommodationReservationService();
@@ -306,6 +309,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
             accommodationReservationService.CreateAccommodationReservation(newReservation);
 
+            userService.UpdateReservationCount(userId);
+
             ReservationSuccessfulLabel = "Reservation successful!";
             ErrorLabel = "";
         }
@@ -343,22 +348,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         private bool ValidateDateRange()
         {
-            string dateFormat = "dd.MM.yyyy"; // Prilagodite formatu datuma vašim potrebama
-
-            if (!DateTime.TryParseExact(StartDate.ToString(), dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Please enter a valid start date in the format {dateFormat}.";
-                return false;
-            }
-
-            if (!DateTime.TryParseExact(EndDate.ToString(), dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Please enter a valid end date in the format {dateFormat}.";
-                return false;
-            }
-
+            
             if (StartDate == DateTime.MinValue || EndDate == DateTime.MaxValue || StartDate >= EndDate || StartDate < DateTime.Today.AddDays(1))
             {
                 ReservationSuccessfulLabel = "";

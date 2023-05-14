@@ -1,6 +1,6 @@
 0|Hotel Dublin|2023-04-11|2023-04-15|3|False|False
-1|Hotel Dublin|2023-04-12|2023-04-16|10|False|False
-2|Hotel London|2023-04-20|2023-04-26|1|True|False
+1|Hotel Dublin|2023-04-12|2023-04-16|10|True|True
+2|Hotel London|2023-04-20|2023-04-26|1|True|True
 3|Hotel Dublin|2023-04-11|2023-04-15|3|True|False
 4|Hotel Vienna|2023-03-23|2023-03-25|4|False|False
 4|Hotel Vienna|2023-03-15|2023-03-19|4|False|False
@@ -10,8 +10,14 @@
 8|Grand Hotel Sofia|2023-05-07|2023-05-01|11|False|False
 9|Hotel Belgrade1|2023-05-03|2023-05-28|3|False|False
 10|Hotel Belgrade1|2023-05-06|2023-05-09|2|False|False
-11|Hotel Belgrade1|2023-05-04|2023-05-09|2|False|False
-12|Grand Hotel Sofia|2023-05-01|2023-05-11|567|False|False
-13|Grand Hotel Sofia2|2023-05-01|2023-06-04|300|False|False
-14|Grand Hotel Sofia|2023-05-01|2023-06-02|2|False|False
-15|Grand Hotel Sofia|2023-05-12|2023-05-23|2|False|False
+11|Hotel Belgrade1|2023-05-04|2023-05-09|2|True|False
+12|Grand Hotel Sofia|2023-05-01|2023-05-11|567|True|False
+13|Hotel Belgrade3|2023-05-16|2023-05-22|3|False|False
+14|Hotel Belgrade3|2023-05-25|2023-05-28|3|False|False
+15|Hotel Belgrade3|2023-05-16|2023-05-20|2|False|False
+16|Grand Hotel Sofia2|2023-05-24|2023-05-30|3|False|False
+17|Hotel Berlin|2023-05-17|2023-05-24|3|False|False
+18|Hotel Budapest|2023-05-24|2023-05-28|4|False|False
+19|Hotel Warsaw|2023-05-16|2023-05-20|3|False|False
+20|Resort Paris|2023-05-17|2023-05-25|3|False|False
+21|Hotel Berlin|2023-05-26|2023-05-30|3|False|False
