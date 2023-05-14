@@ -337,3 +337,6 @@ C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RateNowHelpView.g.cs
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\DisplayReviewsView.baml
 C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RateNowHelpView.baml
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Andrea\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
