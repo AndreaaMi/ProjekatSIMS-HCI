@@ -357,3 +357,5 @@ C:\Users\urosl\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialog
 C:\Users\urosl\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristSearchTourView.baml
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.g.cs
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.baml
