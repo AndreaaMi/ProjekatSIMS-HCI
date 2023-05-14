@@ -224,7 +224,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             newTour.Duration = int.Parse(Duration);
             newTour.Description = Description;
             newTour.GuestNumber = 22;
-            newTour.AssociatedTourGuide = 4;
+            newTour.AssociatedTourGuide = 0;
 
             //////
             string i = KeyPointId;

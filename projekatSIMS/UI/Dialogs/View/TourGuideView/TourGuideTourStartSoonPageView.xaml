@@ -35,42 +35,46 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
+                <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" Background="{DynamicResource BackgroundColor3}">
 
-
-                    <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}">
+                    <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" Background="{DynamicResource BackgroundColor3}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Background="#121212"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" >
-                                    <Border  Height="300" BorderThickness="0,0,0,1" BorderBrush="White"  >
+                                <Border  Height="768" BorderThickness="0,0,0,1" BorderBrush="White"  >
 
 
-                                        <Grid>
-                                            <Border BorderThickness="2" BorderBrush="White" Height="200" Width="200" HorizontalAlignment="Left" Margin="50,0,0,20" >
-                                                <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" />
-                                            </Border>
-                                            <Label HorizontalAlignment="Left" Margin="50,220,0,0" Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="16" FontWeight="Bold" />
+                                    <Grid>
+                                        <Border BorderThickness="2" BorderBrush="White" Height="200" Width="200" HorizontalAlignment="Left" Margin="50,0,0,20" >
+                                            <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" />
+                                        </Border>
+                                        <Label HorizontalAlignment="Left" Margin="50,220,0,0" Width="200" Height="45" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="Bold" />
 
-                                            <Label Width="200" Height="30" Content="Short Description about tour:" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,40,288,229" />
-                                            <Label Width="200" Height="30" Content="Tour Name" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,70,288,199" />
-                                            <Label Width="200" Height="30" Content="Country" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,100,288,169" />
-                                            <Label Width="200" Height="30" Content="City" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,130,288,139" />
-                                            <Label Width="200" Height="30" Content="Date" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,160,288,109" />
-                                            <Label Width="200" Height="30" Content="Duration" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,190,288,79" />
-                                            <Label Width="200" Height="30" Content="Maximum number of guests" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,220,288,49" />
-
-
-                                            <Label Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,70,51,199" />
-                                            <Label Width="200" Height="30" Content="{Binding Location.Country}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,100,51,169" />
-                                            <Label Width="200" Height="30" Content="{Binding Location.City}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,130,51,139" />
-                                            <Label Width="200" Height="30" Content="{Binding StartingDate, StringFormat={}{dd.mm.yyyy}}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,160,51,109" />
-                                            <Label Width="200" Height="30" Content="{Binding Duration}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,190,51,79" />
-                                            <Label Width="200" Height="30" Content="{Binding MaxNumberOfGuests}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,220,51,49" />
-                                        </Grid>
+                                        <Label Width="200" Height="30" Content="Short Description about tour:" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,40,288,229" />
+                                        <Label Width="200" Height="30" Content="Tour Name" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,70,288,199" />
+                                        <Label Width="200" Height="30" Content="Country" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,100,288,169" />
+                                        <Label Width="200" Height="30" Content="City" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,130,288,139" />
+                                        <Label Width="200" Height="30" Content="Date" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,160,288,109" />
+                                        <Label Width="200" Height="30" Content="Duration" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,190,288,79" />
+                                        <Label Width="200" Height="30" Content="Maximum number of guests" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="320,220,288,49" />
 
 
-                                    </Border>
-                                </Button>
+                                        <Label Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,70,51,199" />
+                                        <Label Width="200" Height="30" Content="{Binding Location.Country}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,100,51,169" />
+                                        <Label Width="200" Height="30" Content="{Binding Location.City}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,130,51,139" />
+                                        <Label Width="200" Height="30" Content="{Binding StartingDate, StringFormat={}{dd.mm.yyyy}}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,160,51,109" />
+                                        <Label Width="200" Height="30" Content="{Binding Duration}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,190,51,79" />
+                                        <Label Width="200" Height="35" Content="{Binding MaxNumberOfGuests}" Foreground="{DynamicResource TextColor}" FontSize="16" Margin="525,220,51,49" />
+
+                                        <Label Width="200" Height="45" Content="Tour Guide:" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="Bold" Margin="50,350,0,0"  HorizontalAlignment="Left" />
+                                        <Label Width="200" Height="45" Content="Uros Lohinski" Foreground="{DynamicResource TextColor}" FontSize="20" FontWeight="Bold" Margin="250,350,0,0"  HorizontalAlignment="Left" />
+                                        <Button Foreground="{DynamicResource TextColor}" Content="Start Tour" Background="{DynamicResource TextBoxColor}" Height="50" Width="130" Margin="450,350,0,0"  HorizontalAlignment="Left"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" />
+
+
+
+                                    </Grid>
+
+
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
