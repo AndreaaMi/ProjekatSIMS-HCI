@@ -1,4 +1,4 @@
-﻿C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml;;
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\MainWindow.xaml;;
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\GuestView\ActiveReservationsHelpView.xaml;;
@@ -35,4 +35,7 @@ FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\T
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;;
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\Vlasnik.xaml;;
 FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\Vodic.xaml;;
+FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml;;
+FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\TouristView\TouristSearchTourHelpView.xaml;;
+FC:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\UI\Dialogs\View\TouristView\TouristVouchersView.xaml;;
 
