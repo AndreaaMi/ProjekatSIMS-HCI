@@ -46,10 +46,12 @@
                         <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,276,524,336" RadiusX="10" RadiusY="10">
 
                         </Rectangle>
-                        <Label Content="{Binding Rating}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="164,297,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
+                        <Label Content="Best Tour"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="140,280,0,0" VerticalAlignment="Top" Height="34"/>
 
-                        <Label Content="Avarage Rating"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="114,331,0,0" VerticalAlignment="Top" Height="34"/>
-                        <Label Content="Based on 7 tours"  FontFamily="Oswald"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="113,361,0,0" VerticalAlignment="Top" Height="34"/>
+                        <Label Content="{Binding Name}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="154,304,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
+
+                        <Label Content="Number of Guests"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="105,331,0,0" VerticalAlignment="Top" Height="34"/>
+                        <Label Content="{Binding MaximumNumberOfGuests}"  FontFamily="Oswald" FontWeight="Bold"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="162,0,0,0" VerticalAlignment="Center" Height="34" Width="30"/>
 
 
                         <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,429,524,183" RadiusX="10" RadiusY="10">

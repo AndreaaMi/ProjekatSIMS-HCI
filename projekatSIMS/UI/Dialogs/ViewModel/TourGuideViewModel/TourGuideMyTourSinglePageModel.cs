@@ -8,10 +8,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideHomePageModel : ViewModelBase
+    internal class TourGuideMyTourSinglePageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -99,7 +100,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return homePageCommand;
             }
         }
-     
+
         public RelayCommand NewTourPageCommand
         {
             get
@@ -112,7 +113,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return newTourPageCommand;
             }
         }
-   
+
         public RelayCommand AllToursPageCommand
         {
             get
@@ -154,7 +155,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         #endregion
-        
 
         private string id;
         private string name;
@@ -169,9 +169,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private double rating;
+        private double guestmin;
+        private double guestmax;
+        private double guestadult;
+        private double temp3;
+        private double temp4;
 
-        private Tour selectedTour;
+        private Tour selectedTour = new Tour();
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
 
@@ -181,51 +185,82 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private VoucherService voucherService;
         private UserService userService;
 
-        private RelayCommand myToursCommand;
+        private RelayCommand tourButtonCommand;
 
 
-        public TourGuideHomePageModel()
+        public TourGuideMyTourSinglePageModel(Tour selected)
         {
             SetService();
-            var tours = tourService.GetAll();
-            Rating = 0;
+            /* Name = selectedTour.Name;
+             Country = selectedTour.Location.Country;
+             City = selectedTour.Location.City;
+             StartingDate = selectedTour.StartingDate;
+             Duration = (selectedTour.Duration).ToString();
+             MaximumNumberOfGuests = selectedTour.MaxNumberOfGuests.ToString();
 
+             */
+            Tours.Add(selected);
+             Guestmin = 0;
+             Guestmax = 0;
+             Guestadult = 0;
+            double temp = 0;
+            double temp2 = 0;
+             Temp3 = 0;
+             Temp4 = 0;
 
-
-            foreach (Tour tour in tours)
+            if (selected != null)
             {
 
-                if(tour.GuestNumber > Rating)
+                foreach (TourReservation tr in tourReservationService.GetAll())
                 {
-                    Rating = tour.GuestNumber;
+                    if (selected.Id == tr.TourId)
+                    {
+                        foreach (User user in userService.GetAll())
+                        {
+                            if (tr.GuestId == user.Id)
+                            {
+                                if (user.Age < 18)
+                                {
+                                    Guestmin += tr.NumberOfGuests;
+                                }
+                                if (user.Age > 18 && user.Age < 50)
+                                {
+                                    Guestadult += tr.NumberOfGuests;
+                                }
+                                if (user.Age > 50)
+                                {
+                                    Guestmax += tr.NumberOfGuests;
+                                }
+                            }
+                        }
+                    }
                 }
+
+                foreach (TourReservation tourReservation in tourReservationService.GetAll())
+                {
+                    if (selected.Id == tourReservation.TourId)
+                    {
+                        temp2 += tourReservation.NumberOfGuests;
+                        foreach (Voucher voucher in voucherService.GetAll())
+                        {
+                            if (voucher.GuestId == tourReservation.GuestId)
+                            {
+                                temp += tourReservation.NumberOfGuests;
+                            }
+                        }
+                    }
+                }
+                Temp3 = temp / temp2;
+                Temp4 = 1 - Temp3;
                 
 
-                // Name = tour.Name;
-                // Description = tour.Description;
+
+
 
             }
-            foreach (Tour tour in tours)
-            {
-
-                if (tour.GuestNumber == Rating)
-                {
-                    Name = tour.Name;
-                    MaximumNumberOfGuests = tour.GuestNumber.ToString();
-                    break;
-                }
-
-
-                // Name = tour.Name;
-                // Description = tour.Description;
-
-            }
-
             
-
-
-
-        }
+        
+    }
 
         public void SetService()
         {
@@ -236,32 +271,28 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             userService = new UserService();
         }
 
-        private void MyToursCommandExecute()
+        private void TourButtonCommandExecute()
         {
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideMyToursPageView.xaml", UriKind.Relative));
+            //  if (selectedTour != null)
+            // {
+            
+            //   }
+            //  else
+            //  {
+            //     MessageBox.Show("eeeeeeeeeeeee");
+            // }
         }
 
-        public RelayCommand MyToursCommand
+        public RelayCommand TourButtonCommand
         {
             get
             {
-                if (myToursCommand == null)
+                if (tourButtonCommand == null)
                 {
-                    myToursCommand = new RelayCommand(param => MyToursCommandExecute());
+                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
                 }
 
-                return myToursCommand;
-            }
-        }
-
-        public ObservableCollection<Tour> Tours
-        {
-            get { return tours; }
-            set
-            {
-                tours = value;
-                OnPropertyChanged(nameof(Tours));
+                return tourButtonCommand;
             }
         }
 
@@ -272,6 +303,56 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
+            }
+
+        }
+        public ObservableCollection<Tour> Tours
+        {
+            get { return tours; }
+            set
+            {
+                tours = value;
+                OnPropertyChanged(nameof(Tours));
+            }
+        }
+
+        public double Guestmin
+        {
+            get { return guestmin; }
+            set
+            {
+                guestmin = value;
+                OnPropertyChanged(nameof(Guestmin));
+
+            }
+        }
+        public double Guestmax
+        {
+            get { return guestmax; }
+            set
+            {
+                guestmax = value;
+                OnPropertyChanged(nameof(Guestmax));
+
+            }
+        }
+        public double Guestadult
+        {
+            get { return guestadult; }
+            set
+            {
+                guestadult = value;
+                OnPropertyChanged(nameof(Guestadult));
+
+            }
+        }
+        public double Temp3
+        {
+            get { return temp3; }
+            set
+            {
+                temp3 = value;
+                OnPropertyChanged(nameof(Temp3));
 
             }
         }
@@ -282,6 +363,16 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 id = value;
                 OnPropertyChanged(nameof(Id));
+
+            }
+        }
+        public double Temp4
+        {
+            get { return temp4; }
+            set
+            {
+                temp4 = value;
+                OnPropertyChanged(nameof(Temp4));
 
             }
         }
@@ -407,16 +498,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
 
 
-        }
-
-        public double Rating
-        {
-            get { return rating; }
-            set
-            {
-                rating = value;
-                OnPropertyChanged(nameof(Rating));
-            }
         }
     }
 }

@@ -184,7 +184,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
             SetService();
             var tours = tourService.GetAll();
-
+            
 
 
 
@@ -194,11 +194,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 {
                     Tours.Add(tour);
                 }
+                
                 // Name = tour.Name;
                 // Description = tour.Description;
 
             }
-
+            
 
 
 
@@ -219,7 +220,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             //  if (selectedTour != null)
             // {
             TourGuideMainWindow.navigationService.Navigate(
-                new TourGuideTourStartSoonPageView(selectedTour));
+                new TourGuideMyTourSinglePageView(selectedTour));
             //   }
             //  else
             //  {
