@@ -110,7 +110,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Button Content="Rate finished tours" Grid.Row="2" FontWeight="Bold" Grid.Column="1" Margin="119,83,119,82" FontSize="19">
+        <Button Content="Request specific tours" Grid.Row="2" FontWeight="Bold" Grid.Column="1" Margin="119,83,119,82" FontSize="19">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -130,6 +130,11 @@
                     </Border>
                 </ControlTemplate>
             </Button.Template>
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="K" Modifiers="Ctrl">
+                    <i:InvokeCommandAction Command="{Binding RequestTourCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
         </Button>
 
         <Button Content="Vouchers" Grid.Row="2" Command="{Binding VouchersCommand}"  FontSize="19" FontWeight="Bold" Grid.Column="2" Margin="64,83,64,82">
