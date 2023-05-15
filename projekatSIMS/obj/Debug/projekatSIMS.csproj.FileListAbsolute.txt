@@ -395,3 +395,11 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\GuestView\RateNowView.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestView.g.cs
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.dll
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.pdb
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.xml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.xml

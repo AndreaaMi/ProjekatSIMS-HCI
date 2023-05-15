@@ -19,6 +19,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         public RelayCommand vouchersCommand;
         public RelayCommand helpCommand;
         public RelayCommand requestTourCommand;
+        public RelayCommand requestsCommand;
 
         public TouristHomeModel()
         {}
@@ -61,6 +62,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             TouristMainWindow.navigationService.Navigate(
                new Uri("UI/Dialogs/View/TouristView/TouristTourRequestView.xaml", UriKind.Relative));
+        }
+
+        private void RequestsCommandExecute()
+        {
+            TouristMainWindow.navigationService.Navigate(
+               new Uri("UI/Dialogs/View/TouristView/TouristTourRequestStatisticsView.xaml", UriKind.Relative));
         }
         public void Dispose()
         {
@@ -136,6 +143,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             get
             {
                 return goToProfilePageCommand ?? (goToProfilePageCommand = new RelayCommand(param => GoToProfilePageCommandExecute()));
+            }
+        }
+
+        public RelayCommand RequestsCommand
+        {
+            get
+            {
+                return requestsCommand ?? (requestsCommand = new RelayCommand(param => RequestsCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
