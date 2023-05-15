@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace projekatSIMS.UI.Dialogs.View.GuestView
+namespace projekatSIMS.UI.Dialogs.View.TouristView
 {
     /// <summary>
-    /// Interaction logic for RescheduleReservationNotificationView.xaml
+    /// Interaction logic for TouristHomeViewHelp.xaml
     /// </summary>
-    public partial class RescheduleReservationNotificationView : UserControl
+    public partial class TouristHomeViewHelp : Page
     {
-        public RescheduleReservationNotificationView()
+        public TouristHomeViewHelp()
         {
             InitializeComponent();
+            DataContext = new TouristHomeHelpModel();
         }
     }
 }

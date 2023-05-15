@@ -17,8 +17,11 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
     {
         private RelayCommand backCommand;
         private RelayCommand submitCommand;
+        private RelayCommand toursMoveDownCommand;
+        private RelayCommand toursMoveUpCommand;
 
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
+        private Tour selectedTour;
 
         private int touristId;
         private int tourGuideKnowledge;
@@ -36,11 +39,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             SetService(); 
             LoadData();
-
         }
 
         #region LOADING IN THE DATA
-        //FIRST WE LOAD IN ALL THE TOURS THAT THE GUEST HAS A RESERVATION FOR
+        //FIRST WE LOAD IN ALL THE TOURS THAT THE GUEST HAS A RESERVATION FOR AND HASN`T YET RATED
 
         private void LoadData()
         {
@@ -51,7 +53,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             foreach(Tour tour in tourService.GetAll())
             {
-                if(reservationService.GetReservationByGuestId(userService.GetLoginUser().Id).Contains(tour.Id))
+                if(reservationService.GetReservationByGuestId(userService.GetLoginUser().Id).Contains(tour.Id) && !ratingService.GetRatedTours(userService.GetLoginUser().Id).Contains(tour.Id))
                 {
                     Items.Add(tour);
                 }
@@ -68,26 +70,70 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 {
                     Items.Remove(tour);
                 }
+                
             }
         }
         #endregion
 
         #region COMMANDS
+        private bool CanThisCommandExecute()
+        {
+            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
+            return currentUri?.EndsWith("TouristRatingToursView.xaml", StringComparison.OrdinalIgnoreCase) == true;
+        }
         private void BackCommandExecute()
         {
             TouristMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
+                new Uri("UI/Dialogs/View/TouristView/TouristActiveToursView.xaml", UriKind.Relative));
         }
 
         private void SubmitCommandExecute()
         {
-            TourRating tourRating = new TourRating(ratingService.GenerateId(),userService.GetLoginUser().Id,TourGuideKnowledge,TourGuideLanguageProficiency,InterestLevel,Comment,ImageUrl);
-            ratingService.Add(tourRating);
+            if (!CanSubmitCommandExecute())
+            {
+                MessageBox.Show("Please respect the restrictions.","!!!", MessageBoxButton.OK);
+                return;
+            }
             MessageBoxResult result = MessageBox.Show("Your rating was registered successfuly.", "Thank you. We appreciate it!", MessageBoxButton.OK);
             if (result == MessageBoxResult.OK)
             {
                 TouristMainWindow.navigationService.Navigate(
                 new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
+            }
+        }
+
+        private bool CanSubmitCommandExecute()
+        {
+            if (!IsTourguideKnowledgeValid()) return false;
+            CreateRating();
+            return true;
+        }
+
+        private bool IsTourguideKnowledgeValid()
+        {
+            if(TourGuideKnowledge < 0 ||  TourGuideKnowledge > 5) return false;
+            return true;
+        }
+
+        private void CreateRating()
+        {
+            TourRating tourRating = new TourRating(ratingService.GenerateId(), SelectedTour.Id, userService.GetLoginUser().Id, TourGuideKnowledge, TourGuideLanguageProficiency, InterestLevel, Comment, ImageUrl);
+            ratingService.Add(tourRating);
+        }
+        private void ToursMoveDownCommandExecute()
+        {
+            int selectedIndex = Items.IndexOf(SelectedTour);
+            if (selectedIndex < Items.Count - 1)
+            {
+                SelectedTour = Items[selectedIndex + 1];
+            }
+        }
+        private void ToursMoveUpCommandExecute()
+        {
+            int selectedIndex = Items.IndexOf(SelectedTour);
+            if (selectedIndex > 0)
+            {
+                SelectedTour = Items[selectedIndex - 1];
             }
         }
         public void SetService()
@@ -111,11 +157,20 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 OnPropertyChanged(nameof(Items));
             }
         }
+        public Tour SelectedTour
+        {
+            get { return selectedTour; }
+            set
+            {
+                selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
+            }
+        }
         public RelayCommand BackCommand
         {
             get
             {
-                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute()));
+                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -123,7 +178,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return submitCommand ?? (submitCommand= new RelayCommand(param => SubmitCommandExecute()));
+                return submitCommand ?? (submitCommand= new RelayCommand(param => SubmitCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 
@@ -184,6 +239,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             {
                 imageUrl = value;
                 OnPropertyChanged(nameof(ImageUrl));
+            }
+        }
+        public RelayCommand ToursMoveDownCommand
+        {
+            get
+            {
+                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+
+        public RelayCommand ToursMoveUpCommand
+        {
+            get
+            {
+                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 

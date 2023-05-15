@@ -16,7 +16,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
     {
         private RelayCommand backCommand;
         private RelayCommand confirmCommand;
-        
+        private RelayCommand setFirstTourItemCommand;
+        private RelayCommand setFirstVoucherItemCommand;
+        private RelayCommand toursMoveDownCommand;
+        private RelayCommand toursMoveUpCommand;
+        private RelayCommand vouchersMoveDownCommand;
+        private RelayCommand vouchersMoveUpCommand;
+
         private ObservableCollection<Tour> items = new ObservableCollection<Tour>();
         private ObservableCollection<Voucher> vouchers = new ObservableCollection<Voucher>();
 
@@ -29,16 +35,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private TourService tourService;
         private TourReservationService tourReservationService;
 
-        public TouristReservationModel(Tour selectedTour)
+        public TouristReservationModel(Tour tour)
         {
             SetService();
-            Items.Add(selectedTour);
+            Items.Add(tour);
             CheckVoucherExpirationDate();
             LoadVouchers();
-            
+
         }
 
         #region COMMANDS
+        private bool CanThisCommandExecute()
+        {
+            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
+            return string.IsNullOrEmpty(currentUri);
+        }
         private void BackCommandExecute()
         {
             TouristMainWindow.navigationService.Navigate(
@@ -55,7 +66,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
             }
         }
-
         private bool CanConfirmCommandExecute()
         {
             if (!ValidateGuestCount()) return false;
@@ -65,6 +75,52 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             return true;
         }
 
+        private void SetFirstTourItemCommandExecute()
+        {
+            if (Items.Count > 0)
+            {
+                SelectedTour = Items[0];
+            }
+        }
+        private void SetFirstVoucherItemCommandExecute()
+        {
+            if (Vouchers.Count > 0)
+            {
+                SelectedVoucher = Vouchers[0];
+            }
+        }
+        private void ToursMoveDownCommandExecute()
+        {
+            int selectedIndex = Items.IndexOf(SelectedTour);
+            if (selectedIndex < Items.Count - 1)
+            {
+                SelectedTour = Items[selectedIndex + 1];
+            }
+        }
+        private void ToursMoveUpCommandExecute()
+        {
+            int selectedIndex = Items.IndexOf(SelectedTour);
+            if (selectedIndex > 0)
+            {
+                SelectedTour = Items[selectedIndex - 1];
+            }
+        }
+        private void VouchersMoveDownCommandExecute()
+        {
+            int selectedIndex = Vouchers.IndexOf(SelectedVoucher);
+            if (selectedIndex < Vouchers.Count - 1)
+            {
+                SelectedVoucher = Vouchers[selectedIndex + 1];
+            }
+        }
+        private void VouchersMoveUpCommandExecute()
+        {
+            int selectedIndex = Vouchers.IndexOf(SelectedVoucher);
+            if (selectedIndex > 0)
+            {
+                SelectedVoucher = Vouchers[selectedIndex - 1];
+            }
+        }
         public void SetService()
         {
             voucherService = new VoucherService();
@@ -77,7 +133,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         #region VOUCHER_LOGIC
         public void CheckVoucherExpirationDate()
         {
-            foreach(Voucher voucher in voucherService.GetAll().ToList())
+            foreach (Voucher voucher in voucherService.GetAll().ToList())
             {
                 if (voucher.ExpirationDate.Date <= DateTime.Today.Date)
                 {
@@ -87,7 +143,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         }
         public void LoadVouchers()
         {
-            foreach(Voucher voucher in voucherService.GetAll())
+            foreach (Voucher voucher in voucherService.GetAll())
             {
                 if (voucher.GuestId == userService.GetLoginUser().Id)
                 {
@@ -98,7 +154,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 
         public void UseVoucher()
         {
-            if(selectedVoucher != null)
+            if (selectedVoucher != null)
             {
                 voucherService.Remove(SelectedVoucher);
             }
@@ -156,7 +212,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             SelectedTour.GuestNumber += int.Parse(GuestNumber);
             //CREATING A NEW TOUR RESERVATION AND SETTING THE VALUES
-            TourReservation tourReservation = new TourReservation(tourReservationService.GenerateId(),userService.GetLoginUser().Id, SelectedTour.Id, int.Parse(GuestNumber));
+            TourReservation tourReservation = new TourReservation(tourReservationService.GenerateId(), userService.GetLoginUser().Id, SelectedTour.Id, int.Parse(GuestNumber));
             tourReservationService.Add(tourReservation);
         }
         #endregion
@@ -178,7 +234,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             get { return selectedTour; }
             set
             {
-                selectedTour = value; 
+                selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
             }
         }
@@ -187,7 +243,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute()));
+                return backCommand ?? (backCommand = new RelayCommand(param => BackCommandExecute(),param => CanThisCommandExecute()));
             }
         }
 
@@ -225,7 +281,51 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             get
             {
-                return confirmCommand ?? (confirmCommand = new RelayCommand(param => ConfirmCommandExecute()));
+                return confirmCommand ?? (confirmCommand = new RelayCommand(param => ConfirmCommandExecute(),param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand SetFirstTourItemCommand
+        {
+            get
+            {
+                return setFirstTourItemCommand ?? (setFirstTourItemCommand = new RelayCommand(param => SetFirstTourItemCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand SetFirstVoucherItemCommand
+        {
+            get
+            {
+                return setFirstVoucherItemCommand ?? (setFirstVoucherItemCommand = new RelayCommand(param => SetFirstVoucherItemCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand ToursMoveDownCommand
+        {
+            get
+            {
+                return toursMoveDownCommand ?? (toursMoveDownCommand = new RelayCommand(param => ToursMoveDownCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+
+        public RelayCommand ToursMoveUpCommand
+        {
+            get
+            {
+                return toursMoveUpCommand ?? (toursMoveUpCommand = new RelayCommand(param => ToursMoveUpCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand VouchersMoveDownCommand
+        {
+            get
+            {
+                return vouchersMoveDownCommand ?? (vouchersMoveDownCommand = new RelayCommand(param => VouchersMoveDownCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+
+        public RelayCommand VouchersMoveUpCommand
+        {
+            get
+            {
+                return vouchersMoveUpCommand ?? (vouchersMoveUpCommand = new RelayCommand(param => VouchersMoveUpCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 

@@ -9,6 +9,7 @@ namespace projekatSIMS.Model
     public class TourRating : Entity
     {
         private int touristId;
+        private int tourId;
         private int tourGuideKnowledge;
         private int tourGuideLanguageProficiency;
         private int interestLevel;
@@ -20,10 +21,11 @@ namespace projekatSIMS.Model
 
         }
 
-        public TourRating(int id,int touristId,int knowledge,int language, int interest, string comment, string imageUrl)
+        public TourRating(int id,int tourId,int touristId,int knowledge,int language, int interest, string comment, string imageUrl)
         {
             this.id = id;
-            this.touristId = id;
+            this.tourId = tourId;
+            this.touristId = touristId;
             this.tourGuideKnowledge = knowledge;
             this.tourGuideLanguageProficiency = language;
             this.interestLevel = interest;
@@ -38,6 +40,16 @@ namespace projekatSIMS.Model
             {
                 touristId = value;
                 OnPropertyChanged(nameof(TouristId));
+            }
+        }
+
+        public int TourId
+        {
+            get { return tourId; }
+            set
+            {
+                tourId = value;
+                OnPropertyChanged(nameof(TourId));
             }
         }
 
@@ -93,18 +105,19 @@ namespace projekatSIMS.Model
 
         public override string ExportToString()
         {
-            return id + "|" + touristId + "|" + tourGuideKnowledge + "|" + tourGuideLanguageProficiency + "|" + interestLevel + "|" + comment + "|" + imageUrl;
+            return id + "|" + tourId + "|" + touristId + "|" + tourGuideKnowledge + "|" + tourGuideLanguageProficiency + "|" + interestLevel + "|" + comment + "|" + imageUrl;
         }
 
         public override void ImportFromString(string[] parts)
         {
             base.ImportFromString(parts);
-            touristId = int.Parse(parts[1]);
-            tourGuideKnowledge = int.Parse(parts[2]);
-            tourGuideLanguageProficiency = int.Parse(parts[3]);
-            interestLevel = int.Parse(parts[4]);
-            comment = parts[5];
-            imageUrl = parts[6];
+            tourId = int.Parse(parts[1]);
+            touristId = int.Parse(parts[2]);
+            tourGuideKnowledge = int.Parse(parts[3]);
+            tourGuideLanguageProficiency = int.Parse(parts[4]);
+            interestLevel = int.Parse(parts[5]);
+            comment = parts[6];
+            imageUrl = parts[7];
         }
     }
 }

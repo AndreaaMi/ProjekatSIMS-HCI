@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace projekatSIMS.UI.Dialogs.View.GuestView
         public GuestPageView()
         {
             InitializeComponent();
+            DataContext = new GuestPageViewModel();
         }
     }
 }

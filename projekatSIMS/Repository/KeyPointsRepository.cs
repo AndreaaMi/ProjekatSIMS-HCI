@@ -33,5 +33,49 @@ namespace projekatSIMS.Repository
             return true;
         }
 
+        public int GetActiveKeyPointId(int tourId)
+        {
+            int activeKeyPointId = -1;
+            foreach (KeyPoints kp in DataContext.Instance.Keypoints)
+            {
+                if(kp.AssociatedTour == tourId && kp.IsActive)
+                {
+                    if (kp.Id > activeKeyPointId)
+                    {
+                        activeKeyPointId = kp.Id;
+                    }
+                }
+            }
+            return activeKeyPointId;
+        }
+
+        public bool HasTheTourStarted(int tourId)
+        {
+            var firstKeyPoint = DataContext.Instance.Keypoints.OfType<KeyPoints>().FirstOrDefault(kp => kp.AssociatedTour == tourId);
+
+            if (firstKeyPoint != null)
+            {
+                return firstKeyPoint.IsActive;
+            }
+
+            return false;
+        }
+
+        public bool HasTheTourEnded(int tourId)
+        {
+            var keyPoints = DataContext.Instance.Keypoints.OfType<KeyPoints>()
+                              .Where(kp => kp.AssociatedTour == tourId)
+                              .OrderByDescending(kp => kp.Id);
+
+            var lastKeyPoint = keyPoints.FirstOrDefault();
+
+            if (lastKeyPoint != null)
+            {
+                return lastKeyPoint.IsActive;
+            }
+
+            return false;
+        }
+
     }
 }

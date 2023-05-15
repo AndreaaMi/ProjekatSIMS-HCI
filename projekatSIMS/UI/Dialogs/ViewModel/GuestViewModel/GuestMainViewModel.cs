@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
+
     public class GuestMainViewModel : ViewModelBase
     {
+        public static NavigationService navigationService;
+
         private UserControl _selectedView;
 
         public UserControl SelectedView
@@ -27,13 +31,24 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public ICommand ShowNewUserControlCommand { get; private set; }
         public ICommand ShowRescheduleReservationCommand { get; private set; }
+        public ICommand ShowActiveReservationCommand { get; private set; }
+        public ICommand ShowAnywhereAnytimeViewCommand { get; private set; }
+        public ICommand ShowAllAccommodationsCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
 
         public GuestMainViewModel()
         {
+            ShowAnywhereAnytimeViewCommand = new RelayCommand(ShowAnywhereAnytimeViewControl);
+            ShowAllAccommodationsCommand = new RelayCommand(ShowAllAccommodationsControl);
             ShowNewUserControlCommand = new RelayCommand(ShowNewUserControl);
-            ShowRescheduleReservationCommand = new RelayCommand(ShowRescheduleReservation);
             LogoutCommand = new RelayCommand(Logout);
+            ShowActiveReservationCommand = new RelayCommand(ShowActiveReservation);
+            ShowNewUserControl(null);
+        }
+
+        private void ShowAnywhereAnytimeViewControl(object parameter)
+        {
+            SelectedView = new AnywhereAnytimeView();
         }
 
         private void ShowNewUserControl(object parameter)
@@ -41,13 +56,26 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             SelectedView = new GuestPageView();
         }
 
-        private void ShowRescheduleReservation(object parameter)
+        private void ShowActiveReservation(object parameter)
         {
-            SelectedView = new RescheduleReservationNotificationView();
+            SelectedView = new ActiveReservationsView();
         }
 
+        private void ShowAllAccommodationsControl(object parameter)
+        {
+            SelectedView = new AllAccommodationsView();
+        }
         private void Logout(object parameter)
         {
+            // Close all open windows except the main window
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != Application.Current.MainWindow)
+                {
+                    window.Close();
+                }
+            }
+
             // Navigate to the main window, which is your login page
             var mainWindow = new MainWindow();
             mainWindow.Show();

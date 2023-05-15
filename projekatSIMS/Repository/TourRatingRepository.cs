@@ -19,5 +19,17 @@ namespace projekatSIMS.Repository
             ((TourRating)tourRating).Comment = ((TourRating)entity).Comment;
             ((TourRating)tourRating).ImageUrl = ((TourRating)entity).ImageUrl;
         }
+        public List<int> GetRatedTours(int touristId)
+        {
+            List<int> ratedTours = new List<int>();
+            foreach (TourRating tourRating in DataContext.Instance.TourRatings)
+            {
+                if (tourRating.TouristId == touristId)
+                {
+                    ratedTours.Add(tourRating.TourId);
+                }
+            }
+            return ratedTours;
+        }
     }
 }

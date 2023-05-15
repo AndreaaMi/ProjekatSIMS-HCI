@@ -49,5 +49,11 @@ namespace projekatSIMS.Service
             UnitOfWork unitOfWork = new UnitOfWork();
             return unitOfWork.TourRatings.GenerateId();
         }
+
+        public List<int> GetRatedTours(int touristId)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            return unitOfWork.TourRatings.GetRatedTours(touristId);
+        }
     }
 }

@@ -45,6 +45,8 @@ namespace projekatSIMS.UI.Dialogs.View
             accommodationOwnerRatingService = new AccommodationOwnerRatingService();
             userService = new UserService();
 
+            
+
             LoadAccommodations();
             LoadReservations();
         }
@@ -449,6 +451,11 @@ namespace projekatSIMS.UI.Dialogs.View
             reservationService.Edit(selectedReservation);
 
             MessageBox.Show("Rating submitted successfully.");
+        }
+
+        private void RequestReservationRescheduleViewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 

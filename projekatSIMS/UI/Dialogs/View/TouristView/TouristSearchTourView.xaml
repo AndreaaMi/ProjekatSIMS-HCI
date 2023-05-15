@@ -4,89 +4,183 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.TouristView"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:Icon="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="TouristSearchTourView">
 
-    <Border CornerRadius="12">
-        <Border CornerRadius="10"                    
-            BorderThickness="2"
-            Opacity="0.95">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="316*"></ColumnDefinition>
+            <ColumnDefinition Width="537*"></ColumnDefinition>
+            <ColumnDefinition Width="427*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"></RowDefinition>
+            <RowDefinition Height="270"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="4">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#000428" Offset="0"/>
-                    <GradientStop Color="#004e92" Offset="1"/>
+                    <GradientStop Color="#D3D3D3" Offset="0"/>
+                    <GradientStop Color="#C0C0C0" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#000428" Offset="1"/>
-                    <GradientStop Color="#004e92" Offset="0"/>
+                    <GradientStop Color="#808080" Offset="1"/>
+                    <GradientStop Color="#C0C0C0" Offset="0"/>
                 </LinearGradientBrush>
             </Border.Background>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="133*"/>
-                    <ColumnDefinition Width="179*"/>
-                    <ColumnDefinition Width="326*"/>
-                </Grid.ColumnDefinitions>
-
-                <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" x:Name="Tours" Margin="0,10,20,10" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" IsReadOnly="True" SelectedItem="{Binding Path=SelectedTour}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Tour Name" Width="90" Binding="{Binding Path=Name}"/>
-                        <DataGridTextColumn Header="Country" Width="70" Binding="{Binding Path=Location.Country}"/>
-                        <DataGridTextColumn Header="City" Width="70" Binding="{Binding Path=Location.City}"/>
-                        <DataGridTextColumn Header="Language" Width="70" Binding="{Binding Path=Language}"/>
-                        <DataGridTextColumn Header="Start Date and Time" Width="170"  Binding="{Binding Path=StartingDate}"/>
-                        <DataGridTextColumn Header="Slots" Width="40" Binding="{Binding Path=MaxNumberOfGuests}"/>
-                        <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Path=Description}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-                    <Label Content="Search By State:" HorizontalAlignment="Right" Foreground="#D3D3D3"></Label>
-                    <Label Content="Search By City:" HorizontalAlignment="Right" Foreground="#D3D3D3" Margin="0 20 0 0"></Label>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" VerticalAlignment="Center">
-                    <Label Content="Search By Duration:" HorizontalAlignment="Right" Foreground="#D3D3D3"></Label>
-                    <Label Content="Search By Language:" HorizontalAlignment="Right" Foreground="#D3D3D3" Margin="0 25 0 0"></Label>
-                </StackPanel>
-
-                <StackPanel Grid.Row="3" VerticalAlignment="Top">
-                    <Label Content="Search By Number of Guests:" HorizontalAlignment="Right" Foreground="#D3D3D3"></Label>
-                </StackPanel>
-
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <ComboBox Width="180" Margin="-145 75 0 0" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=States}" SelectedValue="{Binding Path=State}"></ComboBox>
-                    <ComboBox Width="180" Margin="-145 22 0 0" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Cities}" SelectedValue="{Binding Path=City}"></ComboBox>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" Grid.Column="1">
-                    <ComboBox Width="180" Margin="-145 35 0 0" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Durations}" SelectedValue="{Binding Path=Duration}"></ComboBox>
-                    <ComboBox Width="180" Margin="-145 30 0 0" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Languages}" SelectedValue="{Binding Path=Language}"></ComboBox>
-                </StackPanel>
-
-                <StackPanel Grid.Row="3" Grid.Column="1">
-                    <TextBox Width="50" Margin="-275 5 0 0" Text="{Binding GuestNumber, Mode=TwoWay}"></TextBox>
-                </StackPanel>
-
-                <Button Grid.Row="4" Height="80" Width="150" Content="Back" Command="{Binding BackCommand}"></Button>
-                <Button Grid.Row="3" Grid.Column="1" Height="80" Width="150" Content="Search" Command="{Binding SearchCommand}" Margin="134,53,74,10"></Button>
-                <Button Grid.Row="4" Grid.Column="2" Height="80" Width="200" Content="Proceed to Reservation" Command="{Binding ProceedCommand}"></Button>
-
-
-
-            </Grid>
-
         </Border>
-    </Border>
+
+        <Border CornerRadius="12" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+            <Border BorderThickness="2">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#242582" Offset="0"/>
+                        <GradientStop Color="#2F2FA2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="#242582" Offset="1"/>
+                        <GradientStop Color="#2F2FA2" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Border>
+
+        <DataGrid Grid.Row="2" x:Name="Tours" Margin="60,10,10,10" AutoGenerateColumns="False" ItemsSource="{Binding Path=Items}" IsReadOnly="True" SelectedItem="{Binding Path=SelectedTour}" Grid.ColumnSpan="2">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tour Name" Width="126" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Country" Width="126" Binding="{Binding Path=Location.Country}"/>
+                <DataGridTextColumn Header="City" Width="126" Binding="{Binding Path=Location.City}"/>
+                <DataGridTextColumn Header="Language" Width="70" Binding="{Binding Path=Language}"/>
+                <DataGridTextColumn Header="Start Date and Time" Width="186"  Binding="{Binding Path=StartingDate}"/>
+                <DataGridTextColumn Header="Slots" Width="40" Binding="{Binding Path=MaxNumberOfGuests}"/>
+                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Path=Description}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="W">
+                    <i:InvokeCommandAction Command="{Binding ToursMoveUpCommand}" />
+                </i:KeyTrigger>
+                <i:KeyTrigger Key="X">
+                    <i:InvokeCommandAction Command="{Binding ToursMoveDownCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+
+        <Button Grid.Row="2" Grid.Column="2" FontSize="19" Content="Proceed" FontWeight="Bold" Command="{Binding ProceedCommand}" Margin="81,135,80,34" IsTabStop="False">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#808080" Offset="0"/>
+                                <GradientStop Color="#C0C0C0" Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="250" Height="100" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="Return" Modifiers="Ctrl">
+                    <i:InvokeCommandAction Command="{Binding ProceedCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <ComboBox x:Name="StateComboBox" Width="180" Margin="60,166,76,84" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=States}" SelectedValue="{Binding Path=State}" Grid.Row="1" DropDownOpened="StateComboBox_DropDownOpened" IsDropDownOpen="{Binding Path=IsStateComboboxOpened, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="S" Modifiers="Shift">
+                    <i:InvokeCommandAction Command="{Binding OpenStateComboboxCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <ComboBox x:Name="CityComboBox" Width="180" Margin="306,166,367,84" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Cities}" SelectedValue="{Binding Path=City}" Grid.Row="1" DropDownOpened="CityComboBox_DropDownOpened" IsDropDownOpen="{Binding Path=IsCityComboboxOpened, Mode=TwoWay}" Grid.ColumnSpan="2">
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="C" Modifiers="Shift">
+                    <i:InvokeCommandAction Command="{Binding OpenCityComboboxCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <ComboBox x:Name="LanguageComboBox" Width="180" Margin="234,166,123,84" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Languages}" SelectedValue="{Binding Path=Language}" Grid.Column="1" Grid.Row="1" DropDownOpened="LanguageComboBox_DropDownOpened" IsDropDownOpen="{Binding Path=IsLanguageComboboxOpened, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="L" Modifiers="Shift">
+                    <i:InvokeCommandAction Command="{Binding OpenLanguageComboboxCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <ComboBox x:Name="DurationComboBox" Width="180" Margin="477,166,307,84" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Durations}" SelectedValue="{Binding Path=Duration}" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.53,2.67" Grid.ColumnSpan="2" DropDownOpened="DurationComboBox_DropDownOpened" IsDropDownOpen="{Binding Path=IsDurationComboboxOpened, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="D" Modifiers="Shift">
+                    <i:InvokeCommandAction Command="{Binding OpenDurationComboboxCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <ComboBox x:Name="SlotComboBox" Width="180" Margin="185,166,62,84" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Slots}" SelectedValue="{Binding Path=Slot}" Grid.Column="2" Grid.Row="1" RenderTransformOrigin="0.53,2.67"  DropDownOpened="SlotComboBox_DropDownOpened" IsDropDownOpen="{Binding Path=IsSlotComboboxOpened, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="G" Modifiers="Shift">
+                    <i:InvokeCommandAction Command="{Binding OpenSlotComboboxCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+
+        <TextBlock Text="ADVENTO" Grid.Row="0" Foreground="Black" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="138,43,0,43" Width="160"/>
+        <TextBlock Text="Search by:" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="58,40,0,186" Width="160"/>
+        <TextBlock Text="Create your own" Grid.Row="0" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="134,81,0,35" Width="90"/>
+        <TextBlock Text="ADVENTURE" Grid.Row="0" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="229,81,0,38" Width="69"/>
+        <TextBlock Text="CTRL + P" Foreground="Black" FontSize="18" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="58,18,0,90" Grid.Column="2" Width="74"/>
+        <TextBlock Text="CTRL + N" Foreground="Black" FontSize="18" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="195,18,0,90" Grid.Column="2" Width="76"/>
+        <TextBlock Text="CTRL + H" Foreground="Black" FontSize="18" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="319,18,0,90" Grid.Column="2" Width="76"/>
+        <Image Source="https://img.icons8.com/dusk/256/globe-earth.png" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="100" Margin="10,0,0,0"/>
+        <Image Source="https://img.icons8.com/dusk/256/globe-earth.png" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="20" Height="20" RenderTransformOrigin="7.655,0.85" Margin="324,0,0,0" />
+        <Icon:FontAwesome Icon="User" FontSize="60" Grid.Column="2" Margin="55,40,291,29"/>
+        <TextBlock Text="Back to Main Page" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="43,106,0,10" Width="106"/>
+        <Icon:FontAwesome Icon="Bell" FontSize="60" Grid.Column="2" Margin="195,40,145,29"/>
+        <TextBlock Text="View notifications" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="185,106,0,10" Width="106"/>
+        <Icon:FontAwesome Icon="Question" FontSize="60" Grid.Column="2" Margin="319,40,27,29"/>
+        <TextBlock Text="Help" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="345,106,0,10" Width="28"/>
+        <TextBlock Text="CTRL+ENTER" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,113,0,140" Grid.Column="2" Width="109" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="SHIFT+S" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,192,0,61" Width="74" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="SHIFT+C" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="41,191,0,62" Grid.Column="1" Width="78" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="SHIFT+L" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="286,191,0,62" Grid.Column="1" Width="76" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="SHIFT+D" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="4,191,0,62" Grid.Column="2" Width="76" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="SHIFT+G" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="245,192,0,61" Grid.Column="2" Width="76" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="State" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center" Margin="0,135,0,118" Width="42" RenderTransformOrigin="0.467,0.671"/>
+        <TextBlock Text="City" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="63,135,0,114" Width="34" RenderTransformOrigin="-0.071,0.695" Grid.Column="1"/>
+        <TextBlock Text="Language" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="280,135,0,114" Width="82" RenderTransformOrigin="0.467,0.671" Grid.Column="1"/>
+        <TextBlock Text="Duration" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="4,135,0,114" Width="76" RenderTransformOrigin="0.467,0.671" Grid.Column="2"/>
+        <TextBlock Text="Guest Number" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="219,135,0,114" Width="128" RenderTransformOrigin="0.467,0.671" Grid.Column="2"/>
+        <TextBlock Text="W and X to navigate" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="73,259,0,260" Width="501" RenderTransformOrigin="0.467,0.671" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+
+        <i:Interaction.Triggers>
+            <i:KeyTrigger Key="H" Modifiers="Ctrl">
+                <i:InvokeCommandAction Command="{Binding HelpCommand}" />
+            </i:KeyTrigger>
+        </i:Interaction.Triggers>
+
+        
+    </Grid>
 </Page>
