@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
@@ -170,7 +171,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private int associatedTour;
         private List<KeyPoints> keyPoints;
 
-        private Tour selectedTour = new Tour();
+        private KeyPoints selectedKey = new KeyPoints();
+        
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
         private ObservableCollection<KeyPoints> keys = new ObservableCollection<KeyPoints>();
@@ -182,6 +184,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private UserService userService;
 
         private RelayCommand tourButtonCommand;
+        private RelayCommand endTourCommand;
 
 
         public TourGuideStartTourPageModel(Tour selected)
@@ -213,14 +216,59 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-            //  if (selectedTour != null)
-            // {
-            MessageBox.Show("eeeeeeeeeeeee");
-            //   }
-            //  else
-            //  {
-            //     MessageBox.Show("eeeeeeeeeeeee");
-            // }
+              if (selectedKey != null)
+               {
+                   
+                var key = keyPointsService.GetAll();
+                foreach (KeyPoints keyy in key)
+                {
+                    if (keyy.Id == selectedKey.Id)
+                    {
+                        keyy.IsActive = true;
+                        keyPointsService.Edit(keyy);
+                    }
+                }
+
+            }
+              else
+              {
+                 MessageBox.Show("eeeeeeeeeeeee");
+              }
+        }
+
+        private void EndTourCommandExecute()
+        {
+            if (selectedKey != null)
+            {
+
+                var key = keyPointsService.GetAll();
+                foreach (KeyPoints keyy in key)
+                {
+                    if (keyy.AssociatedTour == selectedKey.AssociatedTour)
+                    {
+                        keyy.IsActive = true;
+                        keyPointsService.Edit(keyy);
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("eeeeeeeeeeeee");
+            }
+        }
+
+        public RelayCommand EndTourCommand
+        {
+            get
+            {
+                if (endTourCommand == null)
+                {
+                    endTourCommand = new RelayCommand(param => EndTourCommandExecute());
+                }
+
+                return endTourCommand;
+            }
         }
 
         public RelayCommand TourButtonCommand
@@ -236,13 +284,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             }
         }
 
-        public Tour SelectedTour
+        public KeyPoints SelectedKey
         {
-            get { return selectedTour; }
+            get { return selectedKey; }
             set
             {
-                selectedTour = value;
-                OnPropertyChanged(nameof(SelectedTour));
+                selectedKey = value;
+                OnPropertyChanged(nameof(SelectedKey));
             }
 
         }

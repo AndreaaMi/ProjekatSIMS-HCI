@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
@@ -223,7 +224,40 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             userService = new UserService();
         }
 
-        
+        private void TourButtonCommandExecute()
+        {
+            if(selectedTour != null)
+            {
+                if(selectedTour.AssociatedTourGuide == 0)
+                {
+                    selectedTour.AssociatedTourGuide = 4;
+                    tourService.Edit(selectedTour);
+                }
+                else if (selectedTour.AssociatedTourGuide == 4)
+                {
+                    selectedTour.AssociatedTourGuide = 0;
+                    tourService.Edit(selectedTour);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a tour");
+            }
+        }
+
+        public RelayCommand TourButtonCommand
+        {
+            get
+            {
+                if (tourButtonCommand == null)
+                {
+                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
+                }
+
+                return tourButtonCommand;
+            }
+        }
+
         public Tour SelectedTour 
         {
             get { return selectedTour; }
