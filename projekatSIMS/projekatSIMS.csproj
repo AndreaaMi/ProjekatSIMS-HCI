@@ -142,6 +142,7 @@
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideProfilePageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideStartTourPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideTourRequestsPageModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideTourStatsPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestMainViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayPageModel.cs" />
@@ -258,6 +259,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.xaml.cs">
       <DependentUpon>TourGuideTourStartSoonPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideTourStatsPageView.xaml.cs">
+      <DependentUpon>TourGuideTourStatsPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml.cs">
       <DependentUpon>TourGuideToursToday.xaml</DependentUpon>
@@ -465,6 +469,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideTourStatsPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

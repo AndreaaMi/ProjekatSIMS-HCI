@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideHomePageModel : ViewModelBase
+    internal class TourGuideTourStatsPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -99,7 +99,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return homePageCommand;
             }
         }
-     
+
         public RelayCommand NewTourPageCommand
         {
             get
@@ -112,7 +112,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 return newTourPageCommand;
             }
         }
-   
+
         public RelayCommand AllToursPageCommand
         {
             get
@@ -154,7 +154,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         #endregion
-        
+
 
         private string id;
         private string name;
@@ -170,6 +170,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private List<KeyPoints> keyPoints;
 
         private double rating;
+        private int text;
 
         private Tour selectedTour;
 
@@ -180,29 +181,34 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
         private UserService userService;
+        private TourRequestService tourRequestService;
 
-        private RelayCommand myToursCommand;
-        private RelayCommand languageCommand;
-        private RelayCommand locationCommand;
-        private RelayCommand statsCommand;
+        private RelayCommand serbianCommand;
+        private RelayCommand spanishCommand;
+        private RelayCommand englishCommand;
+        private RelayCommand norwegianCommand;
+        private RelayCommand osloCommand;
+        private RelayCommand madridCommand;
+        private RelayCommand barcelonaCommand;
+        private RelayCommand alesundCommand;
 
 
-        public TourGuideHomePageModel()
+        public TourGuideTourStatsPageModel()
         {
             SetService();
             var tours = tourService.GetAll();
             Rating = 0;
-            
+
 
 
             foreach (Tour tour in tours)
             {
 
-                if(tour.GuestNumber > Rating)
+                if (tour.GuestNumber > Rating)
                 {
                     Rating = tour.GuestNumber;
                 }
-                
+
 
                 // Name = tour.Name;
                 // Description = tour.Description;
@@ -224,7 +230,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
             }
 
-            
+
 
 
 
@@ -237,81 +243,214 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             tourReservationService = new TourReservationService();
             voucherService = new VoucherService();
             userService = new UserService();
+            tourRequestService = new TourRequestService();
         }
 
-        private void StatsCommandExecute()
+        private void SerbianCommandExecute()
         {
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideTourStatsPageView.xaml", UriKind.Relative));
-        }
-
-        private void MyToursCommandExecute()
-        {
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideMyToursPageView.xaml", UriKind.Relative));
-        }
-
-        private void LanguageCommandExecute()
-        {
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideLanguageCreateTour.xaml", UriKind.Relative));
-        }
-
-        private void LocationCommandExecute()
-        {
-            TourGuideMainWindow.navigationService.Navigate(
-               new Uri("UI/Dialogs/View/TourGuideView/TourGuideLocationCreateTour.xaml", UriKind.Relative));
-        }
-
-        public RelayCommand StatsCommand
-        {
-            get
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
             {
-                if (statsCommand == null)
-                {
-                    statsCommand = new RelayCommand(param => StatsCommandExecute());
-                }
+                if(tour.Language == "SERBIAN")
+                { i++; }
+                Text = i;
 
-                return statsCommand;
             }
         }
 
-        public RelayCommand LocationCommand
+        private void SpanishCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "SPANISH")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void EnglishCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "ENGLISH")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void NorwegianCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "NORWEGIAN")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void OsloCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Oslo")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void MadridCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Madrid")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void BarcelonaCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Barcelona")
+                { i++; }
+            }
+            Text = i;
+        }
+
+        private void AlesundCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Alesund")
+                { i++; }
+            }
+            Text = i;
+        }
+
+        public RelayCommand OsloCommand
         {
             get
             {
-                if (locationCommand == null)
+                if (osloCommand == null)
                 {
-                    locationCommand = new RelayCommand(param => LocationCommandExecute());
+                    osloCommand = new RelayCommand(param => OsloCommandExecute());
                 }
 
-                return locationCommand;
+                return osloCommand;
+            }
+        }
+        public RelayCommand MadridCommand
+        {
+            get
+            {
+                if (madridCommand == null)
+                {
+                    madridCommand = new RelayCommand(param => MadridCommandExecute());
+                }
+
+                return madridCommand;
             }
         }
 
-        public RelayCommand LanguageCommand
+        public RelayCommand BarcelonaCommand
         {
             get
             {
-                if (languageCommand == null)
+                if (barcelonaCommand == null)
                 {
-                    languageCommand = new RelayCommand(param => LanguageCommandExecute());
+                    barcelonaCommand = new RelayCommand(param => BarcelonaCommandExecute());
                 }
 
-                return languageCommand;
+                return barcelonaCommand;
+            }
+
+        }
+
+        public RelayCommand AlesundCommand
+        {
+            get
+            {
+                if (alesundCommand == null)
+                {
+                    alesundCommand = new RelayCommand(param => AlesundCommandExecute());
+                }
+
+                return alesundCommand;
             }
         }
 
-        public RelayCommand MyToursCommand
+
+        public RelayCommand SerbianCommand
         {
             get
             {
-                if (myToursCommand == null)
+                if (serbianCommand == null)
                 {
-                    myToursCommand = new RelayCommand(param => MyToursCommandExecute());
+                    serbianCommand = new RelayCommand(param => SerbianCommandExecute());
                 }
 
-                return myToursCommand;
+                return serbianCommand;
+            }
+        }
+
+        public RelayCommand SpanishCommand
+        {
+            get
+            {
+                if (spanishCommand == null)
+                {
+                    spanishCommand = new RelayCommand(param => SpanishCommandExecute());
+                }
+
+                return spanishCommand;
+            }
+                
+        }
+
+        public RelayCommand EnglishCommand
+        {
+            get
+            {
+                if (englishCommand == null)
+                {
+                    englishCommand = new RelayCommand(param => EnglishCommandExecute());
+                }
+
+                return englishCommand;
+            }
+        }
+
+        public RelayCommand NorwegianCommand
+        {
+            get
+            {
+                if (norwegianCommand == null)
+                {
+                    norwegianCommand = new RelayCommand(param => NorwegianCommandExecute());
+                }
+
+                return norwegianCommand;
             }
         }
 
@@ -332,6 +471,17 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
+
+            }
+        }
+
+        public int Text
+        {
+            get { return text; }
+            set
+            {
+                text = value;
+                OnPropertyChanged(nameof(Text));
 
             }
         }
