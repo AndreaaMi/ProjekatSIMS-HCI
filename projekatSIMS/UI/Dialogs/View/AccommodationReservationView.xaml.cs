@@ -457,6 +457,11 @@ namespace projekatSIMS.UI.Dialogs.View
         {
 
         }
+
+        private void AvailableDatesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }
