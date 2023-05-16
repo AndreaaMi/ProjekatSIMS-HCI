@@ -8,9 +8,9 @@
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="TourGuideHomePageView">
     <Page.Resources>
-        <ResourceDictionary Source="Theme/Light.xaml"/>
+        <ResourceDictionary Source="Theme/Dark.xaml"/>
     </Page.Resources>
-    
+
     <Border>
         <Border                   
             BorderThickness="2"
@@ -33,7 +33,45 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
+                    <Grid>
+                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="102,123,524,489" RadiusX="10" RadiusY="10">
 
+                        </Rectangle>
+                        <Ellipse HorizontalAlignment="Left" Height="100" Margin="127,134,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-64.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Label Content="Uros Lohinski"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="121,239,0,0" VerticalAlignment="Top" Height="25"/>
+                        <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,276,524,336" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
+                        <Label Content="{Binding Rating}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="164,297,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
+
+                        <Label Content="Avarage Rating"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="114,331,0,0" VerticalAlignment="Top" Height="34"/>
+                        <Label Content="Based on 7 tours"  FontFamily="Oswald"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="113,361,0,0" VerticalAlignment="Top" Height="34"/>
+
+
+                        <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,429,524,183" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
+
+
+                        <Rectangle  Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="257,123,119,336" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
+
+                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="257,429,274,183" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
+
+
+
+                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="507,429,119,181" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
+
+                    </Grid>
                 </Border>
 
 

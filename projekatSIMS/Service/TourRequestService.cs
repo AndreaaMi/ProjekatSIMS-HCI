@@ -8,38 +8,46 @@ using System.Threading.Tasks;
 
 namespace projekatSIMS.Service
 {
-    public class VoucherService
+    public class TourRequestService
     {
-        public void Add(Voucher voucher)
+        public void Add(TourRequest tourRequest)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Vouchers.Add(voucher);
+            unitOfWork.TourRequests.Add(tourRequest);
             unitOfWork.Save();
         }
-        public void Remove(Voucher voucher)
+
+        public void Edit(TourRequest tourRequest)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Vouchers.Remove(voucher);
+            unitOfWork.TourRequests.Edit(tourRequest);
+            unitOfWork.Save();
+        }
+
+        public void Remove(TourRequest tourRequest)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.TourRequests.Remove(tourRequest);
             unitOfWork.Save();
         }
 
         public Entity Get(int id)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Vouchers.Get(id);
+            return unitOfWork.TourRequests.Get(id);
         }
 
         public IEnumerable<Entity> GetAll()
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            IEnumerable<Entity> vouchers = unitOfWork.Vouchers.GetAll();
-            return vouchers;
+            IEnumerable<Entity> tourRequests = unitOfWork.TourRequests.GetAll();
+            return tourRequests;
         }
 
         public int GenerateId()
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Vouchers.GenerateId();
+            return unitOfWork.TourRequests.GenerateId();
         }
     }
 }

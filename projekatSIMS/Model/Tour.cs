@@ -22,6 +22,7 @@ namespace projekatSIMS.Model
         private List<string> picturesUrl;
         private string description;
         private int guestNumber;
+        private int associatedTourGuide;
 
         public Tour() {
             this.location = new Location();
@@ -143,9 +144,19 @@ namespace projekatSIMS.Model
             }
         }
 
+        public int AssociatedTourGuide
+        {
+            get { return associatedTourGuide; }
+            set
+            {
+                associatedTourGuide = value;
+                OnPropertyChanged(nameof(AssociatedTourGuide));
+            }
+        }
+
         public override string ExportToString()
         {
-            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description + "|" + guestNumber + "|" + ExportKeyPoints(keyPoints); // what else is needed
+            return id + "|" + name + "|" + location.country + "|" + location.city + "|" + language + "|" + startingDate.ToString("dd.MM.yyyy") + "|" + startingTime + "|" + maxNumberOfGuests + "|" + duration + "|" + description + "|" + guestNumber + "|" + ExportKeyPoints(keyPoints) + "|" + associatedTourGuide; // what else is needed
         }
 
         public override void ImportFromString(string[] parts)
@@ -164,6 +175,7 @@ namespace projekatSIMS.Model
             // KeyPoints = parts[11];
             string[] keyPointIds = parts[11].Split('_');
             ImportKeyPoints(keyPointIds);
+            AssociatedTourGuide = int.Parse(parts[12]);
             
 
         }

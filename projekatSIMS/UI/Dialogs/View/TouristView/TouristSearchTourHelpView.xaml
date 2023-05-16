@@ -75,7 +75,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Proceed" FontWeight="Bold" Command="{Binding ProceedCommand}" Margin="81,135,80,34" IsTabStop="False">
+        <Button Grid.Row="2" FontSize="19" Grid.Column="2" Content="Proceed" FontWeight="Bold" Command="{Binding ProceedCommand}" Margin="81,135,80,34" IsTabStop="False">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -144,7 +144,7 @@
         <TextBlock Text="out using the different parameters" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="63,115,0,109" Width="553" Grid.Column="1" Grid.ColumnSpan="2"/>
         <TextBlock Text="ENTER" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="296,225,0,28" Grid.Column="1" Width="56"/>
 
-        <Button Content="Got it" Grid.Row="1" FontWeight="Bold" Grid.Column="1" Margin="174,247,63,193" Grid.RowSpan="2">
+        <Button Content="Got it" FontSize="19" Grid.Row="1" FontWeight="Bold" Grid.Column="1" Margin="174,247,63,193" Grid.RowSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">

@@ -18,7 +18,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 {
     internal class TouristSearchTourModel : ViewModelBase
     {
-        private RelayCommand goToProfilePageCommand;
         private RelayCommand proceedCommand;
         private RelayCommand openStateComboboxCommand;
         private RelayCommand openCityComboboxCommand;
@@ -53,8 +52,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private string duration;
         private string slot;
 
-
         private TourService tourService;
+        
         public TouristSearchTourModel()
         {
             SetService();
@@ -69,12 +68,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
             return currentUri?.EndsWith("TouristSearchTourView.xaml", StringComparison.OrdinalIgnoreCase) == true;
-        }
-
-        private void GoToProfilePageCommandExecute()
-        {
-            TouristMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
         }
         private void ProceedCommandExecute()
         {
@@ -426,14 +419,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 OnPropertyChanged(nameof(IsSlotComboboxOpened));
             }
         }   
-
-        public RelayCommand GoToProfilePageCommand
-        {
-            get
-            {
-                return goToProfilePageCommand ?? (goToProfilePageCommand = new RelayCommand(param => GoToProfilePageCommandExecute()));
-            }
-        }
         public RelayCommand ProceedCommand
         {
             get

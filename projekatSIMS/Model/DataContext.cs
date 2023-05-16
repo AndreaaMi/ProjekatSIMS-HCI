@@ -30,6 +30,7 @@ namespace projekatSIMS.Model
         private List<Entity> vouchers = new List<Entity>();
         private List<Entity> tourRatings = new List<Entity>();
         private List<Entity> accommodationRenovationRecommendation = new List<Entity>();
+        private List<Entity> tourRequests = new List<Entity>();
 
         private User loginUser = null;
 
@@ -61,6 +62,7 @@ namespace projekatSIMS.Model
             GenericSave(vouchers, "vouchers.txt");
             GenericSave(tourRatings, "tourRatings.txt");
             GenericSave(accommodationRenovationRecommendation, "accommodation_renovation_recommendation.txt");
+            GenericSave(tourRequests, "tourRequests.txt");
 
         }
 
@@ -93,6 +95,7 @@ namespace projekatSIMS.Model
             GenericLoad(vouchers, "vouchers.txt", typeof(Voucher));
             GenericLoad(tourRatings, "tourRatings.txt", typeof(TourRating));
             GenericLoad(accommodationRenovationRecommendation, "accommodation_renovation_recommendation.txt", typeof(AccommodationRenovationRecommendation));
+            GenericLoad(tourRequests,"tourRequests.txt",typeof(TourRequest));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -170,6 +173,12 @@ namespace projekatSIMS.Model
                 if (type == typeof(AccommodationRenovationRecommendation))
                 {
                     AccommodationRenovationRecommendation newEntity = new AccommodationRenovationRecommendation();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+                if (type == typeof(TourRequest))
+                {
+                    TourRequest newEntity = new TourRequest();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
@@ -252,6 +261,11 @@ namespace projekatSIMS.Model
                 accommodationRenovationRecommendation = entities;
                 return;
             }
+            if (type == typeof(TourRequest))
+            {
+                tourRequests = entities;
+                return;
+            }
         }
 
         public List<Entity> GetAllEntitiesOfType(Type type) //Vraca celu listu entiteta 
@@ -303,6 +317,10 @@ namespace projekatSIMS.Model
             if (type == typeof(AccommodationRenovationRecommendation))
             {
                 return accommodationRenovationRecommendation;
+            }
+            if (type == typeof(TourRequest))
+            {
+                return tourRequests;
             }
 
             return null; //Mora jedan biti default return
@@ -384,6 +402,13 @@ namespace projekatSIMS.Model
             get { return accommodationRenovationRecommendation; }
             set { accommodationRenovationRecommendation = value; }
         }
+
+        public List<Entity> TourRequests
+        {
+            get { return tourRequests; }
+            set { tourRequests = value; }
+        }
+
     }
 }
 
