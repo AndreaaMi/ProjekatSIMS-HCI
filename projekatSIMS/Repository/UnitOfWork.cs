@@ -48,7 +48,7 @@ namespace projekatSIMS.Repository
 
         public AccommodationRenovationRecommendationRepository AccommodationRenovationRecommendations { get; private set; }
 
-        public VoucherRepository Vouchers { get; private set; }
+        public IVoucherRepository Vouchers { get; private set; }
 
         public TourRatingRepository TourRatings { get; private set; }
 

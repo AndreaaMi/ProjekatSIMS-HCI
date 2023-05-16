@@ -44,6 +44,26 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 
         public void SubmitCommandExecute()
         {
+            if (City == null || State == null || Language == null)
+            {
+                MessageBox.Show("Please fill all the necessary fields!", " ", MessageBoxButton.OK);
+                return;
+            }
+            if (EndDate < StartDate)
+            {
+                MessageBox.Show("Please enter a valid date range!", " ", MessageBoxButton.OK);
+                return;
+            }
+            if(GuestNumber <= 0)
+            {
+                MessageBox.Show("Please enter a valid guest number!", " ", MessageBoxButton.OK);
+                return;
+            }
+            CreateReservation();
+        }
+
+        public void CreateReservation()
+        {
             Location location = new Location();
             location.City = City;
             location.Country = State;
@@ -61,7 +81,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             MessageBox.Show("Your request has been noted!", "Thanks", MessageBoxButton.OK);
         }
 
-        
 
         public string State
         {

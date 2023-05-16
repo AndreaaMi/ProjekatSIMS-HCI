@@ -1,5 +1,6 @@
 ﻿using projekatSIMS.CompositeComon;
 using projekatSIMS.Model;
+using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View.TouristView;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,58 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private RelayCommand goToProfilePageCommand;
         private RelayCommand reserveCommand;
         private RelayCommand activeToursCommand;
-        public RelayCommand vouchersCommand;
-        public RelayCommand helpCommand;
-        public RelayCommand requestTourCommand;
-        public RelayCommand requestsCommand;
+        private RelayCommand vouchersCommand;
+        private RelayCommand helpCommand;
+        private RelayCommand requestTourCommand;
+        private RelayCommand requestsCommand;
+
+        private UserService userService;
+        private TourRequestService requestService;
+        private TourService tourService;
 
         public TouristHomeModel()
-        {}
+        {
+            SetService();
+            DisplayNotification(GetPendingRequests());
+        }
+
+        public void SetService()
+        {
+            userService = new UserService();
+            requestService = new TourRequestService();
+            tourService = new TourService();
+        }
+
+        public void DisplayNotification(List<TourRequest> requests)
+        {
+            requests = requests.ToList();
+            foreach(TourRequest request in requests)
+            {
+                foreach(Tour tour in tourService.GetAll())
+                {
+                    if(request.Location.Country.Equals(tour.Location.Country) && request.Location.City.Equals(tour.Location.City) && request.Language.Equals(tour.Language.ToString()))
+                    {
+                        request.Status = TourRequestStatus.ACCEPTED;
+                        DataContext.Instance.Save();
+                        TouristMainWindow.navigationService.Navigate(
+                            new TouristHomeViewNotification(tour));
+                    }
+                }
+            }
+        }
+
+        public List<TourRequest> GetPendingRequests()
+        {
+            List<TourRequest> pendingRequests = new List<TourRequest>();
+            foreach(TourRequest request in requestService.GetAll())
+            {
+                if(request.GuestId == userService.GetLoginUser().Id && request.Status == TourRequestStatus.PENDING)
+                {
+                    pendingRequests.Add(request);
+                }
+            }
+            return pendingRequests;
+        }
 
         private bool CanThisCommandExecute()
         {

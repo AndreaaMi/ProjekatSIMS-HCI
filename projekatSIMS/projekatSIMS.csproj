@@ -150,6 +150,7 @@
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristActiveToursModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeNotificationModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristRatingToursModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristReservationModel.cs" />
@@ -266,6 +267,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml.cs">
       <DependentUpon>TouristHomeViewHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristHomeViewNotification.xaml.cs">
+      <DependentUpon>TouristHomeViewNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristMainWindow.xaml.cs">
       <DependentUpon>TouristMainWindow.xaml</DependentUpon>
@@ -465,6 +469,10 @@
     <Page Include="UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristHomeViewNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristMainWindow.xaml">
       <SubType>Designer</SubType>

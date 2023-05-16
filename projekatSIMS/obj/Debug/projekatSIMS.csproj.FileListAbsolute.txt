@@ -280,7 +280,6 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialo
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideMainWindow.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideToursToday.baml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristRatingToursView.baml
-<<<<<<< HEAD
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
@@ -404,7 +403,6 @@ C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveChar
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.xml
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.xml
-=======
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\kt2.g.cs
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerHomeView.g.cs
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\OwnerView\OwnerMainWindowView.g.cs
@@ -484,4 +482,11 @@ C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSI
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.baml
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.g.cs
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.baml
->>>>>>> Development
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideMyAllToursPageView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideMyAllToursPageView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.baml
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewNotification.g.cs
+C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewNotification.baml
