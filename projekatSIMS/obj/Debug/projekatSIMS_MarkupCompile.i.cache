@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\obj\Debug\
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\
 projekatSIMS
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Aleksa\Documents\GitHub\projekatSIMSHCI\projekatSIMS\App.xaml
 471488240099
 
 140-963628465
 1789004583
 MainWindow.xaml;Styles\UIColors.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\ActiveReservationsHelpView.xaml;UI\Dialogs\View\GuestView\ActiveReservationsView.xaml;UI\Dialogs\View\GuestView\AllAccommodationHelpView.xaml;UI\Dialogs\View\GuestView\AllAccommodationsView.xaml;UI\Dialogs\View\GuestView\AnywhereAnytimeHelpView.xaml;UI\Dialogs\View\GuestView\AnywhereAnytimeView.xaml;UI\Dialogs\View\GuestView\DisplayReviewsView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\GuestView\NewReservationHelpView.xaml;UI\Dialogs\View\GuestView\NewReservationView.xaml;UI\Dialogs\View\GuestView\RateNowHelpView.xaml;UI\Dialogs\View\GuestView\RateNowView.xaml;UI\Dialogs\View\GuestView\RequestNewDateHelpView.xaml;UI\Dialogs\View\GuestView\RequestNewDateView.xaml;UI\Dialogs\View\OwnerView\kt2.xaml;UI\Dialogs\View\OwnerView\OwnerHomeView.xaml;UI\Dialogs\View\OwnerView\OwnerMainWindowView.xaml;UI\Dialogs\View\OwnerView\SuperOwnerView.xaml;UI\Dialogs\View\TourGuideView\Theme\Dark.xaml;UI\Dialogs\View\TourGuideView\Theme\Light.xaml;UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideHomeView.xaml;UI\Dialogs\View\TourGuideView\TourGuideMainWindow.xaml;UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml;UI\Dialogs\View\GuestView\GuestPageView.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.xaml;UI\Dialogs\View\TouristView\TouristActiveToursView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristRatingToursView.xaml;UI\Dialogs\View\TouristView\TouristReservationView.xaml;UI\Dialogs\View\TouristView\TouristSearchTourHelpView.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.xaml;UI\Dialogs\View\TouristView\TouristTourRequestView.xaml;UI\Dialogs\View\TouristView\TouristVouchersView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
+=======
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\App.xaml
+32-332179702
+
+100705148830
+13-1310406943
+MainWindow.xaml;Styles\UIColors.xaml;UI\Dialogs\View\AccommodationReservationView.xaml;UI\Dialogs\View\AccommodationSearchView.xaml;UI\Dialogs\View\GuestView\GuestMainView.xaml;UI\Dialogs\View\OwnerView\kt2.xaml;UI\Dialogs\View\OwnerView\OwnerHomeView.xaml;UI\Dialogs\View\OwnerView\OwnerMainWindowView.xaml;UI\Dialogs\View\OwnerView\SuperOwnerView.xaml;UI\Dialogs\View\TourGuideView\Theme\Dark.xaml;UI\Dialogs\View\TourGuideView\Theme\Light.xaml;UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideHomePageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideHomeView.xaml;UI\Dialogs\View\TourGuideView\TourGuideMainWindow.xaml;UI\Dialogs\View\TourGuideView\TourGuideMyAllToursPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.xaml;UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml;UI\Dialogs\View\GuestView\GuestPageView.xaml;UI\Dialogs\View\GuestView\RescheduleReservationNotificationView.xaml;UI\Dialogs\View\GuestReviewView.xaml;UI\Dialogs\View\TourGuideView\TourGuideToursTodayPageView.xaml;UI\Dialogs\View\TouristView\TouristHomeView.xaml;UI\Dialogs\View\TouristView\TouristMainWindow.xaml;UI\Dialogs\View\TouristView\TouristRatingToursView.xaml;UI\Dialogs\View\TouristView\TouristReservationView.xaml;UI\Dialogs\View\TouristView\TouristSearchTourView.xaml;UI\Dialogs\View\Vlasnik.xaml;UI\Dialogs\View\Vodic.xaml;
+>>>>>>> Development
 
 False
 
