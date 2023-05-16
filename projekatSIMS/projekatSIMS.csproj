@@ -139,11 +139,14 @@
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideHomePageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideMainWindowModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideMyAllToursPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideNewTourPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideProfilePageModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideStartTourPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestMainViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayPageModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideTourStartSoonPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristActiveToursModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
@@ -228,11 +231,20 @@
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideMainWindow.xaml.cs">
       <DependentUpon>TourGuideMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideMyAllToursPageView.xaml.cs">
+      <DependentUpon>TourGuideMyAllToursPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml.cs">
       <DependentUpon>TourGuideNewTourPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.xaml.cs">
       <DependentUpon>TourGuideProfilePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.xaml.cs">
+      <DependentUpon>TourGuideStartTourPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.xaml.cs">
+      <DependentUpon>TourGuideTourStartSoonPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TourGuideView\TourGuideToursToday.xaml.cs">
       <DependentUpon>TourGuideToursToday.xaml</DependentUpon>
@@ -406,11 +418,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideMyAllToursPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideNewTourPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideProfilePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideStartTourPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TourGuideView\TourGuideTourStartSoonPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

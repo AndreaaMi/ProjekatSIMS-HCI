@@ -1,7 +1,10 @@
 ﻿using projekatSIMS.CompositeComon;
+using projekatSIMS.Model;
+using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -151,5 +154,247 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         #endregion
+        private string id;
+        private string name;
+        private string country;
+        private string city;
+        private DateTime startingDate;
+        private string time;
+        private string maxNumberOfGuests;
+        private string duration;
+        private string description;
+        private string keyPointId;
+        private string keyPointName;
+        private List<KeyPoints> keyPoints;
+
+        private Tour selectedTour;
+
+        private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
+
+        private TourService tourService;
+        private KeyPointsService keyPointsService;
+        private TourReservationService tourReservationService;
+        private VoucherService voucherService;
+        private UserService userService;
+
+        private RelayCommand tourButtonCommand;
+
+
+        public TourGuideToursTodayPageModel()
+        {
+            SetService();
+            var tours = tourService.GetAll();
+
+
+
+
+            foreach (Tour tour in tours)
+            {
+                if (tour.StartingDate.ToString("dd.MM.yyyy") == "11.11.2011")
+                {
+                    Tours.Add(tour);
+                }
+                // Name = tour.Name;
+                // Description = tour.Description;
+
+            }
+
+
+
+
+
+        }
+
+        public void SetService()
+        {
+            tourService = new TourService();
+            keyPointsService = new KeyPointsService();
+            tourReservationService = new TourReservationService();
+            voucherService = new VoucherService();
+            userService = new UserService();
+        }
+
+        private void TourButtonCommandExecute()
+        {
+            //  if (selectedTour != null)
+            // {
+            TourGuideMainWindow.navigationService.Navigate(
+                new TourGuideTourStartSoonPageView(selectedTour));
+            //   }
+            //  else
+            //  {
+            //     MessageBox.Show("eeeeeeeeeeeee");
+            // }
+        }
+
+        public RelayCommand TourButtonCommand
+        {
+            get
+            {
+                if (tourButtonCommand == null)
+                {
+                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
+                }
+
+                return tourButtonCommand;
+            }
+        }
+
+        public ObservableCollection<Tour> Tours
+        {
+            get { return tours; }
+            set
+            {
+                tours = value;
+                OnPropertyChanged(nameof(Tours));
+            }
+        }
+
+        public Tour SelectedTour
+        {
+            get { return selectedTour; }
+            set
+            {
+                selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
+
+            }
+        }
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged(nameof(Id));
+
+            }
+        }
+
+
+
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+
+        public string Country
+        {
+            get { return country; }
+            set
+            {
+                country = value;
+                OnPropertyChanged(nameof(Country));
+            }
+        }
+
+        public string City
+        {
+            get { return city; }
+            set
+            {
+                city = value;
+                OnPropertyChanged(nameof(City));
+            }
+        }
+
+
+        public DateTime StartingDate
+        {
+            get { return startingDate; }
+            set
+            {
+                startingDate = value;
+                OnPropertyChanged(nameof(StartingDate));
+            }
+        }
+
+
+        public string Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                OnPropertyChanged(nameof(Time));
+            }
+        }
+
+
+        public string MaximumNumberOfGuests
+        {
+            get { return maxNumberOfGuests; }
+            set
+            {
+                maxNumberOfGuests = value;
+                OnPropertyChanged(nameof(MaximumNumberOfGuests));
+            }
+        }
+
+
+        public string Duration
+        {
+            get { return duration; }
+            set
+            {
+                duration = value;
+                OnPropertyChanged(nameof(Duration));
+            }
+        }
+
+
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged(nameof(Description));
+            }
+        }
+
+
+        public string KeyPointId
+        {
+            get { return keyPointId; }
+            set
+            {
+                keyPointId = value;
+                OnPropertyChanged(nameof(KeyPointId));
+            }
+        }
+
+
+        public string KeyPointName
+        {
+            get { return keyPointName; }
+            set
+            {
+                keyPointName = value;
+                OnPropertyChanged(nameof(KeyPointName));
+            }
+        }
+
+        public List<KeyPoints> KeyPoints
+        {
+            get { return keyPoints; }
+            set
+            {
+                keyPoints = value;
+                OnPropertyChanged(nameof(KeyPoints));
+            }
+
+
+        }
+
+
     }
+
 }

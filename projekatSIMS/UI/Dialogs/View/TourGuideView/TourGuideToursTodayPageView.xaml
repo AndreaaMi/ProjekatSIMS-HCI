@@ -33,7 +33,57 @@
                     <ColumnDefinition Width="240"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+
                 <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
+
+                    <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+                        <StackPanel>
+
+                            <ListBox ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" ScrollViewer.CanContentScroll="True" Background="{DynamicResource BackgroundColor3}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                            <Border  Height="300" BorderThickness="0,0,0,1" BorderBrush="White"  >
+
+
+                                                <Grid>
+                                                    <Border BorderThickness="2" BorderBrush="White" Height="200" Width="200" HorizontalAlignment="Left" Margin="50,0,0,20" >
+                                                        <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" />
+                                                    </Border>
+                                                <Button Foreground="{DynamicResource TextColor}" Content="Proceed" Background="{DynamicResource TextBoxColor}" Margin="566,260,10,10"  Command="{Binding DataContext.TourButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" />
+
+                                                <Label HorizontalAlignment="Left" Margin="50,220,0,0" Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="16" FontWeight="Bold" />
+
+                                                    <Label Width="200" Height="30" Content="Short Description about tour:" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,40,288,229" />
+                                                    <Label Width="200" Height="30" Content="Tour Name" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,70,288,199" />
+                                                    <Label Width="200" Height="30" Content="Country" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,100,288,169" />
+                                                    <Label Width="200" Height="30" Content="City" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,130,288,139" />
+                                                    <Label Width="200" Height="30" Content="Date" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,160,288,109" />
+                                                    <Label Width="200" Height="30" Content="Duration" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,190,288,79" />
+                                                    <Label Width="200" Height="30" Content="Maximum number of guests" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="320,220,288,49" />
+
+
+                                                    <Label Width="200" Height="30" Content="{Binding Name}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,70,51,199" />
+                                                    <Label Width="200" Height="30" Content="{Binding Location.Country}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,100,51,169" />
+                                                    <Label Width="200" Height="30" Content="{Binding Location.City}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,130,51,139" />
+                                                    <Label Width="200" Height="30" Content="{Binding StartingDate, StringFormat={}{dd.mm.yyyy}}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,160,51,109" />
+                                                    <Label Width="200" Height="30" Content="{Binding Duration}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,190,51,79" />
+                                                    <Label Width="200" Height="30" Content="{Binding MaxNumberOfGuests}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,220,51,49" />
+                                                </Grid>
+
+
+                                            </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+
+                            
+
+
+
+                        </StackPanel>
+                    </ScrollViewer>
+
 
                 </Border>
 
@@ -71,7 +121,7 @@
 
                     <Button Content="Tours Today" HorizontalAlignment="Left" Margin="90,490,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding ToursTodayPageCommand}" Style="{StaticResource Button1}" />
 
-                    <Button Content="Tour Requests" HorizontalAlignment="Left" Margin="90,550,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding TourRequestsPageCommand}"  Style="{StaticResource Button1}"/>
+                    <Button Content="Tour Requests" HorizontalAlignment="Left" Margin="90,550,0,0" VerticalAlignment="Top" Height="40" Width="90" FontWeight="Bold" BorderThickness="2" BorderBrush="Black" Foreground="{DynamicResource TextColor}" Background="{DynamicResource ButtonColor}" Command="{Binding TourRequestsPageCommand}" Style="{StaticResource Button1}"/>
 
                     <Image Source="https://cdn2.iconfinder.com/data/icons/user-interface-169/32/about-512.png" Margin="40,250,106,390" Width="40" Height="40" />
 
