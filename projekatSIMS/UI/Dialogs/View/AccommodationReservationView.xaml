@@ -93,7 +93,7 @@
             </ListView.View>
         </ListView>
         <Label Grid.Row="6" Grid.Column="0" x:Name="MinimalStayLabel" Content="Minimal Stay:" Margin="10,82,10,56"/>
-        <DataGrid Grid.Column="1" Grid.Row="6" x:Name="AvailableDatesDataGrid" Margin="10,10,0,104" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="830">
+        <DataGrid Grid.Column="1" Grid.Row="6" x:Name="AvailableDatesDataGrid" Margin="10,10,0,104" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="830" SelectionChanged="AvailableDatesDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Available Start Date" Binding="{Binding AvailableStartDate, StringFormat=d}"/>
                 <DataGridTextColumn Header="Available End Date" Binding="{Binding AvailableEndDate, StringFormat=d}"/>

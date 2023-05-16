@@ -20,4 +20,4 @@
 18|Hotel Budapest|2023-05-24|2023-05-28|4|False|False
 19|Hotel Warsaw|2023-05-16|2023-05-20|3|False|False
 20|Resort Paris|2023-05-17|2023-05-25|3|False|False
-21|Hotel Berlin|2023-05-26|2023-05-30|3|False|False
+21|Hotel Belgrade3|2023-05-18|2023-05-25|3|False|False

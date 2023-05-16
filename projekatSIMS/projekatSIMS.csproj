@@ -38,6 +38,12 @@
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -150,12 +156,14 @@
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristActiveToursModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeNotificationModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristMainWindowModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristRatingToursModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristReservationModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristSearchTourHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristSearchTourModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristTourRequestModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristTourRequestStatisticModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristVouchersModel.cs" />
     <Compile Include="UI\Dialogs\View\AccommodationReservationView.xaml.cs">
       <DependentUpon>AccommodationReservationView.xaml</DependentUpon>
@@ -284,6 +292,9 @@
     <Compile Include="UI\Dialogs\View\TouristView\TouristHomeViewHelp.xaml.cs">
       <DependentUpon>TouristHomeViewHelp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristHomeViewNotification.xaml.cs">
+      <DependentUpon>TouristHomeViewNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristMainWindow.xaml.cs">
       <DependentUpon>TouristMainWindow.xaml</DependentUpon>
     </Compile>
@@ -298,6 +309,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristSearchTourView.xaml.cs">
       <DependentUpon>TouristSearchTourView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.xaml.cs">
+      <DependentUpon>TouristTourRequestStatisticsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristTourRequestView.xaml.cs">
       <DependentUpon>TouristTourRequestView.xaml</DependentUpon>
@@ -504,6 +518,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristHomeViewNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -521,6 +539,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristSearchTourView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
