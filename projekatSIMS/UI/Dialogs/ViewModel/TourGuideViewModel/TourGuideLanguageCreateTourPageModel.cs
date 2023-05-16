@@ -193,26 +193,29 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             int serbian =   0;
             int spanish =   0;
             int norwegian = 0;
-            foreach(TourRequest tour in tours)
+            DateTime oneYearAgo = DateTime.Now.AddDays(-365);
+            foreach (TourRequest tour in tours)
             {
-                if(tour.Language == "ENGLISH")
-                {
-                    english++;
-                }
+                if (tour.StartDate >= oneYearAgo) {
+                    if (tour.Language == "ENGLISH")
+                    {
+                        english++;
+                    }
 
-                if (tour.Language == "SERBIAN")
-                {
-                    serbian++;
-                }
+                    if (tour.Language == "SERBIAN")
+                    {
+                        serbian++;
+                    }
 
-                if (tour.Language == "SPANISH")
-                {
-                    spanish++;
-                }
+                    if (tour.Language == "SPANISH")
+                    {
+                        spanish++;
+                    }
 
-                if (tour.Language == "NORWEGIAN")
-                {
-                    norwegian++;
+                    if (tour.Language == "NORWEGIAN")
+                    {
+                        norwegian++;
+                    }
                 }
             }
 

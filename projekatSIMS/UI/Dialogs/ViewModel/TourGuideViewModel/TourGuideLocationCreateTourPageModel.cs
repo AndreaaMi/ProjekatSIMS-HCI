@@ -193,26 +193,31 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             int serbian = 0;
             int spanish = 0;
             int norwegian = 0;
+            DateTime oneYearAgo = DateTime.Now.AddDays(-365);
+
             foreach (TourRequest tour in tours)
             {
-                if (tour.Location.country == "England")
+                if (tour.StartDate >= oneYearAgo)
                 {
-                    english++;
-                }
+                    if (tour.Location.country == "England")
+                    {
+                        english++;
+                    }
 
-                if (tour.Location.country == "Serbia")
-                {
-                    serbian++;
-                }
+                    if (tour.Location.country == "Serbia")
+                    {
+                        serbian++;
+                    }
 
-                if (tour.Location.country == "Spain")
-                {
-                    spanish++;
-                }
+                    if (tour.Location.country == "Spain")
+                    {
+                        spanish++;
+                    }
 
-                if (tour.Location.country == "Norway")
-                {
-                    norwegian++;
+                    if (tour.Location.country == "Norway")
+                    {
+                        norwegian++;
+                    }
                 }
             }
 
