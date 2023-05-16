@@ -75,39 +75,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" FontSize="19" Content="Cancel" FontWeight="Bold" Command="{Binding BackCommand}" Margin="85,135,502,34" IsTabStop="False" Grid.ColumnSpan="2">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#808080" Offset="0"/>
-                                <GradientStop Color="#C0C0C0" Offset="0.6"/>
-                            </LinearGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="250" Height="100" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-            <i:Interaction.Triggers>
-                <i:KeyTrigger Key="B" Modifiers="Ctrl">
-                    <i:InvokeCommandAction Command="{Binding BackCommand}" />
-                </i:KeyTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-
-        <lc:CartesianChart Width="300" Height="150" Grid.Column="1" Margin="118,86,119,34" Grid.Row="2" Series="{Binding SeriesCollection}" FontFamily="Ubuntu" FontSize="20">
+        <lc:CartesianChart Width="300" Height="150" Margin="38,110,515,10" Grid.Row="2" Series="{Binding LanguageSeriesCollection}" FontFamily="Ubuntu" FontSize="20" Grid.ColumnSpan="2">
             <lc:CartesianChart.AxisX>
-                <lc:Axis Title="Language" Labels="{Binding Labels}"></lc:Axis>
+                <lc:Axis Title="Language"></lc:Axis>
             </lc:CartesianChart.AxisX>
             <lc:CartesianChart.AxisY>
-                <lc:Axis Title="Number of requests" Labels="{Binding Values}"></lc:Axis>
+                <lc:Axis Title="Number of requests" Labels="{Binding LanguageValues}"></lc:Axis>
             </lc:CartesianChart.AxisY>
         </lc:CartesianChart>
 
@@ -126,9 +99,35 @@
         <TextBlock Text="View notifications" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="185,106,0,10" Width="106"/>
         <Icon:FontAwesome Icon="Question" Foreground="SlateGray" FontSize="60" Grid.Column="2" Margin="319,40,27,29"/>
         <TextBlock Text="Help" Grid.Row="0" Grid.Column="2" Foreground="Black" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="345,106,0,10" Width="28"/>
-        <TextBlock Text="CTRL+B" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="185,113,0,140" Width="66" RenderTransformOrigin="0.467,0.671"/>
-        <TextBlock Text="YOUR REQUESTS" Grid.Row="1" Foreground="White" FontSize="15" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="250,29,0,221" Width="122" Grid.ColumnSpan="2"/>
+        <TextBlock Text="YOUR REQUESTS" Grid.Row="1" Foreground="White" FontSize="22" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="229,20,0,215" Width="178" Grid.ColumnSpan="2"/>
+        <TextBlock Text="PICK A YEAR" Grid.Row="1" Foreground="White" FontSize="22" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="3,20,0,230" Width="141" Grid.Column="2"/>
 
+        <ComboBox x:Name="YearComboBox" Width="180" Margin="520,51,264,199" DisplayMemberPath="Name" SelectedValuePath="Value" ItemsSource="{Binding Path=Years}" SelectedValue="{Binding Path=Year}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+
+        </ComboBox>
+
+        <TextBlock Text="{Binding AcceptedTours}" Foreground="White" FontSize="20" Grid.Column="1" Grid.ColumnSpan="2" Margin="353,106,96,117" Grid.Row="1"></TextBlock>
+        <TextBlock Text="{Binding DeclinedTours}" Foreground="White" FontSize="20" Grid.Column="1" Grid.ColumnSpan="2" Margin="353,158,96,64" Grid.Row="1"/>
+        <TextBlock Text="{Binding AverageNumberOfPeople}" Foreground="White" FontSize="20" Grid.Column="1" Grid.ColumnSpan="2" Margin="352,212,96,10" Grid.Row="1"/>
+
+
+        <lc:CartesianChart Width="300" Height="150" Margin="174,110,63,10" Grid.Row="2" Series="{Binding StateSeriesCollection}" FontFamily="Ubuntu" FontSize="20" Grid.Column="1">
+            <lc:CartesianChart.AxisX>
+                <lc:Axis Title="State"/>
+            </lc:CartesianChart.AxisX>
+            <lc:CartesianChart.AxisY>
+                <lc:Axis Title="Number of requests" Labels="{Binding StateValues}"/>
+            </lc:CartesianChart.AxisY>
+        </lc:CartesianChart>
+
+        <lc:CartesianChart Width="300" Height="150" Margin="84,110,43,10" Grid.Row="2" Series="{Binding CitySeriesCollection}" FontFamily="Ubuntu" FontSize="20" Grid.Column="2">
+            <lc:CartesianChart.AxisX>
+                <lc:Axis Title="City"/>
+            </lc:CartesianChart.AxisX>
+            <lc:CartesianChart.AxisY>
+                <lc:Axis Title="Number of requests" Labels="{Binding CityValues}"/>
+            </lc:CartesianChart.AxisY>
+        </lc:CartesianChart>
 
     </Grid>
 </Page>

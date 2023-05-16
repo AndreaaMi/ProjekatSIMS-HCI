@@ -22,5 +22,34 @@ namespace projekatSIMS.Repository
             ((TourRequest)tourRating).Status = ((TourRequest)entity).Status;
 
         }
+        public List<string> GetDifferentStates()
+        {
+            List<string> states = new List<string>();
+
+            foreach (TourRequest request in DataContext.Instance.TourRequests)
+            {
+                string state = request.Location.Country;
+                if (!states.Contains(state))
+                {
+                    states.Add(state);
+                }
+            }
+            return states;
+        }
+
+        public List<string> GetDifferentCities()
+        {
+            List<string> cities = new List<string>();
+
+            foreach (TourRequest request in DataContext.Instance.TourRequests)
+            {
+                string city = request.Location.City;
+                if (!cities.Contains(city))
+                {
+                    cities.Add(city);
+                }
+            }
+            return cities;
+        }
     }
 }
