@@ -20,6 +20,7 @@ namespace projekatSIMS.Repository
             ((TourRequest)tourRating).StartDate = ((TourRequest)entity).StartDate;
             ((TourRequest)tourRating).EndDate = ((TourRequest)entity).EndDate;
             ((TourRequest)tourRating).Status = ((TourRequest)entity).Status;
+            ((TourRequest)tourRating).Date = ((TourRequest)entity).Date;
 
         }
     }

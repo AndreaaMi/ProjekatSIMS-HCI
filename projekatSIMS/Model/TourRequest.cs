@@ -20,13 +20,14 @@ namespace projekatSIMS.Model
         private DateTime startDate;
         private DateTime endDate;
         private TourRequestStatus status;
+        private string date;
 
         public TourRequest()
         {
             this.location = new Location();
         }
 
-        public TourRequest(int guestId, Location location, string description, string language, int guestNumber, DateTime startDate, DateTime endDate, TourRequestStatus status)
+        public TourRequest(int guestId, Location location, string description, string language, int guestNumber, DateTime startDate, DateTime endDate, TourRequestStatus status, string date)
         {
             GuestId = guestId;
             Location = location;
@@ -36,6 +37,18 @@ namespace projekatSIMS.Model
             StartDate = startDate;
             EndDate = endDate;
             Status = status;
+            
+            Date = date;
+        }
+
+        public string Date
+        {
+            get { return date; }
+            set
+            {
+                date = value;
+                OnPropertyChanged(nameof(Date));
+            }
         }
 
         public int GuestId
@@ -119,7 +132,7 @@ namespace projekatSIMS.Model
         }
         public override string ExportToString()
         {
-            return id + "|" + guestId + "|" + location.country + "|" + location.city + "|" + language + "|" + startDate.ToString("dd.MM.yyyy") + "|" + endDate.ToString("dd.MM.yyyy") + "|" + description + "|" + guestNumber + "|" + status;
+            return id + "|" + guestId + "|" + location.country + "|" + location.city + "|" + language + "|" + startDate.ToString("dd.MM.yyyy") + "|" + endDate.ToString("dd.MM.yyyy") + "|" + description + "|" + guestNumber + "|" + status + "|"+ date;
         }
         public override void ImportFromString(string[] parts)
         {
@@ -133,6 +146,7 @@ namespace projekatSIMS.Model
             Description = parts[7];
             GuestNumber = int.Parse(parts[8]);
             SetStatus(parts[9]); 
+            Date = parts[10];
         }
 
         public void SetStatus(string part)
