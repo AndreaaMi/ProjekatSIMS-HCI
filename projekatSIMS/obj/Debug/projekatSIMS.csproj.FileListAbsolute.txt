@@ -413,3 +413,13 @@ C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSI
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideLocationCreateTour.baml
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStatsPageView.g.cs
 C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TourGuideView\TourGuideTourStatsPageView.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.dll
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.pdb
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.xml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewNotification.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.g.cs
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristHomeViewNotification.baml
+C:\Users\Korisnik\OneDrive - Univerzitet u Novom Sadu\Desktop\simshci\projekatSIMSHCI\projekatSIMS\obj\Debug\UI\Dialogs\View\TouristView\TouristTourRequestStatisticsView.baml
