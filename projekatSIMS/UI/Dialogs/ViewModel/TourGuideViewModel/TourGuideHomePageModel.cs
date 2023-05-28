@@ -180,6 +180,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
         private UserService userService;
+        private TourRatingService tourRatingService;
 
         private RelayCommand myToursCommand;
         private RelayCommand languageCommand;
@@ -192,8 +193,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
             SetService();
             var tours = tourService.GetAll();
+            var tourR = tourRatingService.GetAll();
+            var users = userService.GetAll();
             Rating = 0;
-            
+            int englishL = 0;
+            int spanishL = 0;
+            int serbianL = 0;
+            int norwegianL = 0;
 
 
             foreach (Tour tour in tours)
@@ -203,11 +209,59 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 {
                     Rating = tour.GuestNumber;
                 }
-                
+               
+
 
                 // Name = tour.Name;
                 // Description = tour.Description;
 
+            }
+            foreach (Tour tour in tours)
+            {
+                foreach(TourRating tourr in tourR)
+                {
+                    if (tour.Language == Language.ENGLISH && tourr.TourId == tour.Id && tourr.InterestLevel > 4.5 && tour.StartingDate > DateTime.Now.AddYears(-1))
+                    {
+                        englishL++;
+                    }
+                    if (tour.Language == Language.SPANISH && tourr.TourId == tour.Id && tourr.InterestLevel > 4.5 && tour.StartingDate > DateTime.Now.AddYears(-1))
+                    {
+                        spanishL++;
+                    }
+                    if (tour.Language == Language.SERBIAN && tourr.TourId == tour.Id && tourr.InterestLevel > 4.5 && tour.StartingDate > DateTime.Now.AddYears(-1))
+                    {
+                        serbianL++;
+                    }
+                    if (tour.Language == Language.NORWEGIAN && tourr.TourId == tour.Id && tourr.InterestLevel > 4.5 && tour.StartingDate > DateTime.Now.AddYears(-1))
+                    {
+                        norwegianL++;
+                    }
+                }
+            }
+            if(englishL>4 || spanishL > 4 || serbianL > 4 || norwegianL > 4)
+            {
+                foreach(User user in users)
+                {
+                    if (user.Id == 4)
+                    {
+                        user.SuperStatus = true;
+                        userService.Edit(user);
+                        
+                    }
+                }    
+            }
+           
+
+            if(norwegianL < 5 && englishL < 5 && serbianL < 5 && spanishL < 5)
+            {
+                foreach (User user in users)
+                {
+                    if (user.Id == 4)
+                    {
+                        user.SuperStatus = false;
+                        userService.Edit(user);
+                    }
+                }
             }
             foreach (Tour tour in tours)
             {
@@ -224,8 +278,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                 // Description = tour.Description;
 
             }
-
             
+
 
 
 
@@ -238,6 +292,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             tourReservationService = new TourReservationService();
             voucherService = new VoucherService();
             userService = new UserService();
+            tourRatingService = new TourRatingService();
         }
 
         private void StatsCommandExecute()

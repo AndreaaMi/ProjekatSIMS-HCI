@@ -60,9 +60,12 @@
 
 
                         <Border  Background="{DynamicResource TextBoxColor}" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="256,123,119,336" CornerRadius="10">
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding QuitCommand}" Margin="308,241,9,9"  >
+                            <Grid Background="{DynamicResource TextBoxColor}">
+                                <Label Content="Working Status: Active" VerticalContentAlignment="Center" Foreground="{DynamicResource TextColor}" Margin="10,241,9,9"/>
+                                <Button Background="{DynamicResource TextBoxColor}" Command="{Binding QuitCommand}" Margin="308,241,9,9"  >
                                 <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Quit" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
+                        </Grid>
                         </Border>
 
                         <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="100,429,520,183" CornerRadius="10" >
