@@ -185,6 +185,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private RelayCommand languageCommand;
         private RelayCommand locationCommand;
         private RelayCommand statsCommand;
+        private RelayCommand quitCommand;
 
 
         public TourGuideHomePageModel()
@@ -261,6 +262,55 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         {
             TourGuideMainWindow.navigationService.Navigate(
                new Uri("UI/Dialogs/View/TourGuideView/TourGuideLocationCreateTour.xaml", UriKind.Relative));
+        }
+
+        private void QuitCommandExecute()
+        {
+            var tours = tourService.GetAll();
+            var tourR = tourReservationService.GetAll();
+            List<Tour> toursToRemove = new List<Tour>();
+            List<TourReservation> tourrToRemove = new List<TourReservation>();
+            foreach (Tour tour in tours)
+            {
+                if(tour.StartingDate > DateTime.Now)
+                {
+                    
+                    foreach(TourReservation tourr in tourR)
+                    {
+                        if(tourr.TourId == tour.Id)
+                        {
+                            Voucher v = new Voucher();
+                            v.ExpirationDate = DateTime.Now.AddYears(2);
+                            v.GuestId = tourr.GuestId;
+                            v.Id = 2;
+                            voucherService.Add(v);
+                            tourrToRemove.Add(tourr);
+                        }
+                    }
+                    toursToRemove.Add(tour);
+                }
+            }
+            foreach (Tour tourToRemove in toursToRemove)
+            {
+                tourService.Remove(tourToRemove);
+            }
+            foreach (TourReservation tourToRemove in tourrToRemove)
+            {
+                tourReservationService.Remove(tourToRemove);
+            }
+        }
+
+        public RelayCommand QuitCommand
+        {
+            get
+            {
+                if (quitCommand == null)
+                {
+                    quitCommand = new RelayCommand(param => QuitCommandExecute());
+                }
+
+                return quitCommand;
+            }
         }
 
         public RelayCommand StatsCommand
