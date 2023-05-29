@@ -242,9 +242,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 foreach(User user in users)
                 {
-                    if (user.Id == 4)
+                    if (user.Id == 4 && user.SuperStatus == false && user.SuperGuestExpirationDate <= DateTime.Now)
                     {
                         user.SuperStatus = true;
+                        user.SuperGuestExpirationDate = DateTime.Now.AddYears(1);
                         userService.Edit(user);
                         
                     }
@@ -256,7 +257,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 foreach (User user in users)
                 {
-                    if (user.Id == 4)
+                    if (user.Id == 4 && user.SuperStatus == true && user.SuperGuestExpirationDate <= DateTime.Now)
                     {
                         user.SuperStatus = false;
                         userService.Edit(user);
