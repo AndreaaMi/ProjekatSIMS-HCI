@@ -26,6 +26,7 @@ namespace projekatSIMS.Repository
             Vouchers = new VoucherRepository();
             TourRatings = new TourRatingRepository();
             TourRequests = new TourRequestRepository();
+            ComplexTourRequests = new ComplexTourRequestRepository();
         }
 
         public UserRepository Users { get; private set; }
@@ -53,6 +54,7 @@ namespace projekatSIMS.Repository
         public TourRatingRepository TourRatings { get; private set; }
 
         public TourRequestRepository TourRequests { get; private set; }
+        public ComplexTourRequestRepository ComplexTourRequests { get; private set; }
 
         public void Save()
         {

@@ -201,12 +201,14 @@
 
         <Border Grid.Row="0" Grid.RowSpan="4" Background="Black" Opacity="0.7" Grid.ColumnSpan="3"/>
 
-        <TextBlock Text="Follow the keyboard shortcuts" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="88,32,0,192" Width="492" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBlock Text="that are defined on top of the " Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="88,73,0,151" Width="492" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBlock Text="buttons to navigate " Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="160,115,0,109" Width="328" Grid.Column="1"/>
-        <TextBlock Text="ENTER" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="296,225,0,28" Grid.Column="1" Width="56"/>
+        <TextBlock Text="What kind of request would you" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="88,32,0,192" Width="526" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBlock Text="like to create? " Grid.Row="1" Foreground="White" FontSize="35" FontWeight="Medium" FontFamily="Playfair Display" HorizontalAlignment="Left" Margin="206,74,0,151" Width="236" Grid.Column="1"/>
+        <TextBlock Text="CTRL+B" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="146,144,0,99" Width="74"/>
+        <TextBlock Text="CTRL+R" Grid.Row="1" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="297,172,0,81" Width="74" Grid.Column="1"/>
+        <TextBlock Text="CTRL+C" Grid.Row="2" Foreground="White" FontSize="18" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="297,61,0,182" Width="74" Grid.Column="1"/>
 
-        <Button Content="Got it" Grid.Row="1" FontSize="19" FontWeight="Bold" Grid.Column="1" Margin="174,247,63,193" Grid.RowSpan="2">
+
+        <Button Content="Back" Grid.Row="2" FontSize="19" FontWeight="Bold" Margin="33,166,520,49" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -227,8 +229,62 @@
                 </ControlTemplate>
             </Button.Template>
             <i:Interaction.Triggers>
-                <i:KeyTrigger Key="Return">
+                <i:KeyTrigger Key="B" Modifiers="Ctrl">
                     <i:InvokeCommandAction Command="{Binding GotItCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button Content="Normal request" Grid.Row="1" FontSize="19" FontWeight="Bold" Margin="174,194,63,246" Grid.RowSpan="2" Grid.Column="1">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#808080" Offset="0"/>
+                                <GradientStop Color="#C0C0C0" Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="250" Height="100" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="R" Modifiers="Ctrl">
+                    <i:InvokeCommandAction Command="{Binding TourRequestCommand}" />
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button Content="Complex request" Grid.Row="2" FontSize="19" FontWeight="Bold" Margin="174,83,63,82" Grid.Column="1">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#808080" Offset="0"/>
+                                <GradientStop Color="#C0C0C0" Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="250" Height="100" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="C" Modifiers="Ctrl">
+                    <i:InvokeCommandAction Command="{Binding ComplexTourRequestCommand}" />
                 </i:KeyTrigger>
             </i:Interaction.Triggers>
         </Button>

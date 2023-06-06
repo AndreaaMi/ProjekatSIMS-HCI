@@ -74,6 +74,7 @@
     <Compile Include="Model\AccommodationReservation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
     <Compile Include="Model\AvailableDate.cs" />
+    <Compile Include="Model\ComplexTourRequest.cs" />
     <Compile Include="Model\GuestReview.cs" />
     <Compile Include="Model\KeyPoints.cs" />
     <Compile Include="Model\Language.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Repository\AccommodationRenovationRecommendationRepository.cs" />
     <Compile Include="Repository\AccommodationRepository.cs" />
     <Compile Include="Repository\AccommodationReservationRepository.cs" />
+    <Compile Include="Repository\ComplexTourRequestRepository.cs" />
     <Compile Include="Repository\GuestReviewRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IVoucherRepository.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Service\AccommodationRenovationRecommendationService.cs" />
     <Compile Include="Service\AccommodationReservationService.cs" />
     <Compile Include="Service\AccommodationService.cs" />
+    <Compile Include="Service\ComplexTourRequestService.cs" />
     <Compile Include="Service\GuestReviewService.cs" />
     <Compile Include="Service\KeyPointsService.cs" />
     <Compile Include="Service\ReservationRescheduleRequestService.cs" />
@@ -154,6 +157,7 @@
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideTourStartSoonPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristActiveToursModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristComplexTourRequestModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeNotificationModel.cs" />
@@ -285,6 +289,9 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristActiveToursView.xaml.cs">
       <DependentUpon>TouristActiveToursView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristComplexTourRequestView.xaml.cs">
+      <DependentUpon>TouristComplexTourRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristHomeView.xaml.cs">
       <DependentUpon>TouristHomeView.xaml</DependentUpon>
@@ -510,6 +517,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristComplexTourRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristHomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -650,6 +661,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\TouristImages\profile_picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\complexTourRequests.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
