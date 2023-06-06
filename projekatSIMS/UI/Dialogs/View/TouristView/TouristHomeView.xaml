@@ -132,7 +132,7 @@
             </Button.Template>
             <i:Interaction.Triggers>
                 <i:KeyTrigger Key="K" Modifiers="Ctrl">
-                    <i:InvokeCommandAction Command="{Binding HelpCommand}" />
+                    <i:InvokeCommandAction Command="{Binding RequestTourCommand}" />
                 </i:KeyTrigger>
             </i:Interaction.Triggers>
         </Button>
@@ -225,8 +225,8 @@
             <i:KeyTrigger Key="P" Modifiers="Ctrl">
                 <i:InvokeCommandAction Command="{Binding GoToProfilePageCommand}" />
             </i:KeyTrigger>
-            <i:KeyTrigger Key="F" Modifiers="Ctrl">
-                <i:InvokeCommandAction Command="{Binding RequestsCommand}" />
+            <i:KeyTrigger Key="H" Modifiers="Ctrl">
+                <i:InvokeCommandAction Command="{Binding HelpCommand}" />
             </i:KeyTrigger>
         </i:Interaction.Triggers>
     </Grid>

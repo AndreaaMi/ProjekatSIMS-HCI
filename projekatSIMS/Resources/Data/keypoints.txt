@@ -5,10 +5,10 @@
 6|a|True|11
 7|s|False|11
 8|d|False|11
-9|bioskop|True|12
-10|pozoriste|True|12
-11|pekara|True|13
-12|centar|True|13
+9|bioskop|False|12
+10|pozoriste|False|12
+11|pekara|False|13
+12|centar|False|13
 1|aa|False|15
 2|ss|False|15
 1|aa|False|15

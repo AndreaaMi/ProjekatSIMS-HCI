@@ -46,12 +46,10 @@
                         <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,276,524,336" RadiusX="10" RadiusY="10">
 
                         </Rectangle>
-                        <Label Content="Best Tour"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="140,280,0,0" VerticalAlignment="Top" Height="34"/>
+                        <Label Content="{Binding Rating}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="164,297,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
 
-                        <Label Content="{Binding Name}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="154,304,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
-
-                        <Label Content="Number of Guests"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="105,331,0,0" VerticalAlignment="Top" Height="34"/>
-                        <Label Content="{Binding MaximumNumberOfGuests}"  FontFamily="Oswald" FontWeight="Bold"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="162,0,0,0" VerticalAlignment="Center" Height="34" Width="30"/>
+                        <Label Content="Avarage Rating"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="114,331,0,0" VerticalAlignment="Top" Height="34"/>
+                        <Label Content="Based on 7 tours"  FontFamily="Oswald"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="113,361,0,0" VerticalAlignment="Top" Height="34"/>
 
 
                         <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,429,524,183" RadiusX="10" RadiusY="10">
@@ -59,43 +57,19 @@
                         </Rectangle>
 
 
-                        <Border  Background="{DynamicResource TextBoxColor}" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="256,123,119,336" CornerRadius="10">
-                            <Grid Background="{DynamicResource TextBoxColor}">
-                                <Label Content="Working Status: Active" VerticalContentAlignment="Center" Foreground="{DynamicResource TextColor}" Margin="10,241,9,9"/>
-                                <Button Background="{DynamicResource TextBoxColor}" Command="{Binding QuitCommand}" Margin="308,241,9,9"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Quit" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
-                            </Button>
-                        </Grid>
-                        </Border>
+                        <Rectangle  Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="257,123,119,336" RadiusX="10" RadiusY="10">
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="100,429,520,183" CornerRadius="10" >
+                        </Rectangle>
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding StatsCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Tour Stats" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
-                            </Button>
-                        </Border>
+                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="257,429,274,183" RadiusX="10" RadiusY="10">
+
+                        </Rectangle>
 
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="507,429,119,183" CornerRadius="10" >
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding MyToursCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="My Tours" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
-                            </Button>
-                        </Border>
+                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="507,429,119,181" RadiusX="10" RadiusY="10">
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,429,275,260" CornerRadius="10" >
-
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding LocationCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Location" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
-                            </Button>
-                        </Border>
-
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,505,275,183" CornerRadius="10" >
-
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding LanguageCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Language" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
-                            </Button>
-                        </Border>
+                        </Rectangle>
 
                     </Grid>
                 </Border>

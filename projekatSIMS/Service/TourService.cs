@@ -49,11 +49,5 @@ namespace projekatSIMS.Service
             UnitOfWork unitOfWork = new UnitOfWork();
             return unitOfWork.Tours.GetTourKeypoints(tourId);
         }
-
-        public List<string> GetTourStates()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            return unitOfWork.Tours.GetTourStates();
-        }
     }
 }

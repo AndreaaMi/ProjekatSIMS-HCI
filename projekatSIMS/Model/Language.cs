@@ -8,7 +8,7 @@ namespace projekatSIMS.Model
 {
     public enum Language
     {
-        ENGLISH, SERBIAN, SPANISH, NORWEGIAN
+        ENGLISH, SERBIAN
 
     }
 }

@@ -49,17 +49,5 @@ namespace projekatSIMS.Service
             UnitOfWork unitOfWork = new UnitOfWork();
             return unitOfWork.TourRequests.GenerateId();
         }
-
-        public List<string> GetDifferentStates()
-        {
-            UnitOfWork unitOfWork= new UnitOfWork();
-            return unitOfWork.TourRequests.GetDifferentStates();
-        }
-
-        public List<string> GetDifferentCities()
-        {
-            UnitOfWork unitOfWork= new UnitOfWork();
-            return unitOfWork.TourRequests.GetDifferentCities();
-        }
     }
 }

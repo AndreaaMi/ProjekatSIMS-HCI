@@ -28,7 +28,6 @@ namespace projekatSIMS.Repository
             TourRequests = new TourRequestRepository();
             Forums = new ForumRepository();
             ForumComments = new ForumCommentRepository();
-            ComplexTourRequests = new ComplexTourRequestRepository();
         }
 
         public UserRepository Users { get; private set; }
@@ -51,12 +50,11 @@ namespace projekatSIMS.Repository
 
         public AccommodationRenovationRecommendationRepository AccommodationRenovationRecommendations { get; private set; }
 
-        public IVoucherRepository Vouchers { get; private set; }
+        public VoucherRepository Vouchers { get; private set; }
 
         public TourRatingRepository TourRatings { get; private set; }
 
         public TourRequestRepository TourRequests { get; private set; }
-        public ComplexTourRequestRepository ComplexTourRequests { get; private set; }
 
         public ForumRepository Forums { get; private set; }
 

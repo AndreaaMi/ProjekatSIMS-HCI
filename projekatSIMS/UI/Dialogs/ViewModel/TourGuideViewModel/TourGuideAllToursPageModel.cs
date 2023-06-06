@@ -5,12 +5,10 @@ using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
@@ -171,9 +169,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private bool isDarkTheme;
-        public ResourceDictionary _theme;
-
         private Tour selectedTour;
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
@@ -185,18 +180,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private UserService userService;
 
         private RelayCommand tourButtonCommand;
-        
-        public ICommand ToggleThemeCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-       
 
         public TourGuideAllToursPageModel()
         {
-            ToggleThemeCommand = new RelayCommand(ToggleTheme);
-            // Initialize the Theme property with the default theme
-            Theme = new ResourceDictionary { Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute) };
             SetService();
             var tours = tourService.GetAll();
 
@@ -226,24 +213,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
 
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void ToggleTheme(Object parameter)
-        {
-            if (IsDarkTheme)
-                IsDarkTheme = false;
-            else
-                IsDarkTheme = true;
-
-            if (IsDarkTheme)
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
-            else
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
         }
 
         public void SetService()
@@ -298,28 +267,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
-
-            }
-        }
-        public bool IsDarkTheme
-        {
-            get { return isDarkTheme; }
-            set
-            {
-                isDarkTheme = value;
-                
-                OnPropertyChanged(nameof(IsDarkTheme));
-
-            }
-        }
-
-        public ResourceDictionary Theme
-        {
-            get { return _theme; }
-            set
-            {
-                _theme = value;
-                OnPropertyChanged(nameof(Theme));
 
             }
         }

@@ -192,14 +192,7 @@ namespace projekatSIMS.Model
                     Language = Language.SERBIAN;
                     break;
 
-                case "SPANISH":
-                    Language = Language.SERBIAN;
-                    break;
-                case "NORWEGIAN":
-                    Language = Language.SERBIAN;
-                    break;
-
-
+                
             }
         }
 

@@ -10,7 +10,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 {
     internal class TouristSearchTourHelpModel : ViewModelBase
     {
-        private RelayCommand gotItCommand;
+        public RelayCommand gotItCommand;
         public TouristSearchTourHelpModel() { }
         private bool CanThisCommandExecute()
         {

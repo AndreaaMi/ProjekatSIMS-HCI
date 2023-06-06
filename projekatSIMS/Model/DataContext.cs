@@ -33,7 +33,6 @@ namespace projekatSIMS.Model
         private List<Entity> tourRequests = new List<Entity>();
         private List<Entity> forums = new List<Entity>();
         private List<Entity> forumComments = new List<Entity>();
-        private List<Entity> complexTourRequests = new List<Entity>();
 
         private User loginUser = null;
 
@@ -68,8 +67,6 @@ namespace projekatSIMS.Model
             GenericSave(tourRequests, "tourRequests.txt");
             GenericSave(forums, "forum.txt");
             GenericSave(forumComments, "forum_comments.txt");
-            GenericSave(complexTourRequests, "complexTourRequests.txt");
-
         }
 
         public void GenericSave(List<Entity> entitites, string fileName) //Prosledis sta sejvujes i gde sejvujes
@@ -105,7 +102,6 @@ namespace projekatSIMS.Model
             GenericLoad(forums, "forum.txt", typeof(Forum));
             GenericLoad(forumComments, "forum_comments.txt", typeof(ForumComment));
 
-            GenericLoad(complexTourRequests, "complexTourRequests.txt",typeof(ComplexTourRequest));
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -201,9 +197,6 @@ namespace projekatSIMS.Model
                 if (type == typeof(ForumComment))
                 {
                     ForumComment newEntity = new ForumComment();
-                if(type == typeof(ComplexTourRequest))
-                {
-                    ComplexTourRequest newEntity = new ComplexTourRequest();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
@@ -299,9 +292,6 @@ namespace projekatSIMS.Model
             if (type == typeof(ForumComment))
             {
                 forumComments = entities;
-            if(type == typeof(ComplexTourRequest))
-            {
-                complexTourRequests = entities;
                 return;
             }
         }
@@ -367,9 +357,6 @@ namespace projekatSIMS.Model
             if (type == typeof(ForumComment))
             {
                 return forumComments;
-            if(type == typeof(ComplexTourRequest))
-            {
-                return complexTourRequests;
             }
 
             return null; //Mora jedan biti default return
@@ -467,10 +454,6 @@ namespace projekatSIMS.Model
         {
             get { return forumComments; }
             set { forumComments = value; }
-        public List<Entity> ComplexTourRequests
-        {
-            get { return complexTourRequests; }
-            set { complexTourRequests = value; }
         }
 
     }

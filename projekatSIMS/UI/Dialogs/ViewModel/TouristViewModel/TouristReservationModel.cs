@@ -47,12 +47,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         #region COMMANDS
         private bool CanThisCommandExecute()
         {
-            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString() + "itcan";
-            if (currentUri.Equals("itcan"))
-            {
-                return true;
-            }
-            return false;
+            string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
+            return string.IsNullOrEmpty(currentUri);
         }
         private void BackCommandExecute()
         {

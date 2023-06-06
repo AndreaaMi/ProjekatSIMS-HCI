@@ -3,7 +3,6 @@
 
     <Color  x:Key ="BackgroundColor">#007ACC</Color>
     <Color  x:Key ="BackgroundColor2">#301596</Color>
-    <SolidColorBrush  x:Key ="BackgroundColor3">#007ACC</SolidColorBrush>
     <Color  x:Key = "TextBoxColor">#007ACC</Color>
     <SolidColorBrush  x:Key ="ButtonColor">#F5F5F5</SolidColorBrush>
     <SolidColorBrush  x:Key ="TextColor">#121212</SolidColorBrush>

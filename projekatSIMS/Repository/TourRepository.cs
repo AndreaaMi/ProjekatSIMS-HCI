@@ -41,20 +41,8 @@ namespace projekatSIMS.Repository
             return new int[0];
         }
 
-        public List<string> GetTourStates()
-        {
-            List<string> states = new List<string>();
 
-            foreach (Tour tour in DataContext.Instance.Tours)
-            {
-                string state = tour.Location.Country;
-                if (!states.Contains(state))
-                {
-                    states.Add(state);
-                }
-            }
 
-            return states;
-        }
+
     }
 }
