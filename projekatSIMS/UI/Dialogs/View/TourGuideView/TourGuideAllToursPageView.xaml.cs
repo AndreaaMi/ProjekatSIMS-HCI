@@ -27,7 +27,6 @@ namespace projekatSIMS.UI.Dialogs.View.TourGuideView
         {
             InitializeComponent();
             DataContext = new TourGuideAllToursPageModel();
-            
         }
         
        
