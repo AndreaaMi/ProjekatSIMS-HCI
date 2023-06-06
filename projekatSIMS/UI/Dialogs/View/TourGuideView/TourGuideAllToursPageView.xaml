@@ -10,7 +10,7 @@
       Title="TourGuideAllToursPageView">
 
     <Page.Resources>
-        <ResourceDictionary Source="{Binding Theme}"/>
+        <ResourceDictionary Source="Theme/Dark.xaml"/>
     </Page.Resources>
 
     <Border>
