@@ -422,14 +422,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Dialogs\View\TourGuideView\Theme\Dark.xaml">
+    <Resource Include="UI\Dialogs\View\TourGuideView\Theme\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\View\TourGuideView\Theme\Light.xaml">
+    </Resource>
+    <Resource Include="UI\Dialogs\View\TourGuideView\Theme\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </Resource>
     <Page Include="UI\Dialogs\View\TourGuideView\TourGuideAllToursPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
