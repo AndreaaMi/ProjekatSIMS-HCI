@@ -21,13 +21,14 @@ namespace projekatSIMS.Model
         private DateTime endDate;
         private TourRequestStatus status;
         private string date;
+        private bool isPartOfComplexTour;
 
         public TourRequest()
         {
             this.location = new Location();
         }
 
-        public TourRequest(int guestId, Location location, string description, string language, int guestNumber, DateTime startDate, DateTime endDate, TourRequestStatus status, string date)
+        public TourRequest(int guestId, Location location, string description, string language, int guestNumber, DateTime startDate, DateTime endDate, TourRequestStatus status, string date, bool isPartOfComplexTour)
         {
             GuestId = guestId;
             Location = location;
@@ -36,9 +37,9 @@ namespace projekatSIMS.Model
             GuestNumber = guestNumber;
             StartDate = startDate;
             EndDate = endDate;
-            Status = status;
-            
+            Status = status;  
             Date = date;
+            IsPartOfComplexTour = isPartOfComplexTour;
         }
 
         public string Date
@@ -48,6 +49,16 @@ namespace projekatSIMS.Model
             {
                 date = value;
                 OnPropertyChanged(nameof(Date));
+            }
+        }
+
+        public bool IsPartOfComplexTour
+        {
+            get { return isPartOfComplexTour; }
+            set
+            {
+                isPartOfComplexTour = value;
+                OnPropertyChanged(nameof(IsPartOfComplexTour));
             }
         }
 
@@ -132,7 +143,7 @@ namespace projekatSIMS.Model
         }
         public override string ExportToString()
         {
-            return id + "|" + guestId + "|" + location.country + "|" + location.city + "|" + language + "|" + startDate.ToString("dd.MM.yyyy") + "|" + endDate.ToString("dd.MM.yyyy") + "|" + description + "|" + guestNumber + "|" + status + "|"+ date;
+            return id + "|" + guestId + "|" + location.country + "|" + location.city + "|" + language + "|" + startDate.ToString("dd.MM.yyyy") + "|" + endDate.ToString("dd.MM.yyyy") + "|" + description + "|" + guestNumber + "|" + status + "|" + date + "|" + isPartOfComplexTour;
         }
         public override void ImportFromString(string[] parts)
         {
@@ -147,6 +158,7 @@ namespace projekatSIMS.Model
             GuestNumber = int.Parse(parts[8]);
             SetStatus(parts[9]); 
             Date = parts[10];
+            isPartOfComplexTour = bool.Parse(parts[11]);
         }
 
         public void SetStatus(string part)
