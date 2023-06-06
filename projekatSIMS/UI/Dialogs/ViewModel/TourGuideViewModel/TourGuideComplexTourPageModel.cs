@@ -186,6 +186,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private VoucherService voucherService;
         private UserService userService;
         private TourRequestService tourRequestService;
+        private ComplexTourRequestService complexTourRequestService;
 
         private RelayCommand tourButtonCommand;
         
@@ -202,58 +203,67 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             SetService();
             var tours = tourService.GetAll();
             var tourr = tourRequestService.GetAll();
+            var ture = complexTourRequestService.GetAll();
 
             int i = 15;
 
 
 
+
+
             foreach (TourRequest tour in tourr)
             {
-                Tour tour1 = new Tour();
-                if (selectedLanguage == Language.ENGLISH)
+
+                foreach (ComplexTourRequest toure in ture)
                 {
-                    tour1.Id = i;
-                    tour1.AssociatedTourGuide = 0;
-                    tour1.Duration = 2;
-                    tour1.GuestNumber = 0;
-                    tour1.MaxNumberOfGuests = tour.GuestNumber;
-                    tour1.Description = tour.Description;
-                    if (tour.Language == "ENGLISH")
+                    if (tour.Id == 6 || tour.Id == 7)
+                    { 
+                    Tour tour1 = new Tour();
+                    if (selectedLanguage == Language.ENGLISH)
                     {
-                        tour1.Language = Language.ENGLISH;
+                        tour1.Id = i;
+                        tour1.AssociatedTourGuide = 0;
+                        tour1.Duration = 2;
+                        tour1.GuestNumber = 0;
+                        tour1.MaxNumberOfGuests = tour.GuestNumber;
+                        tour1.Description = tour.Description;
+                        if (tour.Language == "ENGLISH")
+                        {
+                            tour1.Language = Language.ENGLISH;
+                        }
+                        if (tour.Language == "SERBIAN")
+                        {
+                            tour1.Language = Language.SERBIAN;
+                        }
+                        if (tour.Language == "SPANISH")
+                        {
+                            tour1.Language = Language.SPANISH;
+                        }
+                        if (tour.Language == "NORWEGIAN")
+                        {
+                            tour1.Language = Language.NORWEGIAN;
+                        }
+                        tour1.Location = tour.Location;
+                        tour1.Name = "Tura" + i.ToString();
+                        Date = tour.StartDate.Date.ToString("dd.MM.yyyy") + "--" + tour.EndDate.Date.ToString("dd.MM.yyyy");
+                        Tours.Add(tour1);
+                        i++;
                     }
-                    if (tour.Language == "SERBIAN")
-                    {
-                        tour1.Language = Language.SERBIAN;
-                    }
-                    if (tour.Language == "SPANISH")
-                    {
-                        tour1.Language = Language.SPANISH;
-                    }
-                    if (tour.Language == "NORWEGIAN")
-                    {
-                        tour1.Language = Language.NORWEGIAN;
-                    }
-                    tour1.Location = tour.Location;
-                    tour1.Name = "Tura" + i.ToString();
-                    Date = tour.StartDate.Date.ToString("dd.MM.yyyy") + "--" + tour.EndDate.Date.ToString("dd.MM.yyyy");
-                    Tours.Add(tour1);
-                    i++;
                 }
+                    }
+                    // Name = tour.Name;
+                    // Description = tour.Description;
+
+                }
+                
+    
 
 
-                // Name = tour.Name;
-                // Description = tour.Description;
+
 
             }
 
-
-
-
-
-        }
-
-        public void SetService()
+            public void SetService()
         {
             tourService = new TourService();
             keyPointsService = new KeyPointsService();
@@ -261,6 +271,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             voucherService = new VoucherService();
             userService = new UserService();
             tourRequestService = new TourRequestService();
+            complexTourRequestService = new ComplexTourRequestService();
         }
 
         private void TourButtonCommandExecute()
