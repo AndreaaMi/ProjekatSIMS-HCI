@@ -4,7 +4,7 @@ using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View.TouristView;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +12,11 @@ using System.Windows;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 {
-    internal class TouristTourRequestModel : ViewModelBase
+    internal class TouristComplexTourRequestModel : ViewModelBase
     {
+        private RelayCommand addCommand;
         private RelayCommand submitCommand;
+        private ObservableCollection<TourRequest> items = new ObservableCollection<TourRequest>();
 
         private string state;
         private string city;
@@ -27,7 +29,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 
         private TourRequestService tourRequestService;
         private UserService userService;
-        public TouristTourRequestModel() {
+        private ComplexTourRequestService complexTourRequestService;
+
+        public TouristComplexTourRequestModel()
+        {
             SetService();
         }
 
@@ -35,14 +40,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             tourRequestService = new TourRequestService();
             userService = new UserService();
+            complexTourRequestService = new ComplexTourRequestService();
         }
         private bool CanThisCommandExecute()
         {
             string currentUri = TouristMainWindow.navigationService?.CurrentSource?.ToString();
-            return currentUri?.EndsWith("TouristTourRequestView.xaml", StringComparison.OrdinalIgnoreCase) == true;
+            return currentUri?.EndsWith("TouristComplexTourRequestView.xaml", StringComparison.OrdinalIgnoreCase) == true;
         }
 
-        public void SubmitCommandExecute()
+        public void AddCommandExecute()
         {
             if (City == null || State == null || Language == null)
             {
@@ -54,7 +60,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 MessageBox.Show("Please enter a valid date range!", " ", MessageBoxButton.OK);
                 return;
             }
-            if(GuestNumber <= 0)
+            if (GuestNumber <= 0)
             {
                 MessageBox.Show("Please enter a valid guest number!", " ", MessageBoxButton.OK);
                 return;
@@ -62,6 +68,28 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             CreateRequest();
         }
 
+        public void SubmitCommandExecute()
+        {
+            if(Items.Count < 2)
+            {
+                MessageBox.Show("You have to add at least two tours before proceeding!", " ", MessageBoxButton.OK);
+                return;
+            }
+            ComplexTourRequest complexTourRequest = new ComplexTourRequest();
+            complexTourRequest.Id = complexTourRequestService.GenerateId();
+            foreach (TourRequest item in Items)
+            {
+                complexTourRequest.Requests.Add(item);
+            }
+            complexTourRequest.Status = TourRequestStatus.PENDING;
+            complexTourRequestService.Add(complexTourRequest);
+            MessageBoxResult result = MessageBox.Show("Your request has been noted!", " ", MessageBoxButton.OK);
+            if (result == MessageBoxResult.OK)
+            {
+                TouristMainWindow.navigationService.Navigate(
+                new Uri("UI/Dialogs/View/TouristView/TouristHomeView.xaml", UriKind.Relative));
+            }
+        }
         public void CreateRequest()
         {
             Location location = new Location();
@@ -77,12 +105,10 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             tourRequest.EndDate = EndDate;
             tourRequest.GuestNumber = GuestNumber;
             tourRequest.Status = TourRequestStatus.PENDING;
-            tourRequest.IsPartOfComplexTour = false;
+            tourRequest.IsPartOfComplexTour = true;
             tourRequestService.Add(tourRequest);
-            MessageBox.Show("Your request has been noted!", "Thanks", MessageBoxButton.OK);
+            Items.Add(tourRequest);
         }
-
-
         public string State
         {
             get { return state; }
@@ -114,7 +140,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
 
         public string Language
         {
-            get { return language;}
+            get { return language; }
             set
             {
                 language = value;
@@ -124,7 +150,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         public int GuestNumber
         {
             get { return guestNumber; }
-            set { 
+            set
+            {
                 guestNumber = value;
                 OnPropertyChanged(nameof(GuestNumber));
             }
@@ -149,6 +176,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             }
         }
 
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ?? (addCommand = new RelayCommand(param => AddCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
         public RelayCommand SubmitCommand
         {
             get
@@ -156,7 +190,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 return submitCommand ?? (submitCommand = new RelayCommand(param => SubmitCommandExecute(), param => CanThisCommandExecute()));
             }
         }
-
         public DateTime DefaultStartDate
         {
             get { return defaultStartDate; }
@@ -166,7 +199,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
                 OnPropertyChanged(nameof(DefaultStartDate));
             }
         }
-
-
+        public ObservableCollection<TourRequest> Items
+        {
+            get { return items; }
+            set
+            {
+                items = value;
+                OnPropertyChanged(nameof(Items));
+            }
+        }
     }
 }

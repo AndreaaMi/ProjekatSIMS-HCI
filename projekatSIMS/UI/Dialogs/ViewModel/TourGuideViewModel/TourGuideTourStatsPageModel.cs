@@ -5,16 +5,13 @@ using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideAllToursPageModel : ViewModelBase
+    internal class TourGuideTourStatsPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -158,6 +155,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         #endregion
 
+
         private string id;
         private string name;
         private string country;
@@ -171,8 +169,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private bool isDarkTheme;
-        public ResourceDictionary _theme;
+        private double rating;
+        private int text;
 
         private Tour selectedTour;
 
@@ -183,67 +181,59 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
         private UserService userService;
+        private TourRequestService tourRequestService;
 
-        private RelayCommand tourButtonCommand;
-        
-        public ICommand ToggleThemeCommand { get; }
+        private RelayCommand serbianCommand;
+        private RelayCommand spanishCommand;
+        private RelayCommand englishCommand;
+        private RelayCommand norwegianCommand;
+        private RelayCommand osloCommand;
+        private RelayCommand madridCommand;
+        private RelayCommand barcelonaCommand;
+        private RelayCommand alesundCommand;
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-       
-
-        public TourGuideAllToursPageModel()
+        public TourGuideTourStatsPageModel()
         {
-            ToggleThemeCommand = new RelayCommand(ToggleTheme);
-            // Initialize the Theme property with the default theme
-            Theme = new ResourceDictionary { Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute) };
             SetService();
             var tours = tourService.GetAll();
+            Rating = 0;
 
 
-            
 
             foreach (Tour tour in tours)
             {
 
-                if (tour.GetType() == typeof(Tour))
+                if (tour.GuestNumber > Rating)
                 {
-                    // The object is of type Tour
-                     Tours.Add(tour);
+                    Rating = tour.GuestNumber;
                 }
-                else
+
+
+                // Name = tour.Name;
+                // Description = tour.Description;
+
+            }
+            foreach (Tour tour in tours)
+            {
+
+                if (tour.GuestNumber == Rating)
                 {
-                    MessageBox.Show("Nije tipa tour");
+                    Name = tour.Name;
+                    MaximumNumberOfGuests = tour.GuestNumber.ToString();
+                    break;
                 }
-                
-                
-               // Name = tour.Name;
-               // Description = tour.Description;
-                
+
+
+                // Name = tour.Name;
+                // Description = tour.Description;
+
             }
 
 
 
 
 
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void ToggleTheme(Object parameter)
-        {
-            if (IsDarkTheme)
-                IsDarkTheme = false;
-            else
-                IsDarkTheme = true;
-
-            if (IsDarkTheme)
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
-            else
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
         }
 
         public void SetService()
@@ -253,31 +243,214 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             tourReservationService = new TourReservationService();
             voucherService = new VoucherService();
             userService = new UserService();
+            tourRequestService = new TourRequestService();
         }
 
-        private void TourButtonCommandExecute()
+        private void SerbianCommandExecute()
         {
-            if (selectedTour != null)
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
             {
-                TourGuideMainWindow.navigationService.Navigate(
-                    new TourGuideMyAllToursPageView(selectedTour));
-            }
-            else
-            {
-                MessageBox.Show("Please select a tour first");
+                if(tour.Language == "SERBIAN")
+                { i++; }
+                Text = i;
+
             }
         }
 
-        public RelayCommand TourButtonCommand
+        private void SpanishCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "SPANISH")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void EnglishCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "ENGLISH")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void NorwegianCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Language == "NORWEGIAN")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void OsloCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Oslo")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void MadridCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Madrid")
+                { i++; }
+            }
+            Text = i;
+
+        }
+
+        private void BarcelonaCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Barcelona")
+                { i++; }
+            }
+            Text = i;
+        }
+
+        private void AlesundCommandExecute()
+        {
+            var tours = tourRequestService.GetAll();
+            int i = 0;
+            foreach (TourRequest tour in tours)
+            {
+                if (tour.Location.city == "Alesund")
+                { i++; }
+            }
+            Text = i;
+        }
+
+        public RelayCommand OsloCommand
         {
             get
             {
-                if (tourButtonCommand == null)
+                if (osloCommand == null)
                 {
-                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
+                    osloCommand = new RelayCommand(param => OsloCommandExecute());
                 }
 
-                return tourButtonCommand;
+                return osloCommand;
+            }
+        }
+        public RelayCommand MadridCommand
+        {
+            get
+            {
+                if (madridCommand == null)
+                {
+                    madridCommand = new RelayCommand(param => MadridCommandExecute());
+                }
+
+                return madridCommand;
+            }
+        }
+
+        public RelayCommand BarcelonaCommand
+        {
+            get
+            {
+                if (barcelonaCommand == null)
+                {
+                    barcelonaCommand = new RelayCommand(param => BarcelonaCommandExecute());
+                }
+
+                return barcelonaCommand;
+            }
+
+        }
+
+        public RelayCommand AlesundCommand
+        {
+            get
+            {
+                if (alesundCommand == null)
+                {
+                    alesundCommand = new RelayCommand(param => AlesundCommandExecute());
+                }
+
+                return alesundCommand;
+            }
+        }
+
+
+        public RelayCommand SerbianCommand
+        {
+            get
+            {
+                if (serbianCommand == null)
+                {
+                    serbianCommand = new RelayCommand(param => SerbianCommandExecute());
+                }
+
+                return serbianCommand;
+            }
+        }
+
+        public RelayCommand SpanishCommand
+        {
+            get
+            {
+                if (spanishCommand == null)
+                {
+                    spanishCommand = new RelayCommand(param => SpanishCommandExecute());
+                }
+
+                return spanishCommand;
+            }
+                
+        }
+
+        public RelayCommand EnglishCommand
+        {
+            get
+            {
+                if (englishCommand == null)
+                {
+                    englishCommand = new RelayCommand(param => EnglishCommandExecute());
+                }
+
+                return englishCommand;
+            }
+        }
+
+        public RelayCommand NorwegianCommand
+        {
+            get
+            {
+                if (norwegianCommand == null)
+                {
+                    norwegianCommand = new RelayCommand(param => NorwegianCommandExecute());
+                }
+
+                return norwegianCommand;
             }
         }
 
@@ -301,25 +474,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
             }
         }
-        public bool IsDarkTheme
+
+        public int Text
         {
-            get { return isDarkTheme; }
+            get { return text; }
             set
             {
-                isDarkTheme = value;
-                
-                OnPropertyChanged(nameof(IsDarkTheme));
-
-            }
-        }
-
-        public ResourceDictionary Theme
-        {
-            get { return _theme; }
-            set
-            {
-                _theme = value;
-                OnPropertyChanged(nameof(Theme));
+                text = value;
+                OnPropertyChanged(nameof(Text));
 
             }
         }
@@ -457,6 +619,14 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         }
 
-
+        public double Rating
+        {
+            get { return rating; }
+            set
+            {
+                rating = value;
+                OnPropertyChanged(nameof(Rating));
+            }
+        }
     }
 }

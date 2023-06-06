@@ -1,4 +1,4 @@
-﻿<Page x:Class="projekatSIMS.UI.Dialogs.View.TourGuideView.TourGuideHomePageView"
+﻿<Page x:Class="projekatSIMS.UI.Dialogs.View.TourGuideView.TourGuideTourStatsPageView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:projekatSIMS.UI.Dialogs.View.TourGuideView"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="TourGuideHomePageView">
+      Title="TourGuideTourStatsPageView">
+
     <Page.Resources>
         <ResourceDictionary Source="Theme/Dark.xaml"/>
     </Page.Resources>
@@ -34,68 +35,65 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Left" Width="780" Height="764" VerticalAlignment="Center" >
                     <Grid>
-                        <Rectangle Fill="{DynamicResource TextBoxColor}" Stroke="Black" Margin="102,123,524,489" RadiusX="10" RadiusY="10">
-
-                        </Rectangle>
-                        <Ellipse HorizontalAlignment="Left" Height="100" Margin="127,134,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-64.png" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Label Content="Uros Lohinski"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="121,239,0,0" VerticalAlignment="Top" Height="25"/>
-                        <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,276,524,336" RadiusX="10" RadiusY="10">
-
-                        </Rectangle>
-                        <Label Content="Best Tour"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="140,280,0,0" VerticalAlignment="Top" Height="34"/>
-
-                        <Label Content="{Binding Name}"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="154,304,0,0" VerticalAlignment="Top" Height="34" Width="52"/>
-
-                        <Label Content="Number of Guests"  FontFamily="Oswald" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="105,331,0,0" VerticalAlignment="Top" Height="34"/>
-                        <Label Content="{Binding MaximumNumberOfGuests}"  FontFamily="Oswald" FontWeight="Bold"  Foreground="{DynamicResource TextColor}" FontSize="16" HorizontalAlignment="Left" Margin="162,0,0,0" VerticalAlignment="Center" Height="34" Width="30"/>
 
 
-                        <Rectangle Fill="{DynamicResource TextBoxColor}"  Stroke="Black" Margin="102,429,524,183" RadiusX="10" RadiusY="10">
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="100,429,520,260" CornerRadius="10" >
 
-                        </Rectangle>
-
-
-                        <Border  Background="{DynamicResource TextBoxColor}" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="256,123,119,336" CornerRadius="10">
-                            <Grid Background="{DynamicResource TextBoxColor}">
-                                <Label Content="Working Status: Active" VerticalContentAlignment="Center" Foreground="{DynamicResource TextColor}" Margin="10,241,9,9"/>
-                                <Button Background="{DynamicResource TextBoxColor}" Command="{Binding QuitCommand}" Margin="308,241,9,9"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Quit" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding SerbianCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Serbian" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
-                        </Grid>
                         </Border>
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="100,429,520,183" CornerRadius="10" >
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="100,505,520,183" CornerRadius="10" >
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding StatsCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Tour Stats" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding OsloCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Oslo" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
                         </Border>
 
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="507,429,119,183" CornerRadius="10" >
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="507,505,119,183" CornerRadius="10" >
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding MyToursCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="My Tours" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding AlesundCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Alesund" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
                         </Border>
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,429,275,260" CornerRadius="10" >
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="507,429,119,260" CornerRadius="10" >
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding LocationCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Location" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding EnglishCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="English" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
                         </Border>
 
-                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,505,275,183" CornerRadius="10" >
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="380,429,275,260" CornerRadius="10" >
 
-                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding LanguageCommand}"  >
-                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Language" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding SpanishCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Spanish" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
                             </Button>
                         </Border>
+
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,429,400,260" CornerRadius="10" >
+
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding NorwegianCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Norwegian" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            </Button>
+                        </Border>
+
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="260,505,400,183" CornerRadius="10" >
+
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding MadridCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Madrid" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            </Button>
+                        </Border>
+
+                        <Border Background="{DynamicResource TextBoxColor}" BorderThickness="1,1,1,1" BorderBrush="Black" Margin="380,505,275,183" CornerRadius="10" >
+
+                            <Button Background="{DynamicResource TextBoxColor}" Command="{Binding BarcelonaCommand}"  >
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Barcelona" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold"/>
+                            </Button>
+                        </Border>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding Text}" Foreground="{DynamicResource TextColor}" FontSize="26" FontWeight="Bold" Margin="310,367,0,0"/>
 
                     </Grid>
                 </Border>

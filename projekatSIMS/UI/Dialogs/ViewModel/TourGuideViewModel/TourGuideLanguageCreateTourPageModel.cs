@@ -5,16 +5,13 @@ using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideAllToursPageModel : ViewModelBase
+    internal class TourGuideLanguageCreateTourPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -158,11 +155,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         #endregion
 
-        private string id;
+
+        private int id;
         private string name;
         private string country;
         private string city;
-        private DateTime startingDate;
+        private string startingDate;
         private string time;
         private string maxNumberOfGuests;
         private string duration;
@@ -171,8 +169,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private bool isDarkTheme;
-        public ResourceDictionary _theme;
+        private Language lang;
 
         private Tour selectedTour;
 
@@ -183,67 +180,72 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourReservationService tourReservationService;
         private VoucherService voucherService;
         private UserService userService;
+        private TourRequestService tourRequestService;
 
-        private RelayCommand tourButtonCommand;
-        
-        public ICommand ToggleThemeCommand { get; }
+        private RelayCommand createTour;
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-       
-
-        public TourGuideAllToursPageModel()
+        public TourGuideLanguageCreateTourPageModel()
         {
-            ToggleThemeCommand = new RelayCommand(ToggleTheme);
-            // Initialize the Theme property with the default theme
-            Theme = new ResourceDictionary { Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute) };
             SetService();
-            var tours = tourService.GetAll();
-
-
-            
-
-            foreach (Tour tour in tours)
+            var tours = tourRequestService.GetAll();
+            int english =   0;
+            int serbian =   0;
+            int spanish =   0;
+            int norwegian = 0;
+            DateTime oneYearAgo = DateTime.Now.AddDays(-365);
+            foreach (TourRequest tour in tours)
             {
+                if (tour.StartDate >= oneYearAgo) {
+                    if (tour.Language == "ENGLISH")
+                    {
+                        english++;
+                    }
 
-                if (tour.GetType() == typeof(Tour))
-                {
-                    // The object is of type Tour
-                     Tours.Add(tour);
+                    if (tour.Language == "SERBIAN")
+                    {
+                        serbian++;
+                    }
+
+                    if (tour.Language == "SPANISH")
+                    {
+                        spanish++;
+                    }
+
+                    if (tour.Language == "NORWEGIAN")
+                    {
+                        norwegian++;
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Nije tipa tour");
-                }
-                
-                
-               // Name = tour.Name;
-               // Description = tour.Description;
-                
+            }
+
+            if(english >= serbian && english >= spanish && english >= norwegian)
+            {
+                Lang = Language.ENGLISH;
+            }
+
+            if (serbian >= english && serbian >= spanish && serbian >= norwegian)
+            {
+                Lang = Language.SERBIAN;
+            }
+
+            if (spanish >= english && spanish >= serbian && spanish >= norwegian)
+            {
+                Lang = Language.SPANISH;
+            }
+
+            if (norwegian >= english && norwegian >= serbian && norwegian >= spanish)
+            {
+                Lang = Language.NORWEGIAN;
             }
 
 
 
 
 
-        }
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
-        private void ToggleTheme(Object parameter)
-        {
-            if (IsDarkTheme)
-                IsDarkTheme = false;
-            else
-                IsDarkTheme = true;
 
-            if (IsDarkTheme)
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
-            else
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
         }
 
         public void SetService()
@@ -253,31 +255,76 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             tourReservationService = new TourReservationService();
             voucherService = new VoucherService();
             userService = new UserService();
+            tourRequestService = new TourRequestService();
         }
 
-        private void TourButtonCommandExecute()
+        private void CreateTourExecute()
         {
-            if (selectedTour != null)
+            #region create tour
+            TourService tourService = new TourService();
+            KeyPointsService keyPointsService = new KeyPointsService();
+            Tour newTour = new Tour();
+            newTour.Id = 15;
+            newTour.Name = Name;
+            newTour.Location.Country = Country;
+            newTour.Location.City = City;
+            newTour.Language = Lang;
+            newTour.StartingDate = DateTime.Parse(StartingDate);
+            newTour.StartingTime = Time;
+            newTour.MaxNumberOfGuests = int.Parse(MaximumNumberOfGuests);
+            newTour.Duration = int.Parse(Duration);
+            newTour.Description = Description;
+            newTour.GuestNumber = 22;
+            newTour.AssociatedTourGuide = 0;
+
+            //////
+            string i = KeyPointId;
+            string j = KeyPointName;
+            string[] keyId = i.Split(' ');
+            string[] keyName = j.Split(' ');
+            int k = 0;
+
+
+
+
+            foreach (var word in keyId)
             {
-                TourGuideMainWindow.navigationService.Navigate(
-                    new TourGuideMyAllToursPageView(selectedTour));
+
+
+                if (word == "x")
+                {
+                    break;
+                }
+                KeyPoints key = new KeyPoints();
+                key.Id = int.Parse(word);
+                key.Name = keyName[k];
+                key.IsActive = false;
+                key.AssociatedTour = 15;
+                newTour.KeyPoints.Add(key);
+                keyPointsService.Add(key);
+                k++;
             }
-            else
-            {
-                MessageBox.Show("Please select a tour first");
-            }
+
+
+
+            //////
+            ///
+            tourService.Add(newTour);
+            #endregion
+            TourGuideMainWindow.navigationService.Navigate(
+               new Uri("UI/Dialogs/View/TourGuideView/TourGuideAllToursPageView.xaml", UriKind.Relative));
         }
 
-        public RelayCommand TourButtonCommand
+        public RelayCommand CreateTour
         {
             get
             {
-                if (tourButtonCommand == null)
+                if (createTour == null)
                 {
-                    tourButtonCommand = new RelayCommand(param => TourButtonCommandExecute());
+                    createTour = new RelayCommand(param => CreateTourExecute());
                 }
 
-                return tourButtonCommand;
+                return createTour;
             }
         }
 
@@ -301,29 +348,18 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
             }
         }
-        public bool IsDarkTheme
+
+        public Language Lang
         {
-            get { return isDarkTheme; }
+            get { return lang; }
             set
             {
-                isDarkTheme = value;
-                
-                OnPropertyChanged(nameof(IsDarkTheme));
+                lang = value;
+                OnPropertyChanged(nameof(Lang));
 
             }
         }
-
-        public ResourceDictionary Theme
-        {
-            get { return _theme; }
-            set
-            {
-                _theme = value;
-                OnPropertyChanged(nameof(Theme));
-
-            }
-        }
-        public string Id
+        public int Id
         {
             get { return id; }
             set
@@ -369,7 +405,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         }
 
 
-        public DateTime StartingDate
+        public string StartingDate
         {
             get { return startingDate; }
             set
@@ -456,7 +492,5 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         }
-
-
     }
 }

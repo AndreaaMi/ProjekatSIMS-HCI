@@ -5,16 +5,13 @@ using projekatSIMS.UI.Dialogs.View.TourGuideView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideAllToursPageModel : ViewModelBase
+    internal class TourGuideMyToursPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -157,7 +154,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         #endregion
-
         private string id;
         private string name;
         private string country;
@@ -171,9 +167,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string keyPointName;
         private List<KeyPoints> keyPoints;
 
-        private bool isDarkTheme;
-        public ResourceDictionary _theme;
-
         private Tour selectedTour;
 
         private ObservableCollection<Tour> tours = new ObservableCollection<Tour>();
@@ -185,65 +178,32 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private UserService userService;
 
         private RelayCommand tourButtonCommand;
-        
-        public ICommand ToggleThemeCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-       
-
-        public TourGuideAllToursPageModel()
+        public TourGuideMyToursPageModel()
         {
-            ToggleThemeCommand = new RelayCommand(ToggleTheme);
-            // Initialize the Theme property with the default theme
-            Theme = new ResourceDictionary { Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute) };
             SetService();
             var tours = tourService.GetAll();
-
-
             
+
+
 
             foreach (Tour tour in tours)
             {
+                if (tour.StartingDate < DateTime.Today && tour.AssociatedTourGuide == 4)
+                {
+                    Tours.Add(tour);
+                }
+                
+                // Name = tour.Name;
+                // Description = tour.Description;
 
-                if (tour.GetType() == typeof(Tour))
-                {
-                    // The object is of type Tour
-                     Tours.Add(tour);
-                }
-                else
-                {
-                    MessageBox.Show("Nije tipa tour");
-                }
-                
-                
-               // Name = tour.Name;
-               // Description = tour.Description;
-                
             }
+            
 
 
 
 
-
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void ToggleTheme(Object parameter)
-        {
-            if (IsDarkTheme)
-                IsDarkTheme = false;
-            else
-                IsDarkTheme = true;
-
-            if (IsDarkTheme)
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
-            else
-                Theme.Source = new Uri("C:\\Users\\Korisnik\\OneDrive - Univerzitet u Novom Sadu\\Desktop\\simshci\\projekatSIMSHCI\\projekatSIMS\\UI\\Dialogs\\View\\TourGuideView\\Theme\\Light.xaml", UriKind.RelativeOrAbsolute);
         }
 
         public void SetService()
@@ -257,15 +217,15 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-            if (selectedTour != null)
-            {
-                TourGuideMainWindow.navigationService.Navigate(
-                    new TourGuideMyAllToursPageView(selectedTour));
-            }
-            else
-            {
-                MessageBox.Show("Please select a tour first");
-            }
+            //  if (selectedTour != null)
+            // {
+            TourGuideMainWindow.navigationService.Navigate(
+                new TourGuideMyTourSinglePageView(selectedTour));
+            //   }
+            //  else
+            //  {
+            //     MessageBox.Show("eeeeeeeeeeeee");
+            // }
         }
 
         public RelayCommand TourButtonCommand
@@ -298,28 +258,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 selectedTour = value;
                 OnPropertyChanged(nameof(SelectedTour));
-
-            }
-        }
-        public bool IsDarkTheme
-        {
-            get { return isDarkTheme; }
-            set
-            {
-                isDarkTheme = value;
-                
-                OnPropertyChanged(nameof(IsDarkTheme));
-
-            }
-        }
-
-        public ResourceDictionary Theme
-        {
-            get { return _theme; }
-            set
-            {
-                _theme = value;
-                OnPropertyChanged(nameof(Theme));
 
             }
         }
@@ -456,7 +394,5 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
 
         }
-
-
     }
 }
