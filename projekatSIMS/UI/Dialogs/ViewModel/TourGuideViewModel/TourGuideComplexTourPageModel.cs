@@ -9,11 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 {
-    internal class TourGuideTourRequestsPageModel : ViewModelBase
+    internal class TourGuideComplexTourPageModel : ViewModelBase
     {
         #region SIDE BAR
         private RelayCommand profilePageCommand;
@@ -189,21 +188,21 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private TourRequestService tourRequestService;
 
         private RelayCommand tourButtonCommand;
-        private RelayCommand tourComplexCommand;
+        
 
         private RelayCommand fLanguageCommand;
         private RelayCommand fDateCommand;
         private RelayCommand fNumberCommand;
         private RelayCommand fLocationCommand;
-        
 
 
-        public TourGuideTourRequestsPageModel()
+
+        public TourGuideComplexTourPageModel()
         {
             SetService();
             var tours = tourService.GetAll();
             var tourr = tourRequestService.GetAll();
-            
+
             int i = 15;
 
 
@@ -266,106 +265,88 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
         private void TourButtonCommandExecute()
         {
-              var tours = tourRequestService.GetAll();
-              if (selectedTour != null)
-              {
-                 foreach(TourRequest tour in tours)
+            var tours = tourRequestService.GetAll();
+            if (selectedTour != null)
+            {
+                foreach (TourRequest tour in tours)
                 {
-                    if(tour.Description == selectedTour.Description)
+                    if (tour.Description == selectedTour.Description)
                     {
                         tour.Date = FDate;
                         tour.Status = TourRequestStatus.ACCEPTED;
                         tourRequestService.Edit(tour);
                     }
                 }
-              }
-              else
-              {
-                 MessageBox.Show("eeeeeeeeeeeee");
-              }
+            }
+            else
+            {
+                MessageBox.Show("eeeeeeeeeeeee");
+            }
         }
 
         private void FLanguageCommandExecute()
         {
-           /*
-            Tours.Clear();
-            var tours = tourService.GetAll();
-            var tourr = tourRequestService.GetAll();
+            /*
+             Tours.Clear();
+             var tours = tourService.GetAll();
+             var tourr = tourRequestService.GetAll();
 
-            int i = 15;
-            foreach (TourRequest tour in tourr)
-            {
-                Tour tour1 = new Tour();
-                if (tour.Id <4)
-                {
-                    tour1.Id = i;
-                    tour1.AssociatedTourGuide = 0;
-                    tour1.Duration = 2;
-                    tour1.GuestNumber = 0;
-                    tour1.MaxNumberOfGuests = tour.GuestNumber;
-                    tour1.Description = tour.Description;
-                    if (tour.Language == "ENGLISH")
-                    {
-                        tour1.Language = Language.ENGLISH;
-                    }
-                    if (tour.Language == "SERBIAN")
-                    {
-                        tour1.Language = Language.SERBIAN;
-                    }
-                    if (tour.Language == "SPANISH")
-                    {
-                        tour1.Language = Language.SPANISH;
-                    }
-                    if (tour.Language == "NORWEGIAN")
-                    {
-                        tour1.Language = Language.NORWEGIAN;
-                    }
-                    tour1.Location = tour.Location;
-                    tour1.Name = "Tura" + i.ToString();
-                    Date = tour.StartDate.Date.ToString("dd.MM.yyyy") + "--" + tour.EndDate.Date.ToString("dd.MM.yyyy");
-                    Tours.Add(tour1);
-                    i++;
-                }
+             int i = 15;
+             foreach (TourRequest tour in tourr)
+             {
+                 Tour tour1 = new Tour();
+                 if (tour.Id <4)
+                 {
+                     tour1.Id = i;
+                     tour1.AssociatedTourGuide = 0;
+                     tour1.Duration = 2;
+                     tour1.GuestNumber = 0;
+                     tour1.MaxNumberOfGuests = tour.GuestNumber;
+                     tour1.Description = tour.Description;
+                     if (tour.Language == "ENGLISH")
+                     {
+                         tour1.Language = Language.ENGLISH;
+                     }
+                     if (tour.Language == "SERBIAN")
+                     {
+                         tour1.Language = Language.SERBIAN;
+                     }
+                     if (tour.Language == "SPANISH")
+                     {
+                         tour1.Language = Language.SPANISH;
+                     }
+                     if (tour.Language == "NORWEGIAN")
+                     {
+                         tour1.Language = Language.NORWEGIAN;
+                     }
+                     tour1.Location = tour.Location;
+                     tour1.Name = "Tura" + i.ToString();
+                     Date = tour.StartDate.Date.ToString("dd.MM.yyyy") + "--" + tour.EndDate.Date.ToString("dd.MM.yyyy");
+                     Tours.Add(tour1);
+                     i++;
+                 }
 
 
-               
 
-            }
-           */
+
+             }
+            */
 
         }
         private void FDateCommandExecute()
         {
-            
+
         }
         private void FNumberCommandExecute()
         {
-            
+
         }
         private void FLocationCommandExecute()
         {
-            
+
         }
 
-        private void TourComplexCommandExecute()
-        {
-
-            TourGuideMainWindow.navigationService.Navigate(
-                new Uri("UI/Dialogs/View/TourGuideView/TourGuideComplexTourPageView.xaml", UriKind.Relative));
-        }
-
-        public RelayCommand TourComplexCommand
-        {
-            get
-            {
-                if (tourComplexCommand == null)
-                {
-                    tourComplexCommand = new RelayCommand(param => TourComplexCommandExecute());
-                }
-
-                return tourComplexCommand;
-            }
-        }
+        
 
         public RelayCommand FDateCommand
         {

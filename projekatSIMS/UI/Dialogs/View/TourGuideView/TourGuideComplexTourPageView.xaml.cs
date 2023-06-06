@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -18,19 +17,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.TourGuideView
 {
     /// <summary>
-    /// Interaction logic for TourGuideAllToursPageView.xaml
+    /// Interaction logic for TourGuideComplexTourPageView.xaml
     /// </summary>
-    public partial class TourGuideAllToursPageView : Page
+    public partial class TourGuideComplexTourPageView : Page
     {
-        
-        public TourGuideAllToursPageView()
+        public TourGuideComplexTourPageView()
         {
             InitializeComponent();
-            DataContext = new TourGuideAllToursPageModel();
-            
+            DataContext = new TourGuideComplexTourPageModel();
         }
-        
-       
-
     }
 }
