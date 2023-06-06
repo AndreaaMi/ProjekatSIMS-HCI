@@ -8,10 +8,6 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-    <Window.DataContext>
-        <guestviewmodel:GuestMainViewModel/>
-    </Window.DataContext>
-
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial"/>
@@ -56,12 +52,12 @@
                                                 <Style TargetType="{x:Type TextBlock}">
                                                     <Style.Triggers>
                                                         <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Foreground" Value="#F5F5F5"/>
+                                                            <Setter Property="Foreground" Value="#497563"/>
                                                             <Setter Property="Background" Value="#7FB685"/>
                                                         </Trigger>
                                                         <Trigger Property="IsMouseOver" Value="True">
                                                             <Setter Property="Background" Value="#7FB685"/>
-                                                            <Setter Property="Foreground" Value="#F5F5F5"/>
+                                                            <Setter Property="Foreground" Value="#497563"/>
                                                         </Trigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -89,39 +85,21 @@
                     </Style>
                 </StackPanel.Resources>
 
-                <RadioButton Content="ACOMMODATIONS" GroupName="accommodations" FontWeight="Bold"
-        FontFamily="Bahnschrift" FontSize="24" Checked="RadioButton_Checked" Command="{Binding ShowAllAccommodationsCommand}"></RadioButton>
-                <RadioButton Content="ANYTIME / ANYWHERE"  FontWeight="Bold"
-        FontFamily="Bahnschrift" FontSize="24" Command="{Binding ShowAnywhereAnytimeViewCommand}">
+                <RadioButton Content="Reservations" GroupName="accommodations" FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowActiveReservationCommand}"></RadioButton>
+                <RadioButton Content="All Accommodations"  FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowAllAccommodationsCommand}">
                 </RadioButton>
-                <RadioButton Content="FORUM"  FontWeight="Bold"
-        FontFamily="Bahnschrift" FontSize="24">
+                <RadioButton Content="Anytime / Anywhere"  Command="{Binding ShowAnywhereAnytimeViewCommand}" FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="30">
+                </RadioButton>
+                <RadioButton Content="Forum"  FontWeight="Bold"
+        FontFamily="Bahnschrift" FontSize="30" Command="{Binding ShowForumCommand}">
                 </RadioButton>
 
-                <Button Content="LOGOUT" FontSize="20" Margin="0,20,0,0" Foreground="#244035"
-        BorderThickness="1" BorderBrush="#244035"
-        Background ="Transparent" Width="287" Height="43"  FontWeight="Bold"
-        FontFamily="Bahnschrift" Command="{Binding LogoutCommand}"
-CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Click="Button_Click_1">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="3" BorderBrush="#244035">
-                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button FontSize="38" Margin="0,460,0,0" Height="83" Width="286"
+                <Button FontSize="38" Margin="0,430,0,0" Height="83" Width="246"
         BorderThickness="1" BorderBrush="#426A5A" HorizontalAlignment="Center"
-        Background="Black" Click="Button_Click">
+        Background="Black" Command="{Binding PlayDemoCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="3" Background="#426A5A">
@@ -132,16 +110,16 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#85BC8B"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
-                    <Label Content="PLAY DEMO" Width="209" Height="52"
-        FontFamily="Bahnschrift" Foreground="#244035" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="38"/>
+                    <Label Content="Demo" Width="120" Height="52" Margin="30,0,0,3"
+        FontFamily="Bahnschrift" Foreground="#244035" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="42" FontWeight="Bold"/>
                 </Button>
 
             </StackPanel>
@@ -211,7 +189,7 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowNewUserControlCommand}" Padding="0">
+                <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowGuestPageRequestCommand}" Padding="0">
                     <Button.Resources>
                         <Style TargetType="{x:Type fa:ImageAwesome}">
                             <Setter Property="Foreground" Value="#244035" />
@@ -243,7 +221,7 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                     </Button.Template>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowNewUserControlCommand}" Padding="0">
+                <Button Background="Transparent" BorderThickness="0" Height="100" Width="100" Command="{Binding ShowGuestPageBonusCommand}" Padding="0">
                     <Button.Resources>
                         <Style TargetType="{x:Type fa:ImageAwesome}">
                             <Setter Property="Foreground" Value="#244035" />
@@ -274,24 +252,23 @@ CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type W
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="ACTIVE  RESERVATIONS" 
+                <Button Content="Logout" 
         Margin="15,30,0,30" 
-        Width="260"
-        Height="100"
-        Foreground="#244035"
-        FontSize="20"
-        Background="Transparent"
+        Width="250"
+        Height="60"
+        Foreground="#426A5A"
+        FontSize="24"
         FontWeight="Bold"
         FontFamily="Bahnschrift"
-        Command="{Binding ShowActiveReservationCommand}">
+        Command="{Binding LogoutCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" BorderThickness="6.5" BorderBrush="#244035">
+                            <Border x:Name="ActiveReservationsButton" CornerRadius="5" Background="#244035">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>
+                                    <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter TargetName="ActiveReservationsButton" Property="Background" Value="#497563"/>

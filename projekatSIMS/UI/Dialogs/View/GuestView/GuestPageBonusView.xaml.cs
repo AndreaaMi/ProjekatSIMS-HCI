@@ -1,4 +1,4 @@
-﻿using projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel;
+﻿using projekatSIMS.UI.Dialogs.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +17,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.GuestView
 {
     /// <summary>
-    /// Interaction logic for ActiveReservationsView.xaml
+    /// Interaction logic for GuestPageBonusView.xaml
     /// </summary>
-    public partial class ActiveReservationsView : UserControl
+    public partial class GuestPageBonusView : UserControl
     {
-        public ActiveReservationsView()
+        public GuestPageBonusView()
         {
             InitializeComponent();
-            DataContext = new ActiveReservationsViewModel();
-
+            DataContext = new GuestPageBonusViewModel();
         }
     }
 }

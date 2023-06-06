@@ -1,0 +1,5 @@
+0|Andrea|Sofia|What are the must-visit attractions in Sofia?|False|
+1|Andrea|Sofia|Can you recommend any good restaurants in Sofia?|False|
+2|Vlatko|Berlin|What are some hidden gems in Berlin that tourists often miss?|True|
+3|Andrea|Paris|What are the best neighborhoods to explore in Paris?|True|
+4|Ana|Amsterdam|What are some fun outdoor activities to do in Amsterdam?|True|

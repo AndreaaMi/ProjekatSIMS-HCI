@@ -31,6 +31,8 @@ namespace projekatSIMS.Model
         private List<Entity> tourRatings = new List<Entity>();
         private List<Entity> accommodationRenovationRecommendation = new List<Entity>();
         private List<Entity> tourRequests = new List<Entity>();
+        private List<Entity> forums = new List<Entity>();
+        private List<Entity> forumComments = new List<Entity>();
 
         private User loginUser = null;
 
@@ -63,7 +65,8 @@ namespace projekatSIMS.Model
             GenericSave(tourRatings, "tourRatings.txt");
             GenericSave(accommodationRenovationRecommendation, "accommodation_renovation_recommendation.txt");
             GenericSave(tourRequests, "tourRequests.txt");
-
+            GenericSave(forums, "forum.txt");
+            GenericSave(forumComments, "forum_comments.txt");
         }
 
         public void GenericSave(List<Entity> entitites, string fileName) //Prosledis sta sejvujes i gde sejvujes
@@ -96,6 +99,9 @@ namespace projekatSIMS.Model
             GenericLoad(tourRatings, "tourRatings.txt", typeof(TourRating));
             GenericLoad(accommodationRenovationRecommendation, "accommodation_renovation_recommendation.txt", typeof(AccommodationRenovationRecommendation));
             GenericLoad(tourRequests,"tourRequests.txt",typeof(TourRequest));
+            GenericLoad(forums, "forum.txt", typeof(Forum));
+            GenericLoad(forumComments, "forum_comments.txt", typeof(ForumComment));
+
         }
 
         public void GenericLoad(List<Entity> entities, string fileName, Type type)
@@ -179,6 +185,18 @@ namespace projekatSIMS.Model
                 if (type == typeof(TourRequest))
                 {
                     TourRequest newEntity = new TourRequest();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+                if (type == typeof(Forum))
+                {
+                    Forum newEntity = new Forum();
+                    newEntity.ImportFromString(parts);
+                    entities.Add(newEntity);
+                }
+                if (type == typeof(ForumComment))
+                {
+                    ForumComment newEntity = new ForumComment();
                     newEntity.ImportFromString(parts);
                     entities.Add(newEntity);
                 }
@@ -266,6 +284,16 @@ namespace projekatSIMS.Model
                 tourRequests = entities;
                 return;
             }
+            if (type == typeof(Forum))
+            {
+                forums = entities;
+                return;
+            }
+            if (type == typeof(ForumComment))
+            {
+                forumComments = entities;
+                return;
+            }
         }
 
         public List<Entity> GetAllEntitiesOfType(Type type) //Vraca celu listu entiteta 
@@ -321,6 +349,14 @@ namespace projekatSIMS.Model
             if (type == typeof(TourRequest))
             {
                 return tourRequests;
+            }
+            if (type == typeof(Forum))
+            {
+                return forums;
+            }
+            if (type == typeof(ForumComment))
+            {
+                return forumComments;
             }
 
             return null; //Mora jedan biti default return
@@ -407,6 +443,17 @@ namespace projekatSIMS.Model
         {
             get { return tourRequests; }
             set { tourRequests = value; }
+        }
+
+        public List<Entity> Forums
+        {
+            get { return forums; }
+            set { forums = value; }
+        }
+        public List<Entity> ForumComments
+        {
+            get { return forumComments; }
+            set { forumComments = value; }
         }
 
     }

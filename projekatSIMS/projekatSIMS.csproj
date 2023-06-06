@@ -68,6 +68,8 @@
     <Compile Include="Model\AccommodationReservation.cs" />
     <Compile Include="Model\AccommodationType.cs" />
     <Compile Include="Model\AvailableDate.cs" />
+    <Compile Include="Model\Forum.cs" />
+    <Compile Include="Model\ForumComment.cs" />
     <Compile Include="Model\GuestReview.cs" />
     <Compile Include="Model\KeyPoints.cs" />
     <Compile Include="Model\Language.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="Repository\AccommodationRenovationRecommendationRepository.cs" />
     <Compile Include="Repository\AccommodationRepository.cs" />
     <Compile Include="Repository\AccommodationReservationRepository.cs" />
+    <Compile Include="Repository\ForumCommentRepository.cs" />
+    <Compile Include="Repository\ForumRepository.cs" />
     <Compile Include="Repository\GuestReviewRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IVoucherRepository.cs" />
@@ -105,6 +109,8 @@
     <Compile Include="Service\AccommodationRenovationRecommendationService.cs" />
     <Compile Include="Service\AccommodationReservationService.cs" />
     <Compile Include="Service\AccommodationService.cs" />
+    <Compile Include="Service\ForumCommentService.cs" />
+    <Compile Include="Service\ForumService.cs" />
     <Compile Include="Service\GuestReviewService.cs" />
     <Compile Include="Service\KeyPointsService.cs" />
     <Compile Include="Service\ReservationRescheduleRequestService.cs" />
@@ -114,6 +120,9 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\VoucherService.cs" />
     <Compile Include="UI\Dialogs\Model\ComboBoxData.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ForumCommentsViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ForumViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestPageBonusViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\DisplayReviewsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\ActiveReservationsHelpViewModel.cs" />
@@ -121,6 +130,7 @@
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AllAccommodationsViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AnywhereAnytimeHelpViewModel.cs.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\AnywhereAnytimeViewModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestPageRequestViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\GuestPageViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationHelpViewModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\GuestViewModel\NewReservationViewModel.cs" />
@@ -179,8 +189,20 @@
     <Compile Include="UI\Dialogs\View\GuestView\DisplayReviewsView.xaml.cs">
       <DependentUpon>DisplayReviewsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\ForumCommentsView.xaml.cs">
+      <DependentUpon>ForumCommentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\ForumView.xaml.cs">
+      <DependentUpon>ForumView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\GuestMainView.xaml.cs">
       <DependentUpon>GuestMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\GuestPageBonusView.xaml.cs">
+      <DependentUpon>GuestPageBonusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\GuestView\GuestPageRequestView.xaml.cs">
+      <DependentUpon>GuestPageRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\GuestView\NewReservationHelpView.xaml.cs">
       <DependentUpon>NewReservationHelpView.xaml</DependentUpon>
@@ -340,7 +362,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\View\GuestView\ForumCommentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\ForumView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\View\GuestView\GuestMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\GuestPageBonusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\GuestView\GuestPageRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -580,6 +618,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\TouristImages\profile_picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\forum.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data\forum_comments.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,21 +2,19 @@
 using projekatSIMS.Model;
 using projekatSIMS.Service;
 using projekatSIMS.UI.Dialogs.View.GuestView;
-using projekatSIMS.UI.Dialogs.View.TouristView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Xml.Linq;
+using System.Windows;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
-    public class GuestPageViewModel : ViewModelBase
+    public class GuestPageRequestViewModel : ViewModelBase
     {
         private UserControl _selectedView;
 
@@ -47,8 +45,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 
         public UserService userService;
 
-        public GuestPageViewModel()
-        {   
+        public GuestPageRequestViewModel()
+        {
 
             userService = new UserService();
             userId = userService.GetCurrentUserId();
@@ -63,28 +61,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             IsRatedSelected = false;
             userService.UpdateSuperGuestStatus(userId, ReservationCount);
 
-        }
-
-        private string errorLabel;
-        public string ErrorLabel
-        {
-            get { return errorLabel; }
-            set
-            {
-                errorLabel = value;
-                OnPropertyChanged(nameof(ErrorLabel));
-            }
-        }
-
-        private string successLabel;
-        public string SuccessLabel
-        {
-            get { return successLabel; }
-            set
-            {
-                successLabel = value;
-                OnPropertyChanged(nameof(SuccessLabel));
-            }
         }
 
         private bool isRatedSelected;
@@ -261,7 +237,29 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 SuccessLabel = "";
             }
 
-            LoadData();
+        }
+
+        private string errorLabel;
+        public string ErrorLabel
+        {
+            get { return errorLabel; }
+            set
+            {
+                errorLabel = value;
+                OnPropertyChanged(nameof(ErrorLabel));
+            }
+        }
+
+        private string successLabel;
+        public string SuccessLabel
+        {
+            get { return successLabel; }
+            set
+            {
+                successLabel = value;
+                OnPropertyChanged(nameof(SuccessLabel));
+            }
         }
     }
 }
+

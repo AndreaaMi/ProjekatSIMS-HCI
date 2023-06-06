@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using System.Xml.Serialization;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
@@ -20,7 +21,6 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
     public class ActiveReservationsViewModel : ViewModelBase
     {
         private UserControl _selectedView;
-
         public UserControl SelectedView
         {
             get { return _selectedView; }
@@ -48,22 +48,22 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
         public ObservableCollection<AccommodationReservation> Reservations { get; set; }
         public AccommodationReservation SelectedReservation { get; set; }
 
+        
         public ICommand CancelReservationCommand { get; set; }
-        public ActiveReservationsViewModel()
-        {
+        public ActiveReservationsViewModel() 
+        { 
             accommodationService = new AccommodationService();
             accommodationReservationService = new AccommodationReservationService();
 
             Reservations = new ObservableCollection<AccommodationReservation>();
 
             BackCommand = new RelayCommand(BackControl);
+            CancelReservationCommand = new RelayCommand(CancelReservation);
             ShowActiveReservationsHelpCommand = new RelayCommand(ShowActiveReservationsHelpControl);
             ShowNewDateRequestCommand = new RelayCommand(ShowNewDateRequestControl);
             ShowNewReservationsCommand = new RelayCommand(ShowNewReservations);
             SetService();
             LoadData();
-
-            CancelReservationCommand = new RelayCommand(CancelReservation);
         }
 
         private void LoadData()
@@ -112,6 +112,23 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             SuccessMessage = "Reservation canceled successfully";
 
             LoadData();
+        }
+        public void ExecuteDemoStep()
+        {
+            // Izvršavanje bitnih funkcionalnosti tokom demo-a za ActiveReservationsViewModel
+            SelectedView = new ActiveReservationsView();
+
+            // Postavljanje selektovane rezervacije na prvu rezervaciju u listi
+            SelectedReservation = Reservations.FirstOrDefault();
+
+            // Kliknite na dugme za otkazivanje rezervacije
+            //cancelReservationButton
+
+            // Postavljanje vidljivosti CancelMessageLabel-a
+            CancelMessage = "Neka poruka";
+            SuccessMessage = "";
+            OnPropertyChanged(nameof(CancelMessage));
+            OnPropertyChanged(nameof(SuccessMessage));
         }
 
         private bool ValidateReservation()

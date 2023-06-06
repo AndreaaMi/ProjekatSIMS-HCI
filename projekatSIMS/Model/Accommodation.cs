@@ -136,10 +136,6 @@ namespace projekatSIMS.Model
             }
         }
 
-
-
-
-
         public override string ExportToString()
         {
             string imageUrlsString = string.Join(";", ImageUrls);

@@ -26,6 +26,8 @@ namespace projekatSIMS.Repository
             Vouchers = new VoucherRepository();
             TourRatings = new TourRatingRepository();
             TourRequests = new TourRequestRepository();
+            Forums = new ForumRepository();
+            ForumComments = new ForumCommentRepository();
         }
 
         public UserRepository Users { get; private set; }
@@ -54,6 +56,9 @@ namespace projekatSIMS.Repository
 
         public TourRequestRepository TourRequests { get; private set; }
 
+        public ForumRepository Forums { get; private set; }
+
+        public ForumCommentRepository ForumComments { get; private set; }
         public void Save()
         {
             DataContext.Instance.Save(); //Save je stavljen da bi se mogli sacuvati podaci nakon metoda iz servisa

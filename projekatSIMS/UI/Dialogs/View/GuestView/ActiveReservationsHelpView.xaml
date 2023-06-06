@@ -82,10 +82,10 @@
                 </ListView.ItemTemplate>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Reservation Id" DisplayMemberBinding="{Binding AccommodationName}" Width="374"/>
-                        <GridViewColumn Header="Cleanliness" DisplayMemberBinding="{Binding StartDate}" Width="374"/>
-                        <GridViewColumn Header="OwnerPoliteness" DisplayMemberBinding="{Binding EndDate}" Width="374"/>
-                        <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding GuestCount}" Width="366"/>
+                        <GridViewColumn Header="Accommodation Name" DisplayMemberBinding="{Binding AccommodationName}" Width="374"/>
+                        <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}" Width="374"/>
+                        <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}" Width="374"/>
+                        <GridViewColumn Header="Guest Count" DisplayMemberBinding="{Binding GuestCount}" Width="366"/>
                     </GridView>
                 </ListView.View>
             </ListView>

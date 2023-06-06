@@ -7,87 +7,28 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
 {
     public class AnywhereAnytimeViewModel : ViewModelBase
     {
-        private UserControl _selectedView;
-
-        public UserControl SelectedView
-        {
-            get { return _selectedView; }
-            set
-            {
-                _selectedView = value;
-                OnPropertyChanged(nameof(SelectedView));
-            }
-        }
-
-        public ICommand ShowAnywhereAnytimeHelpCommand { get; set; }
-        public ICommand BackCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
         private ObservableCollection<Accommodation> accommodationItems = new ObservableCollection<Accommodation>();
-        private AccommodationService accommodationService;
-        private AccommodationReservationService accommodationReservationService;
-
+        private AccommodationService accommodationService = new AccommodationService();
+        private AccommodationReservationService accommodationReservationService = new AccommodationReservationService();
 
         public AnywhereAnytimeViewModel()
-        {
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now.AddDays(1);
-            BackCommand = new RelayCommand(BackControl);
-            ShowAnywhereAnytimeHelpCommand = new RelayCommand(ShowAnywhereAnytimeHelpControl);
-            SetService();
-            LoadData();
+        { 
+            SearchCommand = new RelayCommand(SearchAccommodations);
+            LoadAccommodationItems();
         }
-
-        private Accommodation selectedAccommodation;
-        public Accommodation SelectedAccommodation
-        {
-            get { return selectedAccommodation; }
-            set
-            {
-                selectedAccommodation = value;
-                OnPropertyChanged(nameof(SelectedAccommodation));
-            }
-        }
-
-        private ICommand _showAccommodationsCommand;
-        public ICommand ShowAccommodationsCommand
-        {
-            get
-            {
-                if (_showAccommodationsCommand == null)
-                {
-                    _showAccommodationsCommand = new RelayCommand(
-                        param => this.FilterAccommodations(),
-                        param => true
-                    );
-                }
-                return _showAccommodationsCommand;
-            }
-        }
-
-        private ICommand bookCommand;
-        public ICommand BookCommand
-        {
-            get
-            {
-                if (bookCommand == null)
-                {
-                    bookCommand = new RelayCommand(
-                        param => BookAccommodation(),
-                        param => true
-                    );
-                }
-                return bookCommand;
-            }
-        }
-
 
         public ObservableCollection<Accommodation> AccommodationItems
         {
@@ -98,39 +39,8 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
                 OnPropertyChanged(nameof(accommodationItems));
             }
         }
-
-
-        private void LoadData()
-        {
-            InitialListViewLoad();
-        }
-
-        private void InitialListViewLoad()
-        {
-            foreach (Accommodation accommodation in accommodationService.GetAll().Cast<Accommodation>())
-            {
-                AccommodationItems.Add(accommodation);
-            }
-        }
-
-        public void SetService()
-        {
-            accommodationService = new AccommodationService();
-            accommodationReservationService = new AccommodationReservationService();
-        }
-
-
-        private void BackControl(object parameter)
-        {
-            SelectedView = new GuestPageView();
-        }
-        private void ShowAnywhereAnytimeHelpControl(object parameter)
-        {
-            SelectedView = new AnywhereAnytimeHelpView();
-        }
-
-        private int? guestCount;
-        public int? GuestCount
+        private int guestCount;
+        public int GuestCount
         {
             get { return guestCount; }
             set
@@ -148,6 +58,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             {
                 startDate = value;
                 OnPropertyChanged(nameof(StartDate));
+                UpdateAvailableDates();
             }
         }
 
@@ -159,157 +70,203 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.GuestViewModel
             {
                 endDate = value;
                 OnPropertyChanged(nameof(EndDate));
+                UpdateAvailableDates();
             }
         }
 
-        private int? minimalStayDays;
-
-        public int? MinimalStayDays
+        private int numberOfDays;
+        public int NumberOfDays
         {
-            get => minimalStayDays;
+            get { return numberOfDays; }
             set
             {
-                minimalStayDays = value;
-                OnPropertyChanged(nameof(MinimalStayDays));
+                numberOfDays = value;
+                OnPropertyChanged(nameof(NumberOfDays));
+                UpdateAvailableDates();
             }
         }
 
-        private void FilterAccommodations()
+        private bool isDateRangeSelected;
+        public bool IsDateRangeSelected
         {
-            var filteredAccommodations = AccommodationItems.Where(x =>
-                (!GuestCount.HasValue || x.GuestLimit >= GuestCount.Value)
-                && (!MinimalStayDays.HasValue || x.MinimumStayDays <= MinimalStayDays.Value)
-            ).ToList();
+            get { return isDateRangeSelected; }
+            set
+            {
+                isDateRangeSelected = value;
+                OnPropertyChanged(nameof(IsDateRangeSelected));
+                UpdateAvailableDates();
+            }
+        }
 
-            // Update the collection of accommodations that should be displayed
+        private ObservableCollection<AvailableDate> availableDates = new ObservableCollection<AvailableDate>();
+        public ObservableCollection<AvailableDate> AvailableDates
+        {
+            get { return availableDates; }
+            set
+            {
+                availableDates = value;
+                OnPropertyChanged(nameof(AvailableDates));
+            }
+        }
+
+        private AvailableDate selectedDate;
+        public AvailableDate SelectedDate
+        {
+            get { return selectedDate; }
+            set
+            {
+                selectedDate = value;
+                OnPropertyChanged(nameof(SelectedDate));
+            }
+        }
+
+        private Accommodation selectedAccommodation;
+        public Accommodation SelectedAccommodation
+        {
+            get { return selectedAccommodation; }
+            set
+            {
+                selectedAccommodation = value;
+                OnPropertyChanged(nameof(SelectedAccommodation));
+            }
+        }
+
+        private void LoadAccommodationItems()
+        {
+            foreach (Accommodation accommodation in accommodationService.GetAll())
+            {
+                AccommodationItems.Add(accommodation);
+            }
+        }
+
+        private void UpdateAvailableDates()
+        {
+            AvailableDates.Clear();
+
+            if (IsDateRangeSelected && StartDate != null && EndDate != null && NumberOfDays > 0)
+            {
+                foreach (var accommodation in AccommodationItems)
+                {
+                    if (IsAccommodationAvailable(accommodation))
+                    {
+                        DateTime currentDate = StartDate;
+
+                        while (currentDate <= EndDate.AddDays(-NumberOfDays))
+                        {
+                            DateTime reservationEndDate = currentDate.AddDays(NumberOfDays);
+
+                            if (IsAccommodationAvailableInDateRange(accommodation, currentDate, reservationEndDate))
+                            {
+                                AvailableDates.Add(new AvailableDate
+                                {
+                                    AvailableStartDate = currentDate,
+                                    AvailableEndDate = reservationEndDate,
+                                    AccommodationName = accommodation.Name
+                                });
+                            }
+
+                            currentDate = currentDate.AddDays(1);
+                        }
+                    }
+                }
+            }
+            //else if (!IsDateRangeSelected && GuestCount > 0)
+            //{
+            //    foreach (var accommodation in AccommodationItems)
+            //    {
+            //        if (accommodation.GuestLimit >= GuestCount)
+            //        {
+            //            AvailableDates.Add(new AvailableDate
+            //            {
+            //                AvailableStartDate = null,
+            //                AvailableEndDate = null,
+            //                AccommodationName = accommodation.Name
+            //            });
+            //        }
+            //    }
+           // }
+        }
+
+        private bool IsAccommodationAvailable(Accommodation accommodation)
+        {
+            foreach (AccommodationReservation accommodationReservation in accommodationReservationService.GetAll())
+            {
+                if (accommodationReservation.AccommodationName == accommodation.Name)
+                {
+                    if (accommodationReservation.StartDate <= EndDate && accommodationReservation.EndDate >= StartDate)
+                    {
+                        return false; // Smeštaj je zauzet u nekom od datuma
+                    }
+                }
+            }
+            return accommodation.GuestLimit >= GuestCount;
+        }
+        private bool IsAccommodationAvailableInDateRange(Accommodation accommodation, DateTime startDate, DateTime endDate)
+        {
+            foreach (AccommodationReservation accommodationReservation in accommodationReservationService.GetAll())
+            {
+                if (accommodationReservation.AccommodationName == accommodation.Name)
+                {
+                    if (accommodationReservation.StartDate <= endDate && accommodationReservation.EndDate >= startDate)
+                    {
+                        return false; // Smeštaj je zauzet u nekom od datuma
+                    }
+                }
+            }
+            return true; // Smeštaj je dostupan za dati opseg datuma
+        }
+
+        private void SearchAccommodations(object parameter)
+        {
+            if (GuestCount <= 0 || NumberOfDays <= 0)
+            {
+                MessageBox.Show("Morate uneti broj gostiju i broj dana boravka.");
+                return;
+            }
+
+            AvailableDates.Clear();
+
+            foreach (var accommodation in AccommodationItems)
+            {
+                if (accommodation.GuestLimit >= GuestCount)
+                {
+                    AvailableDates.Add(new AvailableDate
+                    {
+                        AvailableStartDate = StartDate,
+                        AvailableEndDate = StartDate.AddDays(NumberOfDays),
+                        AccommodationName = accommodation.Name
+                    });
+                }
+            }
             AccommodationItems.Clear();
-            filteredAccommodations.ForEach(x => AccommodationItems.Add(x));
-            CommandManager.InvalidateRequerySuggested();
 
-        }
-
-        private void BookAccommodation()
-        {
-            if (!ValidateInput())
+            foreach (var accommodation in AccommodationItems)
             {
-                return; // do not book the accommodation if input is not valid
+                if (accommodation.GuestLimit < GuestCount)
+                {
+                    AccommodationItems.Add(accommodation);
+                }
             }
 
-            var newReservation = new AccommodationReservation
-            {
-                Id = accommodationReservationService.GenerateId(),
-                AccommodationName = SelectedAccommodation.Name,
-                StartDate = StartDate,
-                EndDate = EndDate,
-                GuestCount = (int)GuestCount
-            };
-
-            accommodationReservationService.CreateAccommodationReservation(newReservation);
-
-            ReservationSuccessfulLabel = "Reservation successful!";
-            ErrorLabel = "";
         }
 
-        private string reservationSuccessfulLabel;
-        public string ReservationSuccessfulLabel
+        public ICommand ShowAnywhereAnytimeHelpCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+        private UserControl _selectedView;
+
+        public UserControl SelectedView
         {
-            get { return reservationSuccessfulLabel; }
+            get { return _selectedView; }
             set
             {
-                reservationSuccessfulLabel = value;
-                OnPropertyChanged(nameof(ReservationSuccessfulLabel));
+                _selectedView = value;
+                OnPropertyChanged(nameof(SelectedView));
             }
         }
 
-        private bool ValidateInput()
-        {
-            if (!ValidateAccommodationSelection()) return false;
-            if (!ValidateDateRange()) return false;
-            if (!ValidateGuestCount()) return false;
-            return true;
-        }
+        // BackCommand = new RelayCommand(BackControl);
+        // ShowAnywhereAnytimeHelpCommand = new RelayCommand(ShowAnywhereAnytimeHelpControl);
 
-        private bool ValidateAccommodationSelection()
-        {
-            if (SelectedAccommodation == null)
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = "Please select an accommodation.";
-                return false;
-            }
-            ErrorLabel = "";
-            return true;
-        }
-
-        private bool ValidateDateRange()
-        {
-            string dateFormat = "dd.MM.yyyy"; // Prilagodite formatu datuma vašim potrebama
-
-            if (!DateTime.TryParseExact(StartDate.ToString(), dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Please enter a valid start date in the format {dateFormat}.";
-                return false;
-            }
-
-            if (!DateTime.TryParseExact(EndDate.ToString(), dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Please enter a valid end date in the format {dateFormat}.";
-                return false;
-            }
-
-            if (StartDate == DateTime.MinValue || EndDate == DateTime.MaxValue || StartDate >= EndDate || StartDate < DateTime.Today.AddDays(1))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = "Please select a valid date range.";
-                return false;
-            }
-
-            if ((EndDate - StartDate).TotalDays < SelectedAccommodation.MinimumStayDays)
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Minimum stay is {SelectedAccommodation.MinimumStayDays} days.";
-                return false;
-            }
-            return true;
-        }
-
-        private bool ValidateGuestCount()
-        {
-            if (!int.TryParse(GuestCount.ToString(), out int guestCount))
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = "Please enter a valid number of guests. The number of guests must be a whole number.";
-                return false;
-            }
-
-            if (guestCount < 1)
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = "Please enter a valid number of guests. The number of guests must be greater than zero.";
-                return false;
-            }
-
-            if (guestCount > SelectedAccommodation.GuestLimit)
-            {
-                ReservationSuccessfulLabel = "";
-                ErrorLabel = $"Selected accommodation only allows up to {SelectedAccommodation.GuestLimit} guests.";
-                return false;
-            }
-
-            return true;
-        }
-
-        private string errorLabel;
-        public string ErrorLabel
-        {
-            get { return errorLabel; }
-            set
-            {
-                errorLabel = value;
-                OnPropertyChanged(nameof(ErrorLabel));
-            }
-        }
     }
+
 }

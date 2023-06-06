@@ -17,15 +17,14 @@ using System.Windows.Shapes;
 namespace projekatSIMS.UI.Dialogs.View.GuestView
 {
     /// <summary>
-    /// Interaction logic for ActiveReservationsView.xaml
+    /// Interaction logic for ForumCommentsView.xaml
     /// </summary>
-    public partial class ActiveReservationsView : UserControl
+    public partial class ForumCommentsView : UserControl
     {
-        public ActiveReservationsView()
+        public ForumCommentsView()
         {
             InitializeComponent();
-            DataContext = new ActiveReservationsViewModel();
-
+            DataContext = new ForumCommentsViewModel();
         }
     }
 }

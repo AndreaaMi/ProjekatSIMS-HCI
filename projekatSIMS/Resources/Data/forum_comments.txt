@@ -1,0 +1,15 @@
+0|0|Andrea|The must-visit attractions in Sofia are the Alexander Nevsky Cathedral, Boyana Church, and Vitosha Mountain.|False
+1|0|Andrea|Some good restaurants in Sofia include Made in Home, Shtastlivetza, and Rakia & Co.|False
+2|2|Vlatko|Some hidden gems in Berlin that tourists often miss are the East Side Gallery, Teufelsberg, and Viktoria Park.|True
+3|3|Andrea|The best neighborhoods to explore in Paris are Le Marais, Saint-Germain-des-Pr�s, and Montmartre.|True
+4|4|Ana|Some fun outdoor activities to do in Amsterdam are biking along the canals, visiting Vondelpark, and taking a canal cruise.|True
+5|0|John|I totally agree with you!|True
+6|0|Jane|Great point, thanks for sharing!|True
+7|1|Ana|I have a different perspective on this topic.|True
+8|1|Vlatko|Can you explain your reasoning further?|False
+9|3|Sara|I've had a similar experience, it was amazing!|True
+10|2|Jane|I recommend visiting the Berlin Wall Memorial as well. It's a powerful and historical site.|False
+11|2|John|If you're into museums, don't miss the Museum Island. It houses some of the best museums in Berlin.|False
+12|3|John|I highly recommend exploring the Latin Quarter in Paris. It's full of charm and great restaurants.|True
+13|4|Sara|You should also try visiting the Anne Frank House in Amsterdam. It's a moving experience.|False
+14|4|Ana|For a unique adventure, consider renting a boat and exploring Amsterdam's famous canal system.|False
