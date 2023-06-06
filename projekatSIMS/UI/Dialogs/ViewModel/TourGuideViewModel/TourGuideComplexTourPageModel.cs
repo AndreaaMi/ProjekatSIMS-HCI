@@ -277,15 +277,30 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private void TourButtonCommandExecute()
         {
             var tours = tourRequestService.GetAll();
+            var tura = tourService.GetAll();
+            bool jel = true;
+
             if (selectedTour != null)
             {
+
+
                 foreach (TourRequest tour in tours)
                 {
                     if (tour.Description == selectedTour.Description)
                     {
-                        tour.Date = FDate;
-                        tour.Status = TourRequestStatus.ACCEPTED;
-                        tourRequestService.Edit(tour);
+                        foreach (Tour t in tura)
+                        {
+                            if ((t.StartingDate > tour.StartDate && t.StartingDate <tour.EndDate))
+                            {
+                                jel = false;
+                            }
+                        }
+                        if(jel)
+                        {
+                            tour.Date = FDate;
+                            tour.Status = TourRequestStatus.ACCEPTED;
+                            tourRequestService.Edit(tour);
+                        }
                     }
                 }
             }
