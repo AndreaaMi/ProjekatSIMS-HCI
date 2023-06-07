@@ -158,7 +158,9 @@
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideToursTodayPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TourGuideViewModel\TourGuideTourStartSoonPageModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristActiveToursModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristComplexTourDetailsModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristComplexTourRequestModel.cs" />
+    <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristComplexTourRequestStatisticModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeHelpModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeModel.cs" />
     <Compile Include="UI\Dialogs\ViewModel\TouristViewModel\TouristHomeNotificationModel.cs" />
@@ -293,6 +295,12 @@
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristActiveToursView.xaml.cs">
       <DependentUpon>TouristActiveToursView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristComplexTourDetailsView.xaml.cs">
+      <DependentUpon>TouristComplexTourDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\View\TouristView\TouristComplexTourRequestsStatisticView.xaml.cs">
+      <DependentUpon>TouristComplexTourRequestsStatisticView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialogs\View\TouristView\TouristComplexTourRequestView.xaml.cs">
       <DependentUpon>TouristComplexTourRequestView.xaml</DependentUpon>
@@ -522,6 +530,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Dialogs\View\TouristView\TouristActiveToursView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristComplexTourDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\View\TouristView\TouristComplexTourRequestsStatisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

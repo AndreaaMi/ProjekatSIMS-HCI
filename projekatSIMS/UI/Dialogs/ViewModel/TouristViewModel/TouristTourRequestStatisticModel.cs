@@ -52,7 +52,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         {
             foreach(TourRequest item in tourRequestService.GetAll())
             {
-                if(item.GuestId == userService.GetLoginUser().Id)
+                if(item.GuestId == userService.GetLoginUser().Id && item.IsPartOfComplexTour == false)
                 {
                     Items.Add(item);
                 }

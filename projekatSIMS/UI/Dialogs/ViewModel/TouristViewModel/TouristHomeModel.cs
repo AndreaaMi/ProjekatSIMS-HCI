@@ -21,6 +21,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
         private RelayCommand helpCommand;
         private RelayCommand requestTourCommand;
         private RelayCommand requestsCommand;
+        private RelayCommand complexRequestsCommand;
 
         private UserService userService;
         private TourRequestService requestService;
@@ -115,6 +116,12 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             TouristMainWindow.navigationService.Navigate(
                new Uri("UI/Dialogs/View/TouristView/TouristTourRequestStatisticsView.xaml", UriKind.Relative));
         }
+
+        private void ComplexRequestsCommandExecute()
+        {
+            TouristMainWindow.navigationService.Navigate(
+               new Uri("UI/Dialogs/View/TouristView/TouristComplexTourRequestsStatisticView.xaml", UriKind.Relative));
+        }
         public void Dispose()
         {
         }
@@ -197,6 +204,13 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TouristViewModel
             get
             {
                 return requestsCommand ?? (requestsCommand = new RelayCommand(param => RequestsCommandExecute(), param => CanThisCommandExecute()));
+            }
+        }
+        public RelayCommand ComplexRequestsCommand
+        {
+            get
+            {
+                return complexRequestsCommand ?? (complexRequestsCommand = new RelayCommand(param => ComplexRequestsCommandExecute(), param => CanThisCommandExecute()));
             }
         }
 

@@ -228,6 +228,9 @@
             <i:KeyTrigger Key="F" Modifiers="Ctrl">
                 <i:InvokeCommandAction Command="{Binding RequestsCommand}" />
             </i:KeyTrigger>
+            <i:KeyTrigger Key="G" Modifiers="Ctrl">
+                <i:InvokeCommandAction Command="{Binding ComplexRequestsCommand}" />
+            </i:KeyTrigger>
         </i:Interaction.Triggers>
     </Grid>
 </Page>
