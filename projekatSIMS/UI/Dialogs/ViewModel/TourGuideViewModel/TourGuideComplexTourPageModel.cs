@@ -174,6 +174,9 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
         private string fNumber;
         private string fLocation;
 
+        private string suggestedDate1;
+        private string suggestedDate2;
+
         private Tour selectedTour;
         private Language selectedLanguage;
 
@@ -248,7 +251,19 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
                         Date = tour.StartDate.Date.ToString("dd.MM.yyyy") + "--" + tour.EndDate.Date.ToString("dd.MM.yyyy");
                         Tours.Add(tour1);
                         i++;
-                    }
+                        
+                        }
+                        
+                        
+                            Random random = new Random();
+                            DateTime randomDate = tour.StartDate.AddDays(random.Next((tour.EndDate - tour.StartDate).Days));
+                            Random random1 = new Random();
+                            DateTime randomDate1 = tour.StartDate.AddDays(random.Next((tour.EndDate - tour.StartDate).Days));
+                            randomDate1.AddDays(1);
+                            SuggestedDate1 = randomDate.ToString();
+                            SuggestedDate2 = randomDate1.ToString();
+                        
+
                 }
                     }
                     // Name = tour.Name;
@@ -480,6 +495,7 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
 
             }
         }
+
         public string FLanguage
         {
             get { return fLanguage; }
@@ -487,6 +503,27 @@ namespace projekatSIMS.UI.Dialogs.ViewModel.TourGuideViewModel
             {
                 fLanguage = value;
                 OnPropertyChanged(nameof(FLanguage));
+
+            }
+        }
+        public string SuggestedDate1
+        {
+            get { return suggestedDate1; }
+            set
+            {
+                suggestedDate1 = value;
+                OnPropertyChanged(nameof(SuggestedDate1));
+
+            }
+        }
+
+        public string SuggestedDate2
+        {
+            get { return suggestedDate2; }
+            set
+            {
+                suggestedDate2 = value;
+                OnPropertyChanged(nameof(SuggestedDate2));
 
             }
         }

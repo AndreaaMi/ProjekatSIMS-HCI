@@ -76,6 +76,10 @@
                                                 <Label Width="200" Height="30" Content="{Binding MaxNumberOfGuests}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="525,220,51,49" />
 
                                                 <Label Width="200" Height="30" HorizontalAlignment="Left" Content="Enter exact date:" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="200,260,10,10" />
+                                                
+                                                <Label Width="200" Height="30" HorizontalAlignment="Left" Content="Suggested date:" Foreground="{DynamicResource TextColor}" FontSize="12" FontWeight="Bold" Margin="10,260,10,10" />
+                                                <Label Width="200" Height="30" HorizontalAlignment="Left" Content="{Binding DataContext.SuggestedDate1, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="120,260,10,10" />
+                                                <Label Width="200" Height="30" HorizontalAlignment="Left" Content="{Binding DataContext.SuggestedDate2, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Foreground="{DynamicResource TextColor}" FontSize="12" Margin="120,270,10,10" />
 
                                                 <TextBox Width="200"   Height="25" Margin="320,260,10,10" Foreground="{DynamicResource TextColor}" HorizontalAlignment="Left" Background="{DynamicResource TextBoxColor}" Text="{Binding DataContext.FDate, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
 
